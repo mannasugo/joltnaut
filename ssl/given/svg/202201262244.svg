@@ -1,0 +1,34 @@
+<svg class="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94 24">
+  <style>
+
+    svg {background: transparent}
+    
+    
+    g, path {
+      fill: none;
+      stroke: #47008c;
+      stroke-width: 2px;
+    }
+
+    text {
+      font-size: 12.5px;
+      letter-spacing: .64px;
+      font-family: litera;
+      fill:#000;
+      stroke-width:.5;
+      stroke: #000; //text-transform: uppercase
+    }
+
+    //circle { stroke: #00e53f}
+
+  </style>
+  <g>
+    <!--path d="M12 6 6 12 18 12 12 18"></path-->
+    <path stroke="#00e53f" stroke-width="2" d="M10 8 8 10 M8 12 16 12 M16 14 14 16"></path>
+    <circle fill="none" r="2.5" cx="12" cy="6"></circle>
+    <circle fill="none" r="2.5" cx="6" cy="12"></circle>
+    <circle fill="none" r="2.5" cx="18" cy="12"></circle>
+    <circle fill="none" r="2.5" cx="12" cy="18"></circle>
+    <text x="28" y="17">joltQUID</text>
+  </g>
+  </svg>

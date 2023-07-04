@@ -1,0 +1,14 @@
+<svg class="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    g {
+      fill: none;
+      stroke-width: 1; 
+      stroke: #fff
+    }
+  </style>
+  <g>
+    <path d="M4.5,18 A3,1 1 1,1 19.5,18"></path>
+    <circle r="9.5" cx="12" cy="12"></circle>
+    <circle r="3.5" cx="12" cy="9"></circle>
+  </g>
+  </svg>
