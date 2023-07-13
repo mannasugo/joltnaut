@@ -4,11 +4,11 @@ const { createSecureServer } = require(`http2`);
 
 const { readFileSync } = require(`fs`);
 
-//const { Sql, View } = require(`./tools`);
+const { Sql, View } = require(`./tools`);
 
-const { Call, polling, reals } = require(`./route`);
+const { Call } = require(`./route`);
 
-//Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
+Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
 let App = createSecureServer({
   	key: readFileSync(`http2/ssl/privkey.pem`),
@@ -19,8 +19,6 @@ let App = createSecureServer({
 	Call([call, put]);
 
 });
-
-//polling(require(`socket.io`).listen(App));
 
 App.on(`error`, (err) => console.error(err));
 

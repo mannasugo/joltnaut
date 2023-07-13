@@ -4,7 +4,9 @@ const { createHash } = require(`crypto`);
 
 const get = require(`request`);
 
-//const { Sql, Tools } = require(`./tools`);
+const { Sql, Tools } = require(`./tools`);
+
+const APK_VER = 202307081414;
 
 const hold = new Date(`1996-01-20`).valueOf();
 
@@ -57,6 +59,87 @@ class Route {
 					}]);
 				}]);
 			}
+		}
+
+		else if (Arg[0].method == `POST`) {
+
+			let blob = new Buffer.alloc(+Arg[0].headers[`content-length`]);
+
+			let Pull = ``;
+
+			let allocate = 0;
+
+			Arg[0].on(`data`, (Data) => {
+
+				Data.copy(blob, allocate);
+
+			 	allocate += Data.length;
+
+				Pull += Data;
+
+			}).on(`end`, () => {
+
+				let Pulls;
+
+				if (Pull[0] === `{`) Pulls = JSON.parse(Pull);
+
+				if (State[1] === `json`) {
+
+					Arg[1].setHeader(`Content-Type`, `application/json`);
+
+					if (State[2] === `gradle`) {
+
+						let Put = {};
+
+						Put.APK_VER = APK_VER;
+
+						Sql.pulls(Raw => {
+
+							if (APK_VER === parseInt(Pulls.APK_VER)) {
+
+								if (Pulls.pull === `pollMug`) {
+
+									Raw.mugs[0].forEach(Mug => {
+
+										if (Mug.mail === Pulls.polls[1]) {
+
+											Put[`bugs`] = [];
+
+											Put.bugs.push(`mail`);
+										}
+										
+										if (Mug.mug === Pulls.polls[2]) {
+
+											if (!Put.bugs) Put[`bugs`] = [];
+
+											Put.bugs.push(`username`);
+										}
+									});
+
+									if (!Put.bugs || Put.bugs.length === 0) {
+
+										let secs = new Date().valueOf();
+
+										Sql.puts([`mugs`, {
+											alternate:,
+											lock:,
+											mail:,
+											md: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`),
+											names: [],
+											secs: secs
+										}, (Raw) => {Arg[1].end(JSON.stringify(Put));}]);
+									}
+
+								}
+								
+							}
+
+							Arg[1].end(JSON.stringify(Put));
+
+						});
+					}
+				}
+			});
 		}
 	}
 }
