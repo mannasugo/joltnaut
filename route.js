@@ -108,11 +108,11 @@ class Route {
 											Put.bugs.push(`mail`);
 										}
 										
-										if (Mug.mug === Pulls.polls[2]) {
+										if (Mug.alternate === Pulls.polls[2]) {
 
 											if (!Put.bugs) Put[`bugs`] = [];
 
-											Put.bugs.push(`username`);
+											Put.bugs.push(`alternate`);
 										}
 									});
 
@@ -130,6 +130,19 @@ class Route {
 										}, (Raw) => {Arg[1].end(JSON.stringify(Put));}]);
 									}
 
+								}
+
+								if (Pulls.pull === `pullMug`) {
+
+									Raw.mugs[0].forEach(Mug => {
+
+										if (Mug.mail === Pulls.polls[0] && Mug.lock === createHash(`md5`).update(`${Pulls.polls[1]}`, `utf8`).digest(`hex`)) {
+
+											Put[`alternate`] = Mug.alternate;
+											Put[`mail`] = Mug.mail;
+											Put[`md`] = Mug.md;
+										}
+									});
 								}
 								
 							}
