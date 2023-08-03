@@ -53,6 +53,15 @@ class Sql {
 		}]);
 	}
 
+    places (Arg) {
+
+        this.credentials.database = `wallet`;
+
+        this.Sql([{
+            sql: `update ${Arg[0]} set json = ? where json = ?`,
+            values: [JSON.stringify(Arg[1]), JSON.stringify(Arg[2])]}, (Raw) => Arg[3](Raw)]);
+    }
+
 	puts (Arg) {
 
 		this.credentials.database = `wallet`;
@@ -68,6 +77,8 @@ class Tools {
 
 	constructor () {}
 
+	coats (types) { return JSON.stringify(types); }
+
 	safe (String) {
 
 		String = String.replace(new RegExp(`&`, `g`), `u0026`);
@@ -80,6 +91,8 @@ class Tools {
 
 		return String;
 	}
+
+	typen (coat) { return JSON.parse(coat); }
 }
 
 module.exports = {
