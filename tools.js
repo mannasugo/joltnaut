@@ -6,7 +6,7 @@ const { mkdir, readFile, readFileSync, stat, writeFileSync } = require(`fs`);
 
 const { createHash } = require(`crypto`);
 
-const get = require(`request`);
+const pullHTTPContent = require(`request`);
 
 const hold = new Date(`1996-01-20`).valueOf();
 
@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`mugs`];
+			let Put = [`mugs`, `till`];
 
 			let Puts = {};
 
@@ -43,6 +43,16 @@ class Sql {
 						Puts.mugs[0].push(JSON.parse(Mug.json));
 
 						Puts.mugs[1][JSON.parse(Mug.json).md] = JSON.parse(Mug.json);
+					});
+				}
+
+				if (put === 1) {
+
+					Put.forEach(Till => {
+
+						Puts.till[0].push(JSON.parse(Till.json));
+
+						Puts.till[1][JSON.parse(Till.json).md] = JSON.parse(Till.json);
 					});
 				}
 
@@ -62,6 +72,23 @@ class Sql {
             values: [JSON.stringify(Arg[1]), JSON.stringify(Arg[2])]}, (Raw) => Arg[3](Raw)]);
     }
 
+	putlist (Arg) {
+
+		this.credentials.database = `wallet`;
+
+		let Put = [];
+
+		Arg[1].forEach(MD => {
+
+			Put.push([new Tools().coats(MD)]);
+		});
+
+		this.Sql([{
+			sql: `insert into ?? (json) values?`,
+			values: [Arg[0], Put]}, (Raw) => Arg[2](Raw)]);
+			
+	}
+
 	puts (Arg) {
 
 		this.credentials.database = `wallet`;
@@ -78,6 +105,50 @@ class Tools {
 	constructor () {}
 
 	coats (types) { return JSON.stringify(types); }
+
+	collateralise (Arg) {
+
+		let Holds = {}, TX = [[], []];
+
+		Arg[0].till[0].forEach(MD => {
+
+			if (MD.till[hold] && MD.tx != false) TX[0].push(MD.tx);
+		});
+
+		Arg[0].mugs[0].forEach(MD => {
+
+			if (MD.inlet && MD.inlet.USDT) {
+
+				MD.inlet.USDT.forEach(b64 => {
+
+					Holds[b64] = MD.md;
+				});
+			}
+		});
+
+		pullHTTPContent(`https://apilist.tronscan.org/api/token_trc20/transfers?relatedAddress=TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`, (flaw, State, coat) => {
+
+			if (!flaw && State.statusCode === 200) {
+
+				this.typen(coat).token_transfers.forEach(MD => {
+
+					if (TX[0].indexOf(MD.transaction_id) === -1 && Holds[MD.from_address] && MD.to_address === `TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK` && parseInt(MD.quant) > 0) {
+
+						TX[1].push({
+							md: createHash(`md5`).update(`${MD.block_ts}`, `utf8`).digest(`hex`),
+							secs: MD.block_ts,
+							till: {
+								[hold]: -(parseInt(MD.quant)/1000000), 
+								[Holds[MD.from_address]]: [(parseInt(MD.quant)/1000000), 0]},
+							tx: MD.transaction_id,
+							vow: false});
+					}
+				});
+
+				return Arg[1](TX[1]);
+			}
+		});
+	}
 
 	safe (String) {
 
