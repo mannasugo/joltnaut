@@ -152,9 +152,9 @@ class Route {
 										let secs = new Date().valueOf();
 
 										Sql.puts([`mugs`, {
-											alternate:,
-											lock:,
-											mail:,
+											alternate: null,
+											lock: null,
+											mail: null,
 											md: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`),
 											names: [],
 											secs: secs

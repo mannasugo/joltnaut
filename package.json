@@ -1,7 +1,7 @@
 {
   "name": "@joltiota/joltnaut",
   "version": "0.0.0",
-  "description": "Decentralised fiat currency digital wallet with collateral escrowed as BTC/USDT on deposit",
+  "description": "Decentralised fiat currency digital wallet with collateral escrowed as BTC & USDT on deposit",
   "main": "app.js",
   "engines": {
     "node": ">=12.x",
