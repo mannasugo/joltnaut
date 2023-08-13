@@ -1,0 +1,40 @@
+{
+  "name": "@joltiota/joltnaut",
+  "version": "0.0.0",
+  "description": "Decentralised fiat currency digital wallet with collateral escrowed as BTC/USDT on deposit",
+  "main": "app.js",
+  "engines": {
+    "node": ">=12.x",
+    "npm": ">=6"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mannasugo/joltnaut.git"
+  },
+  "keywords": [
+    "bitcoin",
+    "blockchain",
+    "lightning network",
+    "mysql",
+    "nginx",
+    "nodejs"
+  ],
+  "contributors": [
+    "Mann Asugo <mannasugo@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mannasugo/joltnaut/issues"
+  },
+  "homepage": "https://joltnaut.com/",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "mysql": "^2.16.0",
+    "request": "^2.88.2",
+    "socket.io": "^2.4.1",
+    "ws": "^8.5.0"
+  }
+}

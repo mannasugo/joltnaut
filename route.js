@@ -206,7 +206,7 @@ class Route {
 											Arg[1].end(Tools.coats({ 
 												inlet: (Raw.mugs[1][Pulls.mug].inlet)? Raw.mugs[1][Pulls.mug].inlet.USDT: [],
 												mug: Pulls.mug,
-												puton: Puton,
+												puts: Puts,
 												settles: Settle
 											}));
 										}
