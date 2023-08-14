@@ -132,12 +132,14 @@ class Route {
 
 									Raw.mugs[0].forEach(Mug => {
 
-										if (Mug.mail === Pulls.polls[1]) {
+										if (Mug.mail === Pulls.param[1]) {
 
 											Put[`bugs`] = [];
 
 											Put.bugs.push(`mail`);
 										}
+
+										/**
 										
 										if (Mug.alternate === Pulls.polls[2]) {
 
@@ -145,6 +147,8 @@ class Route {
 
 											Put.bugs.push(`alternate`);
 										}
+
+										**/
 									});
 
 									if (!Put.bugs || Put.bugs.length === 0) {
@@ -152,13 +156,12 @@ class Route {
 										let secs = new Date().valueOf();
 
 										Sql.puts([`mugs`, {
-											alternate: null,
-											lock: null,
-											mail: null,
+											lock: createHash(`md5`).update(Pulls.param[2], `utf8`).digest(`hex`),
+											mail: Pulls.param[1],
 											md: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`),
-											names: [],
+											names: Tools.safe(Pulls.param[0]),
 											secs: secs
-										}, (Raw) => {Arg[1].end(JSON.stringify(Put));}]);
+										}, (Raw) => {Arg[1].end(Tools.coats(Put));}]);
 									}
 								}
 
