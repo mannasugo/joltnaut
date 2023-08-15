@@ -87,7 +87,7 @@ class Route {
 
 					Arg[1].setHeader(`Content-Type`, `application/json`);
 
-					if (State[2] === `gradle`) {
+					if (State[2] === `gradle`) {console.log(Pulls)
 
 						let Put = {};
 
@@ -95,7 +95,7 @@ class Route {
 
 						Sql.pulls(Raw => {
 
-							if (APK_VER === parseInt(Pulls.APK_VER)) { console.log(Pulls)
+							if (APK_VER === parseInt(Pulls.APK_VER)) { 
 
 								if (Pulls.pull === `inlet`) {
 
