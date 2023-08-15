@@ -6,7 +6,7 @@ const get = require(`request`);
 
 const { Sql, Tools } = require(`./tools`);
 
-const APK_VER = 202307081414;
+const APK_VER = 202307201417;
 
 const hold = new Date(`1996-01-20`).valueOf();
 
@@ -87,7 +87,7 @@ class Route {
 
 					Arg[1].setHeader(`Content-Type`, `application/json`);
 
-					if (State[2] === `gradle`) {console.log(Pulls)
+					if (State[2] === `gradle`) {
 
 						let Put = {};
 
