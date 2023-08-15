@@ -91,11 +91,11 @@ class Route {
 
 						let Put = {};
 
-						Put.APK_VER = APK_VER;
+						Put.APK_VER = APK_VER.toString();
 
 						Sql.pulls(Raw => {
 
-							if (APK_VER === parseInt(Pulls.APK_VER)) {
+							if (APK_VER === parseInt(Pulls.APK_VER)) { console.log(Pulls)
 
 								if (Pulls.pull === `inlet`) {
 
