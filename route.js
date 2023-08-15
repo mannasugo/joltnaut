@@ -138,17 +138,6 @@ class Route {
 
 											Put.bugs.push(`mail`);
 										}
-
-										/**
-										
-										if (Mug.alternate === Pulls.polls[2]) {
-
-											if (!Put.bugs) Put[`bugs`] = [];
-
-											Put.bugs.push(`alternate`);
-										}
-
-										**/
 									});
 
 									if (!Put.bugs || Put.bugs.length === 0) {
@@ -171,7 +160,6 @@ class Route {
 
 										if (Mug.mail === Pulls.polls[0] && Mug.lock === createHash(`md5`).update(`${Pulls.polls[1]}`, `utf8`).digest(`hex`)) {
 
-											Put[`alternate`] = Mug.alternate;
 											Put[`mail`] = Mug.mail;
 											Put[`md`] = Mug.md;
 										}
