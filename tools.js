@@ -26,7 +26,7 @@ class Sql {
 
 		this.credentials.database = `wallet`;
 
-		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {console.log(Raw)
+		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {console.log(Raw[1]);
 
 			let Put = [`mugs`, `till`];
 
