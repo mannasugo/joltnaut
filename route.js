@@ -159,11 +159,11 @@ class Route {
 									}
 								}
 
-								if (Pulls.pull === `pullMug`) { console.log(Pulls)
+								if (Pulls.pull === `pullMug`) {console.log(createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`))
 
 									Raw.mugs[0].forEach(Mug => {
 
-										if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) { console.log(Pulls)
+										if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
 
 											Put[`mail`] = Mug.mail;
 											Put[`md`] = Mug.md;
