@@ -173,6 +173,8 @@ class Route {
 									Arg[1].end(Tools.coats(Put));
 								}
 
+								if (Pulls.pull === `Splash`) Arg[1].end(Tools.coats(Put));
+
 								if (Pulls.pull === `walletOutlet`) {
 
 									Tools.collateralise([Raw, TX => {
@@ -213,7 +215,7 @@ class Route {
 								
 							}
 
-							Arg[1].end(JSON.stringify(Put));
+							//Arg[1].end(JSON.stringify(Put));
 
 						});
 					}
