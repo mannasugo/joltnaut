@@ -26,7 +26,7 @@ class Sql {
 
 		this.credentials.database = `wallet`;
 
-		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {console.log(Raw[1]);
+		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
 			let Put = [`mugs`, `till`];
 
@@ -36,7 +36,7 @@ class Sql {
 
 			Raw[1].forEach((Put, put) => {
 
-				if (put === 0) {
+				if (put === 2) {
 
 					Put.forEach(Mug => {
 
@@ -46,7 +46,7 @@ class Sql {
 					});
 				}
 
-				if (put === 1) {
+				if (put === 5) {
 
 					Put.forEach(Till => {
 
