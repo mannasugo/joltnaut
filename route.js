@@ -163,7 +163,7 @@ class Route {
 
 									Raw.mugs[0].forEach(Mug => {
 
-										if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
+										if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) { console.log(Pulls)
 
 											Put[`mail`] = Mug.mail;
 											Put[`md`] = Mug.md;
