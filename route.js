@@ -169,6 +169,8 @@ class Route {
 											Put[`md`] = Mug.md;
 										}
 									});
+
+									Arg[1].end(Tools.coats(Put));
 								}
 
 								if (Pulls.pull === `walletOutlet`) {
