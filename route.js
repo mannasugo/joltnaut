@@ -150,7 +150,12 @@ class Route {
 											md: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`),
 											names: Tools.safe(Pulls.param[0]),
 											secs: secs
-										}, (Raw) => {Arg[1].end(Tools.coats(Put));}]);
+										}, (Raw) => {
+
+											Put[`md`] = createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`);
+
+											Arg[1].end(Tools.coats(Put));
+										}]);
 									}
 								}
 
