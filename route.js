@@ -159,7 +159,7 @@ class Route {
 									}
 								}
 
-								if (Pulls.pull === `pullMug`) {console.log(createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`))
+								if (Pulls.pull === `pullMug`) { console.log(Raw.mugs[0])
 
 									Raw.mugs[0].forEach(Mug => {
 
@@ -170,7 +170,7 @@ class Route {
 										}
 									});
 
-									//Arg[1].end(Tools.coats(Put));
+									Arg[1].end(Tools.coats(Put));
 								}
 
 								if (Pulls.pull === `Splash`) Arg[1].end(Tools.coats(Put));
