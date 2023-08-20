@@ -159,7 +159,7 @@ class Route {
 									}
 								}
 
-								if (Pulls.pull === `pullMug`) {
+								if (Pulls.pull === `pullMug`) { console.log(Pulls)
 
 									Raw.mugs[0].forEach(Mug => {
 
