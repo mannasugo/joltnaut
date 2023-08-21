@@ -159,7 +159,7 @@ class Route {
 									}
 								}
 
-								if (Pulls.pull === `pullMug`) { console.log(Raw)
+								if (Pulls.pull === `pullMug`) {
 
 									Raw.mugs[0].forEach(Mug => {
 
@@ -169,53 +169,42 @@ class Route {
 											Put[`md`] = Mug.md;
 										}
 									});
-
-									//Arg[1].end(Tools.coats(Put));
 								}
 
-								if (Pulls.pull === `Splash`) Arg[1].end(Tools.coats(Put));
+								if (Pulls.pull === `splash`) Arg[1].end(Tools.coats(Put));
 
 								if (Pulls.pull === `walletOutlet`) {
 
 									Tools.collateralise([Raw, TX => {
 
-										let Settle = [], Puts = [];
+										let Settle = [], Outlet = [];
 
 										Tools.hold([Raw, Pulls.mug]).forEach(MD => {
 
-											if (MD.vow != false && MD.vow[1] === Pulls.mug) Settle.push(MD);
+											//if (MD.vow != false && MD.vow[1] === Pulls.mug) Settle.push(MD);
 
-											if (MD.till[Pulls.mug] && MD.tx.length > 10) Puts.push(MD)
+											if (MD.till[Pulls.mug] && MD.tx.length > 10) Outlet.push(MD)
 										});
+
+										Put[`inlet`] = (Raw.mugs[1][Pulls.mug].inlet)? Raw.mugs[1][Pulls.mug].inlet.USDT: [];
+										Put[`mug`] = Pulls.mug;
+										Put[`outlet`] = Outlet;
 
 										if (TX.length > 0) {
 
 											Sql.putlist([`till`, TX, (SQ) => {
 
-												Arg[1].end(Tools.coats({ 
-													inlet: (Raw.mugs[1][Pulls.mug].inlet)? Raw.mugs[1][Pulls.mug].inlet.USDT: [],
-													mug: Pulls.mug,
-													puts: Puts,
-													settles: Settle
-												}));
+												Arg[1].end(Tools.coats(Put));
 											}]);
 										}
 
-										else {
-
-											Arg[1].end(Tools.coats({ 
-												inlet: (Raw.mugs[1][Pulls.mug].inlet)? Raw.mugs[1][Pulls.mug].inlet.USDT: [],
-												mug: Pulls.mug,
-												puts: Puts,
-												settles: Settle
-											}));
-										}
+										else Arg[1].end(Tools.coats(Put));
 									}]);
 								}
 								
 							}
 
-							Arg[1].end(JSON.stringify(Put));
+							Arg[1].end(Tools.coats(Put));
 
 						});
 					}
