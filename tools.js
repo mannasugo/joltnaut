@@ -136,6 +136,7 @@ class Tools {
 
 						TX[1].push({
 							md: createHash(`md5`).update(`${MD.block_ts}`, `utf8`).digest(`hex`),
+							outlet_wallet: MD.from_address,
 							secs: MD.block_ts,
 							till: {
 								[hold]: -(parseInt(MD.quant)/1000000), 
