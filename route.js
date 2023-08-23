@@ -173,7 +173,7 @@ class Route {
 
 								if (Pulls.pull === `splash`) Arg[1].end(Tools.coats(Put));
 
-								if (Pulls.pull === `walletOutlet`) {
+								if (Pulls.pull === `walletOutlet`) { console.log(Pulls)
 
 									Tools.collateralise([Raw, TX => {
 
