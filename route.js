@@ -128,7 +128,7 @@ class Route {
 									}
 								}
 
-								if (Pulls.pull === `pollMug`) { console.log(Pulls)
+								if (Pulls.pull === `pollMug`) {
 
 									Raw.mugs[0].forEach(Mug => {
 
@@ -165,6 +165,7 @@ class Route {
 
 										if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
 
+											Put[`inlet`] = (Mug.inlet && Mug.inlet.USDT && Mug.inlet.USDT.length > 0)? Mug.inlet.USDT[0]: 0;
 											Put[`mail`] = Mug.mail;
 											Put[`md`] = Mug.md;
 										}
@@ -173,7 +174,7 @@ class Route {
 
 								if (Pulls.pull === `splash`) Arg[1].end(Tools.coats(Put));
 
-								if (Pulls.pull === `walletOutlet`) { console.log(Pulls)
+								if (Pulls.pull === `walletOutlet`) {
 
 									Tools.collateralise([Raw, TX => {
 
