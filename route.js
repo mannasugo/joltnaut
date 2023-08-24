@@ -95,7 +95,7 @@ class Route {
 
 						Sql.pulls(Raw => {
 
-							if (APK_VER === parseInt(Pulls.APK_VER)) { 
+							if (APK_VER === parseInt(Pulls.APK_VER)) { console.log(Pulls)
 
 								if (Pulls.pull === `inlet`) {
 
