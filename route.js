@@ -105,7 +105,7 @@ class Route {
 
 										if (Mug.inlet && Mug.inlet.USDT) {
 
-											if (Mug.inlet.USDT.indexOf(Pulls.puts[0]) > -1) Wallets.inlet = [Mug.md];
+											if (Mug.inlet.USDT.indexOf(Pulls.param) > -1) Wallets.inlet = [Mug.md];
 										}
 									});
 
@@ -117,11 +117,13 @@ class Route {
 
 										if (!Raw.mugs[1][Pulls.mug].inlet.USDT) Raw.mugs[1][Pulls.mug].inlet[`USDT`] = [];
 
-										Raw.mugs[1][Pulls.mug].inlet.USDT.push(Pulls.puts[0]); 
+										Raw.mugs[1][Pulls.mug].inlet.USDT.push(Pulls.param); 
 
 										Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
 
-											Arg[1].end(Tools.coats({ 
+											Arg[1].end(Tools.coats({
+												APK_VER: APK_VER.toString(),
+												inlet: Pulls.param,
 												mug: Pulls.mug
 											}));
 										}]);
