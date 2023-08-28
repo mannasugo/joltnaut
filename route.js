@@ -172,6 +172,8 @@ class Route {
 											Put[`md`] = Mug.md;
 										}
 									});
+
+									Arg[1].end(Tools.coats(Put));
 								}
 
 								if (Pulls.pull === `splash`) Arg[1].end(Tools.coats(Put));
@@ -205,7 +207,7 @@ class Route {
 								
 							}
 
-							Arg[1].end(Tools.coats(Put));
+							//Arg[1].end(Tools.coats(Put));
 
 						});
 					}
