@@ -197,7 +197,7 @@ class Route {
 
 												Arg[1].end(Tools.coats(Put));
 											}]);
-										}
+										} console.log(Put)
 
 										else Arg[1].end(Tools.coats(Put));
 									}]);
