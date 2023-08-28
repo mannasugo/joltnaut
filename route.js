@@ -186,12 +186,17 @@ class Route {
 
 										Tools.hold([Raw, Pulls.mug]).forEach(MD => {
 
-											if (MD.till[Pulls.mug] && MD.tx.length > 10) Outlet.push(MD)
+											if (MD.till[Pulls.mug] && MD.tx.length > 10) {
+
+												MD[`value`] = MD.till[hold];
+
+												Outlet.push(MD)
+											}
 										});
 
 										Put[`mug`] = Pulls.mug;
 										Put[`outlet`] = Outlet;
-										Put[`vault`] = Hold[0].hold[0]; console.log(Put)
+										Put[`vault`] = Hold[0].hold[0];
 
 										if (TX.length > 0) {
 
