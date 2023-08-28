@@ -189,7 +189,7 @@ class Route {
 
 										Put[`mug`] = Pulls.mug;
 										Put[`outlet`] = Outlet;
-										Put[`vault`] = Hold[0].hold[0];
+										Put[`vault`] = Hold[0].hold[0]; console.log(Put)
 
 										if (TX.length > 0) {
 
@@ -197,7 +197,7 @@ class Route {
 
 												Arg[1].end(Tools.coats(Put));
 											}]);
-										} console.log(Put)
+										}
 
 										else Arg[1].end(Tools.coats(Put));
 									}]);
