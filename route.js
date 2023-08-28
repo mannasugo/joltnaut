@@ -95,7 +95,7 @@ class Route {
 
 						Sql.pulls(Raw => {
 
-							if (APK_VER === parseInt(Pulls.APK_VER)) { console.log(Pulls)
+							if (APK_VER === parseInt(Pulls.APK_VER)) {
 
 								if (Pulls.pull === `inlet`) {
 
@@ -180,18 +180,16 @@ class Route {
 
 									Tools.collateralise([Raw, TX => {
 
-										let Settle = [], Outlet = [];
+										let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs}), Outlet = [];
 
 										Tools.hold([Raw, Pulls.mug]).forEach(MD => {
-
-											//if (MD.vow != false && MD.vow[1] === Pulls.mug) Settle.push(MD);
 
 											if (MD.till[Pulls.mug] && MD.tx.length > 10) Outlet.push(MD)
 										});
 
-										Put[`inlet`] = (Raw.mugs[1][Pulls.mug].inlet)? Raw.mugs[1][Pulls.mug].inlet.USDT: [];
 										Put[`mug`] = Pulls.mug;
 										Put[`outlet`] = Outlet;
+										Put[`vault`] = Hold[0].hold[0];
 
 										if (TX.length > 0) {
 
