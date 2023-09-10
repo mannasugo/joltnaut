@@ -198,7 +198,7 @@ class Route {
 
 												Outlet.push(MD)
 											}
-										}); console.log(Outlet)
+										}); console.log(Outlet);
 
 										Put[`mug`] = Pulls.mug;
 										Put[`outlet`] = Outlet;
