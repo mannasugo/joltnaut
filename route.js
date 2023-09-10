@@ -188,15 +188,21 @@ class Route {
 
 											if (MD.till[Pulls.mug] && MD.tx.length > 10) {
 
-												MD[`value`] = MD.till[hold];
+												let Months = [`Jan`, `Feb`, `Mar`, `Apr`, `May`, `Jun`, `Jul`, `Aug`, `Sep`, `Oct`, `Nov`, `Dec`];
+
+												let Day = new Date(MD.secs);
+
+												MD[`ts_long`] = `${Day.getDate()} ${Months[Day.getMonth()]}, ${(Day.getHours() > 9)? Day.getHours(): `0` + Day.getHours()}:${(Day.getMinutes() > 9)? Day.getMinutes(): `0` + Day.getMinutes()}`;
+
+												MD[`value`] = `${-(MD.till[hold].toFixed(2))}`;
 
 												Outlet.push(MD)
 											}
-										});
+										}); console.log(Outlet)
 
 										Put[`mug`] = Pulls.mug;
 										Put[`outlet`] = Outlet;
-										Put[`vault`] = Hold[0].hold[0];
+										Put[`vault`] = `${(Hold[0].hold[0]).toFixed(2)}`;
 
 										if (TX.length > 0) {
 
