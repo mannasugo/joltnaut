@@ -198,10 +198,10 @@ class Route {
 
 												Outlet.push(MD)
 											}
-										}); console.log(Outlet);
+										});
 
 										Put[`mug`] = Pulls.mug;
-										Put[`outlet`] = Outlet;
+										Put[`outlet`] = Outlet.sort((A, B) => {return A.secs - B.secs});
 										Put[`vault`] = `${(Hold[0].hold[0]).toFixed(2)}`;
 
 										if (TX.length > 0) {
