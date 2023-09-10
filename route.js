@@ -201,7 +201,7 @@ class Route {
 										});
 
 										Put[`mug`] = Pulls.mug;
-										Put[`outlet`] = Outlet.sort((A, B) => {return A.secs - B.secs});
+										Put[`outlet`] = Outlet.sort((A, B) => {return B.secs - A.secs});
 										Put[`vault`] = `${(Hold[0].hold[0]).toFixed(2)}`;
 
 										if (TX.length > 0) {
