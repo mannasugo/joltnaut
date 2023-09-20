@@ -206,7 +206,7 @@ class Route {
 
 										if (TX.length > 0) {
 
-											Sql.putlist([`till`, TX, (SQ) => {
+											Sql.putlist([`till`, TX, (SQ) => { console.log(Pulls)
 
                 								let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
 
