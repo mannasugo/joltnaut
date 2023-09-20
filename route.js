@@ -208,7 +208,14 @@ class Route {
 
 											Sql.putlist([`till`, TX, (SQ) => {
 
-												Arg[1].end(Tools.coats(Put));
+                								let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
+
+                								Raw.mugs[1][Pulls.mug][`last_pin`] = [Pulls.geo_axis, new Date().valueOf()];
+
+												Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
+
+													Arg[1].end(Tools.coats(Put));
+												}]);
 											}]);
 										}
 
