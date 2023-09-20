@@ -204,22 +204,22 @@ class Route {
 										Put[`outlet`] = Outlet.sort((A, B) => {return B.secs - A.secs});
 										Put[`vault`] = `${(Hold[0].hold[0]).toFixed(2)}`;
 
-										if (TX.length > 0) {
+                						let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
 
-											Sql.putlist([`till`, TX, (SQ) => { console.log(Pulls)
+                						Raw.mugs[1][Pulls.mug][`last_pin`] = [Pulls.geo_axis, new Date().valueOf()];
 
-                								let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
+										Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
 
-                								Raw.mugs[1][Pulls.mug][`last_pin`] = [Pulls.geo_axis, new Date().valueOf()];
+											if (TX.length > 0) {
 
-												Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
+												Sql.putlist([`till`, TX, (SQ) => {
 
 													Arg[1].end(Tools.coats(Put));
 												}]);
-											}]);
-										}
+											}
 
-										else Arg[1].end(Tools.coats(Put));
+											else Arg[1].end(Tools.coats(Put));
+										}]);
 									}]);
 								}
 								
