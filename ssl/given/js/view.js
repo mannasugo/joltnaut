@@ -794,9 +794,9 @@ let Models = {
 										(Clients.mug)? this.utilVia(): [], 
 										(Clients.vows && Tools.typen(Clients.vows) && Tools.typen(Clients.vows).length > 0)? this.vows(): [],
 										(Clients.devow && Tools.typen(Clients.devow) && Tools.typen(Clients.devow).length > 0)? this.devow(): [],
-										this.outs()]],
+										/*this.outs()*/]],
 								[`div`, {id: `take`}, 
-									[this.hold()]]]]]], this.utilFooter()]];
+									[/*this.hold()*/]]]]]], this.utilFooter()]];
 	},
 
 	main_exchange: function () {
@@ -835,28 +835,28 @@ let Models = {
 		if (Tools.typen(Clients.instance)[0] === `mugup`) {
 
 			Slot = {
-					action: [`signup`, `signup`],
-					slots: [
-						[`email address`, `email`, `email`], 
-						[`first name`, `middle`, `text`], 
-						[`surname`, `family`, `text`], 
-						[`password`, `lock`, `password`]
-					]
-				}  			
-			}
+				action: [`signup`, `signup`],
+				slots: [
+					[`email address`, `email`, `email`], 
+					[`first name`, `middle`, `text`], 
+					[`surname`, `family`, `text`], 
+					[`password`, `lock`, `password`]
+				]
+			}  			
+		}
 
-			let Slots = [];
+		let Slots = [];
 
-			Slot.slots.forEach(Slot => {
+		Slot.slots.forEach(Slot => {
 
-				Slots.push([
+			Slots.push([
 					`div`, {class: `_sZ2`}, [
 						[`label`, {style: {margin: `0 ${20}px ${8}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
 							[[`span`, {}, Slot[0]]]], 
 						[`div`, {class: `_aXZ`}, 
 							[[`input`, {id: Slot[1], type: Slot[2]}]]]]]);
 
-			});
+		});
 
 			return [
 				`section`, {}, 
@@ -866,7 +866,7 @@ let Models = {
 								[
 									[`div`, {class: `_-Xg _gxM _geQ`}, 
 										[
-											[`a`, {class: `-_tX v202201180941`, href: ``}], 
+											[`a`, {class: `-_tX v202304191915`, href: ``}], 
 											[`div`, {class: `_gZz`}, 
 												[[`a`, {id: (Tools.typen(Clients.instance)[0] === `mugin`)? `mugup`: `mugin`, class: `_tXx`, href: `javascript:;`}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signup`: `signin`]]]]]]]]], 
 						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
@@ -878,117 +878,6 @@ let Models = {
 											[`div`, {}, Slots],
 											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
 												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
-	},
-
-	main_v0: function () { 
-
-			let Main = [],
-
-			Axis = Tools.typen(Clients.quo).btc[1][5];
-
-			let portfolio = 0;
-
-			if (Clients.wallet) portfolio = (((Tools.typen(Clients.vault)*.25)/37515)*Axis[1] + Tools.typen(Clients.vault)*.75).toFixed(2);
-
-			//portfolio = (parseFloat(Tools.typen(Clients.wallet)[2][0]) + parseFloat(Axis[1])*Tools.typen(Clients.wallet)[2][1]).toFixed(2)
-
-			Main[0] = 
-				[`main`, {class: `_tY0`, style: {color: `#fff`, background: `#262626`}}, 
-					[
-						[`div`, {class: `_-tY`,style: {background: `#262626`}}, 
-							[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
-								[
-									[`div`, {class: `_-Xg _gxM _geQ`}, 
-										[
-											[`a`, {class: `-_tX v202201180941`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
-											[`span`, {id: `vault`, class: `_aA6 _tXx`, style: {
-												[`border-left`]: `${1}px solid #91919159`,
-												margin: `${0} ${7}px`,
-												padding: `${0} ${14}px`,
-												[`font-size`]: `${14}px`,
-												color: `#fff`,
-												overflow: `hidden`,
-												[`font-family`]: (Clients.wallet)? `arcane`: `inherit`,
-												//[`text-overflow`]: `ellipsis`,
-												[`white-space`]: `nowrap`}}, (Clients.wallet)? `${portfolio} USD`: `joltquid`], 
-											[`span`, {class: `_tXx`, style: {
-												display: `none`,
-												color: `#feef11`, 
-												margin: `${1.5}px ${0} ${0} ${-14}px`, 
-												[`font-size`]: `${12}px`}}, (Clients.wallet && Tools.typen(Clients.wallet)[2][1] > 0)? `+BTC`: ``]]],
-									[`div`, {class: `_gZz`}, 
-										[
-											(Clients.mug)? this.wallets: [`div`, {}],
-											this.mug[(Clients.mug) ? 1: 0]]]]]]], 
-							[`section`, {id: `wallet`, style: {[`max-width`]: `${1000}px`, width: `${100}%`, margin: `${90}px auto`}}, 
-								[[`div`, {style: {padding: `${0} ${24}px`}}, 
-									[	
-								[`div`, {class: `_wrap_202203262208 _geQ unsqueeze`}, 
-									[
-										[`div`, {id: `buy`},  
-											[
-												[`span`, {style: {
-													[`margin-bottom`]: `${24}px`,
-													color: `#feef11`, 
-													[`font-size`]: `${26}px`, 
-													[`line-height`]: `${32}px`,
-													[`font-weight`]: 600}}, `Own Bitcoin`],
-												[`p`, {style: {[`font-size`]: `${12}px`}}, `Obtain bitcoin instantly at market price from joltquid's crypto exchange`], 
-												[`div`, {class: `geQ`, style: {margin: `${24}px 0`}}, 
-													[[`span`, {id: `instant`, class: `parallelo _tXx`, style: {[`font-family`]: `consola`, color: `#000`}}, `BUY ${(3/Axis[1]).toFixed(5)} BTC @ 3 USD`]]]]], 
-										[`div`, {id: `buyline`}]]], 
-								[`div`, {class: `_wrap_202203262208 _geQ`, style: {margin: `${30}px ${0}`}}, 
-									[
-										//[`div`, {id: `quantsvg`}],
-										[`div`, {id: `quant`, class: `_geQ`, style: {width: `${100}%`}}, 
-											[
-												[`span`, {style: {
-													[`margin-bottom`]: `${24}px`,
-													[`text-align`]: `center`,
-													color: `#feef11`,
-													[`line-height`]: `${32}px`,
-													[`font-size`]: `${26}px`,
-													[`font-weight`]: 600}}, `Applied Quantitative Investment Fund`],
-												[`p`, {style: {
-													[`font-size`]: `${12}px`,
-													[`text-align`]: `center`}}, 
-													`Sit back and let our proficient quant algorithms grow your crypto & fiat investments for you by 
-													implementing optimized high math, AI and market momentum driven quantitative strategies. Built to cater for separate 
-													client tiers, our service provides for all investors ranging from as low as economy and premium tiers.`], 
-												[`span`, {class: `parallelo`, style: {
-													color: `#000`, 
-													[`margin-top`]: `${24}px`, 
-													[`font-family`]: `litera`,
-													[`font-weight`]: 600}}, `Join Quant Fund`]]]]], 
-								[`div`, {class: `_wrap_202203262208 _geQ unsqueeze`, style: {margin: `${30}px ${0}`}}, 
-									[
-										[`div`, {id: `bitpitsvg`}, 
-											[
-												[`div`, {class: `_gxM`}, 
-													[
-														[`span`, {style: {[`font-size`]: `${12}px`}}, `Limit Order Matches`],
-														[`div`, {class: `_gZz`, style: {opacity: .5, [`font-size`]: `${12}px`}}, `This hour`]]], 
-												[`div`, {id: `limits`, style: {[`margin-top`]: `${24}px`}}, this.bitpit()]]],
-										[`div`, {id: `bitpit`, class: `_geQ`, style: {}}, 
-											[
-												[`span`, {style: {
-													[`margin-bottom`]: `${24}px`,
-													[`text-align`]: `center`,
-													color: `#feef11`,
-													[`line-height`]: `${32}px`,
-													[`font-size`]: `${26}px`,
-																								[`font-weight`]: 600}}, `Crypto Exchange`],
-												[`p`, {style: {
-													[`font-size`]: `${12}px`,
-													[`text-align`]: `center`}}, 
-													`Trade in crypto all day long on our crypto exchange with our multiple trading options.`], 
-												[`span`, {class: `parallelo`, style: {
-													color: `#000`, 
-													[`margin-top`]: `${24}px`, 
-													[`font-family`]: `litera`,
-													[`font-weight`]: 600}}, `Trade Now`]]]]]]]]], this.foot()]];
-
-			return Main[0];
 	},
 
 	moves: function () {

@@ -61,9 +61,13 @@ class Route {
 
 				else {
 
-					View.DOM([`div`, [Models.main()]]);
+					Clients.instance = Tools.coats([`mugin`, new Date().valueOf()]);
+					
+					View.DOM([`div`, [Models.mugslot()]]);
 
-					Events.slotin();
+					Events.mugin();
+
+					Events.slotup();
 
 				}
 			}

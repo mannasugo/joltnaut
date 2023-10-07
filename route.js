@@ -229,6 +229,11 @@ class Route {
 
 						});
 					}
+
+					else if (State[2] === `web`) {
+
+						Arg[1].end(Tools.coats({}));
+					}
 				}
 			});
 		}
