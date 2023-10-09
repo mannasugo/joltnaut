@@ -97,7 +97,7 @@ class Events {
 
 			if (Values[0] === false || Values[1] === false) return;
 
-			let Puts = Tools.pull([`/json/web/`, {pull: `mugin`, puts : Values}]);
+			let Puts = Tools.pull([`/json/web/`, {pull: `mugin`, param : Values}]);
 
 			Values = [];
 
@@ -132,7 +132,7 @@ class Events {
 
 			if (Values[0] === false || Values[1] === false || Values[2] === false || Values[3] === false) return;
 
-			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, puts : Values}]);
+			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values}]);
 
 			Values = [];
 

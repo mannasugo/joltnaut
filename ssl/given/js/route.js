@@ -30,7 +30,7 @@ class Route {
 
 			let Puts = Tools.pull([
 				`/json/web`, {
-					mug: (Clients.mug) ? Tools.typen(Clients.mug)[0]: false,
+					mug: (Clients.mug) ? Clients.mug: false,
 					pull: `app`
 				}]);
 
@@ -40,23 +40,23 @@ class Route {
 
 				Clients.instance = Tools.coats([`app`, new Date().valueOf()]);
 
-				Clients.hold = Tools.coats(Web.hold);
+				//Clients.hold = Tools.coats(Web.hold);
 
-				Clients.outs = Tools.coats(Web.outs);
+				//Clients.outs = Tools.coats(Web.outs);
 
 				if (Clients.mug) {
 
-					Clients.devow = Tools.coats(Web.devow.sort((A, B) => {return A.secs - B.secs}));
+					//Clients.devow = Tools.coats(Web.devow.sort((A, B) => {return A.secs - B.secs}));
 
-					Clients.vows = Tools.coats(Web.vows.sort((A, B) => {return A.secs - B.secs}));
+					//Clients.vows = Tools.coats(Web.vows.sort((A, B) => {return A.secs - B.secs}));
 
 					View.DOM([`div`, [Models.main()]]);
 
-					Events.putVow();
+					//Events.putVow();
 
-					Events.putVia();
+					//Events.putVia();
 
-					Events.vowout();
+					//Events.vowout();
 				}
 
 				else {
