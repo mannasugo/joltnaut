@@ -57,6 +57,8 @@ class Route {
 					//Events.putVia();
 
 					//Events.vowout();
+
+					window.location = `/reserve`;
 				}
 
 				else {
@@ -69,6 +71,37 @@ class Route {
 
 					Events.slotup();
 
+				}
+			}
+		}
+
+    	else if (this.State[3] === `reserve`) {
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `walletOutlet`}]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					Clients.instance = Tools.coats([`reserve`, new Date().valueOf()]);
+
+					if (Web && Web.mug) {
+
+						if (Web.inlet === false) View.DOM([`div`, [Models.inlet()]]);
+
+					}
 				}
 			}
 		}

@@ -111,7 +111,7 @@ class Events {
 
 				if (Pull && Pull.mug) {
 
-					Clients.mug = Tools.coats(Pull.mug);
+					Clients.mug = Pull.mug;
 
 					window.location = `/`;
 				}
@@ -146,7 +146,7 @@ class Events {
 
 				if (Pull && Pull.mug) {
 
-					Clients.mug = Tools.coats(Pull.mug);
+					Clients.mug = Pull.mug;
 
 					window.location = `/`;
 				}

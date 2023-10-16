@@ -65,6 +65,65 @@ class View {
 
 let Models = {
 
+	inlet: function () {
+		return [];
+	},
+
+	mugslot: function () {
+
+		let Slot = {
+			action: [`signin`, `signin`],
+			slots: [[`email address`, `email`, `email`], [`password`, `lock`, `password`]]
+		};
+
+		if (Tools.typen(Clients.instance)[0] === `mugup`) {
+
+			Slot = {
+				action: [`signup`, `signup`],
+				slots: [
+					[`email address`, `email`, `email`], 
+					[`first name`, `middle`, `text`], 
+					[`surname`, `family`, `text`], 
+					[`password`, `lock`, `password`]
+				]
+			}  			
+		}
+
+		let Slots = [];
+
+		Slot.slots.forEach(Slot => {
+
+			Slots.push([
+					`div`, {class: `_sZ2`}, [
+						[`label`, {style: {margin: `0 ${20}px ${8}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
+							[[`span`, {}, Slot[0]]]], 
+						[`div`, {class: `_aXZ`}, 
+							[[`input`, {id: Slot[1], type: Slot[2]}]]]]]);
+
+		});
+
+			return [
+				`section`, {}, 
+					[
+						[`div`, {class: `_-tY`}, 
+							[[`div`, {class: `_aXz`}, 
+								[
+									[`div`, {class: `_-Xg _gxM _geQ`}, 
+										[
+											[`a`, {class: `-_tX v202304191915`, href: ``}], 
+											[`div`, {class: `_gZz`}, 
+												[[`a`, {id: (Tools.typen(Clients.instance)[0] === `mugin`)? `mugup`: `mugin`, class: `_tXx`, href: `javascript:;`}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signup`: `signin`]]]]]]]]], 
+						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+							[[`div`, {class: `_geQ`, style: {[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+								[
+									[`h2`, {}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signin`: `signup`], 
+									[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
+										[
+											[`div`, {}, Slots],
+											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
+	},
+
 	asset: function () {
 
 		let Axis = Tools.typen(Clients.quo).btc;
@@ -825,61 +884,6 @@ let Models = {
 			[`footer`, {}]]
 	},
 
-	mugslot: function () {
-
-		let Slot = {
-			action: [`signin`, `signin`],
-			slots: [[`email address`, `email`, `email`], [`password`, `lock`, `password`]]
-		};
-
-		if (Tools.typen(Clients.instance)[0] === `mugup`) {
-
-			Slot = {
-				action: [`signup`, `signup`],
-				slots: [
-					[`email address`, `email`, `email`], 
-					[`first name`, `middle`, `text`], 
-					[`surname`, `family`, `text`], 
-					[`password`, `lock`, `password`]
-				]
-			}  			
-		}
-
-		let Slots = [];
-
-		Slot.slots.forEach(Slot => {
-
-			Slots.push([
-					`div`, {class: `_sZ2`}, [
-						[`label`, {style: {margin: `0 ${20}px ${8}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
-							[[`span`, {}, Slot[0]]]], 
-						[`div`, {class: `_aXZ`}, 
-							[[`input`, {id: Slot[1], type: Slot[2]}]]]]]);
-
-		});
-
-			return [
-				`section`, {}, 
-					[
-						[`div`, {class: `_-tY`}, 
-							[[`div`, {class: `_aXz`}, 
-								[
-									[`div`, {class: `_-Xg _gxM _geQ`}, 
-										[
-											[`a`, {class: `-_tX v202304191915`, href: ``}], 
-											[`div`, {class: `_gZz`}, 
-												[[`a`, {id: (Tools.typen(Clients.instance)[0] === `mugin`)? `mugup`: `mugin`, class: `_tXx`, href: `javascript:;`}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signup`: `signin`]]]]]]]]], 
-						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
-							[[`div`, {class: `_geQ`, style: {[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
-								[
-									[`h2`, {}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signin`: `signup`], 
-									[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
-										[
-											[`div`, {}, Slots],
-											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
-												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
-	},
-
 	moves: function () {
 
 			let Pit = [[], []];
@@ -923,7 +927,7 @@ let Models = {
 								[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
 									[`text-transform`]: `uppercase`, 
 									[`letter-spacing`]: `normal`,
-									[`font-size`]: `${11}px`}}, (Clients.mug)? Tools.typen(Clients.mug)[1][0]: ``]]], 
+									[`font-size`]: `${11}px`}}, (Clients.mug)? Clients.mug: ``]]], 
 						[`a`, {id: `mug`, class: `_aWz mug`, style: {position: `absolute`, left: 0}, href:(Clients.mug)? `/balance`:`javascript:;`}]]]],
 
 	outs: function () {
@@ -1535,7 +1539,7 @@ let Models = {
 					[`span`, {class: `v202205081343`}],
 					[`div`, {class: `_eYG _tXx`, style: {
 						[`font-family`]: `consola`,
-						[`font-size`]: `${10}px`}}, `${Tools.typen(Clients.mug)[0]}`]]]]]
+						[`font-size`]: `${10}px`}}, `${(Clients.mug)}`]]]]]
 	},
 
 	utilWallet: [

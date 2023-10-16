@@ -244,14 +244,14 @@ class Route {
 
 									if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
 
-										Mugin = [Mug.mail];
+										Mugin = [Mug.md];
 									}
 								});
 
 								if (Mugin.length > 0) {
 
 									Arg[1].end(Tools.coats({
-										mug: Mugin.md}));
+										mug: Mugin[0]}));
 								}
 							}
 
@@ -272,13 +272,23 @@ class Route {
 										lock: createHash(`md5`).update(Pulls.param[2], `utf8`).digest(`hex`),
 										mail: Pulls.param[0],
 										md: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`),
-										names: Tools.safe(Pulls.param[1], Pulls.param[3]),
+										names: [Tools.safe(Pulls.param[1]), Tools.safe(Pulls.param[3])],
 										secs: secs
 									}, (Raw) => {
 
 										Arg[1].end(Tools.coats({mug: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`)}));
 									}]);
 								}
+							}
+
+							if (Pulls.pull === `walletOutlet`) {
+
+								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {}
+
+								else Arg[1].end(Tools.coats({inlet: false, mug: Pulls.mug}));
+
+								//console.log(Raw.mugs[1][Pulls.mug])//.forEach(feat => {console.log(feat)})
+								
 							}
 						});
 					}
