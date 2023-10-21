@@ -66,7 +66,27 @@ class View {
 let Models = {
 
 	inlet: function () {
-		return [];
+
+		return [
+			`section`, {}, 
+				[
+					[`div`, {class: `_-tY`}, 
+						[[`div`, {class: `_aXz`}, 
+							[
+								[`div`, {class: `_-Xg _gxM _geQ`}, 
+									[
+										[`a`, {class: `-_tX v202304191915`, href: ``}]]]]]]], 
+					[`main`, {id: `inletWallet`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${400}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`h2`, {}, `Add USDT Reserve Source Wallet`], 
+								[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
+									[
+										[`span`, {style: {[`margin-top`]: `${12}px`, [`text-align`]: `center`, color: `#666`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, `No Tether USD (TRC20) source wallet found.`],
+										[`span`, {style: {[`margin-top`]: `${12}px`, [`text-align`]: `center`, color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `You need to add a source wallet address in order to operate a reserve wallet.`],
+										[`div`, {}, [[`div`, {class: `_sZ2`}, [[`div`, {class: `_aXZ`}, [[`input`, {id: `TRC20`, type: `text`}]]]]]]],
+										[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+											[[`a`, {id: `pollWallet`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `Add Tether USD (TRC20) Address`]]]]]]]]]]]
 	},
 
 	mugslot: function () {
@@ -102,7 +122,7 @@ let Models = {
 
 		});
 
-			return [
+		return [
 				`section`, {}, 
 					[
 						[`div`, {class: `_-tY`}, 

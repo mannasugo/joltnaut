@@ -286,8 +286,6 @@ class Route {
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {}
 
 								else Arg[1].end(Tools.coats({inlet: false, mug: Pulls.mug}));
-
-								//console.log(Raw.mugs[1][Pulls.mug])//.forEach(feat => {console.log(feat)})
 								
 							}
 						});
