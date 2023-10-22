@@ -99,7 +99,12 @@ class Route {
 
 					if (Web && Web.mug) {
 
-						if (Web.inlet === false) View.DOM([`div`, [Models.inlet()]]);
+						if (Web.inlet === false) {
+
+							View.DOM([`div`, [Models.inlet()]]);
+
+							Events.pollWallet();
+						}
 
 					}
 				}

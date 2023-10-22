@@ -304,6 +304,8 @@ body {
   outline: none;
 }
 
+#inletWallet input {font-family: geometria}
+
 #pitvalue input:focus {outline: none}
 
 ._tY0 {letter-spacing: 1.2px;line-height: 1.5rem;}

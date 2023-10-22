@@ -236,6 +236,35 @@ class Route {
 
 							if (Pulls.pull === `app`) Arg[1].end(Tools.coats({}));
 
+							if (Pulls.pull === `inlet`) {
+
+								let Wallets = {inlet: []};
+
+								Raw.mugs[0].forEach(Mug => {
+
+									if (Mug.inlet && Mug.inlet.USDT) if (Mug.inlet.USDT.indexOf(Pulls.param) > -1) Wallets.inlet = [Mug.md];
+								});
+
+                				let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
+
+								if (Wallets.inlet.length === 0) {
+
+									if (!Raw.mugs[1][Pulls.mug].inlet) Raw.mugs[1][Pulls.mug][`inlet`] = {};
+
+									if (!Raw.mugs[1][Pulls.mug].inlet.USDT) Raw.mugs[1][Pulls.mug].inlet[`USDT`] = [];
+
+									Raw.mugs[1][Pulls.mug].inlet.USDT.push(Pulls.param); 
+
+									Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
+
+										Arg[1].end(Tools.coats({
+											inlet: Pulls.param,
+											mug: Pulls.mug
+										}));
+									}]);
+								}
+							}
+
 							if (Pulls.pull === `mugin`) {
 
 								let Mugin = [];

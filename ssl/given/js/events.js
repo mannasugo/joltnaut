@@ -12,6 +12,101 @@ class Events {
 		if (Arg.target) return Arg.target;
 	}
 
+	mugin () {
+
+		this.listen([document.querySelector(`#signin`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#email`).value))? false: Tools.slim(document.querySelector(`#email`).value),
+				(!Tools.slim(document.querySelector(`#lock`).value))? false: Tools.slim(document.querySelector(`#lock`).value)];
+
+			if (Values[0] === false || Values[1] === false) return;
+
+			let Puts = Tools.pull([`/json/web/`, {pull: `mugin`, param : Values}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull && Pull.mug) {
+
+					Clients.mug = Pull.mug;
+
+					window.location = `/`;
+				}
+			}
+
+		}]);
+	}
+
+	mugup () {
+
+		this.listen([document.querySelector(`#signup`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#email`).value))? false: Tools.slim(document.querySelector(`#email`).value),
+				(!Tools.slim(document.querySelector(`#family`).value))? false: Tools.slim(document.querySelector(`#family`).value),
+				(!Tools.slim(document.querySelector(`#lock`).value))? false: Tools.slim(document.querySelector(`#lock`).value),
+				(!Tools.slim(document.querySelector(`#middle`).value))? false: Tools.slim(document.querySelector(`#middle`).value)];
+
+			if (Values[0] === false || Values[1] === false || Values[2] === false || Values[3] === false) return;
+
+			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull && Pull.mug) {
+
+					Clients.mug = Pull.mug;
+
+					window.location = `/`;
+				}
+			}
+
+		}]);
+	}
+
+	pollWallet () {
+
+		this.listen([document.querySelector(`#pollWallet`), `click`, S => {
+
+			let Values = [(!Tools.slim(document.querySelector(`#TRC20`).value))? false: Tools.slim(document.querySelector(`#TRC20`).value)];
+
+			if (Values[0] === false) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, {
+					mug: Clients.mug,
+					pull: `inlet`, 
+					param : Values[0]}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull && Pull.mug) window.location = `/reserve`;
+			}
+		}]);
+	}
+
 	holdRunnable () {
 
 		io().on(`pit`, Pit => {
@@ -84,74 +179,6 @@ class Events {
 
 				this.mugin();
 			}
-		}]);
-	}
-
-	mugin () {
-
-		this.listen([document.querySelector(`#signin`), `click`, S => {
-
-			let Values = [
-				(!Tools.slim(document.querySelector(`#email`).value))? false: Tools.slim(document.querySelector(`#email`).value),
-				(!Tools.slim(document.querySelector(`#lock`).value))? false: Tools.slim(document.querySelector(`#lock`).value)];
-
-			if (Values[0] === false || Values[1] === false) return;
-
-			let Puts = Tools.pull([`/json/web/`, {pull: `mugin`, param : Values}]);
-
-			Values = [];
-
-			View.pop();
-
-			View.DOM([`div`, [Models.splash]]);
-
-			Puts.onload = () => {
-
-				let Pull = JSON.parse(Puts.response);
-
-				if (Pull && Pull.mug) {
-
-					Clients.mug = Pull.mug;
-
-					window.location = `/`;
-				}
-			}
-
-		}]);
-	}
-
-	mugup () {
-
-		this.listen([document.querySelector(`#signup`), `click`, S => {
-
-			let Values = [
-				(!Tools.slim(document.querySelector(`#email`).value))? false: Tools.slim(document.querySelector(`#email`).value),
-				(!Tools.slim(document.querySelector(`#family`).value))? false: Tools.slim(document.querySelector(`#family`).value),
-				(!Tools.slim(document.querySelector(`#lock`).value))? false: Tools.slim(document.querySelector(`#lock`).value),
-				(!Tools.slim(document.querySelector(`#middle`).value))? false: Tools.slim(document.querySelector(`#middle`).value)];
-
-			if (Values[0] === false || Values[1] === false || Values[2] === false || Values[3] === false) return;
-
-			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values}]);
-
-			Values = [];
-
-			View.pop();
-
-			View.DOM([`div`, [Models.splash]]);
-
-			Puts.onload = () => {
-
-				let Pull = JSON.parse(Puts.response);
-
-				if (Pull && Pull.mug) {
-
-					Clients.mug = Pull.mug;
-
-					window.location = `/`;
-				}
-			}
-
 		}]);
 	}
 
@@ -769,33 +796,6 @@ class Events {
 				let Pull = JSON.parse(Puts.response);
 
 				if (Pull && Pull.mug) window.location = `/pit`;
-			}
-		}]);
-	}
-
-	walletin () {
-
-		this.listen([document.querySelector(`#walletin`), `click`, S => {
-
-			let Values = [(!Tools.slim(document.querySelector(`#inlet`).value))? false: Tools.slim(document.querySelector(`#inlet`).value)];
-
-			if (Values[0] === false) return;
-
-			let Puts = Tools.pull([
-				`/json/web/`, {
-					mug: Tools.typen(Clients.mug)[0],
-					pull: `inlet`, 
-					puts : Values}]);
-
-			View.pop();
-
-			View.DOM([`div`, [Models.splash]]);
-
-			Puts.onload = () => {
-
-				let Pull = JSON.parse(Puts.response);
-
-				if (Pull && Pull.mug) window.location = `/wallets`;
 			}
 		}]);
 	}
