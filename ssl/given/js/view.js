@@ -75,7 +75,7 @@ let Models = {
 							[
 								[`div`, {class: `_-Xg _gxM _geQ`}, 
 									[
-										[`a`, {class: `-_tX v202304191915`, href: ``}]]]]]]], 
+										[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${28}px`, height: `${28}px`}, href: ``}]]]]]]], 
 					[`main`, {id: `inletWallet`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
 						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${400}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
@@ -87,6 +87,33 @@ let Models = {
 										[`div`, {}, [[`div`, {class: `_sZ2`}, [[`div`, {class: `_aXZ`}, [[`input`, {id: `TRC20`, type: `text`}]]]]]]],
 										[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
 											[[`a`, {id: `pollWallet`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `Add Tether USD (TRC20) Address`]]]]]]]]]]]
+	},
+
+	inletTX: function () {
+
+		return [`main`, {id: `holds`, class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: `_-Xg _gxM _geQ`}, 
+								[
+									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${30}px`, height: `${30}px`}, href: `/`}, ``], 
+									[`span`, {id: `vault`, class: `_aA6 _tXx`, style: {
+                                        [`border-left`]: `${1}px solid #91919159`, 
+                                        margin: `${0} ${7}px`,
+                                        padding: `${0} ${14}px`,
+                                        [`font-size`]: `${14}px`,
+                                        color: `#000`, //`#00e53f`,
+                                        overflow: `hidden`,
+                                        [`white-space`]: `nowrap`}}, `joltnaut`]]],
+							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
+								[[`div`, {class: `_gxM`}, 
+									[
+										[`a`, {class: `v202301071417`, style: {margin: `${0} ${10}px`}, href: `/reserve/deposit`}],
+										[`a`, {class: `v202203261943`, style: {margin: `${0} ${10}px`}, href: `/reserve/deposit`}]]]]]]]]], 
+				[`section`, {style: {width: `${100}%`, [`max-width`]: `${1000}px`, margin: `${60}px auto`}}, 
+					[]]]];
 	},
 
 	mugslot: function () {

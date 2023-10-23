@@ -106,8 +106,20 @@ class Route {
 							Events.pollWallet();
 						}
 
+						if (Web.inlet != false && Web.inlet.length > 9) {
+
+							View.DOM([`div`, [Models.inletTX()]]);
+
+						}
+
 					}
 				}
+			}
+
+			else if (State[4] === `deposit` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+
+				View.DOM([`div`, [Models.inlet()]]);
+
 			}
 		}
 
