@@ -118,7 +118,36 @@ class Route {
 
 			else if (State[4] === `deposit` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
-				View.DOM([`div`, [Models.inlet()]]);
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `walletOutlet`}]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					Clients.instance = Tools.coats([`vaultSlot`, new Date().valueOf()]);
+
+					if (Web && Web.mug) {
+
+						if (Web.inlet === false) {
+
+							View.DOM([`div`, [Models.inlet()]]);
+
+							Events.pollWallet();
+						}
+
+						if (Web.inlet != false && Web.inlet.length > 9) {
+
+							Clients.inlet = Web.inlet;
+
+							View.DOM([`div`, [Models.vaultSlot()]]);
+
+						}
+
+					}
+				}
 
 			}
 		}

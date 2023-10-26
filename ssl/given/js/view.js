@@ -171,6 +171,35 @@ let Models = {
 												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
 	},
 
+	vaultSlot: function () {
+
+		return [
+			`section`, {}, 
+				[
+					[`div`, {class: `_-tY`}, 
+						[[`div`, {class: `_aXz`}, 
+							[
+								[`div`, {class: `_-Xg _gxM _geQ`}, 
+									[
+										[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${28}px`, height: `${28}px`}, href: ``}]]]]]]], 
+					[`main`, {id: `inletWallet`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${400}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`h2`, {}, `deposit usdt to reserve source wallet`], 
+								[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
+									[
+										[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${2}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${6}px`, [`font-size`]: `${12}px`}}, 
+											[[`span`, {style: {color: `#a2a2a2`}}, `Network`], [`span`, {style: {color: `#666`, [`font-weight`]: 600}}, `TRON`]]],
+										[`span`, {style: {background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${6}px`, [`margin-top`]: `${12}px`, color: `#84450c45`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${2}px ${8}px`}}, `Only deposit USDT from the Tron network. Deposits of other assets or from other networks will be lost`],
+										[`span`, {style: {color: `#666`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`margin-top`]: `${24}px`}}, `FROM`],
+										[`div`, {style: {[`margin-top`]: `${8}px`, padding: `${2}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${6}px`, [`font-size`]: `${12}px`}}, 
+											[[`span`, {style: {color: `#a2a2a2`}}, `My Wallet`], [`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${14}px`, [`font-weight`]: 600}}, `${Clients.inlet}`]]],
+										[`span`, {style: {color: `#666`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`margin-top`]: `${24}px`}}, `TO`],
+										[`div`, {style: {[`margin-top`]: `${8}px`, padding: `${2}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${6}px`, [`font-size`]: `${12}px`}}, 
+											[[`span`, {style: {color: `#a2a2a2`}}, `Deposit Wallet`], [`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${14}px`, [`font-weight`]: 600}}, `TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`]]],
+										[`span`, {style: {background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${6}px`, [`margin-top`]: `${12}px`, color: `#84450c45`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${2}px ${8}px`}}, `20 confirmations (typically 1 minute) required before funds are available for trading.`]]]]]]]]]
+	},
+
 	asset: function () {
 
 		let Axis = Tools.typen(Clients.quo).btc;
