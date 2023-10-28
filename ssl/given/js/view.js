@@ -65,6 +65,34 @@ class View {
 
 let Models = {
 
+	clientTX: function () {
+
+		return [`main`, {id: `holds`, class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: `_-Xg _gxM _geQ`}, 
+								[
+									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${30}px`, height: `${30}px`}, href: `/`}, ``], 
+									[`span`, {id: `vault`, class: `_aA6 _tXx`, style: {
+                                        [`border-left`]: `${1}px solid #91919159`, 
+                                        margin: `${0} ${7}px`,
+                                        padding: `${0} ${14}px`,
+                                        [`font-size`]: `${14}px`,
+                                        color: `#000`, //`#00e53f`,
+                                        overflow: `hidden`,
+                                        [`white-space`]: `nowrap`}}, `joltnaut`]]],
+							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
+								[[`div`, {class: `_gxM`}, 
+									[
+										[`a`, {class: `v202203171249`, style: {margin: `${0} ${10}px`}, href: `/contacts`}],
+										[`a`, {class: `v202310281744`, style: {margin: `${0} ${10}px`}, href: `/io`}],
+										[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]]]]]]]]], 
+				[`section`, {style: {width: `${100}%`, [`max-width`]: `${1000}px`, margin: `${60}px auto`}}, 
+					[]]]];
+	},
+
 	inlet: function () {
 
 		return [
