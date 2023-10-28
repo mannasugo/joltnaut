@@ -86,11 +86,35 @@ let Models = {
 							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
 								[[`div`, {class: `_gxM`}, 
 									[
-										[`a`, {class: `v202203171249`, style: {margin: `${0} ${10}px`}, href: `/contacts`}],
-										[`a`, {class: `v202310281744`, style: {margin: `${0} ${10}px`}, href: `/io`}],
+										//[`a`, {class: `v202203171249`, style: {margin: `${0} ${10}px`}, href: `/contacts`}],
+										//[`a`, {class: `v202310281744`, style: {margin: `${0} ${10}px`}, href: `/io`}],
 										[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]]]]]]]]], 
-				[`section`, {style: {width: `${100}%`, [`max-width`]: `${1000}px`, margin: `${60}px auto`}}, 
-					[]]]];
+					[`main`, {id: `clientTX`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${600}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
+									[
+										[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${12}px ${12}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${18}px`, [`font-size`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `Wallet ID`], 
+												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600}}, `${Clients.ts}`],
+												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `Wallet Balance`], 
+												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],
+										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `Quick Actions`],
+										[`div`, {class: `_gxM`, style: {[`margin-top`]: `${24}px`}}, 
+											[
+												[`div`, {class: `_geQ`}, 
+													[
+														[`a`, {class: `v202203261943`, style: {}, href: `javascript:;`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `DEPOSIT`]]],
+												[`div`, {class: `_geQ`}, 
+													[
+														[`a`, {class: `v202310282005`, style: {}, href: `javascript:;`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `PAY`]]],
+												[`div`, {class: `_geQ`}, 
+													[
+														[`a`, {class: `v202310281744`, style: {}, href: `javascript:;`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]]]]]]]]]];
 	},
 
 	inlet: function () {

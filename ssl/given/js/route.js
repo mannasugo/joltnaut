@@ -42,6 +42,10 @@ class Route {
 
 				if (Clients.mug) {
 
+					Clients.debit = Web.debit;
+
+					Clients.ts = Web.ts;
+
 					View.DOM([`div`, [Models.clientTX()]]);
 				}
 
