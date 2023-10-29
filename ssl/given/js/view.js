@@ -85,10 +85,7 @@ let Models = {
                                         [`white-space`]: `nowrap`}}, `joltnaut`]]],
 							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
 								[[`div`, {class: `_gxM`}, 
-									[
-										//[`a`, {class: `v202203171249`, style: {margin: `${0} ${10}px`}, href: `/contacts`}],
-										//[`a`, {class: `v202310281744`, style: {margin: `${0} ${10}px`}, href: `/io`}],
-										[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]]]]]]]]], 
+									[[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]]]]]]]]], 
 					[`main`, {id: `clientTX`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
 						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${600}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
@@ -105,11 +102,11 @@ let Models = {
 											[
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202203261943`, style: {}, href: `javascript:;`}],
+														[`a`, {class: `v202203261943`, style: {}, href: `/p2p`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `DEPOSIT`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202310282005`, style: {}, href: `javascript:;`}],
+														[`a`, {class: `v202310282005`, style: {}, href: `/p2p`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `PAY`]]],
 												[`div`, {class: `_geQ`}, 
 													[
@@ -221,6 +218,22 @@ let Models = {
 											[`div`, {}, Slots],
 											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
 												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
+	},
+
+	p2p: function () {
+
+		return [`main`, {id: `holds`, class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: `_-Xg _gxM _geQ`}, 
+								[[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${30}px`, height: `${30}px`}, href: `/`}, ``]]],
+							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
+								[[`div`, {class: `_gxM`}, 
+									[[`a`, {class: `v202301071417`, style: {margin: `${0} ${10}px`}, href: `/p2p/recent`}]]]]]]]]], 
+				[`section`, {style: {width: `${100}%`, [`max-width`]: `${1000}px`, margin: `${60}px auto`}}, 
+					[]]]];
 	},
 
 	vaultSlot: function () {

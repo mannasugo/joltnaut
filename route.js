@@ -320,6 +320,9 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `p2p`) {
+							}
+
 							if (Pulls.pull === `walletOutlet`) {
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {

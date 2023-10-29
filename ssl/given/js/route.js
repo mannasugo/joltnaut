@@ -63,6 +63,23 @@ class Route {
 			}
 		}
 
+    	else if (this.State[3] === `p2p`) {
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+
+				Clients.instance = Tools.coats([`p2p`, new Date().valueOf()]);
+					
+				View.DOM([`div`, [Models.p2p()]]);
+			}
+    	}
+
     	else if (this.State[3] === `reserve`) {
 
     		if (!Clients.mug) {
