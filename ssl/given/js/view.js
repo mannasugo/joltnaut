@@ -106,6 +106,10 @@ let Models = {
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `DEPOSIT`]]],
 												[`div`, {class: `_geQ`}, 
 													[
+														[`a`, {class: `v202203262148`, style: {}, href: `/p2p`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `WITHDRAW`]]],
+												[`div`, {class: `_geQ`}, 
+													[
 														[`a`, {class: `v202310282005`, style: {}, href: `/p2p`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `PAY`]]],
 												[`div`, {class: `_geQ`}, 
