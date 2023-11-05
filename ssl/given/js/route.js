@@ -121,6 +121,46 @@ class Route {
 				}
 			}
 
+			else if (State[4] === `credentials` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `idVault`}]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					Clients.instance = Tools.coats([`idVault`, new Date().valueOf()]);
+
+					if (Web && Web.mug) {
+
+						if (Web.inlet === false) {
+
+							View.DOM([`div`, [Models.inlet()]]);
+
+							Events.pollWallet();
+						}
+
+						if (Web.inlet != false && Web.inlet.length > 9) {
+
+							Clients.inlet = Web.inlet;
+
+							if (Web.idVault === false) {
+
+								View.DOM([`div`, [Models.idVaultSlot()]]);
+
+								Events.cellSlots()
+							}
+
+						}
+
+					}
+				}
+
+			}
+
 			else if (State[4] === `deposit` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
 				let Puts = Tools.pull([

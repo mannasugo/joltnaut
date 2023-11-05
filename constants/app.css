@@ -81,7 +81,7 @@ a, a:visited {
 
 body, button, input, textarea {
   font-family: litera;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: .7px;
   line-height: 18px;
 }
@@ -220,7 +220,7 @@ body {
 
 .v202201180941, .v202202122052, .v202203171249, .v202203191304, .v202203261943, .v202203262148, .v202204261406, .v202204282015, .v202205042043, 
 .v202205081343, .v202205081426, .v202205081410, .v202206131254, .v202206131256, .v202206271427, .v202207071159, .v202207071206, .v202207161737,
-.v202301071417, .v202304191915, .v202310281744, .v202310282005 {
+.v202301071417, .v202304191915, .v202310281744, .v202310282005, .v202311051955 {
   background-repeat: no-repeat;
   height: 24px;
   width: 24px;
@@ -270,6 +270,8 @@ body {
 
 .v202310282005 {background-image: url(/ssl/given/svg/bag_202310282005.svg);}
 
+.v202311051955 {background-image: url(/ssl/given/svg/exit_202311051955.svg);}
+
 ._aA2, ._aA2:visited {color: #000;}
 
 ._gZ + ._gZ {border-top: 1px solid #f4f4f4}
@@ -284,15 +286,27 @@ body {
 
 ._tXx {font-weight: 600;}
 
-#inletWallet h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: uppercase;font-size: 11px;font-weight: 900; text-align: center;}
+#cellSlots h2 {text-transform: uppercase;font-size: 11px;font-weight: 900;}
+
+#cellSlots #tip {background:#fffbbf; border-radius: 8px;color: #a69c00;font-weight: 900;line-height: 17px;margin-top: 24px; padding: 8px 16px}
+
+#idVaultSlot h2, #inletWallet h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: uppercase;font-size: 11px;font-weight: 900; text-align: center;}
+
+#idVaultSlot h2 {text-align: left}
+
+#idVaultSlot h4 {color: #666;font-size: 12px;text-align: left}
+
+#vaultOpt > div {border: 1px solid #e3e3e3; border-radius: 12px; margin-top: 12px; padding: 12px 14px}
+
+#cellSlots #OptColor, #vaultOpt #OptColor {height: 14px;margin-right: 8px;width: 4px}
 
 #mugin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
 
-#inletWallet input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, #putFloat, #viafloat, #vialet {
+#cellSlots input, #inletWallet input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, #putFloat, #viafloat, #vialet {
   block-size: 40px;
   background-color:#f4f4f4;
   color:#171a20;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.414;
   font-weight: 500;
   padding: 10px 20px;

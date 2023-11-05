@@ -65,6 +65,23 @@ class View {
 
 let Models = {
 
+	cellSlots: function () {
+
+		return [
+			`section`, {}, 
+				[ 
+					[`main`, {id: `cellSlots`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[[`h2`, {}, `set my payment method`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/reserve/credentials`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+								[`span`, {id: `tip`}, `*The payment method will be shown to the buyer during the transaction to accept fiat transfers. 
+									Please ensure that the info is correct, real, and matches account ownership.`],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${12}px`}}, 
+									[[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
+								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${24}px`}}, [[`input`, {placeholder: `Registered Account Name`, type: `text`}]]]]]]]]]
+	},
+
 	clientTX: function () {
 
 		return [`main`, {id: `holds`, class: `_tY0`}, 
@@ -116,6 +133,29 @@ let Models = {
 													[
 														[`a`, {class: `v202310281744`, style: {}, href: `javascript:;`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]]]]]]]]]];
+	},
+
+	idVaultSlot: function () {
+
+		return [
+			`section`, {}, 
+				[
+					[`div`, {class: `_-tY`}, 
+						[[`div`, {class: `_aXz`}, 
+							[
+								[`div`, {class: `_-Xg _gxM _geQ`}, 
+									[
+										[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${28}px`, height: `${28}px`}, href: ``}]]]]]]], 
+					[`main`, {id: `idVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`h2`, {}, `Payment Methods`],
+								//[`h4`, {}, `My Payment Methods`], 
+								[`h4`, {}, `Add Supported Payment Methods`],
+								[`section`, {id: `vaultOpt`}, 
+									[
+										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, id: `cellSlots`, href: `javascript:;`}]]]]],
+										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#04629b`}}], [`span`, {}, `Paypal`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, href: `javascript:;`}]]]]]]]]]]]]]
 	},
 
 	inlet: function () {

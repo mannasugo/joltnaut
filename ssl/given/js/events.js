@@ -12,6 +12,24 @@ class Events {
 		if (Arg.target) return Arg.target;
 	}
 
+	/** **/
+
+	cellSlots () {
+
+		this.listen([document.querySelector(`#cellSlots`), `click`, S => {
+
+			View.pop();
+
+			Clients.instance = Tools.coats([`cellSlots`, new Date().valueOf()]);
+
+			View.DOM([`div`, [Models.cellSlots()]]);
+
+			//this.pollCellSlots()
+
+		}]);
+
+	}
+
 	mugin () {
 
 		this.listen([document.querySelector(`#signin`), `click`, S => {
