@@ -77,9 +77,12 @@ let Models = {
 									[[`h2`, {}, `set my payment method`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/reserve/credentials`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
 								[`span`, {id: `tip`}, `*The payment method will be shown to the buyer during the transaction to accept fiat transfers. 
 									Please ensure that the info is correct, real, and matches account ownership.`],
-								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${12}px`}}, 
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
 									[[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
-								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${24}px`}}, [[`input`, {placeholder: `Registered Account Name`, type: `text`}]]]]]]]]]
+								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${24}px`}}, [[`input`, {placeholder: `Registered Account Name`, type: `text`}]]],
+								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${12}px`}}, [[`input`, {placeholder: `M-PESA Mobile Number`, type: `text`}]]],
+										[`div`, {class: `_gM_a _agM _guZ`, style: {[`margin-top`]: `${16}px`, width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+											[[`a`, {id: `pollCellSlot`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `save`]]]]]]]]]
 	},
 
 	clientTX: function () {
@@ -154,6 +157,7 @@ let Models = {
 								[`h4`, {}, `Add Supported Payment Methods`],
 								[`section`, {id: `vaultOpt`}, 
 									[
+										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#e80101`}}], [`span`, {}, `Airtel Money (Kenya)`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, href: `javascript:;`}]]]]],
 										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, id: `cellSlots`, href: `javascript:;`}]]]]],
 										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#04629b`}}], [`span`, {}, `Paypal`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, href: `javascript:;`}]]]]]]]]]]]]]
 	},
