@@ -246,7 +246,25 @@ class Route {
 								}
 							}
 
-							if (Pulls.pull === `idVault`) {
+							if (Pulls.pull === `cellSlots`) {
+
+                				let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
+
+								if (!Raw.mugs[1][Pulls.mug].vaultSlots) Raw.mugs[1][Pulls.mug][`vaultSlots`] = [];
+
+								Raw.mugs[1][Pulls.mug].vaultSlots.push({
+									carrier: `safaricom`,
+									id: Pulls.param[1],
+									mug: Pulls.param[0],
+									type: `mobile pay`}); 
+
+								Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
+
+									Arg[1].end(Tools.coats({mug: Pulls.mug}));
+								}]);
+							}
+
+							if (Pulls.pull === `idVault`) {console.log(Raw.mugs[1][Pulls.mug])
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {
 									

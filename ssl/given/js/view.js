@@ -79,10 +79,10 @@ let Models = {
 									Please ensure that the info is correct, real, and matches account ownership.`],
 								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
 									[[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
-								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${24}px`}}, [[`input`, {placeholder: `Registered Account Name`, type: `text`}]]],
-								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${12}px`}}, [[`input`, {placeholder: `M-PESA Mobile Number`, type: `text`}]]],
-										[`div`, {class: `_gM_a _agM _guZ`, style: {[`margin-top`]: `${16}px`, width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
-											[[`a`, {id: `pollCellSlot`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `save`]]]]]]]]]
+								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${24}px`}}, [[`input`, {id: `cellMug`, placeholder: `Registered Account Name`, type: `text`}]]],
+								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${12}px`}}, [[`input`, {id: `cellNumerals`, placeholder: `M-PESA Mobile Number`, type: `text`}]]],
+								[`div`, {class: `_gM_a _agM _guZ`, style: {[`margin-top`]: `${16}px`, width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+									[[`a`, {id: `pollCellSlots`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `save`]]]]]]]]]
 	},
 
 	clientTX: function () {

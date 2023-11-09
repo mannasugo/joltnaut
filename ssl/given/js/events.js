@@ -24,7 +24,7 @@ class Events {
 
 			View.DOM([`div`, [Models.cellSlots()]]);
 
-			//this.pollCellSlots()
+			this.pollCellSlots()
 
 		}]);
 
@@ -93,6 +93,34 @@ class Events {
 
 					window.location = `/`;
 				}
+			}
+
+		}]);
+	}
+
+	pollCellSlots () {
+
+		this.listen([document.querySelector(`#pollCellSlots`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#cellMug`).value))? false: Tools.slim(document.querySelector(`#cellMug`).value),
+				(!Tools.slim(document.querySelector(`#cellNumerals`).value))? false: Tools.slim(document.querySelector(`#cellNumerals`).value)];
+
+			if (Values[0] === false || Values[1] === false || Values[1].length != 12 || typeof parseFloat(Values[1]) !== `number`) return;
+
+			let Puts = Tools.pull([`/json/web/`, {mug: Clients.mug, pull: `cellSlots`, param : Values}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull && Pull.mug) window.location = `/reserve`;
 			}
 
 		}]);
