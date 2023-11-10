@@ -74,9 +74,23 @@ class Route {
 
     		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
 
-				Clients.instance = Tools.coats([`p2p`, new Date().valueOf()]);
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `p2p`}]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					Clients.instance = Tools.coats([`p2p`, new Date().valueOf()]);
+
+					Clients.inVaults = Tools.coats(Web.outlets);
+
+					Clients.p2p = `inVault`;
 					
-				View.DOM([`div`, [Models.p2p()]]);
+					View.DOM([`div`, [Models.p2p()]]);
+				}
 			}
     	}
 

@@ -220,7 +220,7 @@ body {
 
 .v202201180941, .v202202122052, .v202203171249, .v202203191304, .v202203261943, .v202203262148, .v202204261406, .v202204282015, .v202205042043, 
 .v202205081343, .v202205081426, .v202205081410, .v202206131254, .v202206131256, .v202206271427, .v202207071159, .v202207071206, .v202207161737,
-.v202301071417, .v202303311456, .v202304191915, .v202310281744, .v202310282005, .v202311051955 {
+.v202301071417, .v202303311456, .v202304191915, .v202310281744, .v202310282005, .v202311051955, .v202311102200 {
   background-repeat: no-repeat;
   height: 24px;
   width: 24px;
@@ -274,6 +274,8 @@ body {
 
 .v202311051955 {background-image: url(/ssl/given/svg/exit_202311051955.svg);}
 
+.v202311102200 {background-image: url(/ssl/given/svg/filter_202311102200.svg);}
+
 ._aA2, ._aA2:visited {color: #000;}
 
 ._gZ + ._gZ {border-top: 1px solid #f4f4f4}
@@ -297,6 +299,10 @@ body {
 #idVaultSlot h2 {text-align: left}
 
 #idVaultSlot h4 {color: #666;font-size: 12px;text-align: left}
+
+#p2p #rateSwap {color: #666;font-family: geometria;font-weight: 300;margin-top: 12px;text-transform: uppercase;}
+
+#vaults > div {margin-top: 12px}
 
 #vaultOpt > div {border: 1px solid #e3e3e3; border-radius: 12px;font-weight: 600; margin-top: 12px; padding: 12px 14px}
 

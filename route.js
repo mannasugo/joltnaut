@@ -355,6 +355,25 @@ class Route {
 							}
 
 							if (Pulls.pull === `p2p`) {
+
+								let Vaults = [];
+
+								Raw.mugs[0].forEach(Mug => {
+
+									let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0].hold[0] > 15 && Mug.vaultSlots && Mug.vaultSlots.length > 0) {
+
+										Mug[`vault`] = Hold[0].hold[0];
+
+										Vaults.push(Mug);
+									}
+
+								});
+
+								Arg[1].end(Tools.coats({
+									mug: Pulls.mug,
+									outlets: Vaults}));
 							}
 
 							if (Pulls.pull === `walletOutlet`) {

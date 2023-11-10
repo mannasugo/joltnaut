@@ -162,7 +162,7 @@ let Models = {
 							[
 								[`div`, {class: `_-Xg _gxM _geQ`}, 
 									[
-										[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${28}px`, height: `${28}px`}, href: ``}]]]]]]], 
+										[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${28}px`, height: `${28}px`}, href: `/`}]]]]]]], 
 					[`main`, {id: `idVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
 						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
@@ -285,6 +285,28 @@ let Models = {
 
 	p2p: function () {
 
+		let Vaults = [(Clients.p2p === `outVault`)? []: Tools.typen(Clients.inVaults), []];
+
+		Vaults[0].forEach(Vault => {
+
+			Vaults[1].push([`div`, {}, 
+				[[`div`, {class: `_gxM _geQ`}, 
+					[[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+						[[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+						[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+							[`text-transform`]: `uppercase`, 
+							[`letter-spacing`]: `normal`,
+							[`font-size`]: `${11}px`}}, Vault.mail[0]]]], 
+					[`span`, {}, Vault.mail]]], 
+				[`div`, {class: `_gxM _geQ`}, 
+					[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
+					[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${Vault.vault} USDT`]]],
+				[`div`, {class: `_gM_a _agM _guZ`, style: {
+					[`margin-top`]: `${16}px`, 
+					width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+					[[`a`, {id: ``, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `deposit usdt`]]]]]);
+		});
+
 		return [`main`, {id: `holds`, class: `_tY0`}, 
 			[
 				[`div`, {class: `_-tY`}, 
@@ -295,8 +317,16 @@ let Models = {
 							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
 								[[`div`, {class: `_gxM`}, 
 									[[`a`, {class: `v202301071417`, style: {margin: `${0} ${10}px`}, href: `/p2p/recent`}]]]]]]]]], 
-				[`section`, {style: {width: `${100}%`, [`max-width`]: `${1000}px`, margin: `${60}px auto`}}, 
-					[]]]];
+				[`main`, {id: `p2p`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`a`, {class: `-_tX v202203261943`, href: `javascript:;`}], 
+									[`a`, {class: `-_tX v202203262148`, href: `javascript:;`, style: {[`margin-left`]: `${24}px`}}], 
+									[`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311102200`, href: `javascript:;`}]]]]],
+							[`span`, {id: `rateSwap`}, `1 usdt = 156.64 kes`],
+							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];
 	},
 
 	vaultSlot: function () {
