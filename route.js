@@ -256,6 +256,7 @@ class Route {
 									carrier: `safaricom`,
 									id: Pulls.param[1],
 									mug: Pulls.param[0],
+									ts: new Date().valueOf(),
 									type: `mobile pay`}); 
 
 								Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {

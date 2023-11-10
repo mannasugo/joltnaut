@@ -140,6 +140,20 @@ let Models = {
 
 	idVaultSlot: function () {
 
+		let VaultSlots = [];
+
+		Tools.typen(Clients.vaultSlots).forEach(Slot => {
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				VaultSlots.push([`div`, {}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202303311456`, id: `delSlot`, href: `javascript:;`}]]]]], 
+						[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${6}px`}}, [[`span`, {id: `slotMug`}, `${Slot.mug.toUpperCase()}`], [`div`, {class: `_gZz`}, [[`span`, {id: `slotCell`}, Slot.id]]]]]]])
+			}
+		});
+
 		return [
 			`section`, {}, 
 				[
@@ -153,7 +167,8 @@ let Models = {
 						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
 								[`h2`, {}, `Payment Methods`],
-								//[`h4`, {}, `My Payment Methods`], 
+								(Clients.vaultSlots.length > 0)? [`h4`, {}, `My Payment Methods`]: [],
+								(Clients.vaultSlots.length > 0)? [`section`, {id: `vaultSlots`}, VaultSlots]: [], 
 								[`h4`, {}, `Add Supported Payment Methods`],
 								[`section`, {id: `vaultOpt`}, 
 									[
