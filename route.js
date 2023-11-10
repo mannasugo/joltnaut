@@ -264,14 +264,15 @@ class Route {
 								}]);
 							}
 
-							if (Pulls.pull === `idVault`) {console.log(Raw.mugs[1][Pulls.mug])
+							if (Pulls.pull === `idVault`) {
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {
 									
 									Arg[1].end(Tools.coats({
 										idVault: (Raw.mugs[1][Pulls.mug].idVault)? true: false, 
 										inlet: Raw.mugs[1][Pulls.mug].inlet.USDT[0], 
-										mug: Pulls.mug}));
+										mug: Pulls.mug,
+										vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: false}));
 	
 								}
 

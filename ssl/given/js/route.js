@@ -147,6 +147,8 @@ class Route {
 
 							Clients.inlet = Web.inlet;
 
+							Clients.vaultSlots = Tools.coats(Web.vaultSlots);
+
 							if (Web.idVault === false) {
 
 								View.DOM([`div`, [Models.idVaultSlot()]]);
