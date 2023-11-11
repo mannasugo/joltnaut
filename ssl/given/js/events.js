@@ -49,9 +49,39 @@ class Events {
 
 				View.DOM([`div`, [Models.inVaultSlot([Vault])]]);
 
-				//this.inVaultSlot()
+				this.local2Coin();
 			}
 
+		}]);
+
+	}
+
+	local2Coin () {
+
+		this.listen([document.querySelector(`#localSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			document.querySelector(`#coinSlot`).value = (Slot.value/156.64).toFixed(2)
+		}]);
+
+		this.listen([document.querySelector(`#coinSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			document.querySelector(`#localSlot`).value = (Slot.value*156.64).toFixed(2)
 		}]);
 
 	}
