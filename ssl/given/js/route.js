@@ -90,6 +90,8 @@ class Route {
 					Clients.p2p = `inVault`;
 					
 					View.DOM([`div`, [Models.p2p()]]);
+
+					Events.inVaultSlot();
 				}
 			}
     	}

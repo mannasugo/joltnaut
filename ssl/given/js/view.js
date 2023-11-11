@@ -228,6 +228,55 @@ let Models = {
 					[]]]];
 	},
 
+	inVaultSlot: function (Arg) {
+
+		let VaultSlots = [];
+
+		Arg[0].vaultSlots.forEach(Slot => {
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				VaultSlots.push([`div`, {style: {[`font-weight`]: 300,padding: `${12}px 0`}}, 
+					[[`div`, {class: `_gxM _geQ`}, 
+						[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]]]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[[`h2`, {}, `edit order info`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/p2p`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+								[[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+									[[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+									[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+										[`text-transform`]: `uppercase`, 
+										[`letter-spacing`]: `normal`,
+										[`font-size`]: `${11}px`}}, Arg[0].mail[0]]]], 
+								[`span`, {}, Arg[0].mail]]], 
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
+								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
+							[`section`, {id: `vaultSlots`}, VaultSlots],
+							[`span`, {id: `rateSwap`}, `1 usdt = 156.64 kes`], 
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO PAY`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: ``, placeholder: `0 - ${(Arg[0].vault*156.64).toLocaleString()}`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]], 
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: ``, placeholder: `0.00`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `USDT`]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultSlot`, md: Arg[0].md}, `deposit usdt`]]]]]]]]]
+	},
+
 	mugslot: function () {
 
 		let Slot = {
@@ -317,7 +366,7 @@ let Models = {
 				[`div`, {class: `_gM_a _agM _guZ`, style: {
 					[`margin-top`]: `${16}px`, 
 					width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
-					[[`a`, {id: ``, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetVow`, md: Vault.md}, `deposit usdt`]]]]]);
+					[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultSlot`, md: Vault.md}, `deposit usdt`]]]]]);
 		});
 
 		return [`main`, {id: `holds`, class: `_tY0`}, 

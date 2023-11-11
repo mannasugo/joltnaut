@@ -30,6 +30,32 @@ class Events {
 
 	}
 
+	inVaultSlot () {
+
+		this.listen([document.querySelector(`#inVaultSlot`), `click`, S => {
+
+			View.pop();
+
+			Clients.instance = Tools.coats([`inVaultSlot`, new Date().valueOf()]);
+
+			let Vault;
+
+			Tools.typen(Clients.inVaults).forEach(Mug => {
+
+				if (Mug.md === this.getSource(S).getAttribute(`md`)) Vault = Mug;
+			});
+
+			if (Vault) {
+
+				View.DOM([`div`, [Models.inVaultSlot([Vault])]]);
+
+				//this.inVaultSlot()
+			}
+
+		}]);
+
+	}
+
 	mugin () {
 
 		this.listen([document.querySelector(`#signin`), `click`, S => {
