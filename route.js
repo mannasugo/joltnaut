@@ -244,6 +244,8 @@ class Route {
 										debit: (Hold[0].hold[1]).toFixed(2),
 										ts: Raw.mugs[1][Pulls.mug][`secs`]}));
 								}
+
+								else Arg[1].end(Tools.coats({}));
 							}
 
 							if (Pulls.pull === `cellSlots`) {

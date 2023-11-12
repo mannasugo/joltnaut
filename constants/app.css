@@ -338,7 +338,7 @@ body {
   outline: none;
 }
 
-#inletWallet input, #inVaultSlot input{font-family: geometria}
+#inletWallet input, #inVaultSlot input{font-family: geometria;font-weight: 600}
 
 #pitvalue input:focus {outline: none}
 
