@@ -274,7 +274,7 @@ let Models = {
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
-								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultSlot`, md: Arg[0].md}, `deposit usdt`]]]]]]]]]
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVow`, md: Arg[0].md}, `deposit usdt`]]]]]]]]]
 	},
 
 	mugslot: function () {
@@ -1320,7 +1320,7 @@ let Models = {
 	splash: [
 			`main`, {class: `_xC2 _aA2`, style: {height: `${100}%`}}, 
 				[[`div`, {class: `_geQ`, style: {[`justify-content`]: `center`}}, 
-					[[`span`, {class: `v202201180941`, style: {width:`${56}px`, height: `${56}px`}}]]]]],
+					[[`span`, {class: `v202304191915`, style: {width:`${56}px`, height: `${56}px`}}]]]]],
 
 	pit: function () {
 

@@ -49,11 +49,52 @@ class Events {
 
 				View.DOM([`div`, [Models.inVaultSlot([Vault])]]);
 
+				this.inVaultVow();
+
 				this.local2Coin();
+
 			}
 
 		}]);
 
+	}
+
+	inVaultVow () {
+
+		this.listen([document.querySelector(`#inVaultVow`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+			let vault;
+
+			Tools.typen(Clients.inVaults).forEach(Mug => {
+
+				if (Mug.md === this.getSource(S).getAttribute(`md`)) vault = Mug.vault;
+			});
+
+			if (parseFloat(Values[0]) <= 0 || !vault || vault < parseFloat(Values[0])) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, {
+					md: this.getSource(S).getAttribute(`md`), mug: Clients.mug, param : [parseFloat(Values[0], 156.64], pull: `inVaultPollVow`}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web && Web.mug && Web.vow) window.location = `/p2p/${Web.vow}`;
+			}
+
+		}]);
 	}
 
 	local2Coin () {

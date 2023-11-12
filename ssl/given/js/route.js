@@ -94,6 +94,26 @@ class Route {
 					Events.inVaultSlot();
 				}
 			}
+
+			else if (State[4] && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `vow`,
+						vow: State[4]}]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					Clients.instance = Tools.coats([`vow`, new Date().valueOf()]);
+
+					if (Web && Web.mug) {
+
+					}
+				}
+			}
     	}
 
     	else if (this.State[3] === `reserve`) {

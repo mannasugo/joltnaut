@@ -165,7 +165,8 @@ class Route {
 
 									Raw.mugs[0].forEach(Mug => {
 
-										if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
+										if (Mug.mail === Pulls.param[0] 
+											&& Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
 
 											Put[`inlet`] = (Mug.inlet && Mug.inlet.USDT && Mug.inlet.USDT.length > 0)? Mug.inlet.USDT[0]: 0;
 											Put[`mail`] = Mug.mail;
@@ -269,7 +270,8 @@ class Route {
 
 							if (Pulls.pull === `idVault`) {
 
-								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {
+								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT 
+									&& Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {
 									
 									Arg[1].end(Tools.coats({
 										idVault: (Raw.mugs[1][Pulls.mug].idVault)? true: false, 
@@ -308,6 +310,38 @@ class Route {
 											mug: Pulls.mug
 										}));
 									}]);
+								}
+							}
+
+							if (Pulls.pull === `inVaultPollVow`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.mugs[1][Pulls.md] && Pulls.mug !== Pulls.md 
+									&& Raw.mugs[1][Pulls.mug].vaultSlots && Raw.mugs[1][Pulls.mug].vaultSlots.length > 0) {
+
+									let Hold = Tools.hold([Raw, Pulls.md]).sort((A, B) => {return B.secs - A.secs});
+
+									let Open = [];
+
+									Raw.vows[0].forEach(Vow => {
+
+										if ((new Date().valueOf() - Vow.ts) < 60000*15  
+											&& (Vow.peers.indexOf(Pulls.mug) > -1 || Vow.peers.indexOf(Pulls.md) > -1)) Open.push(Vow);
+									});
+
+									if (Hold[0].hold[0] > parseFloat(Pulls.param[0]) && Open.length === 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										Sql.puts([`vows`, {
+											float: Pulls.param[0],
+											local: Pulls.param[1],
+											md: md, 
+											peers: [Pulls.md, Pulls.mug], // [from, to]
+											ts: ts,
+											type: `inVault`}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug, vow: md}));}]);
+									}
 								}
 							}
 
