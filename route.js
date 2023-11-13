@@ -242,7 +242,7 @@ class Route {
 									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
 
 									Arg[1].end(Tools.coats({
-										debit: (Hold[0].hold[1]).toFixed(2),
+										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0.00,
 										ts: Raw.mugs[1][Pulls.mug][`secs`]}));
 								}
 
@@ -325,7 +325,10 @@ class Route {
 									Raw.vows[0].forEach(Vow => {
 
 										if ((new Date().valueOf() - Vow.ts) < 60000*15  
-											&& (Vow.peers.indexOf(Pulls.mug) > -1 || Vow.peers.indexOf(Pulls.md) > -1)) Open.push(Vow);
+											&& (Vow.peers.indexOf(Pulls.mug) > -1 || Vow.peers.indexOf(Pulls.md) > -1)) {
+
+											Open.push(Vow);
+										}
 									});
 
 									if (Hold[0].hold[0] > parseFloat(Pulls.param[0]) && Open.length === 0) {
@@ -398,7 +401,7 @@ class Route {
 
 									let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
 
-									if (Hold[0].hold[0] > 15 && Mug.vaultSlots && Mug.vaultSlots.length > 0) {
+									if (Hold[0] && Hold[0].hold[0] > 15 && Mug.vaultSlots && Mug.vaultSlots.length > 0) {
 
 										Mug[`vault`] = Hold[0].hold[0];
 

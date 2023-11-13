@@ -57,6 +57,8 @@ class Route {
 
 					Events.mugin();
 
+					//Events.mugup();
+
 					Events.slotup();
 
 				}

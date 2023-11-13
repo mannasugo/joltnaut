@@ -79,7 +79,10 @@ class Events {
 
 			let Puts = Tools.pull([
 				`/json/web/`, {
-					md: this.getSource(S).getAttribute(`md`), mug: Clients.mug, param : [parseFloat(Values[0], 156.64], pull: `inVaultPollVow`}]);
+					md: this.getSource(S).getAttribute(`md`), 
+					mug: Clients.mug, 
+					param : [parseFloat(Values[0]), 156.64], 
+					pull: `inVaultPollVow`}]);
 
 			Values = [];
 
