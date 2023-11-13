@@ -74,7 +74,7 @@ let Models = {
 						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
 								[`div`, {class: `_gxM _geQ`}, 
-									[[`h2`, {}, `set my payment method`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/reserve/credentials`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+									[[`h2`, {}, `set my payment method`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/account`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
 								[`span`, {id: `tip`}, `*The payment method will be shown to the buyer during the transaction to accept fiat transfers. 
 									Please ensure that the info is correct, real, and matches account ownership.`],
 								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
@@ -167,8 +167,8 @@ let Models = {
 						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
 								[`h2`, {}, `Payment Methods`],
-								(Clients.vaultSlots.length > 0)? [`h4`, {}, `My Payment Methods`]: [],
-								(Clients.vaultSlots.length > 0)? [`section`, {id: `vaultSlots`}, VaultSlots]: [], 
+								(Tools.typen(Clients.vaultSlots).length > 0)? [`h4`, {}, `My Payment Methods`]: [],
+								(Tools.typen(Clients.vaultSlots).length > 0)? [`section`, {id: `vaultSlots`}, VaultSlots]: [], 
 								[`h4`, {}, `Add Supported Payment Methods`],
 								[`section`, {id: `vaultOpt`}, 
 									[

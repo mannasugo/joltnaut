@@ -348,6 +348,16 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `mug`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+									
+									Arg[1].end(Tools.coats({
+										mug: Pulls.mug,
+										vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
+								}
+							}
+
 							if (Pulls.pull === `mugin`) {
 
 								let Mugin = [];
@@ -412,7 +422,8 @@ class Route {
 
 								Arg[1].end(Tools.coats({
 									mug: Pulls.mug,
-									outlets: Vaults}));
+									outlets: Vaults,
+									vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
 							}
 
 							if (Pulls.pull === `walletOutlet`) {

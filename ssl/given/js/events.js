@@ -34,26 +34,30 @@ class Events {
 
 		this.listen([document.querySelector(`#inVaultSlot`), `click`, S => {
 
-			View.pop();
+			if (Tools.typen(Clients.vaultSlots).length > 0) {
 
-			Clients.instance = Tools.coats([`inVaultSlot`, new Date().valueOf()]);
+				View.pop();
 
-			let Vault;
+				Clients.instance = Tools.coats([`inVaultSlot`, new Date().valueOf()]);
 
-			Tools.typen(Clients.inVaults).forEach(Mug => {
+				let Vault;
 
-				if (Mug.md === this.getSource(S).getAttribute(`md`)) Vault = Mug;
-			});
+				Tools.typen(Clients.inVaults).forEach(Mug => {
 
-			if (Vault) {
+					if (Mug.md === this.getSource(S).getAttribute(`md`)) Vault = Mug;
+				});
 
-				View.DOM([`div`, [Models.inVaultSlot([Vault])]]);
+				if (Vault) {
 
-				this.inVaultVow();
+					View.DOM([`div`, [Models.inVaultSlot([Vault])]]);
 
-				this.local2Coin();
+					this.inVaultVow();
 
+					this.local2Coin();
+				}
 			}
+
+			else window.location = `/account`;
 
 		}]);
 
@@ -220,7 +224,7 @@ class Events {
 
 				let Pull = JSON.parse(Puts.response);
 
-				if (Pull && Pull.mug) window.location = `/reserve`;
+				if (Pull && Pull.mug) window.location = `/account`;
 			}
 
 		}]);

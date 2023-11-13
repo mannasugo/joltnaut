@@ -57,13 +57,43 @@ class Route {
 
 					Events.mugin();
 
-					//Events.mugup();
-
 					Events.slotup();
 
 				}
 			}
 		}
+
+    	else if (this.State[3] === `account`) {
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `mug`}]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					if (Web.mug) {
+
+						Clients.vaultSlots = Tools.coats(Web.vaultSlots);
+
+						View.DOM([`div`, [Models.idVaultSlot()]]);
+
+						Events.cellSlots()
+					}
+				}
+			}
+    	}
 
     	else if (this.State[3] === `p2p`) {
 
@@ -90,6 +120,8 @@ class Route {
 					Clients.inVaults = Tools.coats(Web.outlets);
 
 					Clients.p2p = `inVault`;
+
+					Clients.vaultSlots = Tools.coats(Web.vaultSlots);
 					
 					View.DOM([`div`, [Models.p2p()]]);
 
