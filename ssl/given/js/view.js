@@ -71,7 +71,7 @@ let Models = {
 			`section`, {}, 
 				[ 
 					[`main`, {id: `cellSlots`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
-						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
 								[`div`, {class: `_gxM _geQ`}, 
 									[[`h2`, {}, `set my payment method`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/account`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
@@ -275,6 +275,81 @@ let Models = {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVow`, md: Arg[0].md}, `deposit usdt`]]]]]]]]]
+	},
+
+	inVaultVow: function (Arg) {
+
+		let Slot = [`ORDER CREATED`, ``, `Order info`, `Payment Method`];
+
+		if (new Date().valueOf() > (Arg.ts + 15*60000)) {
+
+			Slot[0] = `ORDER CANCELLED`;
+		}
+
+		let VaultSlots = [];
+
+		Arg.vaultSlots.forEach(Slot => {
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				VaultSlots.push([`div`, {style: {padding: `${12}px 0`}}, 
+					[[`div`, {class: `_gxM _geQ`}, 
+						[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {style: {[`font-weight`]: 300}}, `M-PESA Safaricom (Kenya)`]]]]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[ 
+					[`main`, {id: `inVaultVow`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/p2p`, style: {height:`${14}px`, width:`${14}px`}}]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${18}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `ORDER NUMBER`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, `${Arg.ts}`]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${6}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `TIME CREATED`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, Tools.logs(Arg.ts)]]]]],
+								[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
+										[`span`, {style: {[`margin-top`]: `${8}px`}}, Slot[1]]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[2]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `AMOUNT`],
+												[`span`, {style: {
+													color: `#00ca4f`, 
+													[`font-family`]: `geometria`, 
+													[`font-size`]: `${14}px`, 
+													[`font-weight`]: 600}}, `${parseFloat((Arg.local*Arg.float).toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PRICE`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-size`]: `${14}px`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.local.toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `RECEIVE QUANTITY`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-size`]: `${14}px`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.float.toFixed(2)).toLocaleString()} USDT`]]]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[3]],
+										[`section`, {id: `vaultSlots`}, VaultSlots]]]]]]]]]
 	},
 
 	mugslot: function () {

@@ -139,12 +139,13 @@ class Route {
 
 				Puts.onload = () => {
 
-					let Web = JSON.parse(Puts.response);
+					let Web = Tools.typen(Puts.response);
 
 					Clients.instance = Tools.coats([`vow`, new Date().valueOf()]);
 
 					if (Web && Web.mug) {
 
+						View.DOM([`div`, [Models.inVaultVow(Web.vow)]]);
 					}
 				}
 			}

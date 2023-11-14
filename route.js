@@ -430,9 +430,13 @@ class Route {
 
 								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[1] === Pulls.mug) {
 
+									let Vow = Raw.vows[1][Pulls.vow];
+
+									Vow.vaultSlots = (Raw.mugs[1][Vow.peers[0]].vaultSlots)? Raw.mugs[1][Vow.peers[0]].vaultSlots: []
+
 									Arg[1].end(Tools.coats({
 										mug: Pulls.mug,
-										vow: Raw.vows[1][Pulls.vow]}));
+										vow: Vow}));
 								}
 							}
 
