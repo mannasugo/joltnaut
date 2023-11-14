@@ -426,6 +426,16 @@ class Route {
 									vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
 							}
 
+							if (Pulls.pull === `vow`) {
+
+								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[1] === Pulls.mug) {
+
+									Arg[1].end(Tools.coats({
+										mug: Pulls.mug,
+										vow: Raw.vows[1][Pulls.vow]}));
+								}
+							}
+
 							if (Pulls.pull === `walletOutlet`) {
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {
