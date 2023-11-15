@@ -290,11 +290,22 @@ let Models = {
 
 		Arg.vaultSlots.forEach(Slot => {
 
+			let SubSlot = [];
+
 			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
 
+				SubSlot = [`div`, {style: {[`line-height`]: `${18}px`}},
+					[
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `ACCOUNT NAME`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-size`]: `${11}px`}}, `${(Slot.mug).toUpperCase()}`]]],
+						[`div`, {class: `_gZz`, style: {[`margin-top`]: `${12}px`}}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PHONE NUMBER`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`}}, `${Slot.id}`]]]]];
+
 				VaultSlots.push([`div`, {style: {padding: `${12}px 0`}}, 
-					[[`div`, {class: `_gxM _geQ`}, 
-						[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {style: {[`font-weight`]: 300}}, `M-PESA Safaricom (Kenya)`]]]]]);
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {style: {[`font-weight`]: 300}}, `M-PESA Safaricom (Kenya)`]]],
+						SubSlot]]);
 			}
 		});
 
@@ -330,21 +341,18 @@ let Models = {
 												[`span`, {style: {
 													color: `#00ca4f`, 
 													[`font-family`]: `geometria`, 
-													[`font-size`]: `${14}px`, 
 													[`font-weight`]: 600}}, `${parseFloat((Arg.local*Arg.float).toFixed(2)).toLocaleString()} KES`]]],
 										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 											[
 												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PRICE`],
 												[`span`, {style: { 
 													[`font-family`]: `geometria`, 
-													[`font-size`]: `${14}px`, 
 													[`font-weight`]: 600}}, `${parseFloat(Arg.local.toFixed(2)).toLocaleString()} KES`]]],
 										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 											[
 												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `RECEIVE QUANTITY`],
 												[`span`, {style: { 
 													[`font-family`]: `geometria`, 
-													[`font-size`]: `${14}px`, 
 													[`font-weight`]: 600}}, `${parseFloat(Arg.float.toFixed(2)).toLocaleString()} USDT`]]]]],
 								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
 									[
