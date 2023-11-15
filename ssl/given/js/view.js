@@ -279,11 +279,28 @@ let Models = {
 
 	inVaultVow: function (Arg) {
 
-		let Slot = [`ORDER CREATED`, ``, `Order info`, `Payment Method`];
+		let Slot = [
+			`ORDER CREATED`, 
+			``, 
+			`1. Confirm Order info`, 
+			`2. Make Payment`,
+			`Transfer the funds to the seller's account provided below`,
+			`3. Notify Seller`,
+			`After transferring the funds, click on the "Transferred, Notify Seller" button`, []];
 
-		if (new Date().valueOf() > (Arg.ts + 15*60000)) {
+		if (new Date().valueOf() > (Arg.ts + 60*72*60000)) {
 
 			Slot[0] = `ORDER CANCELLED`;
+
+			Slot[2] = `Order info`
+		}
+
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
+
+			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
+				[`margin-top`]: `${16}px`, 
+				width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVet`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
 		}
 
 		let VaultSlots = [];
@@ -357,7 +374,12 @@ let Models = {
 								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
 									[
 										[`span`, {style: {[`font-weight`]: 600}}, Slot[3]],
-										[`section`, {id: `vaultSlots`}, VaultSlots]]]]]]]]]
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[4]],
+										[`section`, {id: `vaultSlots`}, VaultSlots]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[5]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[6]], Slot[7]]]]]]]]]
 	},
 
 	mugslot: function () {

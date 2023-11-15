@@ -343,7 +343,8 @@ class Route {
 											md: md, 
 											peers: [Pulls.md, Pulls.mug], // [from, to]
 											ts: ts,
-											type: `inVault`}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug, vow: md}));}]);
+											type: `inVault`,
+											via: [false, false]}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug, vow: md}));}]);
 									}
 								}
 							}
