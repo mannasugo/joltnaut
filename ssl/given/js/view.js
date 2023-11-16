@@ -277,16 +277,129 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVow`, md: Arg[0].md}, `deposit usdt`]]]]]]]]]
 	},
 
+	inVaultS2c: function (Arg) {
+
+		let Slot = [
+			`Waiting for buyer's payment`, 
+			``, 
+			`Order info`, 
+			`Confirm that payment is from account name in the payment details below`,
+			``,
+			``,
+			``, []];
+
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) {
+
+			Slot[0] = `Waiting for buyer's payment`;
+
+			Slot[3] = `2. Make Payment`;
+
+			Slot[4] = `Transfer the funds to the seller's account provided below`;
+
+			Slot[5] = `3. Notify Seller`;
+
+			Slot[6] = `After transferring the funds, click on the "Transferred, Notify Seller" button`
+
+			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
+				[`margin-top`]: `${16}px`, 
+				width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVet`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
+		}
+
+		if (new Date().valueOf() > (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
+
+			Slot[0] = `Order Cancelled`;
+		}
+
+		let VaultSlots = [];
+
+		Arg.vaultSlots.forEach(Slot => {
+
+			let SubSlot = [];
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				SubSlot = [`div`, {style: {[`line-height`]: `${18}px`}},
+					[
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `ACCOUNT NAME`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-size`]: `${11}px`}}, `${(Slot.mug).toUpperCase()}`]]],
+						[`div`, {class: `_gZz`, style: {[`margin-top`]: `${12}px`}}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PHONE NUMBER`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`}}, `${Slot.id}`]]]]];
+
+				VaultSlots.push([`div`, {style: {padding: `${12}px 0`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {style: {[`font-weight`]: 300}}, `M-PESA Safaricom (Kenya)`]]],
+						SubSlot]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[ 
+					[`main`, {id: `inVaultVow`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/p2p`, style: {height:`${14}px`, width:`${14}px`}}]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${18}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `ORDER NUMBER`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, `${Arg.ts}`]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${6}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `TIME CREATED`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, Tools.logs(Arg.ts)]]]]],
+								[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
+										[`span`, {style: {[`margin-top`]: `${8}px`}}, Slot[1]]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[2]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `AMOUNT`],
+												[`span`, {style: {
+													color: `#ca0000`, 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat((Arg.local*Arg.float).toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PRICE`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.local.toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `TOTAL QUANTITY`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.float.toFixed(2)).toLocaleString()} USDT`]]]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[3]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[4]],
+										[`section`, {id: `vaultSlots`}, VaultSlots]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[5]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[6]], Slot[7]]]]]]]]]
+	},
+
 	inVaultVow: function (Arg) {
 
 		let Slot = [
 			`ORDER CREATED`, 
 			``, 
-			`1. Confirm Order info`, 
-			`2. Make Payment`,
-			`Transfer the funds to the seller's account provided below`,
-			`3. Notify Seller`,
-			`After transferring the funds, click on the "Transferred, Notify Seller" button`, []];
+			``, 
+			``,
+			``,
+			``,
+			``, []];
 
 		if (new Date().valueOf() > (Arg.ts + 60*72*60000)) {
 
@@ -296,6 +409,16 @@ let Models = {
 		}
 
 		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
+
+			Slot[2] = `1. Confirm Order info`;
+
+			Slot[3] = `2. Make Payment`;
+
+			Slot[4] = `Transfer the funds to the seller's account provided below`;
+
+			Slot[5] = `3. Notify Seller`;
+
+			Slot[6] = `After transferring the funds, click on the "Transferred, Notify Seller" button`
 
 			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
 				[`margin-top`]: `${16}px`, 

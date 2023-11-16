@@ -145,7 +145,7 @@ class Route {
 
 					if (Web && Web.mug) {
 
-						View.DOM([`div`, [Models.inVaultVow(Web.vow)]]);
+						if (Web.vow.type === `inVault`) View.DOM([`div`, [Models.inVaultVow(Web.vow)]]);
 					}
 				}
 			}
@@ -268,6 +268,39 @@ class Route {
 				}
 
 			}
+		}
+
+		else if (this.State[3] === `s2c`) {
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+			else if (State[4] && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `s2c`,
+						vow: State[4]}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					Clients.instance = Tools.coats([`s2c`, new Date().valueOf()]);
+
+					if (Web && Web.mug) {
+
+						if (Web.s2c.type === `inVault`) View.DOM([`div`, [Models.inVaultS2c(Web.s2c)]]);
+					}
+				}
+			}
+
+
 		}
 
     	else if (this.State[3] === `assets`) {
