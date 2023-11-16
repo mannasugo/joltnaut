@@ -145,7 +145,12 @@ class Route {
 
 					if (Web && Web.mug) {
 
-						if (Web.vow.type === `inVault`) View.DOM([`div`, [Models.inVaultVow(Web.vow)]]);
+						if (Web.vow.type === `inVault`) {
+
+							View.DOM([`div`, [Models.inVaultVow(Web.vow)]]);
+
+							Events.vetVow(Web.vow);
+						}
 					}
 				}
 			}
@@ -295,7 +300,10 @@ class Route {
 
 					if (Web && Web.mug) {
 
-						if (Web.s2c.type === `inVault`) View.DOM([`div`, [Models.inVaultS2c(Web.s2c)]]);
+						if (Web.s2c.type === `inVault`) {
+
+							View.DOM([`div`, [Models.inVaultS2c(Web.s2c)]]);
+						}
 					}
 				}
 			}

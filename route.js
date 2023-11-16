@@ -511,6 +511,13 @@ class Route {
 			});
 		}
 	}
+
+	Socket (App) {
+
+		App.on(`connection`, Polling => {
+
+			Polling.on(`app`, Raw => {})});
+	}
 }
 
 module.exports = new Route();

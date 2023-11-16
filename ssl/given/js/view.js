@@ -283,7 +283,7 @@ let Models = {
 			`Waiting for buyer's payment`, 
 			``, 
 			`Order info`, 
-			`Confirm that payment is from account name in the payment details below`,
+			`Confirm that payment is from the account name in the payment details below`,
 			``,
 			``,
 			``, []];
@@ -390,6 +390,63 @@ let Models = {
 										[`span`, {style: {color:`#a3a3a3`}}, Slot[6]], Slot[7]]]]]]]]]
 	},
 
+	inVaultVetVow: function (Vow) {
+
+		let Slot = [
+			`Please confirm that you have successfully transferred the money to the seller through the following payment method before confirming 
+			payment.`,
+			`I have made payment from my real-name verified payment account consistent with my registered name on joltnaut.`],
+
+		VaultSlots = [];
+
+		Vow.vaultSlots.forEach(Slot => {
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				VaultSlots.push([
+					`div`, {style: {[`font-weight`]: 600, padding: `${12}px 0`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
+							[`div`, {style: {[`font-weight`]: 300}}, 
+								[
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${14}px`}}, 
+										[
+											[`span`, {style: {color: `#666`}}, `Account Name`], 
+											[`div`, {class: `_gZz`}, [[`span`, {}, (Slot.mug).toUpperCase()]]]]],
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {style: {color: `#666`}}, `Phone Number`], 
+											[`div`, {class: `_gZz`}, [[`span`, {}, Slot.id]]]]]]]]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultVetVow`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {style: {[`font-weight`]: 600}}, `Payment Confirmation`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/p2p/${Vow.md}`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`div`, {style: {[`margin-top`]: `${24}px`}}, [[`span`, {}, Slot[0]]]],
+							[`section`, {id: `vaultSlots`}, VaultSlots],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${18}px`}}, 
+								[
+									[`svg`, {style: {height: `${18}px`, [`max-width`]: `${18}px`}, vewBox: `0 0 18 18`}, 
+										[
+											[`circle`, {cy: 9, cx: 9, r: 7, stroke: `#11fe6e`, [`stroke-width`]: 1.25, fill: `none`}],
+											[`path`, {d: `M6 8 8 12 16 6`, fill: `none`, stroke: `#11fe6e`}]]], 
+									[`div`, {class: `_eYG`}, 
+										[[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`line-height`]: 1.3}}, Slot[1].toUpperCase()]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVault`}, `Confirm Payment`]]]]]]]]]
+	},
+
 	inVaultVow: function (Arg) {
 
 		let Slot = [
@@ -423,7 +480,7 @@ let Models = {
 			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
 				[`margin-top`]: `${16}px`, 
 				width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
-				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVet`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
+				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetVow`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
 		}
 
 		let VaultSlots = [];

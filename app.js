@@ -6,7 +6,7 @@ const { readFileSync } = require(`fs`);
 
 const { Sql, View } = require(`./tools`);
 
-const { Call } = require(`./route`);
+const { Call, Socket } = require(`./route`);
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
@@ -19,6 +19,8 @@ let App = createSecureServer({
 	Call([call, put]);
 
 });
+
+Socket(require(`socket.io`).listen(App));
 
 App.on(`error`, (err) => console.error(err));
 

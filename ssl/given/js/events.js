@@ -257,6 +257,18 @@ class Events {
 		}]);
 	}
 
+	vetVow (Vow) {
+
+		this.listen([document.querySelector(`#vetVow`), `click`, S => {
+
+			View.pop();
+
+			Clients.instance = Tools.coats([`vetVow`, new Date().valueOf()]);
+
+			if (Vow.type === `inVault`) View.DOM([`div`, [Models.inVaultVetVow(Vow)]]);
+		}]);
+	}
+
 	holdRunnable () {
 
 		io().on(`pit`, Pit => {
