@@ -131,7 +131,6 @@ class Events {
 
 			document.querySelector(`#localSlot`).value = (Slot.value*156.64).toFixed(2)
 		}]);
-
 	}
 
 	mugin () {
@@ -257,6 +256,28 @@ class Events {
 		}]);
 	}
 
+	putClientVow (Vow) {
+
+		this.listen([document.querySelector(`#putClientVow`), `click`, S => {
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					pull: `putClientVow`,
+					vow: Vow}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				window.location = `/p2p/${Vow.md}`;
+			}
+
+		}]);
+	}
+
 	vetVow (Vow) {
 
 		this.listen([document.querySelector(`#vetVow`), `click`, S => {
@@ -265,7 +286,12 @@ class Events {
 
 			Clients.instance = Tools.coats([`vetVow`, new Date().valueOf()]);
 
-			if (Vow.type === `inVault`) View.DOM([`div`, [Models.inVaultVetVow(Vow)]]);
+			if (Vow.type === `inVault`) {
+
+				View.DOM([`div`, [Models.inVaultVetVow(Vow)]]);
+
+				this.putClientVow(Vow);
+			}
 		}]);
 	}
 

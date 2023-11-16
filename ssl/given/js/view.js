@@ -288,7 +288,7 @@ let Models = {
 			``,
 			``, []];
 
-		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) {
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) { 
 
 			Slot[0] = `Waiting for buyer's payment`;
 
@@ -444,7 +444,7 @@ let Models = {
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
-								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVault`}, `Confirm Payment`]]]]]]]]]
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `putClientVow`}, `Confirm Payment`]]]]]]]]]
 	},
 
 	inVaultVow: function (Arg) {

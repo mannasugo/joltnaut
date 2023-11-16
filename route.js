@@ -278,7 +278,6 @@ class Route {
 										inlet: Raw.mugs[1][Pulls.mug].inlet.USDT[0], 
 										mug: Pulls.mug,
 										vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: false}));
-	
 								}
 
 								else Arg[1].end(Tools.coats({inlet: false, mug: Pulls.mug}));
@@ -425,6 +424,30 @@ class Route {
 									mug: Pulls.mug,
 									outlets: Vaults,
 									vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
+							}
+
+							if (Pulls.pull === `putClientVow`) {
+
+								let Vow;
+
+								if (Raw.vows[1][Pulls.vow.md]) Vow = Raw.vows[1][Pulls.vow.md];
+
+								if (Vow && Vow.peers[1] === Pulls.mug && Vow.via[1] === false && (new Date().valueOf() - Vow.ts) < 60000*15) {
+
+									let Hold = Tools.hold([Raw, Vow.peers[0]]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0].hold[0] > Vow.float) {
+
+                						let Old = Tools.typen(Tools.coats(Vow));
+
+                						Vow.via[1] = true;
+
+										Sql.places([`vows`, Vow, Old, (Raw) => {
+
+											Arg[1].end(Tools.coats({mug: Pulls.mug}));
+										}]);
+									}
+								}
 							}
 
 							if (Pulls.pull === `s2c`) {
