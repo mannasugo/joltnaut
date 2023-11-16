@@ -290,20 +290,24 @@ let Models = {
 
 		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) { 
 
-			Slot[0] = `Waiting for buyer's payment`;
+			Slot[0] = `Verify Payment`;
 
-			Slot[3] = `2. Make Payment`;
+			Slot[1] = `Confirm that you have received payment from the buyer`
 
-			Slot[4] = `Transfer the funds to the seller's account provided below`;
+			Slot[2] = `1. Confirm Order info`
 
-			Slot[5] = `3. Notify Seller`;
+			Slot[3] = `2. Confirm that payment is from the account name in the payment details below`;
 
-			Slot[6] = `After transferring the funds, click on the "Transferred, Notify Seller" button`
+			Slot[4] = ``;
+
+			Slot[5] = `3. Confirm payment is received`;
+
+			Slot[6] = `After confirming the payment, be sure to click the "Payment received" button`
 
 			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
 				[`margin-top`]: `${16}px`, 
 				width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
-				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVet`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
+				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `pollVaultS2c`}, `Payment Received`]]];
 		}
 
 		if (new Date().valueOf() > (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
@@ -356,7 +360,7 @@ let Models = {
 								[`div`, {style: {[`margin-top`]: `${18}px`}}, 
 									[
 										[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
-										[`span`, {style: {[`margin-top`]: `${8}px`}}, Slot[1]]]],
+										[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[1].toUpperCase()]]],
 								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
 									[
 										[`span`, {style: {[`font-weight`]: 600}}, Slot[2]],
@@ -483,6 +487,25 @@ let Models = {
 				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetVow`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
 		}
 
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) { 
+
+			Slot[0] = `Pending Release`;
+
+			Slot[1] = `Wait for the seller to confirm payment and release the coin`
+
+			Slot[2] = `Order info`
+
+			Slot[3] = `Payment Method`;
+
+			Slot[4] = ``;
+
+			Slot[5] = ``;
+
+			Slot[6] = ``
+
+			Slot[7] = [];
+		}
+
 		let VaultSlots = [];
 
 		Arg.vaultSlots.forEach(Slot => {
@@ -528,7 +551,7 @@ let Models = {
 								[`div`, {style: {[`margin-top`]: `${18}px`}}, 
 									[
 										[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
-										[`span`, {style: {[`margin-top`]: `${8}px`}}, Slot[1]]]],
+										[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[1].toUpperCase()]]],
 								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
 									[
 										[`span`, {style: {[`font-weight`]: 600}}, Slot[2]],

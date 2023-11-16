@@ -280,6 +280,8 @@ class Events {
 
 	vetVow (Vow) {
 
+		if (document.querySelector(`#vetVow`) === null) return;
+
 		this.listen([document.querySelector(`#vetVow`), `click`, S => {
 
 			View.pop();
