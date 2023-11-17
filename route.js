@@ -450,6 +450,47 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `putS2c`) {
+
+								let S2c;
+
+								if (Raw.vows[1][Pulls.s2c.md]) S2c = Raw.vows[1][Pulls.s2c.md];
+
+								if (S2c && S2c.peers[0] === Pulls.mug && S2c.via[0] === false && S2c.via[1] === true 
+									&& (new Date().valueOf() - S2c.ts) < 60000*15) {
+
+									let Hold = Tools.hold([Raw, S2c.peers[0]]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0].hold[0] > S2c.float) {
+
+                						let Old = Tools.typen(Tools.coats(S2c));
+
+                						S2c.via[0] = true;
+
+										Sql.places([`vows`, S2c, Old, (Raw) => {
+
+											let ts = new Date().valueOf();
+
+											let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+											Sql.puts([`till`, {
+												outlet_wallet: false,
+												secs: ts,
+												till: {
+													[S2c.peers[0]]: [-(S2c.float), 0], 
+													[S2c.peers[1]]: [0, S2c.float]},
+												ts: ts,
+												tx: false,
+												vow: S2c.md}, (Q) => {
+
+													Arg[1].end(Tools.coats({mug: Pulls.mug}));
+
+											}]);
+										}]);
+									}
+								}
+							}
+
 							if (Pulls.pull === `s2c`) {
 
 								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[0] === Pulls.mug) {

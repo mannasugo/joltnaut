@@ -278,6 +278,28 @@ class Events {
 		}]);
 	}
 
+	putS2c (S2c) {
+
+		this.listen([document.querySelector(`#putS2c`), `click`, S => {
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					pull: `putS2c`,
+					s2c: S2c}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				window.location = `/s2c/${S2c.md}`;
+			}
+
+		}]);
+	}
+
 	vetVow (Vow) {
 
 		if (document.querySelector(`#vetVow`) === null) return;

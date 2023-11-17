@@ -303,6 +303,8 @@ class Route {
 						if (Web.s2c.type === `inVault`) {
 
 							View.DOM([`div`, [Models.inVaultS2c(Web.s2c)]]);
+
+							Events.putS2c(Web.s2c);
 						}
 					}
 				}
