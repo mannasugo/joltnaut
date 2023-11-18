@@ -199,6 +199,38 @@ class Events {
 		}]);
 	}
 
+	outVaultSlot () {
+
+		this.listen([document.querySelector(`#outVaultSlot`), `click`, S => {
+
+			if (Tools.typen(Clients.vaultSlots).length > 0) {
+
+				View.pop();
+
+				Clients.instance = Tools.coats([`outVaultSlot`, new Date().valueOf()]);
+
+				let Vault;
+
+				Tools.typen(Clients.outVaults).forEach(Mug => {
+
+					if (Mug.md === this.getSource(S).getAttribute(`md`)) Vault = Mug;
+				});
+
+				if (Vault) {
+
+					View.DOM([`div`, [Models.outVaultSlot([Vault])]]);
+
+					//this.inVaultVow();
+
+					this.local2Coin();
+				}
+			}
+
+			else window.location = `/account`;
+
+		}]);
+	}
+
 	pollCellSlots () {
 
 		this.listen([document.querySelector(`#pollCellSlots`), `click`, S => {

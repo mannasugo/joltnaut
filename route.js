@@ -249,6 +249,29 @@ class Route {
 								else Arg[1].end(Tools.coats({}));
 							}
 
+							if (Pulls.pull === `c2s`) {
+
+								let Vaults = [];
+
+								Raw.mugs[0].forEach(Mug => {
+
+									let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0] && Hold[0].hold[0] > 15 && Mug.vaultSlots && Mug.vaultSlots.length > 0) {
+
+										Mug[`vault`] = Hold[0].hold[0];
+
+										Vaults.push(Mug);
+									}
+
+								});
+
+								Arg[1].end(Tools.coats({
+									mug: Pulls.mug,
+									outlets: Vaults,
+									vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
+							}
+
 							if (Pulls.pull === `cellSlots`) {
 
                 				let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));

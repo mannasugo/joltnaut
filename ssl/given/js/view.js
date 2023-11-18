@@ -65,6 +65,65 @@ class View {
 
 let Models = {
 
+	c2s: function () {
+
+		let Vaults = [Tools.typen(Clients.inVaults), []];
+
+		Vaults[0].forEach(Vault => {
+
+			let VaultSlots = [];
+
+			Vault.vaultSlots.forEach(Slot => {
+
+				if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+					VaultSlots.push([`div`, {style: {padding: `${12}px 0`}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]]]]);
+				}
+			});
+
+			Vaults[1].push([`div`, {}, 
+				[[`div`, {class: `_gxM _geQ`}, 
+					[[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+						[[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+						[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+							[`text-transform`]: `uppercase`, 
+							[`letter-spacing`]: `normal`,
+							[`font-size`]: `${11}px`}}, Vault.mail[0]]]], 
+					[`span`, {}, Vault.mail]]], 
+				[`div`, {class: `_gxM _geQ`}, 
+					[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
+					[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${(Vault.vault*154.94).toLocaleString()} KES`]]],
+				[`section`, {id: `vaultSlots`}, VaultSlots],
+				[`div`, {class: `_gM_a _agM _guZ`, style: {
+					[`margin-top`]: `${16}px`, 
+					width: `${100}%`, [`block-size`]: `${40}px`, background: `#ca0000`, border: `${1}px solid #ca0000`}}, 
+					[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `outVaultSlot`, md: Vault.md}, `Withdraw USDT`]]]]]);
+		});
+
+		return [`main`, {id: `holds`, class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: `_-Xg _gxM _geQ`}, 
+								[[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${30}px`, height: `${30}px`}, href: `/`}, ``]]],
+							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
+								[[`div`, {class: `_gxM`}, 
+									[[`a`, {class: `v202301071417`, style: {margin: `${0} ${10}px`}, href: `/p2p/recent`}]]]]]]]]], 
+				[`main`, {id: `p2p`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`a`, {class: `-_tX v202203261943`, href: ``}], 
+									[`a`, {class: `-_tX v202203262148`, href: `/p2p/c2s`, style: {[`margin-left`]: `${24}px`}}], 
+									[`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311102200`, href: `javascript:;`}]]]]],
+							[`span`, {id: `rateSwap`}, `1 usdt = 154.94 kes`],
+							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];
+	},
+
 	cellSlots: function () {
 
 		return [
@@ -126,11 +185,11 @@ let Models = {
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `DEPOSIT`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202203262148`, style: {}, href: `/p2p`}],
+														[`a`, {class: `v202203262148`, style: {}, href: `/p2p/c2s`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `WITHDRAW`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202310282005`, style: {}, href: `/p2p`}],
+														[`a`, {class: `v202310282005`, style: {}, href: `javascript:;`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `PAY`]]],
 												[`div`, {class: `_geQ`}, 
 													[
@@ -274,7 +333,7 @@ let Models = {
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
-								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVow`, md: Arg[0].md}, `deposit usdt`]]]]]]]]]
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `inVaultVow`, md: Arg[0].md}, `Deposit USDT`]]]]]]]]]
 	},
 
 	inVaultS2c: function (Arg) {
@@ -475,7 +534,7 @@ let Models = {
 		let Slot = [
 			`ORDER CREATED`, 
 			``, 
-			``, 
+			``,
 			``,
 			``,
 			``,
@@ -678,6 +737,55 @@ let Models = {
 												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
 	},
 
+	outVaultSlot: function (Arg) {
+
+		let VaultSlots = [];
+
+		Arg[0].vaultSlots.forEach(Slot => {
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				VaultSlots.push([`div`, {style: {[`font-weight`]: 300,padding: `${12}px 0`}}, 
+					[[`div`, {class: `_gxM _geQ`}, 
+						[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]]]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[[`h2`, {}, `edit order info`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311051955`, href: `/p2p/c2s`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+								[[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+									[[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+									[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+										[`text-transform`]: `uppercase`, 
+										[`letter-spacing`]: `normal`,
+										[`font-size`]: `${11}px`}}, Arg[0].mail[0]]]], 
+								[`span`, {}, Arg[0].mail]]], 
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
+								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
+							[`section`, {id: `vaultSlots`}, VaultSlots],
+							[`span`, {id: `rateSwap`}, `1 usdt = 154.94 kes`], 
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO BUY`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: `coinSlot`, placeholder: `0.00`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `USDT`]]]]], 
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*156.64).toLocaleString()}`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#ca0000`, border: `${1}px solid #ca0000`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `outVaultVow`, md: Arg[0].md}, `Withdraw USDT`]]]]]]]]]
+	},
+
 	p2p: function () {
 
 		let Vaults = [(Clients.p2p === `outVault`)? []: Tools.typen(Clients.inVaults), []];
@@ -730,8 +838,8 @@ let Models = {
 						[
 							[`div`, {class: `_gxM _geQ`}, 
 								[
-									[`a`, {class: `-_tX v202203261943`, href: `javascript:;`}], 
-									[`a`, {class: `-_tX v202203262148`, href: `javascript:;`, style: {[`margin-left`]: `${24}px`}}], 
+									[`a`, {class: `-_tX v202203261943`, href: ``}], 
+									[`a`, {class: `-_tX v202203262148`, href: `/p2p/c2s`, style: {[`margin-left`]: `${24}px`}}], 
 									[`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311102200`, href: `javascript:;`}]]]]],
 							[`span`, {id: `rateSwap`}, `1 usdt = 156.64 kes`],
 							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];

@@ -129,6 +129,33 @@ class Route {
 				}
 			}
 
+			else if (State[4] && State[4] === `c2s` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `c2s`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					Clients.instance = Tools.coats([`c2s`, new Date().valueOf()]);
+
+					if (Web && Web.mug) {
+
+						Clients.outVaults = Tools.coats(Web.outlets);
+
+						Clients.p2p = `outVault`;
+
+						View.DOM([`div`, [Models.c2s()]]);
+
+						Events.outVaultSlot(Web.c2s);
+						
+					}
+				}
+			}
+
 			else if (State[4] && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
 				let Puts = Tools.pull([
