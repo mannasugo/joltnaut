@@ -767,7 +767,7 @@ let Models = {
 								[`span`, {}, Arg[0].mail]]], 
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
-								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
+								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
 							[`section`, {id: `vaultSlots`}, VaultSlots],
 							[`span`, {id: `rateSwap`}, `1 usdt = 154.94 kes`], 
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO BUY`],
@@ -778,7 +778,7 @@ let Models = {
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*156.64).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*154.94).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 

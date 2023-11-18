@@ -104,6 +104,10 @@ class Events {
 
 	local2Coin () {
 
+		let local = 156.64;
+
+		if (Tools.typen(Clients.instance)[0] === `outVaultSlot`) local = 154.94;
+
 		this.listen([document.querySelector(`#localSlot`), `keyup`, S => {
 
 			let Slot = this.getSource(S);
@@ -114,7 +118,7 @@ class Events {
 
 			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
 
-			document.querySelector(`#coinSlot`).value = (Slot.value/156.64).toFixed(2)
+			document.querySelector(`#coinSlot`).value = (Slot.value/local).toFixed(2)
 		}]);
 
 		this.listen([document.querySelector(`#coinSlot`), `keyup`, S => {
@@ -127,7 +131,7 @@ class Events {
 
 			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
 
-			document.querySelector(`#localSlot`).value = (Slot.value*156.64).toFixed(2)
+			document.querySelector(`#localSlot`).value = (Slot.value*local).toFixed(2)
 		}]);
 	}
 
@@ -220,13 +224,54 @@ class Events {
 
 					View.DOM([`div`, [Models.outVaultSlot([Vault])]]);
 
-					//this.inVaultVow();
+					this.outVaultVow();
 
 					this.local2Coin();
 				}
 			}
 
 			else window.location = `/account`;
+
+		}]);
+	}
+
+	outVaultVow () {
+
+		this.listen([document.querySelector(`#outVaultVow`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+			let vault;
+
+			Tools.typen(Clients.outVaults).forEach(Mug => {
+
+				if (Mug.md === this.getSource(S).getAttribute(`md`)) vault = Mug.vault;
+			});
+
+			if (parseFloat(Values[0]) <= 0 || !vault || vault < parseFloat(Values[0])) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, {
+					md: this.getSource(S).getAttribute(`md`), 
+					mug: Clients.mug, 
+					param : [parseFloat(Values[0]), 154.94], 
+					pull: `outVaultPollVow`}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web && Web.mug && Web.vow) window.location = `/p2p/${Web.vow}`;
+			}
 
 		}]);
 	}

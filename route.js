@@ -426,6 +426,42 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `outVaultPollVow`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.mugs[1][Pulls.md] && Pulls.mug !== Pulls.md 
+									&& Raw.mugs[1][Pulls.mug].vaultSlots && Raw.mugs[1][Pulls.mug].vaultSlots.length > 0) {
+
+									let Hold = Tools.hold([Raw, Pulls.md]).sort((A, B) => {return B.secs - A.secs});
+
+									let Open = [];
+
+									Raw.vows[0].forEach(Vow => {
+
+										if ((new Date().valueOf() - Vow.ts) < 60000*15  
+											&& (Vow.peers.indexOf(Pulls.mug) > -1 || Vow.peers.indexOf(Pulls.md) > -1)) {
+
+											Open.push(Vow);
+										}
+									});
+
+									if (Hold[0].hold[0] > parseFloat(Pulls.param[0]) && Open.length === 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										Sql.puts([`vows`, {
+											float: Pulls.param[0],
+											local: Pulls.param[1],
+											md: md, 
+											peers: [Pulls.mug, Pulls.md], // [from, to]
+											ts: ts,
+											type: `outVault`,
+											via: [false, false]}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug, vow: md}));}]);
+									}
+								}
+							}
+
 							if (Pulls.pull === `p2p`) {
 
 								let Vaults = [];
@@ -497,6 +533,7 @@ class Route {
 											let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
 
 											Sql.puts([`till`, {
+												md: md,
 												outlet_wallet: false,
 												secs: ts,
 												till: {
