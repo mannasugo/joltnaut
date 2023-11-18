@@ -27,7 +27,6 @@ class Events {
 			this.pollCellSlots()
 
 		}]);
-
 	}
 
 	inVaultSlot () {
@@ -60,7 +59,6 @@ class Events {
 			else window.location = `/account`;
 
 		}]);
-
 	}
 
 	inVaultVow () {
@@ -279,6 +277,8 @@ class Events {
 	}
 
 	putS2c (S2c) {
+
+		if (document.querySelector(`#putS2c`) === null) return;
 
 		this.listen([document.querySelector(`#putS2c`), `click`, S => {
 

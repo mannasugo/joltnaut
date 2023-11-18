@@ -504,6 +504,25 @@ let Models = {
 			Slot[6] = ``
 
 			Slot[7] = [];
+		} 
+
+		if (Arg.via[1] === true && Arg.via[0] === true) { 
+
+			Slot[0] = `Order Completed`;
+
+			Slot[1] = `Successfully purchased ${Arg.float} USDT`
+
+			Slot[2] = `Order info`
+
+			Slot[3] = `Payment Method`;
+
+			Slot[4] = ``;
+
+			Slot[5] = ``;
+
+			Slot[6] = ``
+
+			Slot[7] = [];
 		}
 
 		let VaultSlots = [];
