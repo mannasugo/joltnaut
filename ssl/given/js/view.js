@@ -310,6 +310,25 @@ let Models = {
 				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `putS2c`}, `Payment Received`]]];
 		}
 
+		if (Arg.via[1] === true && Arg.via[0] === true) { 
+
+			Slot[0] = `Order Completed`;
+
+			Slot[1] = `Successfully sold ${Arg.float} USDT`
+
+			Slot[2] = `Order info`
+
+			Slot[3] = `Payment Method`;
+
+			Slot[4] = ``;
+
+			Slot[5] = ``;
+
+			Slot[6] = ``
+
+			Slot[7] = [];
+		}
+
 		if (new Date().valueOf() > (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
 
 			Slot[0] = `Order Cancelled`;
