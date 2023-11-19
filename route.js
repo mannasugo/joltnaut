@@ -340,8 +340,6 @@ class Route {
 								if (Raw.mugs[1][Pulls.mug] && Raw.mugs[1][Pulls.md] && Pulls.mug !== Pulls.md 
 									&& Raw.mugs[1][Pulls.mug].vaultSlots && Raw.mugs[1][Pulls.mug].vaultSlots.length > 0) {
 
-									let Hold = Tools.hold([Raw, Pulls.md]).sort((A, B) => {return B.secs - A.secs});
-
 									let Open = [];
 
 									Raw.vows[0].forEach(Vow => {
@@ -352,6 +350,8 @@ class Route {
 											Open.push(Vow);
 										}
 									});
+
+									let Hold = Tools.hold([Raw, Pulls.md]).sort((A, B) => {return B.secs - A.secs});
 
 									if (Hold[0].hold[0] > parseFloat(Pulls.param[0]) && Open.length === 0) {
 
@@ -431,8 +431,6 @@ class Route {
 								if (Raw.mugs[1][Pulls.mug] && Raw.mugs[1][Pulls.md] && Pulls.mug !== Pulls.md 
 									&& Raw.mugs[1][Pulls.mug].vaultSlots && Raw.mugs[1][Pulls.mug].vaultSlots.length > 0) {
 
-									let Hold = Tools.hold([Raw, Pulls.md]).sort((A, B) => {return B.secs - A.secs});
-
 									let Open = [];
 
 									Raw.vows[0].forEach(Vow => {
@@ -444,7 +442,12 @@ class Route {
 										}
 									});
 
-									if (Hold[0].hold[0] > parseFloat(Pulls.param[0]) && Open.length === 0) {
+									let Hold = Tools.hold([Raw, Pulls.md]).sort((A, B) => {return B.secs - A.secs});
+
+									let Bals = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Bals[0].hold[1] > (Tools.gas([Pulls.param[0]]) + Pulls.param[0]) 
+										&& Hold[0].hold[0] > parseFloat(Pulls.param[0]) && Open.length === 0) {
 
 										let ts = new Date().valueOf();
 

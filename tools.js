@@ -161,6 +161,32 @@ class Tools {
 		});
 	}
 
+	gas (Arg) {
+
+		Arg[0] = parseFloat(Arg[0]);
+
+		let gas = 0;
+
+		if (Arg[0] > .05) {
+
+			if (Arg[0] <= 1) gas = .05;
+
+			if (Arg[0] > 1 && Arg[0] <= 15) gas = .125;
+
+			if (Arg[0] > 15 && Arg[0] <= 25) gas = .175;
+
+			if (Arg[0] > 25 && Arg[0] <= 45) gas = .275;
+
+			if (Arg[0] > 45 && Arg[0] <= 65) gas = .325;
+
+			if (Arg[0] > 65 && Arg[0] <= 105) gas = .425;
+
+			if (Arg[0] > 105) gas = .475
+		}
+
+		return gas*.85;
+	}
+
 	hold (Arg) {
 
 		let Hold = [0, 0, []];
