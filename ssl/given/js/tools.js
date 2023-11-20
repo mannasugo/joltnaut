@@ -139,7 +139,7 @@ class Tools {
 
 		Day = new Date(Day)
 
-		return `${Day.getFullYear()}/${Day.getMonth() + 1}/${(Day.getDate() > 9)? Day.getDate(): `0` + Day.getDate()} ${(Day.getHours() > 9)? Day.getHours(): `0` + Day.getHours()}:${(Day.getMinutes() > 9)? Day.getMinutes(): `0` + Day.getMinutes()}:${(Day.getSeconds() > 9)? Day.getSeconds(): `0` + Day.getSeconds()}`;
+		return `${Day.getFullYear()}-${Day.getMonth() + 1}-${(Day.getDate() > 9)? Day.getDate(): `0` + Day.getDate()} ${(Day.getHours() > 9)? Day.getHours(): `0` + Day.getHours()}:${(Day.getMinutes() > 9)? Day.getMinutes(): `0` + Day.getMinutes()}:${(Day.getSeconds() > 9)? Day.getSeconds(): `0` + Day.getSeconds()}`;
 	}
 
 	notate (float) {

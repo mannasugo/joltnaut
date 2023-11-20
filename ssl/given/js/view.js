@@ -148,10 +148,32 @@ let Models = {
 
 		let TX = [[], []];
 
-		Arg[0].forEach(Tx => {
+		Arg[0].sort((A, B) => {return B.ts - A.ts}).forEach(Tx => {
+
+			let Params = [
+				{
+					[`created time`]: Tools.logs(Tx.ts),
+					[`fiat amount`]: `${(Tx.float*Tx.local).toFixed(2)} KES`,
+					price: `${Tx.local} KES`,
+					[`coin amount`]: `${Tx.float} USDT`}, []];
+
+			for (param in Params[0]) {
+
+				Params[1].push(
+					[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${0}px`}}, 
+						[
+							[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`text-transform`]: `uppercase`}}, param],
+							[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${10}px`}}, `${Params[0][param]}`]]]]]);
+			}
 
 			TX[0].push(
-				[`div`, {style: {[`border-bottom`]: `${1}px solid #a3a3a3`, margin: `${8}px ${0} ${12}px`}}, [[]]])
+				[`div`, {style: {[`border-bottom`]: `${1}px solid #e3e3e3`, margin: `${8}px ${0} ${12}px`, padding: `${12}px ${0}`}}, 
+					[
+						[`div`, {class: `_gxM`, style: {[`font-weight`]: 600, [`margin-bottom`]: `${6}px`}}, 
+							[
+								[`span`, {style: {color: (Tx.type === `outVault`)? `#ca0000`: `#00ca29`}}, `${(Tx.type === `outVault`)? `Sell`: `Buy`} `],
+								[`span`, {style: {[`margin-left`]: `${6}px`}}, ` USDT`]]], 
+						[`div`, {}, Params[1]]]])
 		});
 
 		return [`main`, {id: `holds`, class: `_tY0`}, 
@@ -181,11 +203,11 @@ let Models = {
 										[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${12}px ${12}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${18}px`, [`font-size`]: `${12}px`}}, 
 											[
 												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `Wallet ID`], 
-												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600}}, `${Clients.ts}`],
+												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.ts}`],
 												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `Wallet Balance`], 
-												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],
+												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],
 										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `Quick Actions`],
-										[`div`, {class: `_gxM`, style: {[`margin-top`]: `${24}px`}}, 
+										[`div`, {class: `_gxM`, style: {[`font-size`]: `${10}px`, [`margin-top`]: `${24}px`}}, 
 											[
 												[`div`, {class: `_geQ`}, 
 													[
