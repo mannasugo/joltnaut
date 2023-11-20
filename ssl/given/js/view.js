@@ -144,7 +144,15 @@ let Models = {
 									[[`a`, {id: `pollCellSlots`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `save`]]]]]]]]]
 	},
 
-	clientTX: function () {
+	clientTX: function (Arg) {
+
+		let TX = [[], []];
+
+		Arg[0].forEach(Tx => {
+
+			TX[0].push(
+				[`div`, {style: {[`border-bottom`]: `${1}px solid #a3a3a3`, margin: `${8}px ${0} ${12}px`}}, [[]]])
+		});
 
 		return [`main`, {id: `holds`, class: `_tY0`}, 
 			[
@@ -194,7 +202,8 @@ let Models = {
 												[`div`, {class: `_geQ`}, 
 													[
 														[`a`, {class: `v202310281744`, style: {}, href: `javascript:;`}],
-														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]]]]]]]]]];
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]],
+										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, TX[0]]]]]]]]]];
 	},
 
 	idVaultSlot: function () {

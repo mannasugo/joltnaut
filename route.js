@@ -241,9 +241,22 @@ class Route {
 
 									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
 
+									let TX = [[], []];
+
+									Raw.vows[0].forEach(Vow => {
+
+										if (Vow.via[0] === true && Vow.via[1] === true 
+											&& ((Vow.peers[0] === Pulls.mug && Vow.type === `outVault`) 
+												|| (Vow.peers[1] === Pulls.mug && Vow.type === `inVault`))) {
+
+											TX[0].push(Vow);
+										}
+									});
+
 									Arg[1].end(Tools.coats({
 										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0.00,
-										ts: Raw.mugs[1][Pulls.mug][`secs`]}));
+										ts: Raw.mugs[1][Pulls.mug][`secs`],
+										tx: TX}));
 								}
 
 								else Arg[1].end(Tools.coats({}));
@@ -495,7 +508,7 @@ class Route {
 								if (Raw.vows[1][Pulls.c2s.md]) C2s = Raw.vows[1][Pulls.c2s.md];
 
 								if (C2s && C2s.peers[0] === Pulls.mug && C2s.via[0] === false && C2s.via[1] === true 
-									/*&& (new Date().valueOf() - C2s.ts) < 60000*15*/) {
+									&& (new Date().valueOf() - C2s.ts) < 60000*15) {
 
 									let Hold = Tools.hold([Raw, C2s.peers[0]]).sort((A, B) => {return B.secs - A.secs});
 

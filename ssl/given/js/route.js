@@ -46,7 +46,7 @@ class Route {
 
 					Clients.ts = Web.ts;
 
-					View.DOM([`div`, [Models.clientTX()]]);
+					View.DOM([`div`, [Models.clientTX(Web.tx)]]);
 				}
 
 				else {
