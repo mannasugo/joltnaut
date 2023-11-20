@@ -117,7 +117,7 @@ let Models = {
 						[
 							[`div`, {class: `_gxM _geQ`}, 
 								[
-									[`a`, {class: `-_tX v202203261943`, href: ``}], 
+									[`a`, {class: `-_tX v202203261943`, href: `/p2p/`}], 
 									[`a`, {class: `-_tX v202203262148`, href: `/p2p/c2s`, style: {[`margin-left`]: `${24}px`}}], 
 									[`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311102200`, href: `javascript:;`}]]]]],
 							[`span`, {id: `rateSwap`}, `1 usdt = 154.94 kes`],
@@ -737,6 +737,159 @@ let Models = {
 												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
 	},
 
+	outVaultC2s: function (Arg) {
+
+		let Slot = [
+			`Order Created`, 
+			``, 
+			``,
+			``,
+			``,
+			``,
+			``, []];
+
+		if (new Date().valueOf() > (Arg.ts + 60*72*60000)) {
+
+			Slot[0] = `ORDER CANCELLED`;
+
+			Slot[2] = `Order info`
+		}
+
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
+
+			Slot[2] = `1. Confirm Order info`;
+
+			Slot[3] = `2. Make Payment`;
+
+			Slot[4] = `Transfer the funds to the seller's account provided below`;
+
+			Slot[5] = `3. Notify Seller`;
+
+			Slot[6] = `After transferring the funds, click on the "Transferred, Notify Seller" button`
+
+			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
+				[`margin-top`]: `${16}px`, 
+				width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetC2s`, md: Arg.md}, `TRANSFERRED, NOTIFY SELLER`]]];
+		}
+
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) { 
+
+			Slot[0] = `Pending Release`;
+
+			Slot[1] = `Wait for the seller to confirm payment and release the coin`
+
+			Slot[2] = `Order info`
+
+			Slot[3] = `Payment Method`;
+
+			Slot[4] = ``;
+
+			Slot[5] = ``;
+
+			Slot[6] = ``
+
+			Slot[7] = [];
+		} 
+
+		if (Arg.via[1] === true && Arg.via[0] === true) { 
+
+			Slot[0] = `Order Completed`;
+
+			Slot[1] = `Successfully purchased ${Arg.float} USDT`
+
+			Slot[2] = `Order info`
+
+			Slot[3] = `Payment Method`;
+
+			Slot[4] = ``;
+
+			Slot[5] = ``;
+
+			Slot[6] = ``
+
+			Slot[7] = [];
+		}
+
+		let VaultSlots = [];
+
+		Arg.vaultSlots.forEach(Slot => {
+
+			let SubSlot = [];
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				SubSlot = [`div`, {style: {[`line-height`]: `${18}px`}},
+					[
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `ACCOUNT NAME`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-size`]: `${11}px`}}, `${(Slot.mug).toUpperCase()}`]]],
+						[`div`, {class: `_gZz`, style: {[`margin-top`]: `${12}px`}}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PHONE NUMBER`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`}}, `${Slot.id}`]]]]];
+
+				VaultSlots.push([`div`, {style: {padding: `${12}px 0`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {style: {[`font-weight`]: 300}}, `M-PESA Safaricom (Kenya)`]]],
+						SubSlot]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[ 
+					[`main`, {id: `inVaultVow`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/p2p`, style: {height:`${14}px`, width:`${14}px`}}]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${18}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `ORDER NUMBER`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, `${Arg.ts}`]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${6}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `TIME CREATED`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, Tools.logs(Arg.ts)]]]]],
+								[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
+										[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[1].toUpperCase()]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[2]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `AMOUNT`],
+												[`span`, {style: {
+													color: `#00ca4f`, 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat((Arg.local*Arg.float).toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PRICE`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.local.toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `RECEIVE QUANTITY`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.float.toFixed(2)).toLocaleString()} USDT`]]]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[3]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[4]],
+										[`section`, {id: `vaultSlots`}, VaultSlots]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[5]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[6]], Slot[7]]]]]]]]]
+	},
+
 	outVaultSlot: function (Arg) {
 
 		let VaultSlots = [];
@@ -770,7 +923,7 @@ let Models = {
 								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
 							[`section`, {id: `vaultSlots`}, VaultSlots],
 							[`span`, {id: `rateSwap`}, `1 usdt = 154.94 kes`], 
-							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO BUY`],
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO SELL`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
 									[[`input`, {class: `_aXZ`, id: `coinSlot`, placeholder: `0.00`, type: `text`}]]], 
@@ -784,6 +937,199 @@ let Models = {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#ca0000`, border: `${1}px solid #ca0000`}}, 
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `outVaultVow`, md: Arg[0].md}, `Withdraw USDT`]]]]]]]]]
+	},
+
+	outVaultVetVow: function (Vow) {
+
+		let Slot = [
+			`Please confirm that you have successfully transferred the money to the seller through the following payment method before confirming 
+			payment.`,
+			`I have made payment from my real-name verified payment account consistent with my registered name on joltnaut.`],
+
+		VaultSlots = [];
+
+		Vow.vaultSlots.forEach(Slot => {
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				VaultSlots.push([
+					`div`, {style: {[`font-weight`]: 600, padding: `${12}px 0`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
+							[`div`, {style: {[`font-weight`]: 300}}, 
+								[
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${14}px`}}, 
+										[
+											[`span`, {style: {color: `#666`}}, `Account Name`], 
+											[`div`, {class: `_gZz`}, [[`span`, {}, (Slot.mug).toUpperCase()]]]]],
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {style: {color: `#666`}}, `Phone Number`], 
+											[`div`, {class: `_gZz`}, [[`span`, {}, Slot.id]]]]]]]]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultVetVow`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {style: {[`font-weight`]: 600}}, `Payment Confirmation`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/s2c/${Vow.md}`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`div`, {style: {[`margin-top`]: `${24}px`}}, [[`span`, {}, Slot[0]]]],
+							[`section`, {id: `vaultSlots`}, VaultSlots],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${18}px`}}, 
+								[
+									[`svg`, {style: {height: `${18}px`, [`max-width`]: `${18}px`}, vewBox: `0 0 18 18`}, 
+										[
+											[`circle`, {cy: 9, cx: 9, r: 7, stroke: `#11fe6e`, [`stroke-width`]: 1.25, fill: `none`}],
+											[`path`, {d: `M6 8 8 12 16 6`, fill: `none`, stroke: `#11fe6e`}]]], 
+									[`div`, {class: `_eYG`}, 
+										[[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`line-height`]: 1.3}}, Slot[1].toUpperCase()]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `putVaultVow`}, `Confirm Payment`]]]]]]]]]
+	},
+
+	outVaultVow: function (Arg) {
+
+		let Slot = [
+			`Waiting for buyer's payment`, 
+			``, 
+			`Order info`, 
+			`Confirm that payment is from the account name in the payment details below`,
+			``,
+			``,
+			``, []];
+
+		if (new Date().valueOf() < (Arg.ts + 60*72*60000) && Arg.via[1] === true && Arg.via[0] === false) { 
+
+			Slot[0] = `Verify Payment`;
+
+			Slot[1] = `Confirm that you have received payment from the buyer`
+
+			Slot[2] = `1. Confirm Order info`
+
+			Slot[3] = `2. Confirm that payment is from the account name in the payment details below`;
+
+			Slot[4] = ``;
+
+			Slot[5] = `3. Confirm payment is received`;
+
+			Slot[6] = `After confirming the payment, be sure to click the "Payment received" button`
+
+			Slot[7] = [`div`, {class: `_gM_a _agM _guZ`, style: {
+				[`margin-top`]: `${16}px`, 
+				width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+				[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetVow`}, `Payment Received`]]];
+		}
+
+		if (Arg.via[1] === true && Arg.via[0] === true) { 
+
+			Slot[0] = `Order Completed`;
+
+			Slot[1] = `Successfully sold ${Arg.float} USDT`
+
+			Slot[2] = `Order info`
+
+			Slot[3] = `Payment Method`;
+
+			Slot[4] = ``;
+
+			Slot[5] = ``;
+
+			Slot[6] = ``
+
+			Slot[7] = [];
+		}
+
+		if (new Date().valueOf() > (Arg.ts + 60*72*60000) && Arg.via[1] === false) {
+
+			Slot[0] = `Order Cancelled`;
+		}
+
+		let VaultSlots = [];
+
+		Arg.vaultSlots.forEach(Slot => {
+
+			let SubSlot = [];
+
+			if (Slot.type === `mobile pay` && Slot.carrier === `safaricom`) {
+
+				SubSlot = [`div`, {style: {[`line-height`]: `${18}px`}},
+					[
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `ACCOUNT NAME`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-size`]: `${11}px`}}, `${(Slot.mug).toUpperCase()}`]]],
+						[`div`, {class: `_gZz`, style: {[`margin-top`]: `${12}px`}}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PHONE NUMBER`]]],
+						[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`}}, `${Slot.id}`]]]]];
+
+				VaultSlots.push([`div`, {style: {padding: `${12}px 0`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {style: {[`font-weight`]: 300}}, `M-PESA Safaricom (Kenya)`]]],
+						SubSlot]]);
+			}
+		});
+
+		return [
+			`section`, {}, 
+				[ 
+					[`main`, {id: `inVaultVow`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/p2p`, style: {height:`${14}px`, width:`${14}px`}}]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${18}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `ORDER NUMBER`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, `${Arg.ts}`]]]]],
+								[`div`, {class: `_gxM`, style: {[`margin-top`]: `${6}px`}}, 
+									[[`div`, {class: `_gZz _geQ`}, 
+										[
+											[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, `TIME CREATED`],
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`margin-left`]: `${8}px`}}, Tools.logs(Arg.ts)]]]]],
+								[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
+										[`span`, {style: {color:`#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[1].toUpperCase()]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[2]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `AMOUNT`],
+												[`span`, {style: {
+													color: `#ca0000`, 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat((Arg.local*Arg.float).toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `PRICE`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.local.toFixed(2)).toLocaleString()} KES`]]],
+										[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `TOTAL QUANTITY`],
+												[`span`, {style: { 
+													[`font-family`]: `geometria`, 
+													[`font-weight`]: 600}}, `${parseFloat(Arg.float.toFixed(2)).toLocaleString()} USDT`]]]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[3]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[4]],
+										[`section`, {id: `vaultSlots`}, VaultSlots]]],
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[
+										[`span`, {style: {[`font-weight`]: 600}}, Slot[5]],
+										[`span`, {style: {color:`#a3a3a3`}}, Slot[6]], Slot[7]]]]]]]]]
 	},
 
 	p2p: function () {

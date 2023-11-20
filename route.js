@@ -488,6 +488,49 @@ class Route {
 									vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
 							}
 
+							if (Pulls.pull === `putC2s`) {
+
+								let C2s;
+
+								if (Raw.vows[1][Pulls.c2s.md]) C2s = Raw.vows[1][Pulls.c2s.md];
+
+								if (C2s && C2s.peers[0] === Pulls.mug && C2s.via[0] === false && C2s.via[1] === true 
+									/*&& (new Date().valueOf() - C2s.ts) < 60000*15*/) {
+
+									let Hold = Tools.hold([Raw, C2s.peers[0]]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0].hold[1] > (C2s.float + Tools.gas([C2s.float]))) {
+
+                						let Old = Tools.typen(Tools.coats(C2s));
+
+                						C2s.via[0] = true;
+
+										Sql.places([`vows`, C2s, Old, (Raw) => {
+
+											let ts = new Date().valueOf();
+
+											let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+											Sql.puts([`till`, {
+												md: md,
+												outlet_wallet: false,
+												secs: ts,
+												till: {
+													[hold]: Tools.gas([C2s.float])*.55,
+													[C2s.peers[0]]: [0, -(C2s.float + Tools.gas([C2s.float]))], 
+													[C2s.peers[1]]: [C2s.float, Tools.gas([C2s.float])*.45]},
+												ts: ts,
+												tx: false,
+												vow: C2s.md}, (Q) => {
+
+													Arg[1].end(Tools.coats({mug: Pulls.mug}));
+
+											}]);
+										}]);
+									}
+								}
+							}
+
 							if (Pulls.pull === `putClientVow`) {
 
 								let Vow;
@@ -554,13 +597,50 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `putVaultVow`) {
+
+								let Vow;
+
+								if (Raw.vows[1][Pulls.vow.md]) Vow = Raw.vows[1][Pulls.vow.md];
+
+								if (Vow && Vow.peers[1] === Pulls.mug && Vow.via[1] === false && (new Date().valueOf() - Vow.ts) < 60000*15) {
+
+									let Hold = Tools.hold([Raw, Vow.peers[0]]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0].hold[1] > (Vow.float + Tools.gas([Vow.float]))) {
+
+                						let Old = Tools.typen(Tools.coats(Vow));
+
+                						Vow.via[1] = true;
+
+										Sql.places([`vows`, Vow, Old, (Raw) => {
+
+											Arg[1].end(Tools.coats({mug: Pulls.mug}));
+										}]);
+									}
+								}
+							}
+
 							if (Pulls.pull === `s2c`) {
 
-								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[0] === Pulls.mug) {
+								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[0] === Pulls.mug
+									&& Raw.vows[1][Pulls.vow].type === `inVault`) {
 
 									let Vow = Raw.vows[1][Pulls.vow];
 
 									Vow.vaultSlots = (Raw.mugs[1][Vow.peers[1]].vaultSlots)? Raw.mugs[1][Vow.peers[1]].vaultSlots: []
+
+									Arg[1].end(Tools.coats({
+										mug: Pulls.mug,
+										s2c: Vow}));
+								}
+
+								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[1] === Pulls.mug
+									&& Raw.vows[1][Pulls.vow].type === `outVault`) {
+
+									let Vow = Raw.vows[1][Pulls.vow];
+
+									Vow.vaultSlots = (Raw.mugs[1][Vow.peers[0]].vaultSlots)? Raw.mugs[1][Vow.peers[0]].vaultSlots: []
 
 									Arg[1].end(Tools.coats({
 										mug: Pulls.mug,
@@ -570,11 +650,24 @@ class Route {
 
 							if (Pulls.pull === `vow`) {
 
-								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[1] === Pulls.mug) {
+								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[1] === Pulls.mug 
+									&& Raw.vows[1][Pulls.vow].type === `inVault`) {
 
 									let Vow = Raw.vows[1][Pulls.vow];
 
 									Vow.vaultSlots = (Raw.mugs[1][Vow.peers[0]].vaultSlots)? Raw.mugs[1][Vow.peers[0]].vaultSlots: []
+
+									Arg[1].end(Tools.coats({
+										mug: Pulls.mug,
+										vow: Vow}));
+								}
+
+								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[0] === Pulls.mug 
+									&& Raw.vows[1][Pulls.vow].type === `outVault`) {
+
+									let Vow = Raw.vows[1][Pulls.vow];
+
+									Vow.vaultSlots = (Raw.mugs[1][Vow.peers[1]].vaultSlots)? Raw.mugs[1][Vow.peers[1]].vaultSlots: []
 
 									Arg[1].end(Tools.coats({
 										mug: Pulls.mug,

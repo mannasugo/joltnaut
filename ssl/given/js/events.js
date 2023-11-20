@@ -377,6 +377,47 @@ class Events {
 		}]);
 	}
 
+	putVaultVow (Vow) {
+
+		this.listen([document.querySelector(`#putVaultVow`), `click`, S => {
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					pull: `putVaultVow`,
+					vow: Vow}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				window.location = `/s2c/${Vow.md}`;
+			}
+
+		}]);
+	}
+
+	vetC2s (Vow) {
+
+		if (document.querySelector(`#vetC2s`) === null) return;
+
+		this.listen([document.querySelector(`#vetC2s`), `click`, S => {
+
+			View.pop();
+
+			Clients.instance = Tools.coats([`vetC2s`, new Date().valueOf()]);
+
+			if (Vow.type === `outVault`) {
+
+				View.DOM([`div`, [Models.outVaultVetVow(Vow)]]);
+
+				this.putVaultVow(Vow);
+			}
+		}]);
+	}
+
 	vetVow (Vow) {
 
 		if (document.querySelector(`#vetVow`) === null) return;
@@ -392,6 +433,24 @@ class Events {
 				View.DOM([`div`, [Models.inVaultVetVow(Vow)]]);
 
 				this.putClientVow(Vow);
+			}
+
+			if (Vow.type === `outVault`) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						c2s: Vow, 
+						mug: Clients.mug, 
+						pull: `putC2s`}]);
+
+				View.pop();
+
+				View.DOM([`div`, [Models.splash]]);
+
+				Puts.onload = () => {
+
+					window.location = `/p2p/${Vow.md}`;
+				}
 			}
 		}]);
 	}

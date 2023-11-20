@@ -178,6 +178,13 @@ class Route {
 
 							Events.vetVow(Web.vow);
 						}
+
+						if (Web.vow.type === `outVault`) {
+
+							View.DOM([`div`, [Models.outVaultVow(Web.vow)]]);
+
+							Events.vetVow(Web.vow);
+						}
 					}
 				}
 			}
@@ -333,11 +340,16 @@ class Route {
 
 							Events.putS2c(Web.s2c);
 						}
+
+						if (Web.s2c.type === `outVault`) {
+
+							View.DOM([`div`, [Models.outVaultC2s(Web.s2c)]]);
+
+							Events.vetC2s(Web.s2c);
+						}
 					}
 				}
 			}
-
-
 		}
 
     	else if (this.State[3] === `assets`) {
