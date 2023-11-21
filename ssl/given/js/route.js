@@ -95,6 +95,34 @@ class Route {
 			}
     	}
 
+    	else if (this.State[3] === `contacts`) {
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `peers`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						View.DOM([`div`, [Models.contacts()]]);
+					}
+				}
+			}
+    	}
+
     	else if (this.State[3] === `p2p`) {
 
     		if (!Clients.mug) {

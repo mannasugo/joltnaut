@@ -167,7 +167,7 @@ let Models = {
 			}
 
 			TX[0].push(
-				[`div`, {style: {[`border-bottom`]: `${1}px solid #e3e3e3`, margin: `${8}px ${0} ${12}px`, padding: `${12}px ${0}`}}, 
+				[`div`, {style: {[`border-bottom`]: `${1}px solid #e3e3e3`, margin: `${1}px ${0} ${0}`, padding: `${12}px ${0}`}}, 
 					[
 						[`div`, {class: `_gxM`, style: {[`font-weight`]: 600, [`margin-bottom`]: `${6}px`}}, 
 							[
@@ -188,7 +188,6 @@ let Models = {
                                         [`border-left`]: `${1}px solid #91919159`, 
                                         margin: `${0} ${7}px`,
                                         padding: `${0} ${14}px`,
-                                        [`font-size`]: `${14}px`,
                                         color: `#000`, //`#00e53f`,
                                         overflow: `hidden`,
                                         [`white-space`]: `nowrap`}}, `joltnaut`]]],
@@ -202,9 +201,9 @@ let Models = {
 									[
 										[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${12}px ${12}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${18}px`, [`font-size`]: `${12}px`}}, 
 											[
-												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `Wallet ID`], 
+												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${10}px`}}, `WALLET ID`], 
 												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.ts}`],
-												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${12}px`}}, `Wallet Balance`], 
+												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${10}px`}}, `WALLET BALANCE`], 
 												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],
 										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `Quick Actions`],
 										[`div`, {class: `_gxM`, style: {[`font-size`]: `${10}px`, [`margin-top`]: `${24}px`}}, 
