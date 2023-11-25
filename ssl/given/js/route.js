@@ -26,7 +26,7 @@ class Route {
 
 		let State = this.State;
 
-		if (State.length === 4 && State[3] === ``) {
+		if (State.length === 4 && State[3] === ``) { //Tools.bot();
 
 			let Puts = Tools.pull([
 				`/json/web`, {
@@ -58,7 +58,6 @@ class Route {
 					Events.mugin();
 
 					Events.slotup();
-
 				}
 			}
 		}

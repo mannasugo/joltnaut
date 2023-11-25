@@ -153,6 +153,32 @@ class Tools {
 		return float;
 	}
 
+	bot () {
+
+		setInterval(() => {//console.log(new Date(), new Date(`2023-11-25 14:21:50`))
+
+			//if (new Date() === new Date(`2023-11-25 14:21:50`)) {console.log(new Date().valueOf())
+
+				let Pair = {
+					gas: 7.5/100,
+					pair: [`btc/usdt`, [37552.91, 37767.23]],
+					ts_a: (new Date().valueOf() - 60000*60*1), 
+					ts_z: new Date().valueOf()
+				};
+
+				let Web = this.pull([
+					`/json/web`, {
+						param: Pair,
+						pull: `bot`
+					}]);
+
+				Web.onload = () => {
+
+				}
+			//}
+		}, 5000);
+	}
+
 }
 
 Tools = new Tools();
