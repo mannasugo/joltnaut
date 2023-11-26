@@ -253,8 +253,25 @@ class Route {
 										}
 									});
 
+									let Day = new Date();
+
+									let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
+
+									let PNL = [0, 0];
+
+									Raw.till[0].forEach(TX => {
+
+										if (TX.flag && TX.flag.trade && TX.till[Pulls.mug] && TX.ts > ts) {
+
+											PNL[0] += (TX.till[Pulls.mug][1]*100)/TX.principal;
+
+											PNL[1] += TX.till[Pulls.mug][1];								
+										}
+									});
+
 									Arg[1].end(Tools.coats({
 										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0.00,
+										pnl: PNL,
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
 										tx: TX}));
 								}
@@ -300,6 +317,8 @@ class Route {
                                         		
                                         	sum += Count.hold[1];
 										});
+
+										sum = sum/AZ.length;
 
 										let gain = sum*(((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]));
 
