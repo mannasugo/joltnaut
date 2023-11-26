@@ -201,10 +201,20 @@ let Models = {
 									[
 										[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${12}px ${12}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${18}px`, [`font-size`]: `${12}px`}}, 
 											[
-												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${10}px`}}, `WALLET ID`], 
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `WALLET ID`], 
 												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.ts}`],
-												[`span`, {style: {color: `#a2a2a2`, [`font-size`]: `${10}px`}}, `WALLET BALANCE`], 
-												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `WALLET BALANCE`], 
+												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`],
+												[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${0}px`}}, 
+													[
+														[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `TODAY'S PNL (QUANT PROFIT)`],
+														[`div`, {class: `_gZz`}, 
+															[
+																[`span`, {style: 
+																	{
+																		color: `#00ca29`,
+																		[`font-family`]: `geometria`, 
+																		[`font-size`]: `${10}px`}}, `+${Tools.typen(Clients.pnl)[1]}(${Tools.typen(Clients.pnl)[0]}%)`]]]]]]],
 										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `Quick Actions`],
 										[`div`, {class: `_gxM`, style: {[`font-size`]: `${10}px`, [`margin-top`]: `${24}px`}}, 
 											[

@@ -44,6 +44,8 @@ class Route {
 
 					Clients.debit = Web.debit;
 
+					Clients.pnl = Tools.coats([Web.pnl[0].toFixed(2), Web.pnl[1].toFixed(2)]);
+
 					Clients.ts = Web.ts;
 
 					View.DOM([`div`, [Models.clientTX(Web.tx)]]);
