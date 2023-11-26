@@ -62,7 +62,7 @@ class Sql {
 
 						Puts.trades[0].push(JSON.parse(Trade.json));
 
-						Puts.trades[1][JSON.parse(Trade.json).md] = JSON.parse(trade.json);
+						Puts.trades[1][JSON.parse(Trade.json).md] = JSON.parse(Trade.json);
 					});
 				}
 
