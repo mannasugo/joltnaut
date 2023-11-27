@@ -469,6 +469,21 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `letContact`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.peers[1][Pulls.param] && Raw.peers[1][Pulls.param].peers[1] === Pulls.mug) {
+
+                					let Old = Tools.typen(Tools.coats(Raw.peers[1][Pulls.param]));
+
+                					Raw.peers[1][Pulls.param].via[1] = true;
+
+									Sql.places([`peers`, Raw.peers[1][Pulls.param], Old, (Raw) => {
+
+										Arg[1].end(Tools.coats({mug: Pulls.mug}));
+									}]);		 
+								}
+							}
+
 							if (Pulls.pull === `mug`) {
 
 								if (Raw.mugs[1][Pulls.mug]) {

@@ -1231,7 +1231,34 @@ let Models = {
 							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];
 	},
 
-	peers: function () {
+	peers: function (Arg) {
+
+		let Allows = [[]];
+
+		Arg.forEach(MD => {
+
+			Allows[0].push(
+				[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${12}px`}}, 
+					[
+						[`svg`, {style: {[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+							[
+								[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+								[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+										[`text-transform`]: `uppercase`, 
+										[`letter-spacing`]: `normal`,
+										[`font-size`]: `${11}px`}}, (MD.peers[0] === Clients.mug)? MD.mail[1][0]: MD.mail[0][0]]]], 
+						[`div`, {class: `_eYG`, style: {[`line-height`]: 1.6}}, 
+							[
+								[`span`, {}, (MD.peers[0] === Clients.mug)? MD.mail[1]: MD.mail[0]],
+								[`span`, {style: 
+									{
+										color: `#a3a3a3`,
+										[`font-size`]: `${9}px`, 
+										[`font-weight`]: 600}}, ``]]],
+						[`div`, {class: `_gZz`},
+							[[`a`, {class: `v202203261943`, href: `javascript:;`, id: ``, md: MD.md, style: 
+								{height: `${18}px`, width: `${18}px`}}]]]]]);
+		});
 
 		return [`main`, {class: `_tY0`}, 
 			[
@@ -1256,7 +1283,14 @@ let Models = {
 										[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
 											[[`input`, {class: `_aXZ`, id: `idSlot`, placeholder: `Paste wallet id`, type: `text`}]]], 
 										[`div`, {class: `_gZz`, style: {flex: 0}}, 
-											[[`a`, {class: `v202203191304`, href: `javascript:;`, id: `putContact`, style: {margin: `${0} 0 0 ${10}px`}}]]]]]]]]]]]]];
+											[[`a`, {class: `v202203191304`, href: `javascript:;`, id: `putContact`, style: {margin: `${0} 0 0 ${10}px`}}]]]]]]],
+							[`div`, {id: `allows`}, 
+								[
+									[`h1`, {style: 
+										{
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 600, [`margin-top`]: `${22}px`}}, (Arg.length > 0)? `WALLET CONTACTS`: ``],
+									[`section`, {}, Allows[0]]]]]]]]]];
 	},
 
 	vaultSlot: function () {
@@ -1298,7 +1332,7 @@ let Models = {
 
 			if (MD.peers[1] === Clients.mug) {
 
-				Vet[1] = [`a`, {class: `v202203191304`, href: `javascript:;`, id: `letContact`}]
+				Vet[1] = [`a`, {class: `v202203191304`, href: `javascript:;`, id: `letContact`, md: MD.md}]
 			}
 
 			Vet[0].push(

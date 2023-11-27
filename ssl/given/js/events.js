@@ -102,6 +102,32 @@ class Events {
 		}]);
 	}
 
+	letContact () {
+
+		if (document.querySelector(`#letContact`) === null) return;
+
+		this.listen([document.querySelector(`#letContact`), `click`, S => {
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					param : this.getSource(S).getAttribute(`md`), 
+					pull: `letContact`}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = Tools.typen(Puts.response);
+
+				if (Web.mug) window.location = `/my/peers`;
+			}
+
+		}]);
+	}
+
 	local2Coin () {
 
 		let local = 156.64;

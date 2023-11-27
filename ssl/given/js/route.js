@@ -118,7 +118,14 @@ class Route {
 
 					if (Web.mug) {
 
-						View.DOM([`div`, [Models.peers()]]);
+						let Peers = [];
+
+						Web.peers.forEach(MD => {
+
+							if (MD.via[0] === true && MD.via[1] === true) Peers.push(MD);
+						});
+
+						View.DOM([`div`, [Models.peers(Peers)]]);
 
 						Events.putContact();
 					}
@@ -147,6 +154,8 @@ class Route {
 						});
 
 						View.DOM([`div`, [Models.vetPeers(Peers)]]);
+
+						Events.letContact();
 					}
 				}
 			}
