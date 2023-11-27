@@ -353,6 +353,33 @@ class Events {
 		}]);
 	}
 
+	putContact () {
+
+		this.listen([document.querySelector(`#putContact`), `click`, S => {
+
+			let Values = [(!Tools.slim(document.querySelector(`#idSlot`).value))? false: Tools.slim(document.querySelector(`#idSlot`).value)];
+
+			if (Values[0] === false) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, {
+					mug: Clients.mug, 
+					param : Values[0],
+					pull: `putContact`}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = Tools.typen(Puts.response);
+
+				if (Web && Web.mug) window.location = `/my/peers/requests`;
+			}
+		}]);
+	}
+
 	putS2c (S2c) {
 
 		if (document.querySelector(`#putS2c`) === null) return;

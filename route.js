@@ -586,6 +586,14 @@ class Route {
 									vaultSlots: (Raw.mugs[1][Pulls.mug].vaultSlots)? Raw.mugs[1][Pulls.mug].vaultSlots: []}));
 							}
 
+							if (Pulls.pull === `peers`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									Arg[1].end(Tools.coats({mug: Pulls.mug}));
+								}
+							}
+
 							if (Pulls.pull === `putC2s`) {
 
 								let C2s;
@@ -649,6 +657,34 @@ class Route {
 
 											Arg[1].end(Tools.coats({mug: Pulls.mug}));
 										}]);
+									}
+								}
+							}
+
+							if (Pulls.pull === `putContact`) {
+
+								let peer = createHash(`md5`).update(`${Pulls.param}`, `utf8`).digest(`hex`);
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.mugs[1][peer] && peer !== Pulls.mug) {
+
+									let Couple = [];
+
+									Raw.peers[0].forEach(MD => {
+
+										if (MD.peers.indexOf(Pulls.mug) > -1 && MD.peers.indexOf(peer) > -1) Couple.push(MD);
+									});
+
+									if (Couple.length === 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										Sql.puts([`peers`, {
+											md: md, 
+											peers: [Pulls.mug, peer], // [from, to]
+											ts: ts,
+											via: [true, false]}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
 									}
 								}
 							}

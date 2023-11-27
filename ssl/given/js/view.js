@@ -194,7 +194,7 @@ let Models = {
 							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
 								[[`div`, {class: `_gxM`}, 
 									[[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]]]]]]]]], 
-					[`main`, {id: `clientTX`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+					[`main`, {id: `clientTX`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${65}px`}}, 
 						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${600}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
 								[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
@@ -215,7 +215,7 @@ let Models = {
 																		color: `#00ca29`,
 																		[`font-family`]: `geometria`, 
 																		[`font-size`]: `${10}px`}}, `+${Tools.typen(Clients.pnl)[1]}(${Tools.typen(Clients.pnl)[0]}%)`]]]]]]],
-										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `Quick Actions`],
+										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `QUICK ACTIONS`],
 										[`div`, {class: `_gxM`, style: {[`font-size`]: `${10}px`, [`margin-top`]: `${24}px`}}, 
 											[
 												[`div`, {class: `_geQ`}, 
@@ -232,7 +232,7 @@ let Models = {
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `PAY`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202310281744`, style: {}, href: `javascript:;`}],
+														[`a`, {class: `v202310281744`, style: {}, href: `/my/peers`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]],
 										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, TX[0]]]]]]]]]];
 	},
@@ -1229,6 +1229,34 @@ let Models = {
 									[`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311102200`, href: `javascript:;`}]]]]],
 							[`span`, {id: `rateSwap`}, `1 usdt = 156.64 kes`],
 							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];
+	},
+
+	peers: function () {
+
+		return [`main`, {class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: ``}, 
+								[[`a`, {class: `v202311261657`, style: {width: `${14}px`, height: `${14}px`}, href: `/`}, ``]]], 
+							[`div`, {class: `_eYG`}, 
+								[[`span`, {}, `WALLET ADDRESSES`]]],
+							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
+								[[`div`, {class: `_gxM`}, 
+									[
+										[`a`, {class: `v202301071417`, href: `/my/peers/requests`, style: {margin: `${0}`}}]]]]]]]]], 
+				[`main`, {id: `p2p`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {id: `contactSlot`}, 
+								[
+									[`span`, {style: {[`font-size`]: `${9}px`, [`font-weight`]: 600, [`margin-top`]: `${22}px`}}, `SEND WALLET REQUEST`],
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+										[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+											[[`input`, {class: `_aXZ`, id: `idSlot`, placeholder: `Paste wallet id`, type: `text`}]]], 
+										[`div`, {class: `_gZz`, style: {flex: 0}}, 
+											[[`a`, {class: `v202203191304`, href: `javascript:;`, id: `putContact`, style: {margin: `${0} 0 0 ${10}px`}}]]]]]]]]]]]]];
 	},
 
 	vaultSlot: function () {

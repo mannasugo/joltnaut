@@ -96,7 +96,7 @@ class Route {
 			}
     	}
 
-    	else if (this.State[3] === `contacts`) {
+    	else if (this.State[3] === `my`) {
 
     		if (!Clients.mug) {
 
@@ -105,7 +105,7 @@ class Route {
     			this.Call();
     		}
 
-    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+    		else if (State[4] && State[4] === `peers` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
 				let Puts = Tools.pull([
 					`/json/web/`, {
@@ -118,7 +118,9 @@ class Route {
 
 					if (Web.mug) {
 
-						View.DOM([`div`, [Models.contacts()]]);
+						View.DOM([`div`, [Models.peers()]]);
+
+						Events.putContact();
 					}
 				}
 			}
@@ -299,7 +301,6 @@ class Route {
 
 					}
 				}
-
 			}
 
 			else if (State[4] === `deposit` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
@@ -334,7 +335,6 @@ class Route {
 
 					}
 				}
-
 			}
 		}
 

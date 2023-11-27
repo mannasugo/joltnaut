@@ -220,7 +220,7 @@ body {
 
 .v202201180941, .v202202122052, .v202203171249, .v202203191304, .v202203261943, .v202203262148, .v202204261406, .v202204282015, .v202205042043, 
 .v202205081343, .v202205081426, .v202205081410, .v202206131254, .v202206131256, .v202206271427, .v202207071159, .v202207071206, .v202207161737,
-.v202301071417, .v202303311456, .v202304191915, .v202310281744, .v202310282005, .v202311051955, .v202311102200 {
+.v202301071417, .v202303311456, .v202304191915, .v202310281744, .v202310282005, .v202311051955, .v202311102200, .v202311261657 {
   background-repeat: no-repeat;
   height: 24px;
   width: 24px;
@@ -276,6 +276,8 @@ body {
 
 .v202311102200 {background-image: url(/ssl/given/svg/filter_202311102200.svg);}
 
+.v202311261657 {background-image: url(/ssl/given/svg/last_202311261657.svg);}
+
 ._aA2, ._aA2:visited {color: #000;}
 
 ._gZ + ._gZ {border-top: 1px solid #f4f4f4}
@@ -316,7 +318,8 @@ body {
 
 #mugin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
 
-#cellSlots input, #inletWallet input, #inVaultSlot input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, #putFloat, #viafloat, #vialet {
+#cellSlots input, #contactSlot input, #inletWallet input, #inVaultSlot input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, 
+#putFloat, #viafloat, #vialet {
   block-size: 40px;
   background-color:#f4f4f4;
   color:#171a20;
