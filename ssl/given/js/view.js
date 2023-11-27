@@ -1288,6 +1288,59 @@ let Models = {
 										[`span`, {style: {background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${6}px`, [`margin-top`]: `${12}px`, color: `#84450c45`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${2}px ${8}px`}}, `20 confirmations (typically 1 minute) required before funds are available for trading.`]]]]]]]]]
 	},
 
+	vetPeers: function (Arg) {
+
+		let Vet = [[], []];
+
+		Arg.forEach(MD => {
+
+			Vet[1] = [];
+
+			if (MD.peers[1] === Clients.mug) {
+
+				Vet[1] = [`a`, {class: `v202203191304`, href: `javascript:;`, id: `letContact`}]
+			}
+
+			Vet[0].push(
+				[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${12}px`}}, 
+					[
+						[`svg`, {style: {[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+							[
+								[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+								[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+										[`text-transform`]: `uppercase`, 
+										[`letter-spacing`]: `normal`,
+										[`font-size`]: `${11}px`}}, (MD.peers[0] === Clients.mug)? MD.mail[1][0]: MD.mail[0][0]]]], 
+						[`div`, {class: `_eYG`, style: {[`line-height`]: 1.6}}, 
+							[
+								[`span`, {}, (MD.peers[0] === Clients.mug)? MD.mail[1]: MD.mail[0]],
+								[`span`, {style: 
+									{
+										color: `#a3a3a3`,
+										[`font-size`]: `${9}px`, 
+										[`font-weight`]: 600}}, (MD.peers[0] === Clients.mug)? `YOU SENT A REQUEST`: `SENT YOU A REQUEST`]]],
+						[`div`, {class: `_gZz`},
+							[Vet[1]]]]]);
+		});
+
+		return [`main`, {class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: ``}, 
+								[[`a`, {class: `v202311261657`, style: {width: `${14}px`, height: `${14}px`}, href: `/my/peers`}, ``]]], 
+							[`div`, {class: `_eYG`}, 
+								[[`span`, {}, `WALLET REQUESTS`]]]]]]], 
+				[`main`, {id: `p2p`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {id: `contactVet`}, 
+								[
+									[`h1`, {style: {[`font-size`]: `${9}px`, [`font-weight`]: 600, [`margin-top`]: `${22}px`}}, `REQUESTS`],
+									[`section`, {}, Vet[0]]]]]]]]]];
+	},
+
 	asset: function () {
 
 		let Axis = Tools.typen(Clients.quo).btc;

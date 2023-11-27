@@ -124,6 +124,32 @@ class Route {
 					}
 				}
 			}
+
+    		else if (State[4] && State[4] === `peers` && State[5] && State[5] === `requests` && !State[6] 
+    			&& !Tools.slim[State[6]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `peers`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						let Peers = [];
+
+						Web.peers.forEach(MD => {
+
+							if (MD.via[1] === false) Peers.push(MD);
+						});
+
+						View.DOM([`div`, [Models.vetPeers(Peers)]]);
+					}
+				}
+			}
     	}
 
     	else if (this.State[3] === `p2p`) {

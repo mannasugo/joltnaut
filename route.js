@@ -590,7 +590,16 @@ class Route {
 
 								if (Raw.mugs[1][Pulls.mug]) {
 
-									Arg[1].end(Tools.coats({mug: Pulls.mug}));
+									let Peers = [];
+
+									Raw.peers[0].forEach(MD => {
+
+										MD.mail = [Raw.mugs[1][MD.peers[0]].mail, Raw.mugs[1][MD.peers[1]].mail]
+
+										if (MD.peers.indexOf(Pulls.mug) > -1) Peers.push(MD);
+									});
+
+									Arg[1].end(Tools.coats({mug: Pulls.mug, peers: Peers}));
 								}
 							}
 
