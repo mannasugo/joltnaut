@@ -128,6 +128,8 @@ class Route {
 						View.DOM([`div`, [Models.peers(Peers)]]);
 
 						Events.putContact();
+
+						Events.allow();
 					}
 				}
 			}

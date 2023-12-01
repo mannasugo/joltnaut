@@ -14,6 +14,35 @@ class Events {
 
 	/** **/
 
+	allow () {
+
+		if (document.querySelector(`#allow`) === null) return;
+
+		this.listen([document.querySelector(`#allow`), `click`, S => {
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					param : this.getSource(S).getAttribute(`md`), 
+					pull: `allow`}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = Tools.typen(Puts.response);
+
+				if (Web.mug) {
+
+					View.DOM([`div`, [Models.allow()]]);
+				}
+			}
+
+		}]);
+	}
+
 	cellSlots () {
 
 		this.listen([document.querySelector(`#cellSlots`), `click`, S => {

@@ -235,6 +235,24 @@ class Route {
 
 						Sql.pulls(Raw => {
 
+							if (Pulls.pull === `allow`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.peers[1][Pulls.param] && Raw.peers[1][Pulls.param].peers.indexOf(Pulls.mug) > -1 
+									&& Raw.peers[1][Pulls.param].via[0] === true && Raw.peers[1][Pulls.param].via[1] === true) {
+
+									let Couple = Raw.peers[1][Pulls.param], peer;
+
+                					(Couple.peers[0] === Pulls.mug)? peer = Couple.peers[1]: peer = Couple.peers[0];
+
+                					console.log(Raw.mugs[1][peer]);
+
+									/*Sql.places([`peers`, Raw.peers[1][Pulls.param], Old, (Raw) => {
+
+										Arg[1].end(Tools.coats({mug: Pulls.mug}));
+									}]);*/		 
+								}
+							}
+
 							if (Pulls.pull === `app`) {
 
 								if (Pulls.mug != false) {

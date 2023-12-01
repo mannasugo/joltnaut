@@ -65,6 +65,10 @@ class View {
 
 let Models = {
 
+	allow: function () {
+		
+	},
+
 	c2s: function () {
 
 		let Vaults = [Tools.typen(Clients.inVaults), []];
@@ -1256,7 +1260,7 @@ let Models = {
 										[`font-size`]: `${9}px`, 
 										[`font-weight`]: 600}}, ``]]],
 						[`div`, {class: `_gZz`},
-							[[`a`, {class: `v202203261943`, href: `javascript:;`, id: ``, md: MD.md, style: 
+							[[`a`, {class: `v202203261943`, href: `javascript:;`, id: `allow`, md: MD.md, style: 
 								{height: `${18}px`, width: `${18}px`}}]]]]]);
 		});
 
