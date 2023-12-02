@@ -28,15 +28,15 @@ class Events {
 
 			View.pop();
 
-			View.DOM([`div`, [Models.splash]]);
-
 			Puts.onload = () => {
 
 				let Web = Tools.typen(Puts.response);
 
 				if (Web.mug) {
 
-					View.DOM([`div`, [Models.allow()]]);
+					View.DOM([`div`, [Models.allow(Web.allow)]]);
+
+					this.local2Coin();
 				}
 			}
 

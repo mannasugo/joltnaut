@@ -65,7 +65,44 @@ class View {
 
 let Models = {
 
-	allow: function () {
+	allow: function (Arg) {
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {}, `SEND AMOUNT`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/my/peers`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `SEND TO`]			,
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${4}px`}}, 
+								[[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+									[[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+									[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+										[`text-transform`]: `uppercase`, 
+										[`letter-spacing`]: `normal`,
+										[`font-size`]: `${11}px`}}, Arg.mail[0]]]], 
+								[`span`, {}, Arg.mail]]], 
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+								[[`span`, {style: {color: `#a3a3a3`}}, `My Wallet Balance`], 
+								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${Arg.hold} USDT`]]],
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO SEND`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: `coinSlot`, placeholder: `0.00`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `USDT`]]]]], 
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `RECEPIENT WILL RECEIVE`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg.hold*154.94).toLocaleString()}`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#ca0000`, border: `${1}px solid #ca0000`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: ``}, `SEND USDT`]]]]]]]]]
 		
 	},
 

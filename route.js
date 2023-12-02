@@ -244,12 +244,15 @@ class Route {
 
                 					(Couple.peers[0] === Pulls.mug)? peer = Couple.peers[1]: peer = Couple.peers[0];
 
-                					console.log(Raw.mugs[1][peer]);
+									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
 
-									/*Sql.places([`peers`, Raw.peers[1][Pulls.param], Old, (Raw) => {
-
-										Arg[1].end(Tools.coats({mug: Pulls.mug}));
-									}]);*/		 
+									Arg[1].end(Tools.coats({
+										allow: {
+											hold: (Hold[0].hold[1]).toFixed(2),
+											id: Raw.mugs[1][peer].secs,
+											mail: Raw.mugs[1][peer].mail,
+											md: Pulls.param,
+											peer: peer}, mug: Pulls.mug}));		 
 								}
 							}
 
