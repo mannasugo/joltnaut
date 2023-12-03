@@ -225,6 +225,33 @@ let Models = {
 						[`div`, {}, Params[1]]]])
 		});
 
+		Arg[1].sort((A, B) => {return B.ts - A.ts}).forEach(Tx => {
+
+			let Params = [
+				{
+					date: Tools.logs(Tx.ts),
+					fee: Tx.gas.toFixed(2),
+					[`coin amount`]: `${Tx.float.toFixed(2)} USDT`}, []];
+
+			for (param in Params[0]) {
+
+				Params[1].push(
+					[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${0}px`}}, 
+						[
+							[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`text-transform`]: `uppercase`}}, param],
+							[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${10}px`}}, `${Params[0][param]}`]]]]]);
+			}
+
+			TX[1].push(
+				[`div`, {style: {[`border-bottom`]: `${1}px solid #e3e3e3`, margin: `${1}px ${0} ${0}`, padding: `${12}px ${0}`}}, 
+					[
+						[`div`, {class: `_gxM`, style: {[`font-weight`]: 600, [`margin-bottom`]: `${6}px`}}, 
+							[
+								[`span`, {style: {color: (Tx.type === `out`)? `#ca0000`: `#00ca29`}}, `${(Tx.type === `out`)? `Send`: `Receive`} `],
+								[`span`, {style: {[`margin-left`]: `${6}px`}}, ` USDT`]]], 
+						[`div`, {}, Params[1]]]])
+		});
+
 		return [`main`, {id: `holds`, class: `_tY0`}, 
 			[
 				[`div`, {class: `_-tY`}, 
@@ -283,7 +310,14 @@ let Models = {
 													[
 														[`a`, {class: `v202310281744`, style: {}, href: `/my/peers`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]],
-										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, TX[0]]]]]]]]]];
+										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (TX[0].length > 0)? `RECENT DEPOSITS & WITHDRAWALS`: ``],
+												[`div`,  {}, TX[0]]]],
+										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (TX[1].length > 0)? `RECENT WALLET TRANSCATIONS`: ``],
+												[`div`,  {}, TX[1]]]]]]]]]]]];
 	},
 
 	idVaultSlot: function () {

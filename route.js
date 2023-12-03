@@ -274,6 +274,26 @@ class Route {
 										}
 									});
 
+									Raw.till[0].forEach(MD => {
+
+										if (MD.till[Pulls.mug] && MD.flag && MD.flag.w2w) {
+
+											let peer;
+
+											for (let vault in MD.till) {
+
+												if (vault !== `${hold}` || vault !== Pulls.mug) peer = vault;
+											}
+
+											TX[1].push({
+												float: (MD.till[Pulls.mug][1] < 0)? -(MD.till[Pulls.mug][1]): MD.till[Pulls.mug][1],
+												gas: (MD.till[Pulls.mug][1] < 0)? MD.till[hold]: 0, 
+												mail: Raw.mugs[1][peer].mail,
+												ts: MD.ts,
+												type: (MD.till[Pulls.mug][1] < 0)? `out`: `in`});
+										}
+									});
+
 									let Day = new Date();
 
 									let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
@@ -382,7 +402,6 @@ class Route {
 
 										Vaults.push(Mug);
 									}
-
 								});
 
 								Arg[1].end(Tools.coats({
@@ -869,8 +888,8 @@ class Route {
 
 										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
 
-										//Sql.puts([`till`, 
-										console.log({
+										Sql.puts([`till`, {
+											flag: {w2w: md},
 											md: md,
 											outlet_wallet: false,
 											secs: ts,
@@ -878,13 +897,12 @@ class Route {
 												[hold]: Tools.gas([Pulls.param[1]])*.75,
 												[Pulls.mug]: [0, -(Pulls.param[1] + Tools.gas([Pulls.param[1]])*.75)], 
 												[Pulls.param[0].peer]: [0, Pulls.param[1]]},
-												ts: ts,
-												tx: false,
-												vow: false})//, (Q) => {
+											ts: ts,
+											tx: false,
+											vow: false}, (Q) => {
 
-													//Arg[1].end(Tools.coats({mug: Pulls.mug}));
-
-											//}]);
+												Arg[1].end(Tools.coats({mug: Pulls.mug}));
+										}]);
 									}	 
 								}
 							}
