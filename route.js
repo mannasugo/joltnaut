@@ -854,6 +854,41 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `w2w`) { 
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.peers[1][Pulls.param[0].md] 
+									&& Raw.peers[1][Pulls.param[0].md].peers.indexOf(Pulls.mug) > -1
+									&& Raw.peers[1][Pulls.param[0].md].peers.indexOf(Pulls.param[0].peer) > -1 
+									&& Raw.peers[1][Pulls.param[0].md].via[0] === true && Raw.peers[1][Pulls.param[0].md].via[1] === true) {
+
+									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
+									if (Hold[0].hold[1] > (Pulls.param[1] + Tools.gas([Pulls.param[1]])*.75)) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										//Sql.puts([`till`, 
+										console.log({
+											md: md,
+											outlet_wallet: false,
+											secs: ts,
+											till: {
+												[hold]: Tools.gas([Pulls.param[1]])*.75,
+												[Pulls.mug]: [0, -(Pulls.param[1] + Tools.gas([Pulls.param[1]])*.75)], 
+												[Pulls.param[0].peer]: [0, Pulls.param[1]]},
+												ts: ts,
+												tx: false,
+												vow: false})//, (Q) => {
+
+													//Arg[1].end(Tools.coats({mug: Pulls.mug}));
+
+											//}]);
+									}	 
+								}
+							}
+
 							if (Pulls.pull === `walletOutlet`) {
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT && Raw.mugs[1][Pulls.mug].inlet.USDT.length > 0) {

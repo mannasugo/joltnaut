@@ -37,9 +37,37 @@ class Events {
 					View.DOM([`div`, [Models.allow(Web.allow)]]);
 
 					this.local2Coin();
+
+					this.listen([document.querySelector(`#w2w`), `click`, S => {
+
+						let Values = [
+							(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value)];
+
+						if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+						if (parseFloat(Values[0]) <= 0 || Web.allow.hold < parseFloat(Values[0])) return;
+
+						let Puts = Tools.pull([
+							`/json/web/`, { 
+								mug: Clients.mug, 
+								param : [Web.allow, parseFloat(Values[0])], 
+								pull: `w2w`}]);
+
+						Values = [];
+
+						View.pop();
+
+						View.DOM([`div`, [Models.splash]]);
+
+						Puts.onload = () => {
+
+							let Web = JSON.parse(Puts.response);
+
+							if (Web.mug) window.location = `/`;
+						}
+					}]);
 				}
 			}
-
 		}]);
 	}
 
