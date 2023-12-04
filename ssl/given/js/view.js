@@ -810,7 +810,7 @@ let Models = {
 		let Slot = {
 			action: [`signin`, `signin`],
 			slots: [[`email address`, `email`, `email`], [`password`, `lock`, `password`]]
-		};
+		}, TC = [[]];
 
 		if (Tools.typen(Clients.instance)[0] === `mugup`) {
 
@@ -822,19 +822,40 @@ let Models = {
 					[`surname`, `family`, `text`], 
 					[`password`, `lock`, `password`]
 				]
-			}  			
+			}
+
+			TC[0] = [
+			`span`, {
+				style: {
+					color: `#a1a1a1`, 
+					[`font-size`]: `${12}px`, [`font-weight`]: 600, [`line-height`]: 1.5, margin: `${12}px 0 0`, [`text-align`]: `center`}}, 
+				[
+					[`span`, {}, `By creating an account, you consent that you have read and agree to our `], 
+					[`a`, {href: `javascript:;`}, ` Terms of Service & Privacy Policy.`]]];			
 		}
 
 		let Slots = [];
 
 		Slot.slots.forEach(Slot => {
 
+			let Tip = [[]];
+
+			if (Slot[0] === `surname`) {
+
+				Tip[0] = [`span`, {style: 
+					{
+						color: `#a1a1a1`, 
+						[`font-size`]: `${12}px`, [`font-weight`]: 600, [`line-height`]: 1.5, margin: `${12}px 0 0`, [`text-align`]: `center`}}, 
+				`* First name & last name must match government issued ID. A mismatch when verifying your account identity (KYC Process), 
+				could temporarily disable deposits and withdrawals on your account.`]
+			}
+
 			Slots.push([
 					`div`, {class: `_sZ2`}, [
 						[`label`, {style: {margin: `0 ${20}px ${8}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
 							[[`span`, {}, Slot[0]]]], 
 						[`div`, {class: `_aXZ`}, 
-							[[`input`, {id: Slot[1], type: Slot[2]}]]]]]);
+							[[`input`, {id: Slot[1], type: Slot[2]}]]], Tip[0]]]);
 
 		});
 
@@ -857,7 +878,8 @@ let Models = {
 										[
 											[`div`, {}, Slots],
 											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
-												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]]]]]]]]]]
+												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]],
+											TC[0]]]]]]]]]
 	},
 
 	outVaultC2s: function (Arg) {
