@@ -847,6 +847,15 @@ class Route {
 								}			
 							}
 
+							if (Pulls.pull === `via`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									Arg[1].end(Tools.coats({
+										mug: Pulls.mug}));
+								}
+							}
+
 							if (Pulls.pull === `vow`) {
 
 								if (Raw.vows[1][Pulls.vow] && Raw.vows[1][Pulls.vow].peers[1] === Pulls.mug 

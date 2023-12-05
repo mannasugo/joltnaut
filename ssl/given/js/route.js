@@ -98,6 +98,34 @@ class Route {
 			}
     	}
 
+    	else if (this.State[3] === `mode`) { 
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+    		else if (State[4] && State[4] === `deposit` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `via`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						View.DOM([`div`, [Models.inVaultVia()]]);
+					}
+				}
+			}
+		}
+
     	else if (this.State[3] === `my`) {
 
     		if (!Clients.mug) {

@@ -69,7 +69,7 @@ let Models = {
 
 		return [
 			`section`, {}, 
-				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
 					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 						[
 							[`div`, {class: `_gxM _geQ`}, 
@@ -110,8 +110,7 @@ let Models = {
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#ca0000`, border: `${1}px solid #ca0000`}}, 
-								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]
-		
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]		
 	},
 
 	c2s: function () {
@@ -664,6 +663,29 @@ let Models = {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `putClientVow`}, `Confirm Payment`]]]]]]]]]
+	},
+
+	inVaultVia: function () {
+
+		return [`main`, {class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: ``}, 
+								[[`a`, {class: `v202311261657`, style: {width: `${14}px`, height: `${14}px`}, href: `/`}, ``]]], 
+							[`div`, {class: `_eYG`}, 
+								[[`span`, {}, ``]]]]]]], 
+				[`main`, {id: `p2p`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {id: `vaultVia`}, 
+								[
+									[`h1`, {style: 
+										{
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 600, [`margin-top`]: `${22}px`}},  `CHOOSE DEPOSIT METHOD`],
+									[`section`, {}, []]]]]]]]]];
 	},
 
 	inVaultVow: function (Arg) {
