@@ -269,8 +269,8 @@ let Models = {
                                         [`white-space`]: `nowrap`}}, `joltnaut`]]],
 							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
 								[[`div`, {class: `_gxM`}, 
-									[[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]]]]]]]]], 
-					[`main`, {id: `clientTX`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${65}px`}}, 
+									[/*[`a`, {class: `v202205081410`, style: {margin: `${0} ${10}px`}, href: `/reserve`}]*/]]]]]]]], 
+					[`main`, {id: `clientTX`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
 						[[`div`, {class: `_geQ`, style: {[`max-width`]: `${600}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 							[
 								[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
@@ -291,16 +291,30 @@ let Models = {
 																		color: `#00ca29`,
 																		[`font-family`]: `geometria`, 
 																		[`font-size`]: `${10}px`}}, `+${Tools.typen(Clients.pnl)[1]}(${Tools.typen(Clients.pnl)[0]}%)`]]]]]]],
+										/*[`section`, {class: `_gxM _geQ`, style: {[`line-height`]: 1.5, margin: `${12}px 0 0`}},
+											[
+												[`span`, {class: `v202205081410`}],
+												[`div`, {class: `_eYG`}, 
+													[
+														[`span`, {}, `P2P Value`],
+														[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.vault} USDT`]]],
+												[`div`, {class: `_gZz`},
+													[[`div`, {class: `_gM_a _agM _guZ`, style: {
+														width: `${100}%`, 
+														[`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
+														[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: ``, style: {
+															[`white-space`]: `nowrap`
+														}}, (parseFloat(Clients.vault) > 0)? `Manage P2P`: `P2P Merchant`]]]]]]],*/
 										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `QUICK ACTIONS`],
 										[`div`, {class: `_gxM`, style: {[`font-size`]: `${10}px`, [`margin-top`]: `${24}px`}}, 
 											[
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202203261943`, style: {}, href: `/p2p`}],
+														[`a`, {class: `v202203261943`, style: {}, href: `/mode/deposit`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `DEPOSIT`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202203262148`, style: {}, href: `/p2p/c2s`}],
+														[`a`, {class: `v202203262148`, style: {}, href: `/mode/withdraw`}],
 														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `WITHDRAW`]]],
 												[`div`, {class: `_geQ`}, 
 													[

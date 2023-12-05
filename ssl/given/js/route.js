@@ -48,6 +48,8 @@ class Route {
 
 					Clients.ts = Web.ts;
 
+					Clients.vault = Web.vault;
+
 					View.DOM([`div`, [Models.clientTX(Web.tx)]]);
 				}
 

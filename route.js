@@ -311,10 +311,11 @@ class Route {
 									});
 
 									Arg[1].end(Tools.coats({
-										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0.00,
+										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
 										pnl: PNL,
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
-										tx: TX}));
+										tx: TX,
+										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
 								}
 
 								else Arg[1].end(Tools.coats({}));
