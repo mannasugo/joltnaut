@@ -53,14 +53,11 @@ class View {
 		});
 
 		return Tools.plains(this.appendString);
-		}
+	}
 
-		DOM(Arg) {
+	DOM(Arg) { document.querySelector(Arg[0]).innerHTML = this.ModelDOM(Arg[1]);}
 
-		document.querySelector(Arg[0]).innerHTML = this.ModelDOM(Arg[1]);
-		}
-
-		pop () {this.appendString = ``};
+	pop () {this.appendString = ``};
 }
 
 let Models = {
@@ -667,6 +664,34 @@ let Models = {
 
 	inVaultVia: function () {
 
+		let Via = [
+			[
+				[`M-PESA (STK-PUSH)`, `#049b04`, `INSTANT DEPOSIT`, `FREE CHARGE`], 
+				[`Tron Network (TRC20)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`]], []];
+
+		Via[0].forEach(Slot => {
+
+			Via[1].push(
+				[`div`, {style: {margin: `${12}px 0`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {style: {background: Slot[1], height: `${14}px`, [`margin-right`]: `${8}px`, width: `${4}px`}}], 
+								[`span`, {style: {[`font-weight`]: 300}}, Slot[0]],
+								[`div`, {class: `_gZz`}, 
+									[[`a`, {class: `v202312061631`, style: {width: `${24}px`, height: `${24}px`}, href: `/`}]]]]],
+						[`section`, {style: {[`margin-left`]: `${12}px`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202301071417`, style: {width: `${14}px`, height: `${14}px`}}],
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[2]]]]]],
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202205081426`, style: {width: `${16}px`, height: `${16}px`}}],
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[3]]]]]]]]]]);
+		});
+
 		return [`main`, {class: `_tY0`}, 
 			[
 				[`div`, {class: `_-tY`}, 
@@ -684,8 +709,8 @@ let Models = {
 									[`h1`, {style: 
 										{
 											[`font-size`]: `${9}px`, 
-											[`font-weight`]: 600, [`margin-top`]: `${22}px`}},  `CHOOSE DEPOSIT METHOD`],
-									[`section`, {}, []]]]]]]]]];
+											[`font-weight`]: 600, [`margin-top`]: `${22}px`}},  `CHOOSE A DEPOSIT METHOD`],
+									[`section`, {}, Via[1]]]]]]]]]];
 	},
 
 	inVaultVow: function (Arg) {
