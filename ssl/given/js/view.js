@@ -616,18 +616,18 @@ let Models = {
 								[
 									[`h2`, {}, `BUY USDT WITH M-PESA`], 
 									[`div`, {class: `_gZz`}, 
-										[[`a`, {class: `v202311051955`, href: `/my/peers`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
-							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `MY ACCOUNT'S DETAILS`]			,
+										[[`a`, {class: `v202311051955`, href: `/`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `BILLING ACCOUNT`]			,
 							[`section`, {style: {[`margin-top`]: `${4}px`}}, 
 								[
 									[`div`, {class: `_gxM _geQ`}, 
 										[
 											[`span`, {style: {background: `#049b04`, height: `${14}px`, [`margin-right`]: `${8}px`, width: `${4}px`}}], 
 											[`span`, {style: {[`font-weight`]: 600}}, `M-PESA Safaricom (Kenya)`]]], 
-									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${6}px`}}, 
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-left`]: `${12}px`}}, 
 										[
-											[`span`, {id: `slotMug`}, `${Arg.mug.toUpperCase()}`], 
-											[`div`, {class: `_gZz`}, [[`span`, {id: `slotCell`}, Arg.id]]]]]]], 
+											[`span`, {style: {[`font-size`]: `${11}px`}}, `${Arg.mug.toUpperCase()}`], 
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `geometria`}}, Arg.id]]]]]]], 
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
 								/*[[`span`, {style: {color: `#a3a3a3`}}, `My Wallet Balance`], 
 								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${Arg.hold} USDT`]]*/],
