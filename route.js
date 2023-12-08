@@ -417,12 +417,14 @@ class Route {
 
 								if (!Raw.mugs[1][Pulls.mug].vaultSlots) Raw.mugs[1][Pulls.mug][`vaultSlots`] = [];
 
+								if (Pulls.param[1].length === 12) return;
+
 								Raw.mugs[1][Pulls.mug].vaultSlots.push({
 									carrier: `safaricom`,
 									id: Pulls.param[1],
 									mug: Pulls.param[0],
 									ts: new Date().valueOf(),
-									type: `mobile pay`}); 
+									type: `mobile pay`});
 
 								Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
 
@@ -845,6 +847,35 @@ class Route {
 										mug: Pulls.mug,
 										s2c: Vow}));
 								}			
+							}
+
+							if (Pulls.pull === `vaultSlot`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									if (Pulls.flag === `stk`) {
+
+										let vaultSlot = {};
+
+										if (Raw.mugs[1][Pulls.mug].vaultSlots) {
+
+											Raw.mugs[1][Pulls.mug].vaultSlots.forEach(Slot => {
+
+												if (Slot.carrier && Slot.carrier === `safaricom`) {
+
+													vaultSlot = {
+														apex: 1000,
+														id: Slot.id,
+														mug: Slot.mug};
+												}
+											});
+										}
+
+										Arg[1].end(Tools.coats({
+											mug: Pulls.mug,
+											vaultSlot: vaultSlot}));
+									}
+								}
 							}
 
 							if (Pulls.pull === `via`) {
