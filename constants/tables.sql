@@ -2,6 +2,8 @@ select * from `asks`;
 
 select * from `bids`;
 
+select * from `invoice`;
+
 select * from `mugs`;
 
 select * from `pays`;

@@ -1,8 +1,12 @@
+`use strict`;
+
 const { readdir, readFile, readFileSync, createReadStream, mkdir, stat, writeFile, writeFileSync } = require(`fs`);
 
 const { createHash } = require(`crypto`);
 
 const get = require(`request`);
+
+const HTTPS = require(`https`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -849,6 +853,69 @@ class Route {
 								}			
 							}
 
+							if (Pulls.pull === `STKPay`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									let Param = Pulls.param;
+
+									if (Param.float >= 2.5) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										let Get = HTTPS.request({
+        									hostname: `payment.intasend.com`,
+        									port: 443,
+        									path: `/api/v1/payment/mpesa-stk-push/`,
+        									method: `POST`,
+       										headers: {
+       											Authorization: `Bearer ISSecretKey_live_c3481e0a-b1c5-4529-b761-bcee74225b6c`,
+       											[`Content-Type`]: `application/json`,
+       											INTASEND_PUBLIC_API_KEY: `ISPubKey_live_be13c375-b61d-4995-8c50-4268c604c335`}}, Got => {
+
+												let got = ``;
+
+												Got.on(`data`, (buffer) => {got += buffer;});
+        										
+        										Got.on('end', () => {
+
+          											if (got) {
+
+          												let TX = Tools.typen(got);
+
+          												if (TX.id) {console.log(TX)
+
+          													/*console.log({
+          														float: Param.float,
+          														id: TX.id, 
+          														invoice: TX.invoice.invoice_id, 
+          														local: Param.local,
+          														md: md,
+          														mug: Pulls.mug,
+          														secs: ts,
+          														ts: ts,
+          														type: `stk`})*/
+
+															Arg[1].end(Tools.coats({mug: Pulls.mug}));
+														}
+          											}
+        										});
+										});
+
+										Get.write(Tools.coats({
+											amount: Param.local,
+											api_ref: md,
+											email: Raw.mugs[1][Pulls.mug].mail,
+											phone_number: Param.id}));
+
+										Get.end();
+
+									}
+								}
+							}
+
 							if (Pulls.pull === `vaultSlot`) {
 
 								if (Raw.mugs[1][Pulls.mug]) {
@@ -995,8 +1062,7 @@ class Route {
 									}]);
 								}
 
-								else Arg[1].end(Tools.coats({inlet: false, mug: Pulls.mug}));
-								
+								else Arg[1].end(Tools.coats({inlet: false, mug: Pulls.mug}));	
 							}
 						});
 					}

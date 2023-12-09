@@ -509,6 +509,39 @@ class Events {
 		}]);
 	}
 
+	STKPay (Arg) {
+
+		this.listen([document.querySelector(`#stk`), `click`, S => {
+
+			let Values = 
+				[(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value),
+				(!Tools.slim(document.querySelector(`#localSlot`).value))? false: Tools.slim(document.querySelector(`#localSlot`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+			if (parseFloat(Values[0]) <= 0 || Arg.apex < parseFloat(Values[0]) || 2.5 > parseFloat(Values[0])) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					param : {float: parseFloat(Values[0]), id: Arg.id, local: parseFloat(Values[1])}, 
+					pull: `STKPay`}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web.mug) window.location = `/`;
+			}
+		}]);
+	}
+
 	vetC2s (Vow) {
 
 		if (document.querySelector(`#vetC2s`) === null) return;

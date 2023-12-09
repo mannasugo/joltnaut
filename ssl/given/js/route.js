@@ -145,6 +145,8 @@ class Route {
 							View.DOM([`div`, [Models.inVaultSTK(Web.vaultSlot)]]);
 
 							Events.local2Coin();
+
+							Events.STKPay(Web.vaultSlot);
 						}
 
 						else window.location = `/account`;
