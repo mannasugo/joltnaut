@@ -274,6 +274,19 @@ class Route {
 										}
 									});
 
+									Raw.invoice[0].forEach(Bill => {
+
+										if (Bill.complete === true && Bill.mug === Pulls.mug) {
+
+											TX[0].push({
+												local: Bill.local/Bill.float,
+												float: Bill.float,
+												tx: Bill.tx,
+												type: `inVault`
+											});
+										}
+									});
+
 									Raw.till[0].forEach(MD => {
 
 										if (MD.till[Pulls.mug] && MD.flag && MD.flag.w2w) {
