@@ -226,12 +226,8 @@ class Route {
 											else Arg[1].end(Tools.coats(Put));
 										}]);
 									}]);
-								}
-								
+								}							
 							}
-
-							//Arg[1].end(Tools.coats(Put));
-
 						});
 					}
 
@@ -885,9 +881,10 @@ class Route {
 
           												let TX = Tools.typen(got);
 
-          												if (TX.id) {console.log(TX)
+          												if (TX.id) {
 
-          													/*console.log({
+          													Sql.puts([`invoice`, {
+          														complete: false,
           														float: Param.float,
           														id: TX.id, 
           														invoice: TX.invoice.invoice_id, 
@@ -896,22 +893,22 @@ class Route {
           														mug: Pulls.mug,
           														secs: ts,
           														ts: ts,
-          														type: `stk`})*/
+          														type: `stk`}, (Bill) => {
 
-															Arg[1].end(Tools.coats({mug: Pulls.mug}));
+																Arg[1].end(Tools.coats({mug: Pulls.mug}));
+															}]);
 														}
           											}
         										});
 										});
 
 										Get.write(Tools.coats({
-											amount: Param.local,
+											amount: parseFloat(Param.local),
 											api_ref: md,
 											email: Raw.mugs[1][Pulls.mug].mail,
 											phone_number: Param.id}));
 
 										Get.end();
-
 									}
 								}
 							}
@@ -1069,6 +1066,70 @@ class Route {
 				}
 			});
 		}
+	}
+
+	pollPay () {
+
+		setInterval(()=> {
+
+			Sql.pulls(Raw => {
+
+				Raw.invoice[1].forEach(Bill => {
+
+					if (Bill.complete === false) {
+
+						let Get = HTTPS.request({
+        					hostname: `payment.intasend.com`,
+        					port: 443,
+        					path: `/api/v1/payment/status/`,
+        					method: `POST`,
+       						headers: {
+       							Authorization: `Bearer ISSecretKey_live_c3481e0a-b1c5-4529-b761-bcee74225b6c`,
+       							[`Content-Type`]: `application/json`,
+       							INTASEND_PUBLIC_API_KEY: `ISPubKey_live_be13c375-b61d-4995-8c50-4268c604c335`}}, Got => {
+
+							let got = ``;
+
+							Got.on(`data`, (blob) => {got += blob;});
+        										
+        					Got.on('end', () => {
+
+          						if (got) {
+
+          							let TX = Tools.typen(got);
+
+          							if (TX.invoice.state === `COMPLETE` && !Raw.till[Bill.md]) {
+
+										Sql.puts([`till`, {
+											flag: {stk: Bill.md},
+											md: Bill.md,
+											outlet_wallet: false,
+											secs: ts,
+											till: {
+												[hold]: 0,
+												[Bill.mug]: [0, Bill.float]},
+											ts: ts,
+											tx: false,
+											vow: false}, (Q) => {
+
+                							let Old = Tools.typen(Tools.coats(Bill));
+
+                							Bill.complete = true;
+
+											Sql.places([`invoice`, Bill, Old, (Q) => {}]);
+										}]);
+									}
+          						}
+        					});
+						});
+
+						Get.write(Tools.coats({invoice_id: Bill.invoice}));
+
+						Get.end();
+					}
+				});
+			});
+		}, 10000);
 	}
 
 	Socket (App) {
