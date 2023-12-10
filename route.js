@@ -1074,7 +1074,7 @@ class Route {
 
 			Sql.pulls(Raw => {
 
-				Raw.invoice[1].forEach(Bill => {
+				Raw.invoice[0].forEach(Bill => {
 
 					if (Bill.complete === false) {
 
@@ -1104,11 +1104,11 @@ class Route {
 											flag: {stk: Bill.md},
 											md: Bill.md,
 											outlet_wallet: false,
-											secs: ts,
+											secs: Bill.ts,
 											till: {
 												[hold]: 0,
 												[Bill.mug]: [0, Bill.float]},
-											ts: ts,
+											ts: Bill.ts,
 											tx: false,
 											vow: false}, (Q) => {
 
@@ -1118,6 +1118,15 @@ class Route {
 
 											Sql.places([`invoice`, Bill, Old, (Q) => {}]);
 										}]);
+									}
+
+          							if (TX.invoice.state === `FAILED`) {
+
+                						let Old = Tools.typen(Tools.coats(Bill));
+
+                						Bill.complete = null;
+
+										Sql.places([`invoice`, Bill, Old, (Q) => {}]);
 									}
           						}
         					});
