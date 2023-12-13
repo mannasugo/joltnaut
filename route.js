@@ -281,7 +281,7 @@ class Route {
 											TX[0].push({
 												local: Bill.local/Bill.float,
 												float: Bill.float,
-												tx: Bill.tx,
+												ts: Bill.ts,
 												type: `inVault`
 											});
 										}

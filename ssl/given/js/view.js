@@ -199,7 +199,7 @@ let Models = {
 				{
 					[`created time`]: Tools.logs(Tx.ts),
 					[`fiat amount`]: `${(Tx.float*Tx.local).toFixed(2)} KES`,
-					price: `${Tx.local} KES`,
+					price: `${(Tx.local).toFixed(2)} KES`,
 					[`coin amount`]: `${Tx.float} USDT`}, []];
 
 			for (param in Params[0]) {
