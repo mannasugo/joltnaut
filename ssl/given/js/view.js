@@ -1244,6 +1244,61 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `putVaultVow`}, `Confirm Payment`]]]]]]]]]
 	},
 
+	outVaultVia: function () {
+
+		let Via = [
+			[
+				[`M-PESA Safaricom (Kenya)`, `#049b04`, `7 - 25 MINUTES`, `FREE CHARGE`, `0/1000 USD`, `stk`], 
+				[`Tron Network (TRC20)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `UNLIMITED`, `tron`]], []];
+
+		Via[0].forEach(Slot => {
+
+			Via[1].push(
+				[`div`, {style: {margin: `${12}px 0`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {style: {background: Slot[1], height: `${14}px`, [`margin-right`]: `${8}px`, width: `${4}px`}}], 
+								[`span`, {style: {[`font-weight`]: 600}}, Slot[0]],
+								[`div`, {class: `_gZz`}, 
+									[[`a`, {class: `v202312061631`, style: {width: `${24}px`, height: `${24}px`}, href: `/mode/withdraw/${Slot[5]}`}]]]]],
+						[`section`, {style: {[`margin-left`]: `${12}px`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202301071417`, style: {width: `${14}px`, height: `${14}px`}}],
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[2]]]]]],
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202205081426`, style: {width: `${16}px`, height: `${16}px`}}],
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[3]]]]]],
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202310281744`, style: {width: `${14}px`, height: `${14}px`}}],
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[4]]]]]]]]]]);
+		});
+
+		return [`main`, {class: `_tY0`}, 
+			[
+				[`div`, {class: `_-tY`}, 
+					[[`div`, {class: `_aXz`, style: {padding: `${0} ${16}px`}}, 
+						[
+							[`div`, {class: ``}, 
+								[[`a`, {class: `v202311261657`, style: {width: `${14}px`, height: `${14}px`}, href: `/`}, ``]]], 
+							[`div`, {class: `_eYG`}, 
+								[[`span`, {}, ``]]]]]]], 
+				[`main`, {id: `p2p`, class: `_tY0`, style: {height: `${100}%`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {id: `vaultVia`}, 
+								[
+									[`h1`, {style: 
+										{
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 300, [`margin-top`]: `${22}px`}},  `CHOOSE A WITHDRAWAL METHOD`],
+									[`section`, {}, Via[1]]]]]]]]]];
+	},
+
 	outVaultVow: function (Arg) {
 
 		let Slot = [
