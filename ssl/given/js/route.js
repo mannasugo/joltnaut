@@ -168,6 +168,37 @@ class Route {
 					if (Web.mug) View.DOM([`div`, [Models.outVaultVia()]]);
 				}
 			}
+
+    		else if (State[4] && State[4] === `withdraw` && State[5] && State[5] === `stk` && !State[6] 
+    			&& !Tools.slim[State[6]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						flag: `stk`,
+						mug: Clients.mug,
+						pull: `vaultSlot`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						if (Web.vaultSlot.id) {
+
+							Clients.instance = Tools.coats([`outVaultSlot`, new Date().valueOf()]);
+
+							View.DOM([`div`, [Models.outVaultSTK(Web.vaultSlot)]]);
+
+							Events.local2Coin();
+
+							Events.vaultOut(Web.vaultSlot);
+						}
+
+						else window.location = `/account`;
+					}
+				}
+			}
 		}
 
     	else if (this.State[3] === `my`) {

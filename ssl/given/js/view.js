@@ -1187,6 +1187,48 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `outVaultVow`, md: Arg[0].md}, `Withdraw USDT`]]]]]]]]]
 	},
 
+	outVaultSTK: function (Arg) {
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {}, `SELL USDT WITH M-PESA`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `v202311051955`, href: `/`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `WITHDRAWAL ACCOUNT`]			,
+							[`section`, {style: {[`margin-top`]: `${4}px`}}, 
+								[
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {style: {background: `#049b04`, height: `${14}px`, [`margin-right`]: `${8}px`, width: `${4}px`}}], 
+											[`span`, {style: {[`font-weight`]: 600}}, `M-PESA Safaricom (Kenya)`]]], 
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-left`]: `${12}px`}}, 
+										[
+											[`span`, {style: {[`font-size`]: `${11}px`}}, `${Arg.mug.toUpperCase()}`], 
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `geometria`}}, Arg.id]]]]]]], 
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+								[[`span`, {style: {color: `#a3a3a3`}}, `My Wallet Balance`], 
+								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${(Arg.hold).toFixed(2)} USDT`]]],
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO SELL`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: `coinSlot`, placeholder: `2.50 - ${(Arg.apex).toLocaleString()}`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `USDT`]]]]], 
+							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
+								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*154.94).toFixed(2)} - ${(Arg.apex*154.94).toLocaleString()}`, type: `text`}]]], 
+								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vaultOut`}, `SELL USDT`]]]]]]]]]		
+	},
+
 	outVaultVetVow: function (Vow) {
 
 		let Slot = [
@@ -1248,7 +1290,7 @@ let Models = {
 
 		let Via = [
 			[
-				[`M-PESA Safaricom (Kenya)`, `#049b04`, `7 - 25 MINUTES`, `FREE CHARGE`, `0/1000 USD`, `stk`], 
+				[`M-PESA Safaricom (Kenya)`, `#049b04`, `7 - 25 MINUTES`, `FREE CHARGE`, `0/1000 USD DAILY LIMIT`, `stk`], 
 				[`Tron Network (TRC20)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `UNLIMITED`, `tron`]], []];
 
 		Via[0].forEach(Slot => {

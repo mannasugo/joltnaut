@@ -926,6 +926,49 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `vaultOut`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									if (Pulls.param.type === `stk`) {
+
+										let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
+										if (Hold[0].hold[1] > Pulls.param.float) {
+
+											let ts = new Date().valueOf();
+
+											let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+											Sql.puts([`till`, {
+												flag: {payout: md},
+												md: md,
+												outlet_wallet: false,
+												secs: ts,
+												till: {
+													[hold]: 0,
+													[Pulls.mug]: [0, -(Pulls.param.float)]},
+												ts: ts,
+												tx: false,
+												vow: false}, (Q) => {
+
+          										Sql.puts([`payout`, {
+          											complete: false,
+          											float: Pulls.param.float,
+          											id: Pulls.param.id,
+          											local: Pulls.param.local,
+          											md: md,
+          											mug: Pulls.mug,
+          											secs: ts,
+          											ts: ts,
+          											tx: {},
+          											type: `stk`}, (Pay) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
+											}]);
+										}
+									}
+								}
+							}
+
 							if (Pulls.pull === `vaultSlot`) {
 
 								if (Raw.mugs[1][Pulls.mug]) {
@@ -940,8 +983,11 @@ class Route {
 
 												if (Slot.carrier && Slot.carrier === `safaricom`) {
 
+													let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
 													vaultSlot = {
 														apex: 1000,
+														hold: Hold[0].hold[1],
 														id: Slot.id,
 														mug: Slot.mug};
 												}

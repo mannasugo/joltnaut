@@ -8,6 +8,8 @@ select * from `mugs`;
 
 select * from `pays`;
 
+select * from `payout`;
+
 select * from `peers`;
 
 select * from `positions`;
