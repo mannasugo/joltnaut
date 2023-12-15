@@ -287,6 +287,20 @@ class Route {
 										}
 									});
 
+									Raw.payout[0].forEach(Pay => {
+
+										if (Pay.mug === Pulls.mug) {
+
+											TX[0].push({
+												complete: Pay.complete,
+												local: Pay.local/Pay.float,
+												float: Pay.float,
+												ts: Pay.ts,
+												type: `outVault`
+											});
+										}
+									});
+
 									Raw.till[0].forEach(MD => {
 
 										if (MD.till[Pulls.mug] && MD.flag && MD.flag.w2w) {

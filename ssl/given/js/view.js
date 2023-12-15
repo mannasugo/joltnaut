@@ -195,6 +195,15 @@ let Models = {
 
 		Arg[0].sort((A, B) => {return B.ts - A.ts}).forEach(Tx => {
 
+			TX[2] = [];
+
+			if (Tx.complete === false || Tx.complete === true) {
+
+				TX[2] = 
+					[`div`, {class: `_gZz`}, 
+						[[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, }}, (Tx.complete === true)? `Success`: `Processing`]]];
+			}console.log(TX[2])
+
 			let Params = [
 				{
 					[`created time`]: Tools.logs(Tx.ts),
@@ -214,10 +223,11 @@ let Models = {
 			TX[0].push(
 				[`div`, {style: {[`border-bottom`]: `${1}px solid #e3e3e3`, margin: `${1}px ${0} ${0}`, padding: `${12}px ${0}`}}, 
 					[
-						[`div`, {class: `_gxM`, style: {[`font-weight`]: 600, [`margin-bottom`]: `${6}px`}}, 
+						[`div`, {class: `_gxM _geQ`, style: {[`font-weight`]: 600, [`margin-bottom`]: `${6}px`}}, 
 							[
 								[`span`, {style: {color: (Tx.type === `outVault`)? `#ca0000`: `#00ca29`}}, `${(Tx.type === `outVault`)? `Sell`: `Buy`} `],
-								[`span`, {style: {[`margin-left`]: `${6}px`}}, ` USDT`]]], 
+								[`span`, {style: {[`margin-left`]: `${6}px`}}, ` USDT`], 
+								TX[2]]], 
 						[`div`, {}, Params[1]]]])
 		});
 
