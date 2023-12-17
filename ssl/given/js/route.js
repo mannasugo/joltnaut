@@ -98,6 +98,38 @@ class Route {
 			}
     	}
 
+    	else if (this.State[3] === `jms`) {
+
+    		if (!Clients.mug) {
+
+    			history.pushState(``, ``, `/`);
+
+    			this.Call();
+    		}
+
+    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/ms/`, {
+						pull: `app`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.pays) {
+
+						document.title = `Joltnaut Management System`;
+
+						View.DOM([`div`, [Models.jms(Web)]]);
+
+						Events.pollPay();
+					}
+				}
+			}
+
+    	}
+
     	else if (this.State[3] === `mode`) { 
 
     		if (!Clients.mug) {

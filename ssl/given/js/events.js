@@ -387,6 +387,29 @@ class Events {
 		}]);
 	}
 
+	pollPay () {
+
+		this.listen([document.querySelector(`#pollPay`), `click`, S => {
+
+			let Puts = Tools.pull([
+				`/json/ms/`, {
+					md: this.getSource(S).getAttribute(`md`),
+					pull: `pollPay`}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web) window.location = `/jms`;
+			}
+
+		}]);
+	}
+
 	pollWallet () {
 
 		this.listen([document.querySelector(`#pollWallet`), `click`, S => {

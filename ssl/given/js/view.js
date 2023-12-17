@@ -918,6 +918,60 @@ let Models = {
 										[`span`, {style: {color:`#a3a3a3`}}, Slot[6]], Slot[7]]]]]]]]]
 	},
 
+	jms: function (Arg) {
+
+		let TX = [[]];
+
+		Arg.pays.sort((A, B) => {return B.ts - A.ts}).forEach(Pay => {
+
+			TX[0].push(
+				[`section`, {}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+									[
+										[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+										[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+											[`text-transform`]: `uppercase`, 
+											[`letter-spacing`]: `normal`,
+											[`font-size`]: `${11}px`}}, Pay.mail[0]]]], 
+								[`span`, {}, Pay.mail]]],
+						[`section`, {style: {margin: `${4}px ${0} ${8}px ${24}px`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {style: {background: `#049b04`, height: `${14}px`, [`margin-right`]: `${8}px`, width: `${4}px`}}], 
+										[`span`, {style: {[`font-weight`]: 600}}, `M-PESA Safaricom (Kenya)`]]], 
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-left`]: `${12}px`}}, 
+									[
+										[`span`, {style: {[`font-size`]: `${11}px`}}, `${Pay.name.toUpperCase()}`], 
+										[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `geometria`}}, Pay.id]]]]]]],
+						[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`div`, {class: `_gZz`}, 
+									[
+										[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Pay.local}`],
+										[`a`, {class: `v202203262148`, href: `javascript:;`, id: `pollPay`, md: Pay.md, style: {
+											width: `${12}px`, height: `${12}px`}}]]]]]]]);
+		});
+
+		return [
+			`main`, {id: `jms`, class: `_tY0`, style: {padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+				[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+					[
+						[`div`, {id: ``}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202205081426`, style: {width: `${36}px`, height: `${36}px`}}],
+										[`h1`, {style: {
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]]
+								/**/,
+								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[0]]]]]]]]
+	},
+
 	mugslot: function () {
 
 		let Slot = {
