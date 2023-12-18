@@ -920,11 +920,31 @@ let Models = {
 
 	jms: function (Arg) {
 
-		let TX = [[]];
+		let TX = [[], []];
+
+		Arg.mugs.sort((A, B) => {return B.ts - A.ts}).forEach(Mug => {
+
+			TX[0].push(
+				[`section`, {style: {[`margin-top`]: `${4}px`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`svg`, {style: {[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+									[
+										[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+										[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {
+											[`text-transform`]: `uppercase`, 
+											[`letter-spacing`]: `normal`,
+											[`font-size`]: `${11}px`}}, Mug.mail[0]]]], 
+								[`div`, {style: {[`line-height`]: 1.2}}, 
+									[
+										[`span`, {}, Mug.names[0] + ` ` + Mug.names[1]], 
+										[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (Mug.mail).toUpperCase()]]]]]]]);
+		});
 
 		Arg.pays.sort((A, B) => {return B.ts - A.ts}).forEach(Pay => {
 
-			TX[0].push(
+			TX[1].push(
 				[`section`, {}, 
 					[
 						[`div`, {class: `_gxM _geQ`}, 
@@ -964,12 +984,21 @@ let Models = {
 							[
 								[`div`, {class: `_gxM _geQ`}, 
 									[
+										[`span`, {class: `v202203171249`, style: {width: `${36}px`, height: `${36}px`}}],
+										[`h1`, {style: {
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]],
+								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[0]]]],
+						[`div`, {id: ``, style: {[`margin-top`]: `${12}px`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
 										[`span`, {class: `v202205081426`, style: {width: `${36}px`, height: `${36}px`}}],
 										[`h1`, {style: {
 											[`font-size`]: `${9}px`, 
 											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]]
 								/**/,
-								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[0]]]]]]]]
+								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[1]]]]]]]]
 	},
 
 	mugslot: function () {

@@ -237,7 +237,7 @@ class Route {
 
 							if (Pulls.pull === `app`) {
 
-								let TX = [[]];
+								let TX = [[]], Mug = [Raw.mugs[0]];
 
 								Raw.payout[0].forEach(Pay => {
 
@@ -248,7 +248,7 @@ class Route {
 									if (Pay.complete === false) TX[0].push(Pay);
 								});
 
-								Arg[1].end(Tools.coats({pays: TX[0]}));
+								Arg[1].end(Tools.coats({mugs: Mug[0], pays: TX[0]}));
 							}
 
 							if (Pulls.pull === `pollPay`) {
