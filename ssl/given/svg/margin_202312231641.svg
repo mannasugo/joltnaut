@@ -1,0 +1,12 @@
+<svg class="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <style>
+    g {
+      fill: none;
+      stroke-width: 1; 
+      stroke: #fff;
+    }
+  </style>
+  <g>
+    <path d="M17 6 17 10 20 10 20 22 14 22 14 10 17 10z M7 20 7 16 10 16 10 4 7 4 7 2 7 4 4 4 4 16 7 16"></path>
+  </g>
+  </svg>

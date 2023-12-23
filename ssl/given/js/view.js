@@ -110,6 +110,80 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]		
 	},
 
+	app: function (Arg) {
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `app`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {}, (Clients.mug)? `MY WALLET'S PERFORMANCE`: `QUANT PROFIT METRICS`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {height:`${18}px`, width:`${18}px`}}]]]]],
+							[`section`, {class: `_gxM _geQ`, style: {[`line-height`]: 1.5, margin: `${12}px 0 0`}},
+								[
+									[`span`, {class: `v202205042043`}],
+									[`div`, {class: `_eYG`}, 
+										[
+											[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (Clients.mug)? `TODAY'S GAIN`: `CUMULATIVE GAIN`],
+											[`div`, {class: `_gxM _geQ`}, 
+												[
+													[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, (Clients.mug)? `${Arg.pnl[1].toFixed(2)} USDT`: ``],
+													[`span`, {style: {color: `#00ca29`, 
+														[`font-family`]: `geometria`, [`font-weight`]: 600}}, `+(${Arg.pnl[0].toFixed(2)}%)`]]]]],
+									[`div`, {class: `_gZz`},
+										[[`div`, {class: `_gM_a _agM _guZ`, style: {
+											width: `${100}%`, 
+											[`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
+											[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/my/wallet`: `/signin`, id: ``, style: {
+												[`white-space`]: `nowrap`
+												}}, (Clients.mug)? `My Wallet`: `Sign in`]]]]]]],			,
+							[`div`, {style: {background: `#000`, [`border-radius`]: `${24}px`, [`margin-top`]: `${32}px`, padding: `${12}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312231641`, style: {height:`${36}px`, width:`${36}px`}}], 
+											[`div`, {class: `_gZz`}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
+														[
+															[`span`, {style: {color: `#fff`, [`font-weight`]: 300}}, `Gain Today`],
+															[`span`, {style: {
+																color: `#00ca29`, 
+																[`font-family`]: `geometria`, [`font-size`]: `${18}px`, [`font-weight`]: 600}}, `+${Arg.pnl[2].toFixed(2)}%`]]]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`border-top`]: `${1}px solid #ffffff0f`, padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312231716`, style: {height:`${32}px`, width:`${32}px`}}], 
+											[`div`, {class: `_gZz`}, 
+												[
+													[`div`, {style: {color: `#fff`, [`line-height`]: 1.5, [`text-align`]: `right`}}, 
+														[
+															[`span`, {style: {[`font-weight`]: 300}}, `Transactions`],
+															[`span`, {style: { 
+																[`font-family`]: `geometria`, 
+																[`font-size`]: `${18}px`, [`font-weight`]: 600}}, `${Arg.till}`]]]]]]]]],			
+							[`div`, {style: {
+								background: `rgb(${0}, ${168}, ${86})`, color: `#fff`,
+								[`border-radius`]: `${24}px`,[`line-height`]: 1.35, [`margin-top`]: `${32}px`, padding: `${42}px ${28}px`}}, 
+								[
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {class: `v202206131256`, style: {height:`${42}px`, width:`${42}px`}}],
+											[`div`, {class: `_gZz`},
+												[[`div`, {class: `_gM_a _agM _guZ`, style: {
+													[`block-size`]: `${40}px`, background: `#fff`, border: `${1}px solid #fff`}}, 
+													[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/mode/deposit`: `/enrol`, style: {
+														color: `#000`,
+														[`white-space`]: `nowrap`
+														}}, (Clients.mug)? `Deposit Now`: `Create Wallet`]]]]]]],
+									[`p`, {style: {
+										[`font-size`]: `${12}px`,[`font-weight`]: 300, [`margin-top`]: `${21}px`}}, 
+										`Blend the power of algorithimic profit trading into dynamic stablecoin wallets and earn hourly interests 
+										on your debit balance, that's paid out daily.`]]]]]]]]]		
+	},
+
 	c2s: function () {
 
 		let Vaults = [Tools.typen(Clients.inVaults), []];
@@ -1063,9 +1137,9 @@ let Models = {
 								[
 									[`div`, {class: `_-Xg _gxM _geQ`}, 
 										[
-											[`a`, {class: `-_tX v202304191915`, href: ``}], 
+											[`a`, {class: `-_tX v202304191915`, href: `/`}], 
 											[`div`, {class: `_gZz`}, 
-												[[`a`, {id: (Tools.typen(Clients.instance)[0] === `mugin`)? `mugup`: `mugin`, class: `_tXx`, href: `javascript:;`}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signup`: `signin`]]]]]]]]], 
+												[/*[`a`, {id: (Tools.typen(Clients.instance)[0] === `mugin`)? `mugup`: `mugin`, class: `_tXx`, href: `javascript:;`}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signup`: `signin`]*/]]]]]]]], 
 						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
 							[[`div`, {class: `_geQ`, style: {[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 								[

@@ -361,7 +361,7 @@ class Route {
 
 									let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
 
-									let PNL = [0, 0];
+									let PNL = [0, 0, 0];
 
 									Raw.till[0].forEach(TX => {
 
@@ -373,15 +373,40 @@ class Route {
 										}
 									});
 
+									Raw.trades[0].forEach(Pair => {
+
+										if (Pair.ts_a > ts) PNL[2] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100							
+										
+									});
+
 									Arg[1].end(Tools.coats({
 										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
 										pnl: PNL,
+										till: Raw.till[0].length,
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
 										tx: TX,
 										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
 								}
 
-								else Arg[1].end(Tools.coats({}));
+								else {
+
+									let Day = new Date();
+
+									let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
+
+									let PNL = [0, 0, 0];
+
+									Raw.trades[0].forEach(Pair => {
+
+										PNL[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+										if (Pair.ts_a > ts) PNL[2] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100
+									});
+
+									Arg[1].end(Tools.coats({
+										pnl: PNL,
+										till: Raw.till[0].length}));
+								}
 							}
 
 							if (Pulls.pull === `bot`) {
