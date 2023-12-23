@@ -159,9 +159,9 @@ class Tools {
 
 				let Pair = {
 					gas: 7.5/100,
-					pair: [`btc/fdusd`, [43380.21, 43605.49]],
-					ts_a: new Date(`2023-12-23 05:47:02`).valueOf(), 
-					ts_z: new Date(`2023-12-23 06:17:29`).valueOf()
+					pair: [`btc/fdusd`, [43358.24, 43567.03]],
+					ts_a: new Date(`2023-12-23 07:01:37`).valueOf(), 
+					ts_z: new Date(`2023-12-23 09:01:29`).valueOf()
 				};
 
 				let Web = this.pull([
