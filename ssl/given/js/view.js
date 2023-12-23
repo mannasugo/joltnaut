@@ -922,7 +922,7 @@ let Models = {
 
 		let TX = [[], []];
 
-		Arg.mugs.sort((A, B) => {return B.ts - A.ts}).forEach(Mug => {
+		Arg.mugs.sort((A, B) => {return B.secs - A.secs}).forEach(Mug => {
 
 			TX[0].push(
 				[`section`, {style: {[`margin-top`]: `${4}px`}}, 
