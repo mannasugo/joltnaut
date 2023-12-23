@@ -505,7 +505,7 @@ class Route {
 
 								if (!Raw.mugs[1][Pulls.mug].vaultSlots) Raw.mugs[1][Pulls.mug][`vaultSlots`] = [];
 
-								if (Pulls.param[1].length === 12) return;
+								if (Pulls.param[1].length !== 12) return;
 
 								Raw.mugs[1][Pulls.mug].vaultSlots.push({
 									carrier: `safaricom`,

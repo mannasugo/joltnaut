@@ -153,7 +153,7 @@ let Models = {
 															[`span`, {style: {
 																color: `#00ca29`, 
 																[`font-family`]: `geometria`, [`font-size`]: `${18}px`, [`font-weight`]: 600}}, `+${Arg.pnl[2].toFixed(2)}%`]]]]]]],
-									[`div`, {class: `_geQ _gxM`, style: {[`border-top`]: `${1}px solid #ffffff0f`, padding: `${16}px ${8}px`}}, 
+									[`div`, {class: `_geQ _gxM`, style: {[`border-top`]: `${1}px solid #fff`, padding: `${16}px ${8}px`}}, 
 										[
 											[`span`, {class: `v202312231716`, style: {height:`${32}px`, width:`${32}px`}}], 
 											[`div`, {class: `_gZz`}, 
