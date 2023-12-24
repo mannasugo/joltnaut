@@ -18,57 +18,60 @@ class Events {
 
 		if (document.querySelector(`#allow`) === null) return;
 
-		this.listen([document.querySelector(`#allow`), `click`, S => {
+		document.querySelectorAll(`#allow`).forEach(Allow => {
 
-			let Puts = Tools.pull([
-				`/json/web/`, { 
-					mug: Clients.mug, 
-					param : this.getSource(S).getAttribute(`md`), 
-					pull: `allow`}]);
+			this.listen([Allow, `click`, S => {
 
-			View.pop();
+				let Puts = Tools.pull([
+					`/json/web/`, { 
+						mug: Clients.mug, 
+						param : this.getSource(S).getAttribute(`md`), 
+						pull: `allow`}]);
 
-			Puts.onload = () => {
+				View.pop();
 
-				let Web = Tools.typen(Puts.response);
+				Puts.onload = () => {
 
-				if (Web.mug) {
+					let Web = Tools.typen(Puts.response);
 
-					View.DOM([`div`, [Models.allow(Web.allow)]]);
+					if (Web.mug) {
 
-					this.local2Coin();
+						View.DOM([`div`, [Models.allow(Web.allow)]]);
 
-					this.listen([document.querySelector(`#w2w`), `click`, S => {
+						this.local2Coin();
 
-						let Values = [
-							(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value)];
+						this.listen([document.querySelector(`#w2w`), `click`, S => {
 
-						if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+							let Values = [
+								(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value)];
 
-						if (parseFloat(Values[0]) <= 0 || Web.allow.hold < parseFloat(Values[0])) return;
+							if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
 
-						let Puts = Tools.pull([
-							`/json/web/`, { 
-								mug: Clients.mug, 
-								param : [Web.allow, parseFloat(Values[0])], 
-								pull: `w2w`}]);
+							if (parseFloat(Values[0]) <= 0 || Web.allow.hold < parseFloat(Values[0])) return;
 
-						Values = [];
+							let Puts = Tools.pull([
+								`/json/web/`, { 
+									mug: Clients.mug, 
+									param : [Web.allow, parseFloat(Values[0])], 
+									pull: `w2w`}]);
 
-						View.pop();
+							Values = [];
 
-						View.DOM([`div`, [Models.splash]]);
+							View.pop();
 
-						Puts.onload = () => {
+							View.DOM([`div`, [Models.splash]]);
 
-							let Web = JSON.parse(Puts.response);
+							Puts.onload = () => {
 
-							if (Web.mug) window.location = `/`;
-						}
-					}]);
+								let Web = JSON.parse(Puts.response);
+
+								if (Web.mug) window.location = `/`;
+							}
+						}]);
+					}
 				}
-			}
-		}]);
+			}]);
+		});
 	}
 
 	cellSlots () {

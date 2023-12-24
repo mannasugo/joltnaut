@@ -258,7 +258,7 @@ let Models = {
 								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
 									[[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
 								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${24}px`}}, [[`input`, {id: `cellMug`, placeholder: `Registered Account Name`, type: `text`}]]],
-								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${12}px`}}, [[`input`, {id: `cellNumerals`, placeholder: `M-PESA Mobile Number`, type: `text`}]]],
+								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${12}px`}}, [[`input`, {id: `cellNumerals`, placeholder: `M-PESA Mobile Number eg. 254...`, type: `text`}]]],
 								[`div`, {class: `_gM_a _agM _guZ`, style: {[`margin-top`]: `${16}px`, width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
 									[[`a`, {id: `pollCellSlots`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `save`]]]]]]]]]
 	},
@@ -1710,7 +1710,7 @@ let Models = {
 		Arg.forEach(MD => {
 
 			Allows[0].push(
-				[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${12}px`}}, 
+				[`div`, {class: `_gxM _geQ`, style: {padding: `${12}px 0`}}, 
 					[
 						[`svg`, {style: {[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
 							[
@@ -1762,7 +1762,7 @@ let Models = {
 										{
 											[`font-size`]: `${9}px`, 
 											[`font-weight`]: 600, [`margin-top`]: `${22}px`}}, (Arg.length > 0)? `WALLET CONTACTS`: ``],
-									[`section`, {}, Allows[0]]]]]]]]]];
+									[`section`, {style: {[`margin-top`]: `${12}px`}}, Allows[0]]]]]]]]]];
 	},
 
 	vaultSlot: function () {

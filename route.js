@@ -379,13 +379,34 @@ class Route {
 										
 									});
 
-									Arg[1].end(Tools.coats({
-										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
-										pnl: PNL,
-										till: Raw.till[0].length,
-										ts: Raw.mugs[1][Pulls.mug][`secs`],
-										tx: TX,
-										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
+									let Flag = [];
+
+									if (Raw.mugs[1][Pulls.mug].vaultSlots) {
+
+										Raw.mugs[1][Pulls.mug].vaultSlots.forEach(Slot => {
+
+											if (Slot.carrier === `safaricom` && Slot.id[0] !== `2`) Flag.push(Mug);
+												
+										});
+									}
+
+									if (Flag.length > 0) {
+
+                						let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
+
+                						Raw.mugs[1][Pulls.mug].vaultSlots = [];
+													
+										Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (Raw) => {
+
+											Arg[1].end(Tools.coats({
+												debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+												pnl: PNL,
+												till: Raw.till[0].length,
+												ts: Raw.mugs[1][Pulls.mug][`secs`],
+												tx: TX,
+												vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
+										}]);
+									}
 								}
 
 								else {
