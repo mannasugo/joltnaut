@@ -390,7 +390,7 @@ class Route {
 										});
 									}
 
-									if (Flag.length > 0) {
+									if (Flag.length > 0) {console.log(Flag)
 
                 						let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
 
@@ -406,6 +406,17 @@ class Route {
 												tx: TX,
 												vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
 										}]);
+									}
+
+									else {
+
+										Arg[1].end(Tools.coats({
+											debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+											pnl: PNL,
+											till: Raw.till[0].length,
+											ts: Raw.mugs[1][Pulls.mug][`secs`],
+											tx: TX,
+											vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
 									}
 								}
 
