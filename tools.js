@@ -256,85 +256,93 @@ class Tools {
 
 	pairs (Raw) {
 
-		/*let Pairs = [*{
+		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [43474.03, 43658.37]],
-			ts_a: new Date(`2023-12-24 08:39:23`).valueOf(), 
-			ts_z: new Date(`2023-12-24 10:48:39`).valueOf()
+			pair: [`btc/fdusd`, [43601.54, 43657.23]],
+			ts_a: new Date(`2023-12-24 11:12:13`).valueOf(), 
+			ts_z: new Date(`2023-12-24 11:33:59`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [43474.03, 43658.37]],
-			ts_a: new Date(`2023-12-24 08:39:23`).valueOf(), 
-			ts_z: new Date(`2023-12-24 10:48:39`).valueOf()
+			pair: [`btc/fdusd`, [43629.83, 43655.08]],
+			ts_a: new Date(`2023-12-24 11:53:44`).valueOf(), 
+			ts_z: new Date(`2023-12-24 12:13:03`).valueOf()
+		}, {
+			gas: 7.5/100,
+			pair: [`btc/fdusd`, [43604.86, 43694.36]],
+			ts_a: new Date(`2023-12-24 12:25:15`).valueOf(), 
+			ts_z: new Date(`2023-12-24 12:43:22`).valueOf()
+		}, {
+			gas: 7.5/100,
+			pair: [`btc/fdusd`, [43527.73, 43605.36]],
+			ts_a: new Date(`2023-12-24 13:38:58`).valueOf(), 
+			ts_z: new Date(`2023-12-24 13:54:42`).valueOf()
+		}, {
+			gas: 7.5/100,
+			pair: [`btc/fdusd`, [43600.88, 43655.46]],
+			ts_a: new Date(`2023-12-24 15:18:38`).valueOf(), 
+			ts_z: new Date(`2023-12-24 15:42:02`).valueOf()
 		}];
 
-		Pairs.forEach
+		Pairs.forEach(Pair => {
 
-								let Pair = Pulls.param;
+			Pair.md = createHash(`md5`).update(`${Pair.ts_z}`, `utf8`).digest(`hex`);
 
-								Pair.md = createHash(`md5`).update(`${Pulls.param.ts_z}`, `utf8`).digest(`hex`);
+			if (Raw[0].trades[1][Pair.md]) return;
 
-								if (Raw.trades[1][Pair.md]) return;
+			let Putlist = [];
 
-								let Putlist = [];
+			Raw[0].mugs[0].forEach(Mug => {
 
-								Raw.mugs[0].forEach(Mug => {
+				let Bals = this.hold([Raw[0], Mug.md]).sort((A, B) => {return B.secs - A.secs});
 
-									let Bals = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
+				let B4 = [], AZ = [], Flag = [];
 
-									let B4 = [], AZ = [], Flag = [];
+				Bals.forEach(Till => {
 
-									Bals.forEach(Till => {
+					if (Till.secs < Pair.ts_a && Till.hold[1] > 0) B4.push(Till);
 
-										if (Till.secs < Pair.ts_a && Till.hold[1] > 0) B4.push(Till);
+					if (Till.flag && Till.flag.trade && Till.flag.trade === Pair.md) Flag.push(Till);
+				});
 
-										if (Till.flag && Till.flag.trade && Till.flag.trade === Pair.md) Flag.push(Till);
-									})
+				if (Flag.length === 0 && B4.length > 0) {
 
-									if (Flag.length === 0 && B4.length > 0) {
+					AZ.push(B4[0]);
 
-										AZ.push(B4[0]);
+					Bals.forEach(Till => {
 
-										Bals.forEach(Till => {
+						if (Till.secs > Pair.ts_a && Till.secs < Pair.ts_z) AZ.push(Till);
+					});
 
-											if (Till.secs > Pair.ts_a && Till.secs < Pair.ts_z) AZ.push(Till);
-										});
+					let sum = 0;
 
-										let sum = 0;
-
-										AZ.forEach(Count => {
+					AZ.forEach(Count => {
                                         		
-                                        	sum += Count.hold[1];
-										});
+                        sum += Count.hold[1];
+					});
 
-										sum = sum/AZ.length;
+					sum = sum/AZ.length;
 
-										let gain = sum*(((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]));
+					let gain = sum*(((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]));
 
-										Putlist.push({
-											flag: {trade: Pair.md},
-											gas: Pair.gas,
-											md: Pair.md,
-											outlet_wallet: false,
-											principal: sum,
-											secs: Pair.ts_z,
-											till: {
-												[hold]: gain*Pair.gas, 
-												[Mug.md]: [0, gain*(1 - Pair.gas)]},
-											ts: Pair.ts_z,
-											tx: false,
-											vow: false
-										});
-									}
-								});
+					Putlist.push({
+						flag: {trade: Pair.md},
+						gas: Pair.gas,
+						md: Pair.md,
+						outlet_wallet: false,
+						principal: sum,
+						secs: Pair.ts_z,
+						till: {
+							[hold]: gain*Pair.gas, 
+							[Mug.md]: [0, gain*(1 - Pair.gas)]},
+							ts: Pair.ts_z,
+							tx: false,
+							vow: false
+					});
+				}
+			});
 
-								Sql.puts([`trades`, Pair, (SQ) => {
-
-									Sql.putlist([`till`, Putlist, (SQ) => {
-
-										Arg[1].end(Tools.coats({}))}]);
-								}]);*/
-
+			Raw[1]([Pair, Putlist]);
+		});
 	}
 
 	safe (String) {

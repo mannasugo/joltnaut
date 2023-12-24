@@ -28,8 +28,6 @@ class Route {
 
 		if (State.length === 4 && State[3] === ``) { 
 
-			//Tools.bot();
-
 			let Puts = Tools.pull([
 				`/json/web`, {
 					mug: (Clients.mug) ? Clients.mug: false,

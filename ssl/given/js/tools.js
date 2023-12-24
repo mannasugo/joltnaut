@@ -153,31 +153,6 @@ class Tools {
 		return float;
 	}
 
-	bot () {
-
-		setInterval(() => {
-
-				let Pair = {
-					gas: 7.5/100,
-					pair: [`btc/fdusd`, [43474.03, 43658.37]],
-					ts_a: new Date(`2023-12-24 08:39:23`).valueOf(), 
-					ts_z: new Date(`2023-12-24 10:48:39`).valueOf()
-				};
-
-				/*
-
-				*/
-
-				let Web = this.pull([
-					`/json/web`, {
-						param: Pair,
-						pull: `bot`
-					}]);
-
-				Web.onload = () => {}
-		}, 5000);
-	}
-
 }
 
 Tools = new Tools();

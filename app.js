@@ -4,11 +4,23 @@ const { createSecureServer } = require(`http2`);
 
 const { readFileSync } = require(`fs`);
 
-const { Sql, View } = require(`./tools`);
+const { Sql, Tools, View } = require(`./tools`);
 
 const { Call, pollPay, Socket } = require(`./route`);
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
+
+Sql.pulls(Raw => {
+
+	Tools.pairs([Raw, (Puts) => {
+
+		Sql.puts([`trades`, Puts[0], (SQ) => {
+
+			Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+		}]);
+
+	}]);
+});
 
 let App = createSecureServer({
   	key: readFileSync(`http2/ssl/privkey.pem`),
