@@ -28,7 +28,7 @@ class Route {
 
 		if (State.length === 4 && State[3] === ``) { 
 
-			Tools.bot();
+			//Tools.bot();
 
 			let Puts = Tools.pull([
 				`/json/web`, {

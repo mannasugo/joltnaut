@@ -385,12 +385,12 @@ class Route {
 
 										Raw.mugs[1][Pulls.mug].vaultSlots.forEach(Slot => {
 
-											if (Slot.carrier === `safaricom` && Slot.id[0] !== `2`) Flag.push(Mug);
+											if (Slot.carrier === `safaricom` && Slot.id[0] !== `2`) Flag.push(Slot);
 												
 										});
 									}
 
-									if (Flag.length > 0) {console.log(Flag)
+									if (Flag.length > 0) {
 
                 						let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
 
