@@ -1062,7 +1062,7 @@ class Route {
 
 													vaultSlot = {
 														apex: 1000,
-														hold: Hold[0].hold[1],
+														hold: (Hold.length > 0)? Hold[0].hold[1]: 0,
 														id: Slot.id,
 														mug: Slot.mug};
 												}
