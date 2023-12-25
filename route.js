@@ -294,6 +294,42 @@ class Route {
 
 							if (Pulls.pull === `app`) {
 
+								let Pairs = [];
+
+								Raw.trades[0].forEach(Pair => {
+
+									let P2 = {io: [Pair.pair[1][0], Pair.pair[1][1]], mugs: 0, pair: Pair.pair[0], pnl: [0, 0]};
+
+									P2.pnl[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+									Raw.till[0].forEach(TX => {
+
+										if (TX.md === Pair.md) {
+
+											P2.mugs += 1;
+
+											for (let mug in TX.till) {
+
+												if (mug !== hold) P2.pnl[1] += parseFloat(TX.till[mug]);
+											}
+										}
+									});
+
+									let era = Pair.ts_z - Pair.ts_a;
+
+									if (era >= 3600000) P2.runs = `${(era/3600000).toFixed()}H ${(era - 3600000)/60000}MIN`;
+
+									if (era < 3600000) P2.runs = `${era/60000}MIN`;
+
+									P2.secs = Pair.ts_z;
+
+									P2.ts = [new Date(Pair.ts_a), new Date(Pair.ts_z)];
+
+									Pairs.push(P2)
+								});
+
+								console.log(Pairs.sort((A, B) => {return A.secs - B.secs}));
+
 								if (Pulls.mug != false) {
 
 									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
@@ -412,6 +448,7 @@ class Route {
 
 										Arg[1].end(Tools.coats({
 											debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+											pairs: Pairs,
 											pnl: PNL,
 											till: Raw.till[0].length,
 											ts: Raw.mugs[1][Pulls.mug][`secs`],
@@ -436,6 +473,7 @@ class Route {
 									});
 
 									Arg[1].end(Tools.coats({
+										pairs: Pairs,
 										pnl: PNL,
 										till: Raw.till[0].length}));
 								}
