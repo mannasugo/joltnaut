@@ -26,11 +26,7 @@ let App = createSecureServer({
   	key: readFileSync(`http2/ssl/privkey.pem`),
   	cert: readFileSync(`http2/ssl/fullchain.pem`),
   	allowHTTP1: true
-}, (call, put) => {
-
-	Call([call, put]);
-
-});
+}, (call, put) => {Call([call, put]);});
 
 pollPay();
 
