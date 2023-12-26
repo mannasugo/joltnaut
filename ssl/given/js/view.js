@@ -870,7 +870,7 @@ let Models = {
 		let Via = [
 			[
 				[`M-PESA (STK-PUSH)`, `#049b04`, `INSTANT DEPOSIT`, `FREE CHARGE`, `stk`], 
-				[`Tron Network (TRC20)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `tron`]], []];
+				[`TETHER USD WALLET (USDT TOKENS)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `tron`]], []];
 
 		Via[0].forEach(Slot => {
 

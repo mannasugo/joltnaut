@@ -2,11 +2,31 @@
 
 const { createSecureServer } = require(`http2`);
 
-const { readFileSync } = require(`fs`);
+const { readFileSync, writeFileSync } = require(`fs`);
+
+const { createHash, randomBytes } = require(`crypto`);
 
 const { Sql, Tools, View } = require(`./tools`);
 
 const { Call, pollPay, Socket } = require(`./route`);
+
+const TronWeb = require(`tronweb`);
+
+const TRON = new TronWeb({
+    fullHost: `api.shasta.trongrid.io`, //`https://api.trongrid.io`,
+    headers: { [`TRON-PRO-API-KEY`]: `0bb6e804-fccc-41b9-907f-242bfa451fb9` },
+    privateKey: randomBytes(32).toString(`hex`)
+});
+
+console.log(TronWeb.utils.accounts.generateAccount());
+
+//const wallet = TRON.createRandom();
+
+//const account = await TRON.trx.getAccount('TURYhSKCw3m84MaKmYhoYqd72ULHRn5zJy');
+
+//console.log(TRON.trx.getAccount(TRON.createRandom().address))
+
+//writeFileSync(`json/trons.json`, Tools.coats([Tools.typen(await TRON.createAccount())]));
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
@@ -28,7 +48,7 @@ let App = createSecureServer({
   	allowHTTP1: true
 }, (call, put) => {Call([call, put]);});
 
-pollPay();
+//pollPay();
 
 Socket(require(`socket.io`).listen(App));
 
