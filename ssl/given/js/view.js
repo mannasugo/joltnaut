@@ -119,15 +119,15 @@ let Models = {
 		Arg.pairs.slice(0, 10).forEach(Pair => {
 
 			P2[0].push([
-				`div`, {style: {[`line-height`]: 1.3, padding: `${20}px 0`}}, 
+				`div`, {style: {border: `${1}px solid #e3e3e3`, [`line-height`]: 1.3, margin: `${10}px 0`, padding: `${15}px`}}, 
 					[
 						[`div`, {class: `_gxM _geQ`}, 
 							[
 								[`div`, {}, 
 									[
 										[`span`, {style: { 
-											[`font-family`]: `geometria`, 
-											[`font-size`]: `${16}px`, [`font-weight`]: 600}}, `${Pair.pair.toUpperCase()}`],
+											[`font-family`]: ``, 
+											[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Pair.pair.toUpperCase()}`],
 										[`span`, {style: {
 											color: `#a3a3a3`,
 											[`font-size`]: `${10}px`, [`font-weight`]: 600}}, `SPOT GRID`]]], 
@@ -253,7 +253,7 @@ let Models = {
 										on your debit balance, that's paid out daily.`]]],
 							[`div`, {class: `_gxM _geQ`}, 
 								[
-									[`h2`, {}, `AUTO-INVEST BOT TRADES`], 
+									[`h2`, {}, `RECENT AUTO-INVEST BOT TRADES`], 
 									[`div`, {class: `_gZz`}, 
 										[
 											[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {
