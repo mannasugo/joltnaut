@@ -8,7 +8,7 @@ const { createHash, randomBytes } = require(`crypto`);
 
 const { Sql, Tools, View } = require(`./tools`);
 
-const { Call, pollPay, Socket } = require(`./route`);
+const { Call, pollPay} = require(`./route`);
 
 const TronWeb = require(`tronweb`);
 
@@ -50,7 +50,7 @@ let App = createSecureServer({
 
 //pollPay();
 
-Socket(require(`socket.io`).listen(App));
+//Socket(require(`socket.io`).listen(App));
 
 App.on(`error`, (err) => console.error(err));
 

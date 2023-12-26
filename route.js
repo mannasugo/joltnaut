@@ -1345,12 +1345,12 @@ class Route {
 		}, 10000);
 	}
 
-	Socket (App) {
+	/*Socket (App) {
 
 		App.on(`connection`, Polling => {
 
 			Polling.on(`app`, Raw => {})});
-	}
+	}*/
 }
 
 module.exports = new Route();
