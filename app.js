@@ -4,64 +4,9 @@ const { createSecureServer } = require(`http2`);
 
 const { readFileSync, writeFileSync } = require(`fs`);
 
-const { createHash, randomBytes } = require(`crypto`);
-
-const { Sql, Tools, View } = require(`./tools`);
+const { Sql, Tools } = require(`./tools`);
 
 const { Call, pollPay} = require(`./route`);
-
-const TronWeb = require(`tronweb`);
-
-const TRON = new TronWeb({
-    fullHost: `https://api.trongrid.io`,
-    headers: { [`TRON-PRO-API-KEY`]: `0bb6e804-fccc-41b9-907f-242bfa451fb9` },
-    privateKey: randomBytes(32).toString(`hex`)
-});
-
-//let wallet = await TRON.createAccount(), Wallet = [];
-
-//Wallet.push(wallet);
-
-//console.log(Tools.coats(Wallet[0]));
-/*
-
-writeFileSync(`json/trons.json`, Tools.coats([TRON.createRandom()]));
-
-const request = require('request');
-
-const options = {
-  method: 'POST',
-  url: 'https://api.shasta.trongrid.io/wallet/createaccount',
-  headers: {accept: 'application/json', 'content-type': 'application/json'},
-  body: {
-    owner_address: 'TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g',
-    account_address: 'TEJm3t4x1p5YxgRxy72o15dUCcTBFjktTU',
-    visible: true
-  },
-  json: true
-};
-
-request(options, function (error, response, body) {
-  if (error) throw new Error(error);
-
-  writeFileSync(`json/see.json`, Tools.coats([body]));
-
-  let PRIVATE = TRON.trx.sign(body, randomBytes(32).toString(`hex`))
-
-  TRON.trx.sendRawTransaction(PRIVATE)
-});
-
-*/
-async function f() {
-
-    let instance = await TRON.createAccount();
-
-    //let result = await instance().f().call();
-
-    console.log(instance);
-}
-
-f();
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 

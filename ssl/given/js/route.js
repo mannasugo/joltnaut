@@ -182,6 +182,31 @@ class Route {
 				}
 			}
 
+    		else if (State[4] && State[4] === `deposit` && State[5] && State[5] === `tron20` && !State[6] 
+    			&& !Tools.slim[State[6]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						flag: `tron20`,
+						mug: Clients.mug,
+						pull: `vaultSlot`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						if (Web.id) {
+
+							View.DOM([`div`, [Models.inVaultTRON20(Web)]]);
+
+							Events.idCopy(Web);
+						}
+					}
+				}
+			}
+
     		else if (State[4] && State[4] === `withdraw` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
 				let Puts = Tools.pull([

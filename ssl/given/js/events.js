@@ -89,6 +89,22 @@ class Events {
 		}]);
 	}
 
+	idCopy (Arg) {
+
+		this.listen([document.querySelector(`#idCopy`), `click`, S => {
+
+  			navigator.clipboard.writeText(Arg.id);
+
+  			this.getSource(S).innerHTML = `COPIED`;
+
+  			setTimeout(() => {
+
+  				this.getSource(S).innerHTML = `COPY`;
+			}, 1500);
+		}]);
+
+	}
+
 	inVaultSlot () {
 
 		this.listen([document.querySelector(`#inVaultSlot`), `click`, S => {

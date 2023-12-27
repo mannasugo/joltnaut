@@ -2,11 +2,13 @@
 
 const { readdir, readFile, readFileSync, createReadStream, mkdir, stat, writeFile, writeFileSync } = require(`fs`);
 
-const { createHash } = require(`crypto`);
+const { createHash, randomBytes } = require(`crypto`);
 
 const get = require(`request`);
 
 const HTTPS = require(`https`);
+
+const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -1143,6 +1145,56 @@ class Route {
 											mug: Pulls.mug,
 											vaultSlot: vaultSlot}));
 									}
+
+									if (Pulls.flag === `tron20`) {
+
+										if (Raw.mugs[1][Pulls.mug].tron20) {
+
+											Arg[1].end(Tools.coats({
+												mug: Pulls.mug,
+												id: Raw.mugs[1][Pulls.mug].tron20}));
+										}
+
+										if (!Raw.mugs[1][Pulls.mug].tron20) {
+
+											let TRON = new TronWeb({
+    											fullHost: `https://api.trongrid.io`,
+    											headers: { [`TRON-PRO-API-KEY`]: `0bb6e804-fccc-41b9-907f-242bfa451fb9` },
+    											privateKey: randomBytes(32).toString(`hex`)
+											});
+
+											async function f() {
+
+    											let Vault = await TRON.createAccount();
+
+												let ts = new Date().valueOf();
+
+												let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+												Vault.md = md;
+
+												Vault.mug = Pulls.mug;
+
+												Vault.ts = ts;
+
+												Sql.puts([`tron20`, Vault, (SQL) => {
+
+                									let Old = Tools.typen(Tools.coats(Raw.mugs[1][Pulls.mug]));
+
+                									Raw.mugs[1][Pulls.mug].tron20 = Vault.address;
+
+													Sql.places([`mugs`, Raw.mugs[1][Pulls.mug], Old, (SQL) => {
+
+														Arg[1].end(Tools.coats({
+															mug: Pulls.mug,
+															id: Vault.address}));
+													}]);
+												}]);	
+											}
+
+											f();
+										}
+									}
 								}
 							}
 
@@ -1344,13 +1396,6 @@ class Route {
 			});
 		}, 10000);
 	}
-
-	/*Socket (App) {
-
-		App.on(`connection`, Polling => {
-
-			Polling.on(`app`, Raw => {})});
-	}*/
 }
 
 module.exports = new Route();

@@ -789,9 +789,7 @@ let Models = {
 										[
 											[`span`, {style: {[`font-size`]: `${11}px`}}, `${Arg.mug.toUpperCase()}`], 
 											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `geometria`}}, Arg.id]]]]]]], 
-							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
-								/*[[`span`, {style: {color: `#a3a3a3`}}, `My Wallet Balance`], 
-								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${Arg.hold} USDT`]]*/],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}],
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO BUY`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
@@ -806,6 +804,51 @@ let Models = {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `stk`}, `BUY USDT`]]]]]]]]]		
+	},
+
+	inVaultTRON20: function (Arg) {
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {}, `DEPOSIT CRYPTO (TETHER USD)`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `v202311051955`, href: `/my/wallet`, style: {height:`${13}px`, width:`${13}px`}}]]]]], 
+							[`div`, {style: {margin: `${16}px 0 ${40}px`}}, 
+								[
+									[`div`, {style: {
+										[`margin-top`]: `${12}px`, 
+										padding: `${10}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${16}px`}}, 
+										[
+											[`span`, {}, `Network`], 
+											[`span`, {style: {[`font-weight`]: 600}}, `TRON (TRC20)`]]],
+									[`span`, {style: {
+										background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${16}px`, color: `#000`, 
+										[`line-height`]: 1.5, [`margin-top`]: `${12}px`, [`font-weight`]: 600, 
+										padding: `${12}px ${8}px`}}, `Only deposit USDT from the Tron network. Deposits of other assets or from 
+										other networks will be lost`],
+									[`span`, {style: {[`font-size`]: `${11}px`, [`margin-top`]: `${24}px`}}, `SEND TO`],
+									[`div`, {class: `_geQ _gxM`, style: {
+										[`line-height`]: 1.7, [`margin-top`]: `${8}px`, padding: `${12}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${16}px`}}, 
+										[
+											[`div`, {}, [
+												[`span`, {style: {[`font-size`]: `${11}px`, [`font-weight`]: 300}}, `USDT ADDRESS`], 
+												[`span`, {style: {
+													color: `#666`, 
+													[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Arg.id.slice(0, 9)}...${Arg.id.slice(28)}`]]],
+											[`div`, {class: `_gZz`},
+												[[`div`, {class: `_gM_a _agM _guZ`, style: {
+													[`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
+													[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `idCopy`, md: Arg.id, style: {
+														color: `#fff`, [`font-weight`]: 300, [`white-space`]: `nowrap`}}, `COPY`]]]]]]],
+									[`span`, {style: {
+										background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${16}px`, [`line-height`]: 1.5, 
+										[`margin-top`]: `${12}px`, [`font-weight`]: 600, padding: `${12}px ${8}px`}}, `20 confirmations 
+										(typically 1 minute) required before funds are debited to your account.`]]]]]]]]]		
 	},
 
 	inVaultVetVow: function (Vow) {
@@ -870,7 +913,7 @@ let Models = {
 		let Via = [
 			[
 				[`M-PESA (STK-PUSH)`, `#049b04`, `INSTANT DEPOSIT`, `FREE CHARGE`, `stk`], 
-				[`TETHER USD WALLET (USDT TOKENS)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `tron`]], []];
+				[`TETHER USD CRYPTO (USDT TOKENS)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `tron20`]], []];
 
 		Via[0].forEach(Slot => {
 

@@ -18,6 +18,8 @@ select * from `till`;
 
 select * from `trades`;
 
+select * from `tron20`;
+
 select * from `vault`;
 
 select * from `vows`;
