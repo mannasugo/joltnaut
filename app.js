@@ -18,7 +18,11 @@ const TRON = new TronWeb({
     privateKey: randomBytes(32).toString(`hex`)
 });
 
-console.log(Tools.coats(await TRON.createAccount()));
+let Wallet = [];
+
+Wallet.push(TRON.createAccount())
+
+console.log(Wallet);
 /*
 
 writeFileSync(`json/trons.json`, Tools.coats([TRON.createRandom()]));
