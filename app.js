@@ -56,7 +56,7 @@ async function f() {
 
     let instance = await TRON.createAccount();
 
-    let result = await instance.f().call();
+    let result = await instance().f().call();
 
     console.log(result);
 }
