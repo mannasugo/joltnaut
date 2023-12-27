@@ -10,15 +10,16 @@ const { Sql, Tools, View } = require(`./tools`);
 
 const { Call, pollPay} = require(`./route`);
 
-/*
-
 const TronWeb = require(`tronweb`);
 
 const TRON = new TronWeb({
-    fullHost: `api.shasta.trongrid.io`, //`https://api.trongrid.io`,
+    fullHost: `https://api.trongrid.io`,
     headers: { [`TRON-PRO-API-KEY`]: `0bb6e804-fccc-41b9-907f-242bfa451fb9` },
     privateKey: randomBytes(32).toString(`hex`)
 });
+
+console.log(TRON.createaccount());
+/*
 
 writeFileSync(`json/trons.json`, Tools.coats([TRON.createRandom()]));
 
