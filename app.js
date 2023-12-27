@@ -52,6 +52,16 @@ request(options, function (error, response, body) {
 });
 
 */
+async function f() {
+
+    let instance = await TRON.createAccount();
+
+    let result = await instance.f().call();
+
+    console.log(result);
+}
+
+f();
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
