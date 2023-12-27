@@ -1152,7 +1152,7 @@ class Route {
 
 											Arg[1].end(Tools.coats({
 												mug: Pulls.mug,
-												id: Raw.mugs[1][Pulls.mug].tron20}));
+												id: Raw.mugs[1][Pulls.mug].tron20.base58}));
 										}
 
 										if (!Raw.mugs[1][Pulls.mug].tron20) {
@@ -1187,7 +1187,7 @@ class Route {
 
 														Arg[1].end(Tools.coats({
 															mug: Pulls.mug,
-															id: Vault.address}));
+															id: Vault.address.base58}));
 													}]);
 												}]);	
 											}
