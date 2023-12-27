@@ -18,9 +18,9 @@ const TRON = new TronWeb({
     privateKey: randomBytes(32).toString(`hex`)
 });
 
-let Wallet = [];
+let wallet = await TRON.createAccount(), Wallet = [];
 
-Wallet.push(TRON.createAccount())
+Wallet.push(wallet);
 
 console.log(Tools.coats(Wallet[0]));
 /*
