@@ -68,9 +68,7 @@ let App = createSecureServer({
   	allowHTTP1: true
 }, (call, put) => {Call([call, put]);});
 
-//pollPay();
-
-//Socket(require(`socket.io`).listen(App));
+pollPay();
 
 App.on(`error`, (err) => console.error(err));
 
