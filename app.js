@@ -10,6 +10,8 @@ const { Sql, Tools, View } = require(`./tools`);
 
 const { Call, pollPay} = require(`./route`);
 
+/*
+
 const TronWeb = require(`tronweb`);
 
 const TRON = new TronWeb({
@@ -18,15 +20,33 @@ const TRON = new TronWeb({
     privateKey: randomBytes(32).toString(`hex`)
 });
 
-console.log(TronWeb.utils.accounts.generateAccount());
+writeFileSync(`json/trons.json`, Tools.coats([TRON.createRandom()]));
 
-//const wallet = TRON.createRandom();
+const request = require('request');
 
-//const account = await TRON.trx.getAccount('TURYhSKCw3m84MaKmYhoYqd72ULHRn5zJy');
+const options = {
+  method: 'POST',
+  url: 'https://api.shasta.trongrid.io/wallet/createaccount',
+  headers: {accept: 'application/json', 'content-type': 'application/json'},
+  body: {
+    owner_address: 'TZ4UXDV5ZhNW7fb2AMSbgfAEZ7hWsnYS2g',
+    account_address: 'TEJm3t4x1p5YxgRxy72o15dUCcTBFjktTU',
+    visible: true
+  },
+  json: true
+};
 
-//console.log(TRON.trx.getAccount(TRON.createRandom().address))
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
 
-//writeFileSync(`json/trons.json`, Tools.coats([Tools.typen(await TRON.createAccount())]));
+  writeFileSync(`json/see.json`, Tools.coats([body]));
+
+  let PRIVATE = TRON.trx.sign(body, randomBytes(32).toString(`hex`))
+
+  TRON.trx.sendRawTransaction(PRIVATE)
+});
+
+*/
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
