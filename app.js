@@ -22,7 +22,7 @@ let Wallet = [];
 
 Wallet.push(TRON.createAccount())
 
-console.log(Wallet);
+console.log(Wallet[0].address);
 /*
 
 writeFileSync(`json/trons.json`, Tools.coats([TRON.createRandom()]));
