@@ -189,7 +189,7 @@ class Route {
 					`/json/web/`, {
 						flag: `tron20`,
 						mug: Clients.mug,
-						pull: `vaultSlot`}]);
+						pull: `vaultSlot`, way: `in`}]);
 
 				Puts.onload = () => {
 
@@ -249,6 +249,28 @@ class Route {
 						}
 
 						else window.location = `/account`;
+					}
+				}
+			}
+
+    		else if (State[4] && State[4] === `withdraw` && State[5] && State[5] === `tron20` && !State[6] 
+    			&& !Tools.slim[State[6]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						flag: `tron20`,
+						mug: Clients.mug,
+						pull: `vaultSlot`, way: `out`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						View.DOM([`div`, [Models.vaultOutTRON20(Web)]]);
+
+						//Events.vaultOut(Web.vaultSlot);
 					}
 				}
 			}

@@ -913,7 +913,7 @@ let Models = {
 		let Via = [
 			[
 				[`M-PESA (STK-PUSH)`, `#049b04`, `INSTANT DEPOSIT`, `FREE CHARGE`, `stk`], 
-				[`TETHER USD CRYPTO (USDT TOKENS)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `tron20`]], []];
+				[`Tether USD Wallet Address (USDT)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `tron20`]], []];
 
 		Via[0].forEach(Slot => {
 
@@ -1578,7 +1578,7 @@ let Models = {
 		let Via = [
 			[
 				[`M-PESA Safaricom (Kenya)`, `#049b04`, `7 - 25 MINUTES`, `FREE CHARGE`, `0/1000 USD DAILY LIMIT`, `stk`], 
-				[`Tron Network (TRC20)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `UNLIMITED`, `tron`]], []];
+				[`Tether USD Wallet Address (USDT)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `UNLIMITED`, `tron20`]], []];
 
 		Via[0].forEach(Slot => {
 
@@ -1883,6 +1883,53 @@ let Models = {
 											[`font-size`]: `${9}px`, 
 											[`font-weight`]: 600, [`margin-top`]: `${22}px`}}, (Arg.length > 0)? `WALLET CONTACTS`: ``],
 									[`section`, {style: {[`margin-top`]: `${12}px`}}, Allows[0]]]]]]]]]];
+	},
+
+	vaultOutTRON20: function (Arg) {
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultSlot`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {}, `WITHDRAW CRYPTO (TETHER USD)`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `v202311051955`, href: `/my/wallet`, style: {height:`${13}px`, width:`${13}px`}}]]]]], 
+							[`div`, {style: {margin: `${16}px 0 ${40}px`}}, 
+								[
+									[`div`, {style: {
+										[`line-height`]: 1.5, [`margin-top`]: `${12}px`, 
+										padding: `${10}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${16}px`}}, 
+										[
+											[`span`, {style: {[`font-weight`]: 600}}, `Tether USD`], 
+											[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 300}}, `${Arg.hold.toFixed(3)} USDT`]]],
+									[`div`, {style: {
+										[`margin-top`]: `${18}px`, 
+										padding: `${10}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${16}px`}}, 
+										[
+											[`span`, {}, `Network`], 
+											[`span`, {style: {[`font-weight`]: 600}}, `TRON (TRC20)`]]],
+									[`span`, {style: {
+										background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${16}px`, color: `#000`, 
+										[`line-height`]: 1.5, [`margin-top`]: `${12}px`, [`font-weight`]: 600, 
+										padding: `${12}px ${8}px`}}, `Only withdraw USDT to Tron addresses. Withdrawals to addresses generated 
+										from other networks could result in loss of funds.`],
+									[`span`, {style: {[`font-size`]: `${12}px`, [`margin-top`]: `${24}px`}}, `Withdraw to`],
+									[`div`, {class: `_aXZ`, style: {margin: `${4}px 0 0`, overflow: `revert`}}, 
+										[
+											[`input`, {class: `_aXZ`, id: `idSlot`, placeholder: `USDT Address`, type: `text`, style: {
+												color: `#666`, [`font-family`]: `litera`}}]]],
+									[`span`, {style: {[`font-size`]: `${12}px`, [`margin-top`]: `${24}px`}}, `Withdrawal Amount`],
+									[`div`, {class: `_aXZ`, style: {margin: `${4}px 0 0`, overflow: `revert`}}, 
+										[
+											[`input`, {class: `_aXZ`, id: `coinSlot`, placeholder: `Minimum - 2.50 USDT`, type: `text`, style: {
+												color: `#666`, [`font-family`]: `geometria`}}]]],
+									[`div`, {class: `_gM_a _agM _guZ`, style: {
+										[`margin-top`]: `${22}px`, 
+										width: `${100}%`, [`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
+										[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vaultOut`}, `Withdraw USDT`]]]]]]]]]]]		
 	},
 
 	vaultSlot: function () {

@@ -1146,7 +1146,7 @@ class Route {
 											vaultSlot: vaultSlot}));
 									}
 
-									if (Pulls.flag === `tron20`) {
+									if (Pulls.flag === `tron20` && Pulls.way === `in`) {
 
 										if (Raw.mugs[1][Pulls.mug].tron20) {
 
@@ -1193,6 +1193,18 @@ class Route {
 											}
 
 											f();
+										}
+									}
+
+									if (Pulls.flag === `tron20` && Pulls.way === `out`) {
+
+										if (Raw.mugs[1][Pulls.mug]) {
+
+											let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
+											Arg[1].end(Tools.coats({
+												mug: Pulls.mug,
+												hold: (Hold.length > 0)? Hold[0].hold[1]: 0}));
 										}
 									}
 								}
