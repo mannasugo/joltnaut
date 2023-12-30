@@ -116,10 +116,10 @@ let Models = {
 
 		Arg.pairs = Arg.pairs.sort((A, B) => {return B.secs - A.secs});
 
-		Arg.pairs.slice(0, 10).forEach(Pair => {
+		Arg.pairs.slice(0, 4).forEach(Pair => {
 
 			P2[0].push([
-				`div`, {style: {border: `${1}px solid #e3e3e3`, [`line-height`]: 1.3, margin: `${10}px 0`, padding: `${15}px`}}, 
+				`div`, {style: {border: `${1}px solid #e3e3e3`, [`border-radius`]: `${24}px`, [`line-height`]: 1.3, margin: `${10}px 0`, padding: `${15}px`}}, 
 					[
 						[`div`, {class: `_gxM _geQ`}, 
 							[
@@ -209,30 +209,33 @@ let Models = {
 											[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/my/wallet`: `/signin`, id: ``, style: {
 												[`white-space`]: `nowrap`
 												}}, (Clients.mug)? `My Wallet`: `Sign in`]]]]]]],			,
-							[`div`, {style: {background: `#000`, [`border-radius`]: `${24}px`, [`margin-top`]: `${32}px`, padding: `${12}px`}}, 
+							[`div`, {style: {
+								background: `#000`, [`border-radius`]: `${24}px`, color: `#e3e3e3`, [`font-size`]: `${10}px`, [`margin-top`]: `${32}px`, 
+								padding: `${12}px`}}, 
 								[
 									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
 										[
-											[`span`, {class: `v202312231641`, style: {height:`${36}px`, width:`${36}px`}}], 
+											[`span`, {class: `v202312231641`, style: {height:`${27}px`, width:`${27}px`}}], 
 											[`div`, {class: `_gZz`}, 
 												[
 													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
 														[
-															[`span`, {style: {color: `#fff`, [`font-weight`]: 300}}, `Gain Today`],
+															[`span`, {style: {color: `fff`, [`font-weight`]: 300}}, `TODAY'S GROWTH (ROI)`],
 															[`span`, {style: {
 																color: `#00ca29`, 
-																[`font-family`]: `geometria`, [`font-size`]: `${18}px`, [`font-weight`]: 600}}, `+${Arg.pnl[2].toFixed(2)}%`]]]]]]],
+																[`font-family`]: `geometria`, [`font-size`]: `${14}px`, [`font-weight`]: 600}}, `+${Arg.pnl[2].toFixed(2)}%`]]]]]]],
 									[`div`, {class: `_geQ _gxM`, style: {[`border-top`]: `${1}px solid #fff6`, padding: `${16}px ${8}px`}}, 
 										[
-											[`span`, {class: `v202312231716`, style: {height:`${32}px`, width:`${32}px`}}], 
+											[`span`, {class: `v202312231716`, style: {height:`${24}px`, width:`${24}px`}}], 
 											[`div`, {class: `_gZz`}, 
 												[
-													[`div`, {style: {color: `#fff`, [`line-height`]: 1.5, [`text-align`]: `right`}}, 
+													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
 														[
-															[`span`, {style: {[`font-weight`]: 300}}, `Transactions`],
+															[`span`, {style: {[`font-weight`]: 300}}, `TRANSCATIONS`],
 															[`span`, {style: { 
+																color: `#fff`,
 																[`font-family`]: `geometria`, 
-																[`font-size`]: `${18}px`, [`font-weight`]: 600}}, `${Arg.till}`]]]]]]]]],			
+																[`font-size`]: `${14}px`, [`font-weight`]: 600}}, `${Arg.till}`]]]]]]]]],			
 							[`div`, {style: {
 								background: `rgb(${0}, ${168}, ${86})`, color: `#fff`,
 								[`border-radius`]: `${24}px`,[`line-height`]: 1.35, margin: `${32}px 0`, padding: `${42}px ${28}px`}}, 
@@ -253,7 +256,7 @@ let Models = {
 										on your debit balance, that's paid out daily.`]]],
 							[`div`, {class: `_gxM _geQ`}, 
 								[
-									[`h2`, {}, `RECENT AUTO-INVEST BOT TRADES`], 
+									[`h2`, {style: {color: `#000`, [`font-weight`]: 600}}, `Recent Auto-invest Bot trades`], 
 									[`div`, {class: `_gZz`}, 
 										[
 											[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {
