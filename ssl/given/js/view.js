@@ -251,9 +251,37 @@ let Models = {
 														[`white-space`]: `nowrap`
 														}}, (Clients.mug)? `Deposit Now`: `Create Wallet`]]]]]]],
 									[`p`, {style: {
-										[`font-size`]: `${12}px`,[`font-weight`]: 300, [`margin-top`]: `${21}px`}}, 
+										[`font-size`]: `${12}px`,[`font-weight`]: 600, [`margin-top`]: `${21}px`}}, 
 										`Blend the power of algorithimic profit trading into dynamic stablecoin wallets and earn hourly interests 
-										on your debit balance, that's paid out daily.`]]],
+										on your debit balance, that's paid out daily.`]]],			,
+							[`div`, {style: {
+								background: `#000`, [`border-radius`]: `${24}px`, color: `#a6a6a6`, [`font-weight`]: 600,
+								 [`margin-bottom`]: `${32}px`, 
+								padding: `${18}px ${20}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${12}px ${8}px`}}, 
+										[
+											[`span`, {style: {color: `#fff`,  [`font-size`]: `${10}px`}}, `BUILT FOR`]]],
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312301653`, style: {height:`${28}px`, [`min-width`]:`${28}px`}}], 
+											[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.75}}, 
+														[
+															[`span`, {style: {color: `#fff`}}, `Daily Profit`],
+															[`span`, {style: {[`margin-top`]: `${8}px`}}, `Earn hourly interest on your wallet balance, with 
+															at least 0.75% daily growth from market action.`]]]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312301635`, style: {height:`${26}px`, [`min-width`]:`${26}px`}}], 
+											[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.75}}, 
+														[
+															[`span`, {style: {color: `#fff`}}, `Fiat & Crypto`],
+															[`span`, {style: {[`margin-top`]: `${8}px`}}, `Deposits & Withdrawals made easier 
+															through stablecoin wallets and fiat at zero fees.`]]]]]]]]],
 							[`div`, {class: `_gxM _geQ`}, 
 								[
 									[`h2`, {style: {color: `#000`, [`font-weight`]: 600}}, `Recent Auto-invest Bot trades`], 
