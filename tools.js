@@ -268,15 +268,15 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [41834.74, 41984.27]],
-			ts_a: new Date(`2023-12-30 14:39`).valueOf(), 
-			ts_z: new Date(`2023-12-30 15:24`).valueOf()
+			pair: [`btc/fdusd`, [42525.66, 42611.72]],
+			ts_a: new Date(`2023-12-31 15:00`).valueOf(), 
+			ts_z: new Date(`2023-12-31 15:30`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [41907.64, 42168.76]],
-			ts_a: new Date(`2023-12-30 16:27`).valueOf(), 
-			ts_z: new Date(`2023-12-30 17:03`).valueOf()
-		}, {
+			pair: [`btc/fdusd`, [42411.42, 42527.15]],
+			ts_a: new Date(`2023-12-31 16:03`).valueOf(), 
+			ts_z: new Date(`2023-12-31 16:12`).valueOf()
+		}/*, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [42188.13, 42455.19]],
 			ts_a: new Date(`2023-12-30 18:30`).valueOf(), 
@@ -311,7 +311,7 @@ class Tools {
 			pair: [`btc/fdusd`, [42399.10, 42699.55]],
 			ts_a: new Date(`2023-12-31 11:45`).valueOf(), 
 			ts_z: new Date(`2023-12-31 12:21`).valueOf()
-		}/*, {
+		}, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [42455.78, 42669.43]],
 			ts_a: new Date(`2023-12-29 06:18`).valueOf(), 
@@ -327,6 +327,10 @@ class Tools {
 			ts_a: new Date(`2023-12-29 10:42`).valueOf(), 
 			ts_z: new Date(`2023-12-29 11:03`).valueOf()
 		}*/];
+
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
+
+		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
 		Pairs.forEach(Pair => {
 
