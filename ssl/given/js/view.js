@@ -529,7 +529,7 @@ let Models = {
 
 		let Span = [document.querySelector(`#plane`).clientWidth, 200];
 
-		let HoldXY = Arg//.sort((A, B) => {return B.ts - A.ts});
+		let HoldXY = Arg.sort((A, B) => {return B.ts - A.ts});
 
 		HoldXY.forEach(XY => {
 

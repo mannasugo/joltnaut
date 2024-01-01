@@ -330,7 +330,7 @@ class Route {
 									Pairs.push(P2)
 								});
 
-								console.log(Pairs.sort((A, B) => {return A.secs - B.secs}));
+								//console.log(Pairs.sort((A, B) => {return A.secs - B.secs}));
 
 								if (Pulls.mug != false) {
 
@@ -421,7 +421,7 @@ class Route {
 
 											HoldXY[1] += TX.till[Pulls.mug][1];
 
-											HoldXY[0].push({hold: HoldXY[1], ts: TX.ts});console.log([HoldXY[1], TX.ts])
+											HoldXY[0].push({hold: HoldXY[1], ts: TX.ts});
 										}
 									});
 
@@ -452,7 +452,7 @@ class Route {
 
 											Arg[1].end(Tools.coats({
 												debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
-												holdXY: HoldXY[0].sort((A, B) => {return B.ts - A.ts}),
+												holdXY: HoldXY[0],
 												pnl: PNL,
 												till: Raw.till[0].length,
 												ts: Raw.mugs[1][Pulls.mug][`secs`],
@@ -465,7 +465,7 @@ class Route {
 
 										Arg[1].end(Tools.coats({
 											debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
-											holdXY: HoldXY[0].sort((A, B) => {return B.ts - A.ts}),
+											holdXY: HoldXY[0],
 											pairs: Pairs,
 											pnl: PNL,
 											till: Raw.till[0].length,
