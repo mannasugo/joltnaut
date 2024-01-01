@@ -365,6 +365,8 @@ class Route {
 
 						View.DOM([`div`, [Models.clientTX(Web.tx)]]);
 
+						//View.pop()
+
 						//if (document.querySelector(`#plane`)) View.DOM([`#plane`, [Models.holdXY()]]);
 					}
 				}

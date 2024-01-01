@@ -529,9 +529,9 @@ let Models = {
 
 		let Span = [document.querySelector(`#plane`).clientWidth, 200];
 
-		let Y = [Axis[2], Axis[3]];
+		//let Y = [Axis[2], Axis[3]];
 
-		let y = Y[1] - Y[0];
+		//let y = Y[1] - Y[0];
 
 		Pit[2] = 
 			[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
@@ -541,9 +541,9 @@ let Models = {
 						stroke: `#1bd401`, 
 						[`stroke-width`]: 1, 
 						fill: `none`, d: ``/*`M15 ${((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 5.5} ${Span[0]} ${((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 7.5}`*/}], 
-						[`text`, {x: 0, y: ((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 7.5, fill: `#a6a6a6`, style: {
+						[`text`, {x: 0, y: (Clients.debit*(0))/Clients.debit + 10.5, fill: `#666`, style: {
 							[`font-family`]: `geometria`,
-							[`font-size`]: `${8}px`}}, `${(Pit[0][0].coin[1]*pit).toFixed(3)}`],
+							[`font-size`]: `${10}px`}}, `${Clients.debit}`],
 						[`path`, {
 							opacity: 1,
 							stroke: `#5841d8`, 
