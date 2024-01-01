@@ -365,9 +365,9 @@ class Route {
 
 						View.DOM([`div`, [Models.clientTX(Web.tx)]]);
 
-						//View.pop()
+						View.pop()
 
-						//if (document.querySelector(`#plane`)) View.DOM([`#plane`, [Models.holdXY()]]);
+						if (document.querySelector(`#plane`) && Web.debit > 0) View.DOM([`#plane`, [Models.holdXY(Web.holdXY)]]);
 					}
 				}
 			}

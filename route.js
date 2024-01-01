@@ -375,6 +375,8 @@ class Route {
 										}
 									});
 
+									let HoldXY = [[], 0];
+
 									Raw.till[0].forEach(MD => {
 
 										if (MD.till[Pulls.mug] && MD.flag && MD.flag.w2w) {
@@ -393,6 +395,11 @@ class Route {
 												ts: MD.ts,
 												type: (MD.till[Pulls.mug][1] < 0)? `out`: `in`});
 										}
+
+										if (MD.till[Pulls.mug] && MD.ts < (new Date().valueOf() - 360000*24*30)) {
+
+											HoldXY[1] += MD.till[Pulls.mug][1];
+										}
 									});
 
 									let Day = new Date();
@@ -408,6 +415,13 @@ class Route {
 											PNL[0] += (TX.till[Pulls.mug][1]*100)/TX.principal;
 
 											PNL[1] += TX.till[Pulls.mug][1];								
+										}
+
+										if (TX.till[Pulls.mug] && TX.ts > (new Date().valueOf() - 360000*24*30)) {
+
+											HoldXY[1] += TX.till[Pulls.mug][1];
+
+											HoldXY[0].push({hold: HoldXY[1], ts: TX.ts});console.log([HoldXY[1], TX.ts])
 										}
 									});
 
@@ -438,6 +452,7 @@ class Route {
 
 											Arg[1].end(Tools.coats({
 												debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+												holdXY: HoldXY[0].sort((A, B) => {return B.ts - A.ts}),
 												pnl: PNL,
 												till: Raw.till[0].length,
 												ts: Raw.mugs[1][Pulls.mug][`secs`],
@@ -450,6 +465,7 @@ class Route {
 
 										Arg[1].end(Tools.coats({
 											debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+											holdXY: HoldXY[0].sort((A, B) => {return B.ts - A.ts}),
 											pairs: Pairs,
 											pnl: PNL,
 											till: Raw.till[0].length,
@@ -479,74 +495,6 @@ class Route {
 										pnl: PNL,
 										till: Raw.till[0].length}));
 								}
-							}
-
-							if (Pulls.pull === `bot`) {
-
-								let Pair = Pulls.param;
-
-								Pair.md = createHash(`md5`).update(`${Pulls.param.ts_z}`, `utf8`).digest(`hex`);
-
-								if (Raw.trades[1][Pair.md]) return;
-
-								let Putlist = [];
-
-								Raw.mugs[0].forEach(Mug => {
-
-									let Bals = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
-
-									let B4 = [], AZ = [], Flag = [];
-
-									Bals.forEach(Till => {
-
-										if (Till.secs < Pair.ts_a && Till.hold[1] > 0) B4.push(Till);
-
-										if (Till.flag && Till.flag.trade && Till.flag.trade === Pair.md) Flag.push(Till);
-									})
-
-									if (Flag.length === 0 && B4.length > 0) {
-
-										AZ.push(B4[0]);
-
-										Bals.forEach(Till => {
-
-											if (Till.secs > Pair.ts_a && Till.secs < Pair.ts_z) AZ.push(Till);
-										});
-
-										let sum = 0;
-
-										AZ.forEach(Count => {
-                                        		
-                                        	sum += Count.hold[1];
-										});
-
-										sum = sum/AZ.length;
-
-										let gain = sum*(((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]));
-
-										Putlist.push({
-											flag: {trade: Pair.md},
-											gas: Pair.gas,
-											md: Pair.md,
-											outlet_wallet: false,
-											principal: sum,
-											secs: Pair.ts_z,
-											till: {
-												[hold]: gain*Pair.gas, 
-												[Mug.md]: [0, gain*(1 - Pair.gas)]},
-											ts: Pair.ts_z,
-											tx: false,
-											vow: false
-										});
-									}
-								});
-
-								Sql.puts([`trades`, Pair, (SQ) => {
-
-									Sql.putlist([`till`, Putlist, (SQ) => {
-
-										Arg[1].end(Tools.coats({}))}]);
-								}]);
 							}
 
 							if (Pulls.pull === `c2s`) {

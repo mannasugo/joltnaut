@@ -523,25 +523,29 @@ let Models = {
 												[`div`,  {}, TX[1]]]]]]]]]]]];
 	},
 
-	holdXY: () => {
+	holdXY: (Arg) => {
 
 		let Pit = [[], [], [], [], []];
 
 		let Span = [document.querySelector(`#plane`).clientWidth, 200];
 
-		//let Y = [Axis[2], Axis[3]];
+		let HoldXY = Arg//.sort((A, B) => {return B.ts - A.ts});
 
-		//let y = Y[1] - Y[0];
+		HoldXY.forEach(XY => {
+
+			Pit[3] += `${600 - (((HoldXY[0].ts - XY.ts)*Span[0])/(HoldXY[0].ts - HoldXY[HoldXY.length - 1].ts))} 
+			${(((HoldXY[0].hold - XY.hold)*Span[1])/(HoldXY[0].hold - HoldXY[HoldXY.length - 1].hold)) + 10} `;
+		});
 
 		Pit[2] = 
 			[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
 				[
 					[`path`, {
-						opacity: .75,
-						stroke: `#1bd401`, 
-						[`stroke-width`]: 1, 
-						fill: `none`, d: ``/*`M15 ${((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 5.5} ${Span[0]} ${((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 7.5}`*/}], 
-						[`text`, {x: 0, y: (Clients.debit*(0))/Clients.debit + 10.5, fill: `#666`, style: {
+						//opacity: .75,
+						stroke: `#a2a2a2`, 
+						[`stroke-width`]: 1.1, 
+						fill: `none`, d: `M27 ${(Clients.debit*(0))/Clients.debit + 10.5} ${Span[0]} ${(Clients.debit*(0))/Clients.debit + 10.5}`}], 
+						[`text`, {x: 0, y: (Clients.debit*(0))/Clients.debit + 12.5, fill: `#666`, style: {
 							[`font-family`]: `geometria`,
 							[`font-size`]: `${10}px`}}, `${Clients.debit}`],
 						[`path`, {
@@ -558,8 +562,8 @@ let Models = {
 						[`span`, {style: {[`font-size`]: `${11}px`}}, `PORTFOLIO BALANCE`],
 						[`div`, {class: `_gZz`, style: {[`font-weight`]: 600}}, 
 							[
-								[`a`, {href: `javascript:;`, style: {
-									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`}}, `LAST 7 DAYS`],
+								/*[`a`, {href: `javascript:;`, style: {
+									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`}}, `LAST 7 DAYS`],*/
 								[`a`, {href: `javascript:;`, style: {
 									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`, 
 									[`margin-left`]: `${12}px`}}, `LAST 30 DAYS`]]]]],
