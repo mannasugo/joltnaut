@@ -525,35 +525,68 @@ let Models = {
 
 	holdXY: (Arg) => {
 
-		let Pit = [[], [], [], [], []];
+		let Pit = [[], [], [], [], [], []];
 
-		let Span = [document.querySelector(`#plane`).clientWidth, 200];
+		let Span = [document.querySelector(`#plane`).clientWidth - 27, 165];
 
-		let HoldXY = Arg.sort((A, B) => {return B.ts - A.ts});
+		let HoldXY = [];
 
-		HoldXY.forEach(XY => {
+		Arg.forEach(XY => {
 
-			Pit[3] += `${600 - (((HoldXY[0].ts - XY.ts)*Span[0])/(HoldXY[0].ts - HoldXY[HoldXY.length - 1].ts))} 
-			${(((HoldXY[0].hold - XY.hold)*Span[1])/(HoldXY[0].hold - HoldXY[HoldXY.length - 1].hold)) + 10} `;
+			if (XY.ts > (new Date().valueOf() - 3600000*24*10)) HoldXY.push(XY);
+		});
+
+		//if (HoldXY[0].ts > (new Date().valueOf() - 3600000*24*29)) HoldXY.push({hold: 0, ts: new Date().valueOf() - 3600000*24*29})
+
+		let YSPAN = [HoldXY.sort((A, B) => {return B.hold - A.hold})[0], HoldXY.sort((A, B) => {return A.hold - B.hold})[0]];
+
+		let XSPAN = [HoldXY[HoldXY.length - 1].ts, HoldXY[0].ts];
+
+		HoldXY.sort((A, B) => {return B.ts - A.ts}).forEach(XY => {
+
+			Pit[3] += `${(Span[0] + 27) - (((HoldXY[0].ts - XY.ts)*Span[0])/(HoldXY[0].ts - HoldXY[HoldXY.length - 1].ts))} 
+			${(((YSPAN[0].hold - XY.hold)*Span[1])/(YSPAN[0].hold - YSPAN[1].hold)) + 10} `;
+		});
+
+		let X = [
+			YSPAN[0].hold, 
+			YSPAN[0].hold - ((YSPAN[0].hold - YSPAN[1].hold)*.33), 
+			YSPAN[0].hold - ((YSPAN[0].hold - YSPAN[1].hold)*.66), YSPAN[1].hold];
+
+		X.forEach(x => {
+
+			Pit[4].push(
+				[`text`, {x: 0, y: (((X[0] - x)*Span[1])/(X[0] - X[X.length - 1])) + 10, fill: `#666`, style: {
+					[`font-family`]: `geometria`,
+					[`font-size`]: `${10}px`}}, `${x.toFixed(2)}`]);
+					
+			Pit[5].push([`path`, {
+				//opacity: .75,
+				stroke: `#e3e3e3`, 
+				[`stroke-width`]: 1, 
+				fill: `none`, d: `M27 ${(((X[0] - x)*Span[1])/(X[0] - X[X.length - 1])) + 10} 
+				${Span[0] + 27} ${(((X[0] - x)*Span[1])/(X[0] - X[X.length - 1])) + 10}`}]);
+		});
+
+		XSPAN.reverse().forEach(x => {
+
+			Pit[1].push(
+				[`text`, {x: (((XSPAN[0] - x)*(Span[0] - 27))/(XSPAN[0] - XSPAN[1])) + 27, y: Span[1] + 27, fill: `#666`, style: {
+					[`font-family`]: `litera`,
+					[`font-size`]: `${10}px`}}, `${new Date(x).getDate(x)}/${new Date(x).getMonth() + 1}`]);
 		});
 
 		Pit[2] = 
 			[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
-				[
+				[ 
+					[`g`, {}, Pit[1]],
+					[`g`, {}, Pit[5]],
 					[`path`, {
-						//opacity: .75,
-						stroke: `#a2a2a2`, 
-						[`stroke-width`]: 1.1, 
-						fill: `none`, d: `M27 ${(Clients.debit*(0))/Clients.debit + 10.5} ${Span[0]} ${(Clients.debit*(0))/Clients.debit + 10.5}`}], 
-						[`text`, {x: 0, y: (Clients.debit*(0))/Clients.debit + 12.5, fill: `#666`, style: {
-							[`font-family`]: `geometria`,
-							[`font-size`]: `${10}px`}}, `${Clients.debit}`],
-						[`path`, {
-							opacity: 1,
-							stroke: `#5841d8`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M${Pit[3]}`}], 
-						[`g`, {}, Pit[4]]]];
+						opacity: 1,
+						stroke: `#5841d8`, 
+						[`stroke-width`]: 2, 
+						fill: `none`, d: `M${Pit[3]}`}], 
+					[`g`, {}, Pit[4]]]];
 
 		return [`div`, {}, 
 			[
@@ -566,7 +599,7 @@ let Models = {
 									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`}}, `LAST 7 DAYS`],*/
 								[`a`, {href: `javascript:;`, style: {
 									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`, 
-									[`margin-left`]: `${12}px`}}, `LAST 30 DAYS`]]]]],
+									[`margin-left`]: `${12}px`}}, `LAST 14 DAYS`]]]]],
 				[`div`, {class: `_gxM`}, 
 					[
 						[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],

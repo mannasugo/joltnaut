@@ -377,7 +377,7 @@ class Route {
 
 									let HoldXY = [[], 0];
 
-									Raw.till[0].forEach(MD => {
+									Raw.till[0].sort((A, B) => {return A.ts - B.ts}).forEach(MD => {
 
 										if (MD.till[Pulls.mug] && MD.flag && MD.flag.w2w) {
 
@@ -396,7 +396,7 @@ class Route {
 												type: (MD.till[Pulls.mug][1] < 0)? `out`: `in`});
 										}
 
-										if (MD.till[Pulls.mug] && MD.ts < (new Date().valueOf() - 360000*24*30)) {
+										if (MD.till[Pulls.mug] && MD.ts < (new Date().valueOf() - 360000*24*354)) {
 
 											HoldXY[1] += MD.till[Pulls.mug][1];
 										}
@@ -408,7 +408,7 @@ class Route {
 
 									let PNL = [0, 0, 0];
 
-									Raw.till[0].forEach(TX => {
+									Raw.till[0].sort((A, B) => {return A.ts - B.ts}).forEach(TX => {
 
 										if (TX.flag && TX.flag.trade && TX.till[Pulls.mug] && TX.ts > ts) {
 
@@ -417,7 +417,7 @@ class Route {
 											PNL[1] += TX.till[Pulls.mug][1];								
 										}
 
-										if (TX.till[Pulls.mug] && TX.ts > (new Date().valueOf() - 360000*24*30)) {
+										if (TX.till[Pulls.mug] && TX.ts > (new Date().valueOf() - 360000*24*354)) {
 
 											HoldXY[1] += TX.till[Pulls.mug][1];
 
