@@ -268,35 +268,35 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45471.81, 45798.21]],
-			ts_a: new Date(`2024-01-02 11:09`).valueOf(), 
-			ts_z: new Date(`2024-01-02 11:27`).valueOf()
+			pair: [`btc/fdusd`, [45076.55, 45276.85]],
+			ts_a: new Date(`2024-01-02 18:27`).valueOf(), 
+			ts_z: new Date(`2024-01-02 18:48`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45589.49, 45705.93]],
-			ts_a: new Date(`2024-01-02 13:51`).valueOf(), 
-			ts_z: new Date(`2024-01-02 14:06`).valueOf()
+			pair: [`btc/fdusd`, [45061.72, 45351.03]],
+			ts_a: new Date(`2024-01-02 19:24`).valueOf(), 
+			ts_z: new Date(`2024-01-02 19:51`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45358.01, 45591.69]],
-			ts_a: new Date(`2024-01-02 14:48`).valueOf(), 
-			ts_z: new Date(`2024-01-02 15:36`).valueOf()
+			pair: [`btc/fdusd`, [45095.54, 45255.78]],
+			ts_a: new Date(`2024-01-02 20:54`).valueOf(), 
+			ts_z: new Date(`2024-01-02 21:33`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45416.46, 45714.01]],
-			ts_a: new Date(`2024-01-02 16:00`).valueOf(), 
-			ts_z: new Date(`2024-01-02 17:02`).valueOf()
+			pair: [`btc/fdusd`, [44820.30, 45168.24]],
+			ts_a: new Date(`2024-01-03 00:12`).valueOf(), 
+			ts_z: new Date(`2024-01-03 01:00`).valueOf()
+		}, {
+			gas: 7.5/100,
+			pair: [`btc/fdusd`, [45026.11, 45208.60]],
+			ts_a: new Date(`2024-01-03 01:42`).valueOf(), 
+			ts_z: new Date(`2024-01-03 03:48`).valueOf()
+		}, {
+			gas: 7.5/100,
+			pair: [`btc/fdusd`, [45242.95, 45312.31]],
+			ts_a: new Date(`2024-01-03 06:39`).valueOf(), 
+			ts_z: new Date(`2024-01-03 07:27`).valueOf()
 		}/*, {
-			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45278.04, 45381.89]],
-			ts_a: new Date(`2024-01-02 08:03`).valueOf(), 
-			ts_z: new Date(`2024-01-02 08:15`).valueOf()
-		}, {
-			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45249.85, 45404.15]],
-			ts_a: new Date(`2024-01-02 08:54`).valueOf(), 
-			ts_z: new Date(`2024-01-02 10:09`).valueOf()
-		}, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [42279.52, 42433.82]],
 			ts_a: new Date(`2024-01-01 08:54`).valueOf(), 
