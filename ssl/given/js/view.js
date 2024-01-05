@@ -116,7 +116,7 @@ let Models = {
 
 		Arg.pairs = Arg.pairs.sort((A, B) => {return B.secs - A.secs});
 
-		Arg.pairs.slice(0, 4).forEach(Pair => {
+		Arg.pairs.slice(0, 5).forEach(Pair => {
 
 			P2[0].push([
 				`div`, {style: {border: `${1}px solid #e3e3e3`, [`border-radius`]: `${24}px`, [`line-height`]: 1.3, margin: `${10}px 0`, padding: `${15}px`}}, 
