@@ -312,7 +312,7 @@ class Route {
 
 											for (let mug in TX.till) {
 
-												if (mug !== hold) P2.pnl[1] += parseFloat(TX.till[mug]);
+												if (mug.length !== 12) { P2.pnl[1] += parseFloat(TX.till[mug][1]); }
 											}
 										}
 									});
