@@ -268,19 +268,19 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [43306.52, 43539.02]],
-			ts_a: new Date(`2024-01-05 07:27`).valueOf(), 
-			ts_z: new Date(`2024-01-05 08:24`).valueOf()
+			pair: [`btc/fdusd`, [43972.84, 44099.70]],
+			ts_a: new Date(`2024-01-05 12:27`).valueOf(), 
+			ts_z: new Date(`2024-01-05 12:57`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [43565.87, 43697.03]],
-			ts_a: new Date(`2024-01-05 08:54`).valueOf(), 
-			ts_z: new Date(`2024-01-05 09:50`).valueOf()
+			pair: [`btc/fdusd`, [43725.81, 43892.75]],
+			ts_a: new Date(`2024-01-05 15:06`).valueOf(), 
+			ts_z: new Date(`2024-01-05 15:45`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [43719.13, 43832.64]],
-			ts_a: new Date(`2024-01-05 10:48`).valueOf(), 
-			ts_z: new Date(`2024-01-05 11:27`).valueOf()
+			pair: [`btc/fdusd`, [43752.81, 43838.72]],
+			ts_a: new Date(`2024-01-05 16:30`).valueOf(), 
+			ts_z: new Date(`2024-01-05 16:48`).valueOf()
 		}/*, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [43322.84, 43616.61]],
@@ -328,7 +328,7 @@ class Tools {
 			ts_z: new Date(`2023-12-29 11:03`).valueOf()
 		}*/];
 
-		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
