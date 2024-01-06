@@ -533,7 +533,7 @@ let Models = {
 
 		Arg.forEach(XY => {
 
-			if (XY.ts > (new Date().valueOf() - 3600000*24*10)) HoldXY.push(XY);
+			if (XY.ts > (new Date().valueOf() - 3600000*24*7)) HoldXY.push(XY);
 		});
 
 		//if (HoldXY[0].ts > (new Date().valueOf() - 3600000*24*29)) HoldXY.push({hold: 0, ts: new Date().valueOf() - 3600000*24*29})
@@ -572,7 +572,7 @@ let Models = {
 
 			Pit[1].push(
 				[`text`, {x: (((XSPAN[0] - x)*(Span[0] - 27))/(XSPAN[0] - XSPAN[1])) + 27, y: Span[1] + 27, fill: `#666`, style: {
-					[`font-family`]: `litera`,
+					[`font-family`]: `geometria`,
 					[`font-size`]: `${10}px`}}, `${new Date(x).getDate(x)}/${new Date(x).getMonth() + 1}`]);
 		});
 
@@ -599,7 +599,7 @@ let Models = {
 									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`}}, `LAST 7 DAYS`],*/
 								[`a`, {href: `javascript:;`, style: {
 									[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`, 
-									[`margin-left`]: `${12}px`}}, `LAST 14 DAYS`]]]]],
+									[`margin-left`]: `${12}px`}}, `LAST 7 DAYS`]]]]],
 				[`div`, {class: `_gxM`}, 
 					[
 						[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`]]],
@@ -1314,15 +1314,22 @@ let Models = {
 
 		let Slot = {
 			action: [`signin`, `signin`],
-			slots: [[`email address`, `email`, `email`], [`password`, `lock`, `password`]]
-		}, TC = [[]];
+			slots: [[`email`, `email`, `email`], [`password`, `lock`, `password`]]
+		}, TC = [[], []];
+
+		TC[0] = [`span`, {style: {
+			color: `#a1a1a1`, 
+			[`font-size`]: `${12}px`, [`font-weight`]: 600, [`line-height`]: 1.5, margin: `${24}px 0 0`, [`text-align`]: `center`}}, 
+			[
+				[`span`, {}, `Don't have an account yet? `], 
+				[`a`, {href: `/enrol`}, ` Create an account`]]];
 
 		if (Tools.typen(Clients.instance)[0] === `mugup`) {
 
 			Slot = {
 				action: [`signup`, `signup`],
 				slots: [
-					[`email address`, `email`, `email`], 
+					[`email`, `email`, `email`], 
 					[`first name`, `middle`, `text`], 
 					[`surname`, `family`, `text`], 
 					[`password`, `lock`, `password`]
@@ -1336,14 +1343,16 @@ let Models = {
 					[`font-size`]: `${12}px`, [`font-weight`]: 600, [`line-height`]: 1.5, margin: `${12}px 0 0`, [`text-align`]: `center`}}, 
 				[
 					[`span`, {}, `By creating an account, you consent that you have read and agree to our `], 
-					[`a`, {href: `javascript:;`}, ` Terms of Service & Privacy Policy.`]]];			
+					[`a`, {href: `javascript:;`}, ` Terms of Service & Privacy Policy.`]]];
+
+			TC[1] = [];		
 		}
 
 		let Slots = [];
 
 		Slot.slots.forEach(Slot => {
 
-			let Tip = [[]];
+			let Tip = [[], [], []];
 
 			if (Slot[0] === `surname`) {
 
@@ -1355,36 +1364,44 @@ let Models = {
 				could temporarily disable deposits and withdrawals on your account.`]
 			}
 
+			if (Slot[0] === `password` && Tools.typen(Clients.instance)[0] === `mugin`) {
+
+				Tip[1] = [`div`, {class: `_gxM _geQ`, style: {margin: `${12}px 0 -${8}px`}}, 
+					[[`div`, {class: `_gZz`}, 
+						[[`a`, {href: `javascript:;`, style: {
+							[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`, 
+							[`margin-left`]: `${12}px`}}, `FORGOT PASSWORD?`]]]]]
+			}
+
 			Slots.push([
 					`div`, {class: `_sZ2`}, [
-						[`label`, {style: {margin: `0 ${20}px ${8}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
+						[`label`, {style: {
+							[`font-weight`]: 600,
+							margin: `0 ${0}px ${12}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
 							[[`span`, {}, Slot[0]]]], 
 						[`div`, {class: `_aXZ`}, 
-							[[`input`, {id: Slot[1], type: Slot[2]}]]], Tip[0]]]);
+							[[`input`, {id: Slot[1], type: Slot[2]}]]], Tip[0], Tip[1]]]);
 
 		});
 
 		return [
 				`section`, {}, 
-					[
-						[`div`, {class: `_-tY`}, 
-							[[`div`, {class: `_aXz`}, 
+					[ 
+						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+							[[`div`, {class: `_geQ`, style: {
+								[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 								[
-									[`div`, {class: `_-Xg _gxM _geQ`}, 
-										[
-											[`a`, {class: `-_tX v202304191915`, href: `/`}], 
-											[`div`, {class: `_gZz`}, 
-												[/*[`a`, {id: (Tools.typen(Clients.instance)[0] === `mugin`)? `mugup`: `mugin`, class: `_tXx`, href: `javascript:;`}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signup`: `signin`]*/]]]]]]]], 
-						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${65}px`}}, 
-							[[`div`, {class: `_geQ`, style: {[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
-								[
+									[`div`, {class: `_gxM _aXZ`, style: {[`margin-bottom`]: `-${10}px`}}, 
+										[[`a`, {class: `-_tX v202304191915`, href: `/`, style: {height: `${36}px`, width: `${36}px`}}]]],
 									[`h2`, {}, (Tools.typen(Clients.instance)[0] === `mugin`)? `signin`: `signup`], 
 									[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
 										[
 											[`div`, {}, Slots],
-											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
-												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, Slot.action[0]]]],
-											TC[0]]]]]]]]]
+											[`div`, {class: `_gM_a _agM _guZ`, style: {
+												width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, style: { 
+													[`text-transform`]: `capitalize`}}, Slot.action[0]]]],
+											TC[0], TC[1]]]]]]]]]
 	},
 
 	outVaultC2s: function (Arg) {
