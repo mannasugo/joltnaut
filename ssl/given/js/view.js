@@ -231,11 +231,11 @@ let Models = {
 												[
 													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
 														[
-															[`span`, {style: {[`font-weight`]: 300}}, `TRANSCATIONS`],
+															[`span`, {style: {[`font-weight`]: 300}}, `TRANSACTIONS`],
 															[`span`, {style: { 
 																color: `#fff`,
 																[`font-family`]: `geometria`, 
-																[`font-size`]: `${14}px`, [`font-weight`]: 600}}, `${Arg.till}`]]]]]]]]],			
+																[`font-size`]: `${14}px`, [`font-weight`]: 600}}, `${(Arg.till).toLocaleString()}`]]]]]]]]],			
 							[`div`, {style: {
 								background: `rgb(${0}, ${168}, ${86})`, color: `#fff`,
 								[`border-radius`]: `${24}px`,[`line-height`]: 1.35, margin: `${32}px 0`, padding: `${42}px ${28}px`}}, 
