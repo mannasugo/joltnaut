@@ -330,8 +330,6 @@ class Route {
 									Pairs.push(P2)
 								});
 
-								//console.log(Pairs.sort((A, B) => {return A.secs - B.secs}));
-
 								if (Pulls.mug != false) {
 
 									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
@@ -766,6 +764,49 @@ class Route {
 									});
 
 									Arg[1].end(Tools.coats({mug: Pulls.mug, peers: Peers}));
+								}
+							}
+
+							if (Pulls.pull === `pnl`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									let Pairs = [], pnl = 0;
+
+									Raw.till[0].forEach(TX => {
+
+										if (TX.flag && TX.flag.trade && TX.till[Pulls.mug]) {
+
+											let Pair = Raw.trades[1][TX.md];
+
+											let P2 = {amount: TX.principal, io: [Pair.pair[1][0], Pair.pair[1][1]], pair: Pair.pair[0], pnl: [0, 0, 0]};
+
+											P2.pnl[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+											P2.pnl[1] = parseFloat(TX.till[Pulls.mug][1]);
+
+											Raw.till[0].forEach(TX2 => {
+
+												if (TX2.till[Pulls.mug] && TX2.ts <= Pair.ts_z) P2.pnl[2] += parseFloat(TX2.till[Pulls.mug][1]);
+											});
+
+											let era = Pair.ts_z - Pair.ts_a;
+
+											if (era >= 3600000) P2.runs = `${(era/3600000).toFixed()}H ${(era - 3600000)/60000}MIN`;
+
+											if (era < 3600000) P2.runs = `${era/60000}MIN`;
+
+											P2.secs = Pair.ts_z;
+
+											P2.ts = [Pair.ts_a, Pair.ts_z];
+
+											Pairs.push(P2)
+
+											pnl += parseFloat(TX.till[Pulls.mug][1]);
+										}
+									});
+
+									Arg[1].end(Tools.coats({mug: Pulls.mug, pairs: Pairs, pnl: pnl}));
 								}
 							}
 

@@ -371,6 +371,25 @@ class Route {
 					}
 				}
 			}
+
+    		else if (State[4] && State[4] === `wallet` && State[5] && State[5] === `pnl` && !State[6] 
+    			&& !Tools.slim[State[6]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: Clients.mug,
+						pull: `pnl`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						View.DOM([`div`, [Models.pnl(Web)]]);
+					}
+				}
+			}
     	}
 
     	else if (this.State[3] === `p2p`) {
