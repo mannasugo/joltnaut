@@ -1076,29 +1076,29 @@ class Route {
 
 											let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
 
-											Sql.puts([`till`, {
-												flag: {payout: md},
-												md: md,
-												outlet_wallet: false,
-												secs: ts,
-												till: {
-													[hold]: 0,
-													[Pulls.mug]: [0, -(Pulls.param.float)]},
-												ts: ts,
-												tx: false,
-												vow: false}, (Q) => {
+											Sql.puts([`payout`,  {
+          										complete: false,
+          										float: Pulls.param.float,
+          										id: Pulls.param.id,
+          										local: Pulls.param.local,
+          										md: md,
+          										mug: Pulls.mug,
+          										secs: ts,
+          										ts: ts,
+          										tx: {},
+          										type: `stk`}, (Q) => {
 
-          										Sql.puts([`payout`, {
-          											complete: false,
-          											float: Pulls.param.float,
-          											id: Pulls.param.id,
-          											local: Pulls.param.local,
-          											md: md,
-          											mug: Pulls.mug,
-          											secs: ts,
-          											ts: ts,
-          											tx: {},
-          											type: `stk`}, (Pay) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
+          										Sql.puts([`till`,{
+													flag: {payout: md},
+													md: md,
+													outlet_wallet: false,
+													secs: ts,
+													till: {
+														[hold]: 0,
+														[Pulls.mug]: [0, -(Pulls.param.float)]},
+														ts: ts,
+													tx: false,
+													vow: false}, (Pay) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
 											}]);
 										}
 									}
