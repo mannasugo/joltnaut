@@ -147,10 +147,10 @@ let Models = {
 							[
 								[`div`, {}, 
 									[
-										[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `CUMULATIVE PNL (USD)`],
+										[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `CUMULATIVE PNL (USDT)`],
 										[`span`, {style: {
 											color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
-											[`margin-left`]: `${2}px`, }}, `$${Pair.pnl[1].toFixed(4)}`]]],
+											[`margin-left`]: `${2}px`, }}, `${Pair.pnl[1].toFixed(4)}`]]],
 								[`div`, {class: `_gZz`},
 									[[`div`, {style: {[`text-align`]: `right`}}, 
 										[
@@ -410,7 +410,7 @@ let Models = {
 								[`span`, {style: {color: (Tx.type === `outVault`)? `#ca0000`: `#00ca29`}}, `${(Tx.type === `outVault`)? `Sell`: `Buy`} `],
 								[`span`, {style: {[`margin-left`]: `${6}px`}}, ` USDT`], 
 								TX[2]]], 
-						[`div`, {}, Params[1]]]])
+						[`div`, {}, Params[1]]]]);
 		});
 
 		Arg[1].sort((A, B) => {return B.ts - A.ts}).forEach(Tx => {
@@ -448,7 +448,7 @@ let Models = {
 							[`div`, {class: `_-Xg _gxM _geQ`}, 
 								[
 									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${30}px`, height: `${30}px`}, href: `/`}, ``], 
-									[`span`, {id: `vault`, class: `_aA6 _tXx`, style: {
+									[`span`, {id: `vault`, style: {
                                         [`border-left`]: `${1}px solid #91919159`, 
                                         margin: `${0} ${7}px`,
                                         padding: `${0} ${14}px`,
@@ -463,22 +463,7 @@ let Models = {
 							[
 								[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
 									[
-										[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${12}px ${12}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${18}px`, [`font-size`]: `${12}px`}}, 
-											[
-												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `WALLET ID`], 
-												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.ts}`],
-												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `WALLET BALANCE`], 
-												[`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-weight`]: 600}}, `${Clients.debit} USDT`],
-												[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${0}px`}}, 
-													[
-														[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, `TODAY'S PNL (QUANT PROFIT)`],
-														[`div`, {class: `_gZz`}, 
-															[
-																[`span`, {style: 
-																	{
-																		color: `#00ca29`,
-																		[`font-family`]: `geometria`, 
-																		[`font-size`]: `${10}px`}}, `+${Tools.typen(Clients.pnl)[1]}(${Tools.typen(Clients.pnl)[0]}%)`]]]]]]],
+										[`div`, {id: `plane`, style: {[`line-height`]: 1.75, margin: `${24}px 0 0`}}],
 										/*[`section`, {class: `_gxM _geQ`, style: {[`line-height`]: 1.5, margin: `${12}px 0 0`}},
 											[
 												[`span`, {class: `v202205081410`}],
@@ -492,34 +477,36 @@ let Models = {
 														[`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
 														[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: ``, style: {
 															[`white-space`]: `nowrap`
-														}}, (parseFloat(Clients.vault) > 0)? `Manage P2P`: `P2P Merchant`]]]]]]],*/
-										[`span`, {style: {[`font-weight`]: 600, [`margin-top`]: `${32}px`}}, `QUICK ACTIONS`],
-										[`div`, {class: `_gxM`, style: {[`font-size`]: `${10}px`, [`margin-top`]: `${24}px`}}, 
+														}}, (parseFloat(Clients.vault) > 0)? `Manage P2P`: `P2P Merchant`]]]]]]],*/,
+										[`div`, {class: `_gxM`, style: {[`font-size`]: `${12}px`, [`margin-top`]: `${24}px`}}, 
 											[
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202203261943`, style: {}, href: `/mode/deposit`}],
-														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `DEPOSIT`]]],
+														[`a`, {class: `v202401121218`, style: {}, href: `/mode/deposit`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `Deposit`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202203262148`, style: {}, href: `/mode/withdraw`}],
-														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `WITHDRAW`]]],
+														[`a`, {class: `v202410121221`, style: {}, href: `/mode/withdraw`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `Withdraw`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202310282005`, style: {}, href: `javascript:;`}],
-														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `PAY`]]],
+														[`a`, {class: `v202401121208`, style: {}, href: `javascript:;`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `Pay`]]],
 												[`div`, {class: `_geQ`}, 
 													[
-														[`a`, {class: `v202310281744`, style: {}, href: `/my/peers`}],
-														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `SEND`]]]]],
-										[`div`, {id: `plane`, style: {[`line-height`]: 1.75, margin: `${24}px 0 0`}}],
+														[`a`, {class: `v202401121214`, style: {}, href: `/my/peers`}],
+														[`span`, {style: {color: `#666`, [`margin-top`]: `${0}px`}}, `Send`]]]]],
 										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, 
 											[
-												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (TX[0].length > 0)? `RECENT DEPOSITS & WITHDRAWALS`: ``],
+												[`span`, {style: {
+													color: `#a3a3a3`, 
+													[`font-size`]: `${10}px`}}, (TX[0].length > 0)? `RECENT DEPOSITS & WITHDRAWALS`: ``],
 												[`div`,  {}, TX[0]]]],
 										[`section`, {id: `vautltx`, style: {[`margin-top`]: `${12}px`}}, 
 											[
-												[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (TX[1].length > 0)? `RECENT WALLET TRANSCATIONS`: ``],
+												[`span`, {style: {
+													color: `#a3a3a3`, 
+													[`font-size`]: `${10}px`}}, (TX[1].length > 0)? `RECENT WALLET TRANSCATIONS`: ``],
 												[`div`,  {}, TX[1]]]]]]]]]]]];
 	},
 
@@ -592,7 +579,7 @@ let Models = {
 			[
 				[`div`, {class: `_gxM`}, 
 					[
-						[`span`, {style: {[`font-size`]: `${11}px`}}, `PORTFOLIO BALANCE`],
+						[`span`, {style: {color: `#666`, [`font-size`]: `${12}px`}}, `USDT Balance`],
 						[`div`, {class: `_gZz`, style: {[`font-weight`]: 600}}, 
 							[
 								/*[`a`, {href: `javascript:;`, style: {

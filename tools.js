@@ -268,14 +268,14 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [46001.18, 46184.79]],
-			ts_a: new Date(`2024-01-12 07:57`).valueOf(), 
-			ts_z: new Date(`2024-01-12 08:45`).valueOf()
+			pair: [`btc/fdusd`, [45758.90, 45885.75]],
+			ts_a: new Date(`2024-01-12 11:39`).valueOf(), 
+			ts_z: new Date(`2024-01-12 12:00`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [45993.02, 46062.38]],
-			ts_a: new Date(`2024-01-12 10:15`).valueOf(), 
-			ts_z: new Date(`2024-01-12 10:18`).valueOf()
+			pair: [`btc/fdusd`, [45738.87, 45879.08]],
+			ts_a: new Date(`2024-01-12 12:30`).valueOf(), 
+			ts_z: new Date(`2024-01-12 12:39`).valueOf()
 		}/*, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [46043.32, 46167.95]],
