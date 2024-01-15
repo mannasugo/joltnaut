@@ -715,11 +715,11 @@ let Models = {
 								[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
 								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
 							[`section`, {id: `vaultSlots`}, VaultSlots],
-							[`span`, {id: `rateSwap`}, `1 usdt = 159.64 kes`], 
+							[`span`, {id: `rateSwap`}, `1 usdt = 164.64 kes`], 
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO PAY`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*159.64).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*164.64).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]], 
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
@@ -900,7 +900,7 @@ let Models = {
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*159.64).toFixed(2)} - ${(Arg.apex*159.64).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*164.64).toFixed(2)} - ${(Arg.apex*164.64).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
@@ -1938,7 +1938,7 @@ let Models = {
 									[`a`, {class: `-_tX v202203261943`, href: ``}], 
 									[`a`, {class: `-_tX v202203262148`, href: `/p2p/c2s`, style: {[`margin-left`]: `${24}px`}}], 
 									[`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202311102200`, href: `javascript:;`}]]]]],
-							[`span`, {id: `rateSwap`}, `1 usdt = 159.64 kes`],
+							[`span`, {id: `rateSwap`}, `1 usdt = 164.64 kes`],
 							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];
 	},
 
