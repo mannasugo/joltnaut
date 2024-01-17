@@ -268,9 +268,9 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [42566.98, 42639.07]],
-			ts_a: new Date(`2024-01-17 11:10`).valueOf(), 
-			ts_z: new Date(`2024-01-17 11:19`).valueOf()
+			pair: [`btc/fdusd`, [42759.91, 42799.73]],
+			ts_a: new Date(`2024-01-17 12:11`).valueOf(), 
+			ts_z: new Date(`2024-01-17 12:26`).valueOf()
 		}/*, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [42822.18, 42874.10]],
