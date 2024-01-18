@@ -1696,8 +1696,8 @@ let Models = {
 
 		let Via = [
 			[
-				[`M-PESA Safaricom (Kenya)`, `#049b04`, `7 - 25 MINUTES`, `FREE CHARGE`, `0/1000 USD DAILY LIMIT`, `stk`], 
-				[`Tether USD Wallet Address (USDT)`, `#1d9b75`, `20 - 35 MINUTES`, `NETWORK FEES APPLY`, `UNLIMITED`, `tron20`]], []];
+				[`M-PESA Safaricom (Kenya)`, `#049b04`, `45 MINS - 60MINS (WITHIN 0900GMT - 1600GMT)`, `FREE CHARGE`, `10,000 KES DAILY LIMIT`, `stk`], 
+				[`Tether USD Wallet Address (USDT)`, `#1d9b75`, `20 - 35 MINUTES (WITHIN 0900GMT - 1600GMT)`, `NETWORK FEES APPLY`, `UNLIMITED`, `tron20`]], []];
 
 		Via[0].forEach(Slot => {
 
@@ -1715,7 +1715,7 @@ let Models = {
 								[`div`, {class: `_gxM _geQ`}, 
 									[
 										[`span`, {class: `v202301071417`, style: {width: `${14}px`, height: `${14}px`}}],
-										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[2]]]]]],
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#666`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, Slot[2]]]]]],
 								[`div`, {class: `_gxM _geQ`}, 
 									[
 										[`span`, {class: `v202205081426`, style: {width: `${16}px`, height: `${16}px`}}],
@@ -1723,7 +1723,7 @@ let Models = {
 								[`div`, {class: `_gxM _geQ`}, 
 									[
 										[`span`, {class: `v202310281744`, style: {width: `${14}px`, height: `${14}px`}}],
-										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, Slot[4]]]]]]]]]]);
+										[`div`, {class: `_eYG`}, [[`span`, {style: {color: `#666`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, Slot[4]]]]]]]]]]);
 		});
 
 		return [`main`, {class: `_tY0`}, 

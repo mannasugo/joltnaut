@@ -235,7 +235,12 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					if (Web.mug) {
+					if (Web.mug && Web.open < 9 || Web.open > 16) {
+
+						console.log(Web)
+					}
+
+					if (Web.mug && Web.open >= 9 && Web.open <= 16) {
 
 						if (Web.vaultSlot.id) {
 
@@ -266,7 +271,12 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					if (Web.mug) {
+					if (Web.mug && Web.open < 9 || Web.open > 16) {
+
+						console.log(Web)
+					}
+
+					if (Web.mug && Web.open >= 9 && Web.open <= 16) {
 
 						View.DOM([`div`, [Models.vaultOutTRON20(Web)]]);
 

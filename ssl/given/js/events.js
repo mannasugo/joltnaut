@@ -592,7 +592,7 @@ class Events {
 				[(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value),
 				(!Tools.slim(document.querySelector(`#localSlot`).value))? false: Tools.slim(document.querySelector(`#localSlot`).value)];
 
-			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || parseFloat(Values[1]) > 10000) return;
 
 			if (parseFloat(Values[0]) <= 0 || Arg.apex < parseFloat(Values[0]) || 2.5 > parseFloat(Values[0])) return;
 

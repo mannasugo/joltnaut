@@ -1064,13 +1064,15 @@ class Route {
 
 							if (Pulls.pull === `vaultOut`) {
 
-								if (Raw.mugs[1][Pulls.mug]) {
+								let open = new Date().getUTCHours();
+
+								if (Raw.mugs[1][Pulls.mug] && open >= 9 && open <= 16) {
 
 									if (Pulls.param.type === `stk`) {
 
 										let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
 
-										if (Hold[0].hold[1] > Pulls.param.float) {
+										if (Hold[0].hold[1] > Pulls.param.float && Pulls.param.local <= 10000) {
 
 											let ts = new Date().valueOf();
 
@@ -1107,7 +1109,16 @@ class Route {
 
 							if (Pulls.pull === `vaultSlot`) {
 
-								if (Raw.mugs[1][Pulls.mug]) {
+								let open = new Date().getUTCHours();
+
+								if (Raw.mugs[1][Pulls.mug] && open < 9 || open > 16) {
+
+									Arg[1].end(Tools.coats({
+										mug: Pulls.mug,
+										open: open}));
+								}
+
+								if (Raw.mugs[1][Pulls.mug] && open >= 9 && open <= 16) {
 
 									if (Pulls.flag === `stk`) {
 
@@ -1132,6 +1143,7 @@ class Route {
 
 										Arg[1].end(Tools.coats({
 											mug: Pulls.mug,
+											open: open,
 											vaultSlot: vaultSlot}));
 									}
 
@@ -1141,6 +1153,7 @@ class Route {
 
 											Arg[1].end(Tools.coats({
 												mug: Pulls.mug,
+												open: open,
 												id: Raw.mugs[1][Pulls.mug].tron20.base58}));
 										}
 
@@ -1176,6 +1189,7 @@ class Route {
 
 														Arg[1].end(Tools.coats({
 															mug: Pulls.mug,
+															open: open,
 															id: Vault.address.base58}));
 													}]);
 												}]);	
@@ -1193,6 +1207,7 @@ class Route {
 
 											Arg[1].end(Tools.coats({
 												mug: Pulls.mug,
+												open: open,
 												hold: (Hold.length > 0)? Hold[0].hold[1]: 0}));
 										}
 									}
