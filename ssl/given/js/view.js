@@ -183,8 +183,18 @@ let Models = {
 
 		return [
 			`section`, {}, 
-				[[`main`, {id: `app`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
-					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+				[[`div`, {class: `_gxM`, style: {margin: `${20}px ${24}px`}}, 
+						[
+							[`div`, {class: `_-Xg _gxM _geQ`}, 
+								[
+									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
+									[`span`, {id: `vault`, style: {
+										[`font-family`]: `naut`,
+										[`font-size`]: `${21}px`,
+										[`font-weight`]: 600,
+                                        margin: `${0} ${12}px`}}, `joltnaut`]]]]],
+				[`main`, {id: `app`, class: `_tY0`, style: {height: `${100}%`, padding: `0 ${24}px`, [`margin-top`]: `${5}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
 						[
 							[`div`, {class: `_gxM _geQ`}, 
 								[
@@ -447,14 +457,12 @@ let Models = {
 						[
 							[`div`, {class: `_-Xg _gxM _geQ`}, 
 								[
-									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${30}px`, height: `${30}px`}, href: `/`}, ``], 
+									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
 									[`span`, {id: `vault`, style: {
-                                        [`border-left`]: `${1}px solid #91919159`, 
-                                        margin: `${0} ${7}px`,
-                                        padding: `${0} ${14}px`,
-                                        color: `#000`, //`#00e53f`,
-                                        overflow: `hidden`,
-                                        [`white-space`]: `nowrap`}}, `joltnaut`]]],
+										[`font-family`]: `naut`,
+										[`font-size`]: `${21}px`,
+										[`font-weight`]: 600,
+                                        margin: `${0} ${12}px`}}, `joltnaut`]]],
 							[`div`, {class: `_gZz`, style: {[`align-items`]: `center`}}, 
 								[[`div`, {class: `_gxM`}, 
 									[[`a`, {class: `v202205042043`, style: {margin: `${0} ${10}px`}, href: `/my/wallet/pnl`}]]]]]]]]], 
