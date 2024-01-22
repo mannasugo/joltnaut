@@ -1111,14 +1111,7 @@ class Route {
 
 								let open = new Date().getUTCHours();
 
-								if (Raw.mugs[1][Pulls.mug] && open < 9 || open > 16) {
-
-									Arg[1].end(Tools.coats({
-										mug: Pulls.mug,
-										open: open}));
-								}
-
-								if (Raw.mugs[1][Pulls.mug] && open >= 9 && open <= 16) {
+								if (Raw.mugs[1][Pulls.mug]) {
 
 									if (Pulls.flag === `stk`) {
 
