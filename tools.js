@@ -268,25 +268,25 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [42541.00, 42552.82]],
-			ts_a: new Date(`2024-01-28 11:25`).valueOf(), 
-			ts_z: new Date(`2024-01-28 11:26`).valueOf()
+			pair: [`btc/fdusd`, [42609.32, 42629.00]],
+			ts_a: new Date(`2024-01-28 12:51`).valueOf(), 
+			ts_z: new Date(`2024-01-28 12:52`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [42532.55, 42537.34]],
-			ts_a: new Date(`2024-01-28 11:29`).valueOf(), 
-			ts_z: new Date(`2024-01-28 11:32`).valueOf()
+			pair: [`btc/fdusd`, [42634.00, 42644.00]],
+			ts_a: new Date(`2024-01-28 12:53`).valueOf(), 
+			ts_z: new Date(`2024-01-28 12:54`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [42561.64, 42572.00]],
-			ts_a: new Date(`2024-01-28 11:37`).valueOf(), 
-			ts_z: new Date(`2024-01-28 11:38`).valueOf()
+			pair: [`btc/fdusd`, [42592.69, 42604.00]],
+			ts_a: new Date(`2024-01-28 13:12`).valueOf(), 
+			ts_z: new Date(`2024-01-28 13:13`).valueOf()
 		}, {
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [42624.00, 42632.41]],
-			ts_a: new Date(`2024-01-28 11:40`).valueOf(), 
-			ts_z: new Date(`2024-01-28 11:42`).valueOf()
-		}, {
+			pair: [`btc/fdusd`, [42604.00, 42611.00]],
+			ts_a: new Date(`2024-01-28 13:13`).valueOf(), 
+			ts_z: new Date(`2024-01-28 13:15`).valueOf()
+		}/*, {
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [42572.10, 42599.76]],
 			ts_a: new Date(`2024-01-28 12:32`).valueOf(), 
