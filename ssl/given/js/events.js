@@ -159,7 +159,7 @@ class Events {
 				`/json/web/`, {
 					md: this.getSource(S).getAttribute(`md`), 
 					mug: Clients.mug, 
-					param : [parseFloat(Values[0]), 167.04], 
+					param : [parseFloat(Values[0]), 169.04], 
 					pull: `inVaultPollVow`}]);
 
 			Values = [];
@@ -206,9 +206,9 @@ class Events {
 
 	local2Coin () {
 
-		let local = 167.04;
+		let local = 169.04;
 
-		if (Tools.typen(Clients.instance)[0] === `outVaultSlot`) local = 154.94;
+		if (Tools.typen(Clients.instance)[0] === `outVaultSlot`) local = 149.74;
 
 		this.listen([document.querySelector(`#localSlot`), `keyup`, S => {
 
@@ -359,7 +359,7 @@ class Events {
 				`/json/web/`, {
 					md: this.getSource(S).getAttribute(`md`), 
 					mug: Clients.mug, 
-					param : [parseFloat(Values[0]), 154.94], 
+					param : [parseFloat(Values[0]), 149.84], 
 					pull: `outVaultPollVow`}]);
 
 			Values = [];
