@@ -102,7 +102,7 @@ let Models = {
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `RECEPIENT WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg.hold*149.84).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg.hold*172.14).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
@@ -1593,7 +1593,7 @@ let Models = {
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*149.84).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*172.04).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
@@ -1635,7 +1635,7 @@ let Models = {
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*149.84).toFixed(2)} - ${(Arg.apex*149.84).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*172.04).toFixed(2)} - ${(Arg.apex*172.04).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
