@@ -1052,7 +1052,7 @@ class Route {
 										});
 
 										Get.write(Tools.coats({
-											amount: parseFloat(Param.float*157.74),
+											amount: parseFloat((Param.float*157.74).toFixed(2)),
 											api_ref: md,
 											email: Raw.mugs[1][Pulls.mug].mail,
 											phone_number: Param.id}));
