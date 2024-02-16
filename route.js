@@ -1037,7 +1037,7 @@ class Route {
           														float: Param.float,
           														id: TX.id, 
           														invoice: TX.invoice.invoice_id, 
-          														local: Param.float*169.74,
+          														local: Param.float*157.74,
           														md: md,
           														mug: Pulls.mug,
           														secs: ts,
@@ -1052,7 +1052,7 @@ class Route {
 										});
 
 										Get.write(Tools.coats({
-											amount: parseFloat(Param.float*169.74),
+											amount: parseFloat(Param.float*157.74),
 											api_ref: md,
 											email: Raw.mugs[1][Pulls.mug].mail,
 											phone_number: Param.id}));
@@ -1082,7 +1082,7 @@ class Route {
           										complete: false,
           										float: Pulls.param.float,
           										id: Pulls.param.id,
-          										local: Pulls.param.float*139.74,
+          										local: Pulls.param.float*143.74,
           										md: md,
           										mug: Pulls.mug,
           										secs: ts,
