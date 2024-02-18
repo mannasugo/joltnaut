@@ -208,7 +208,7 @@ class Events {
 
 		let local = 149.94;
 
-		if (Tools.typen(Clients.instance)[0] === `outVaultSlot`) local = 144.86;
+		if (Tools.typen(Clients.instance)[0] === `outVaultSlot`) local = 141.96;
 
 		this.listen([document.querySelector(`#localSlot`), `keyup`, S => {
 
@@ -359,7 +359,7 @@ class Events {
 				`/json/web/`, {
 					md: this.getSource(S).getAttribute(`md`), 
 					mug: Clients.mug, 
-					param : [parseFloat(Values[0]), 144.86], 
+					param : [parseFloat(Values[0]), 141.96], 
 					pull: `outVaultPollVow`}]);
 
 			Values = [];
