@@ -268,9 +268,9 @@ class Tools {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [51658.48, 51740.13]],
-			ts_a: new Date(`2024-02-18 11:26`).valueOf(), 
-			ts_z: new Date(`2024-02-18 11:33`).valueOf()
+			pair: [`btc/fdusd`, [51783.05, 51867.13]],
+			ts_a: new Date(`2024-02-18 14:49`).valueOf(), 
+			ts_z: new Date(`2024-02-18 14:58`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
