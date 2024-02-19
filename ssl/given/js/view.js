@@ -2126,6 +2126,19 @@ let Models = {
 							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]]];
 	},
 
+	vaultOutSplash: function () {
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `vaultOutSplash`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`h2`, {style: {[`font-weight`]: 600, [`text-align`]: `center`}}, `MARGIN TRADE IN SESSION`],
+							[`p`, {style: {[`font-weight`]: 300, [`margin-top`]: `${12}px`, [`text-align`]: `center`}}, `To improve productivity and profit 
+							margins for our clients joltnaut has introduced margin trades with longer runtimes, to avoid asset growth slippage while in session. 
+							The new withdrawal feature will now be available every time a margin call is executed.`]]]]]]]
+	},
+
 	vaultOutTRON20: function (Arg) {
 
 		return [

@@ -218,7 +218,7 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					//if (Web.mug) View.DOM([`div`, [Models.outVaultVia()]]);
+					if (Web.mug) View.DOM([`div`, [Models.vaultOutSplash()]]); //View.DOM([`div`, [Models.outVaultVia()]]);
 				}
 			}
 
