@@ -240,7 +240,7 @@ class Route {
 						console.log(Web)
 					}
 
-					if (Web.mug && Web.open >= 9 && Web.open <= 16) {
+					if (Web.mug && Web.open >= 9 && Web.open < 16) {
 
 						if (Web.vaultSlot.id) {
 
