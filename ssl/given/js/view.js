@@ -189,10 +189,12 @@ let Models = {
 								[
 									//[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
 									[`span`, {id: `vault`, style: {
-										[`font-family`]: `consola`,
-										[`font-size`]: `${21}px`,
+										background: `#000`,
+										color: `#fff`,
+										[`font-family`]: `cour`,
+										[`font-size`]: `${17}px`,
 										[`font-weight`]: 600,
-                                        margin: `${0} ${12}px`}}, `joltnaut`]]]]],
+                                        margin: `${0} ${8}px`}}, `j|naut`]]]]],
 				[`main`, {id: `app`, class: `_tY0`, style: {height: `${100}%`, padding: `0 ${24}px`, [`margin-top`]: `${5}px`}}, 
 					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
 						[
