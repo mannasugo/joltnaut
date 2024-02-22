@@ -187,9 +187,9 @@ let Models = {
 						[
 							[`div`, {class: `_-Xg _gxM _geQ`}, 
 								[
-									[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
+									//[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
 									[`span`, {id: `vault`, style: {
-										[`font-family`]: `naut`,
+										[`font-family`]: `consola`,
 										[`font-size`]: `${21}px`,
 										[`font-weight`]: 600,
                                         margin: `${0} ${12}px`}}, `joltnaut`]]]]],
@@ -300,6 +300,62 @@ let Models = {
 											[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {
 												height:`${18}px`, width:`${18}px`}}]]]]],
 							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]		
+	},
+
+	app2: function () {
+
+		return [
+			`main`, {style: {background: `rgb(5, 5, 5)`, [`font-family`]: `moz`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {margin: `${20}px ${24}px`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, [
+								[`span`, {id: `vault`, style: {
+									//background: `#fff`,
+									color: `#fff`,//`rgb(${61}, ${255}, ${44})`,
+									[`font-family`]: `cour`,
+									[`font-size`]: `${17}px`,
+									[`font-weight`]: 900,
+                            		padding: `${1}px ${4}px`}}, `//naut`],
+								[`span`, {style: {
+									border: `${1}px solid #1185fe`,
+									[`border-radius`]: `${9999}px`,
+									color: `#1185fe`,
+									[`font-family`]: `moz`,
+									[`font-size`]: `${9}px`,
+									[`font-weight`]: 900,
+									[`margin-left`]: `${8}px`,
+                            		padding: `${0}px ${8}px`}}, `BETA`]]]]],
+					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, height: `${100}%`, padding: `0 ${24}px`, margin: `0 auto`, [`justify-content`]: `center`, [`margin-top`]: `${5}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {class: `_geQ _gxM`}, 
+									[
+										[`svg`, {style: {
+											[`margin-right`]:`${8}px`,[`min-height`]: `${21}px`, [`max-width`]: `${80}px`,[`min-width`]: `${80}px`}, viewBox: `0 0 150 150`}, 
+											[
+												[`circle`, {cy: 120, cx: 6, r: 4.5, stroke: `#1185fe`, [`stroke-width`]: 1.75, fill: `none`}],
+												[`circle`, {cy: 95, cx: 35, r: 4.5, stroke: `#1185fe`, [`stroke-width`]: 1.75, fill: `none`}],
+												[`circle`, {cy: 111, cx: 70, r: 4.5, stroke: `#1185fe`, [`stroke-width`]: 1.75, fill: `none`}],
+												[`circle`, {cy: 70, cx: 115, r: 4.5, stroke: `#1185fe`, [`stroke-width`]: 1.75, fill: `none`}],
+												[`path`, {d: `M10.5 116 31 98 M39 96 65 109 M75 108 110 74`, stroke: `#fff`,  [`stroke-width`]: 2}],
+												[`path`, {d: `M15 140 35 130 65 145 95 127`, stroke: `#1185fe`,  [`stroke-width`]: 3}]]],
+										[`div`, {class: `_eYG`, style: {[`line-height`]: 1.75}}, 
+											[
+												[`span`, {style: {
+													color: `#fff`,[`font-family`]: `naut`, [`font-size`]: `${21}px`, 
+													[`font-weight`]: 900}}, `A Stablecoin Profit Fund`],
+												[`span`, {style: {
+													color: `#fff`, [`font-size`]: `${14}px`, [`margin-top`]: `${14}px`}}, `Use Joltnaut's profit
+													trading algorithms to store and grow your digital assets from the available investment pools.`]]]]],
+								[`div`, {style: {margin: `${54}px 0`}},
+									[[`div`, {class: `_gM_a _agM _guZ`, style: {
+										[`block-size`]: `${50}px`, background: `#1185fe`, border: `${1}px solid #1185fe`, margin: `auto`, width: `${80}%`}}, 
+										[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `/enrol`, style: {
+											color: `#000`,[`font-family`]: `moz`, [`font-size`]: `${14}px`,
+											[`white-space`]: `nowrap`}}, `Try Joltnaut Beta`]]]]]]]]]]]		
+
+
 	},
 
 	c2s: function () {

@@ -44,6 +44,22 @@
   font-weight: 100;
 }
 
+@font-face {
+  font-family: 'cour';
+  src: url('/ssl/given/glyphs/cour.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: moz;
+  font-style: normal;
+  font-weight: 400;
+  src: url(/ssl/given/glyphs/Inter-Regular.d55e957612a3.woff2) format("woff2")/*,
+  url("/media/protocol/fonts/Inter-Regular.1a7f90ff1f1e.woff") format("woff")*/
+}
+
 a, article, body, div, footer, form, h1, h2, h3, h4, header, html, img, label, li, nav, p, section, span, time, ul {
   margin: 0;
   padding: 0;
