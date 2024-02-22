@@ -810,6 +810,69 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `pools`) {
+
+								let Pairs = [];
+
+								Raw.trades[0].forEach(Pair => {
+
+									let P2 = {io: [Pair.pair[1][0], Pair.pair[1][1]], mugs: 0, pair: Pair.pair[0], pnl: [0, 0]};
+
+									P2.pnl[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+									Raw.till[0].forEach(TX => {
+
+										if (TX.md === Pair.md) {
+
+											P2.mugs += 1;
+
+											for (let mug in TX.till) {
+
+												if (mug.length !== 12) { P2.pnl[1] += parseFloat(TX.till[mug][1]); }
+											}
+										}
+									});
+
+									let era = Pair.ts_z - Pair.ts_a;
+
+									if (era >= 3600000) P2.runs = `${(era/3600000).toFixed()}H ${(era - 3600000)/60000}MIN`;
+
+									if (era < 3600000) P2.runs = `${era/60000}MIN`;
+
+									P2.secs = Pair.ts_z;
+
+									P2.ts = [new Date(Pair.ts_a), new Date(Pair.ts_z)];
+
+									Pairs.push(P2)
+								});
+
+								let Day = new Date();
+
+								let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
+
+								let PNL = [0, 0, 0];
+
+								let Run = [];
+
+								Raw.trades[0].forEach(Pair => {
+
+									if (parseInt(Pair.ts_z) > 0) Run.push(Pair);
+
+									PNL[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+									if (Pair.ts_a > ts) PNL[2] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100
+								});
+
+								Run = Run.sort((A, B) => {return B.ts_z - A.ts_z});
+
+								let era = Run[0].ts_z - Run[Run.length - 1].ts_z;
+
+								Arg[1].end(Tools.coats({
+									pairs: Pairs,
+									pnl: PNL, runs: era/86400000,
+									till: Raw.till[0].length}));
+							}
+
 							if (Pulls.pull === `putC2s`) {
 
 								let C2s;

@@ -60,6 +60,14 @@
   url("/media/protocol/fonts/Inter-Regular.1a7f90ff1f1e.woff") format("woff")*/
 }
 
+@font-face {
+  font-display: swap;
+  font-family: walsh;
+  font-style: normal;
+  font-weight: 400;
+  src: url(/ssl/given/glyphs/GT-Walsheim-Regular-4ca5b57c.woff2) format("woff2")
+}
+
 a, article, body, div, footer, form, h1, h2, h3, h4, header, html, img, label, li, nav, p, section, span, time, ul {
   margin: 0;
   padding: 0;
@@ -244,7 +252,7 @@ body {
 .v202201180941, .v202202122052, .v202203171249, .v202203191304, .v202203261943, .v202203262148, .v202204261406, .v202204282015, .v202205042043, 
 .v202205081343, .v202205081426, .v202205081410, .v202206131254, .v202206131256, .v202206271427, .v202207071159, .v202207071206, .v202207161737,
 .v202301071417, .v202303311456, .v202304191915, .v202310281744, .v202310282005, .v202311051955, .v202311102200, .v202311261657, .v202312061631,
-.v202312231641, .v202312231716, .v202312301635, .v202312301653, .v202401121208, .v202401121214, .v202401121218, .v202410121221 {
+.v202312231641, .v202312231716, .v202312301635, .v202312301653, .v202401121208, .v202401121214, .v202401121218, .v202410121221, .v20240221434 {
   background-repeat: no-repeat;
   height: 24px;
   width: 24px;
@@ -319,6 +327,8 @@ body {
 .v202401121218 {background-image: url(/ssl/given/svg/put_202401121218.svg);}
 
 .v202410121221 {background-image: url(/ssl/given/svg/take_202410121221.svg);}
+
+.v20240221434 {background-image: url(/ssl/given/svg/bull_20240221434.svg);}
 
 ._aA2, ._aA2:visited {color: #000;}
 

@@ -263,7 +263,7 @@ class Events {
 
 					Clients.mug = Pull.mug;
 
-					window.location = `/`;
+					window.location = `/my/wallet`;
 				}
 			}
 
@@ -298,7 +298,7 @@ class Events {
 
 					Clients.mug = Pull.mug;
 
-					window.location = `/`;
+					window.location = `/my/wallet`;
 				}
 			}
 

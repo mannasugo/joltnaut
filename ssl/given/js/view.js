@@ -110,6 +110,8 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]		
 	},
 
+	/**
+
 	app: function (Arg) {
 
 		let P2 = [[]];
@@ -304,7 +306,9 @@ let Models = {
 							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]		
 	},
 
-	app2: function () {
+	**/
+
+	app: function () {
 
 		return [
 			`main`, {style: {background: `rgb(5, 5, 5)`, [`font-family`]: `moz`, height: `${100}%`}}, 
@@ -318,7 +322,7 @@ let Models = {
 									[`font-family`]: `cour`,
 									[`font-size`]: `${17}px`,
 									[`font-weight`]: 900,
-                            		padding: `${1}px ${4}px`}}, `//naut`],
+                            		padding: `${1}px ${4}px`}}, `|naut`],
 								[`span`, {style: {
 									border: `${1}px solid #1185fe`,
 									[`border-radius`]: `${9999}px`,
@@ -349,15 +353,13 @@ let Models = {
 													[`font-weight`]: 900}}, `A Stablecoin Profit Fund`],
 												[`span`, {style: {
 													color: `#fff`, [`font-size`]: `${14}px`, [`margin-top`]: `${14}px`}}, `Use Joltnaut's profit
-													trading algorithms to store and grow your digital assets from the available investment pools.`]]]]],
+													trading algorithms to earn passive income while storing your digital assets through liquidity pools.`]]]]],
 								[`div`, {style: {margin: `${54}px 0`}},
 									[[`div`, {class: `_gM_a _agM _guZ`, style: {
 										[`block-size`]: `${50}px`, background: `#1185fe`, border: `${1}px solid #1185fe`, margin: `auto`, width: `${80}%`}}, 
-										[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `/enrol`, style: {
-											color: `#000`,[`font-family`]: `moz`, [`font-size`]: `${14}px`,
-											[`white-space`]: `nowrap`}}, `Try Joltnaut Beta`]]]]]]]]]]]		
-
-
+										[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `/pools`, style: {
+											color: `#000`,[`font-family`]: `walsh`, [`font-size`]: `${14}px`, [`text-transform`]: `uppercase`,
+											[`white-space`]: `nowrap`}}, `try jolnaut beta`]]]]]]]]]]];
 	},
 
 	c2s: function () {
@@ -2182,6 +2184,94 @@ let Models = {
 											[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {
 												height:`${18}px`, width:`${18}px`}}]]]*/]],
 							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]]];
+	},
+
+	pools: function (Web) {
+
+		return [
+			`main`, {style: {background: `rgb(5, 5, 5)`, color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: `litera`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {margin: `${20}px ${24}px`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, [
+								[`span`, {id: `vault`, style: {
+									color: `#fff`,
+									[`font-family`]: `cour`,
+									[`font-size`]: `${17}px`,
+									[`font-weight`]: 900,
+                            		/*padding: `${1}px ${4}px`*/}}, `|naut`],
+								[`span`, {style: {
+									border: `${1}px solid #1185fe`,
+									[`border-radius`]: `${9999}px`,
+									color: `#1185fe`,
+									[`font-size`]: `${8}px`,
+									[`font-weight`]: 300,
+									[`margin-left`]: `${8}px`,
+                            		padding: `${0}px ${6}px`}}, `BETA`]]]]],
+					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, padding: `0 ${24}px`,  [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
+							[
+								[`div`, {style: {[`line-height`]: 1.75}}, 
+									[
+										[`span`, {style: {
+											color: `#fff`,[`font-family`]: `litera`, [`font-size`]: `${26}px`, 
+											[`font-weight`]: 300}}, `Liquidity Pools`],
+										[`span`, {style: {
+											color: `rgb(${161}, ${161}, ${161})`, [`font-size`]: `${14}px`, [`margin-top`]: `${8}px`}}, 
+											`Provide liquidity, earn trading profits & rewards`]]], 
+								[`div`, {style: {[`margin-top`]: `${48}px`}}, 
+									[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${255}, ${255}, ${255}, ${.15})`}}, 
+										[[`span`, {style: {
+											[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`, [`font-weight`]: 600, 
+											padding: `${12}px 0`}}, `Promoted Pools`]]]]], 
+								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+									[[`div`, {style: {
+										background: `rgb(${255}, ${255}, ${255}, ${.05})`, [`border-radius`]: `${.25}rem`, opacity: 1,
+										padding: `${20}px ${16}px`}}, 
+										[
+											[`div`, {class: `_gxM _geQ`}, 
+												[
+													[`img`, {src: `/ssl/given/svg/tokens/btc.svg`, style: {
+														[`max-width`]: `${24}px`, transform: `translateX(${0}px)`}}],
+													[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {
+														[`max-width`]: `${24}px`, transform: `translateX(${-10.6667}px)`}}],
+													[`div`, {class: `_eYG`, style: {[`margin-left`]: `${2}px`}}, 
+														[[`span`, {style: {
+															 color: `#fff`, [`font-family`]: `walsh`, [`font-weight`]: 300, 
+															 [`font-size`]: `${20}px`}}, `BTC / USDT`]]],
+													[`div`, {class: `_gZz`, style: {flex: 0}}, 
+														[
+															[`div`, {class: `_gxM _geQ`, style: {
+																background: `rgb(${255}, ${215}, ${2}, ${.17})`, [`border-radius`]: `${.25}rem`, opacity: 1,
+																padding: `${4}px`}}, 
+																[
+																	[`span`, {class: `v20240221434`, style: {height: `${15}px`, [`margin-right`]: `${8}px`, width: `${15}px`}}],
+																	[`span`, {style: {
+																		color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `walsh`, 
+																		[`font-size`]: `${14}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]]]]]], 
+											[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${20}px`}}, 
+												[
+													[`div`, {class: `_eYG _gxM`, style: {margin: 0}}, 
+														[
+															[`div`, {}, 
+																[
+																	[`span`, {}, `Runtime (Days)`],
+																	[`span`, {style: {
+																		color: `#fff`, [`font-family`]: `walsh`, [`font-size`]: `${16}px`, 
+																		[`margin-top`]: `${8}px`, [`tet-align`]: `right`}}, `${(Web.runs).toFixed(1)}`]]],
+															[`div`, {style: {[`margin-left`]: `${32}px`}}, 
+																[
+																	[`span`, {}, `Transactions`],
+																	[`span`, {style: {
+																		color: `#fff`, [`font-family`]: `walsh`, [`font-size`]: `${16}px`, 
+																		[`margin-top`]: `${8}px`, [`tet-align`]: `right`}}, `${Web.till}`]]]]],
+													[`div`, {class: `_gZz`, style: {flex: 0}}, 
+														[[`div`, {class: `_gM_a _agM _guZ`, style: {
+															background: `rgb(${255}, ${255}, ${255}, ${.15})`,[`block-size`]: `${36}px`,
+															border: `none`, margin: `auto`, [`min-width`]: `${105}px`}}, 
+															[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `/signin`, style: {
+																color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: ``, 
+																[`font-size`]: `${14}px`, [`white-space`]: `nowrap`}}, `Invest`]]]]]]]]]]]]]]]]];
 	},
 
 	vaultOutSplash: function () {

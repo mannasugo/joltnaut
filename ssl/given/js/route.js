@@ -80,7 +80,7 @@ class Route {
 
     		if (Clients.mug) {
 
-    			history.pushState(``, ``, `/`);
+    			history.pushState(``, ``, `/my/wallet`);
 
     			this.Call();
     		}
@@ -402,6 +402,24 @@ class Route {
 			}
     	}
 
+		else if (this.State[3] === `pools`) {
+
+			document.title = `Liquidity Pools`;
+
+			let Puts = Tools.pull([
+				`/json/web`, {
+					mug: (Clients.mug) ? Clients.mug: false,
+					pull: `pools`
+				}]);
+
+			Puts.onload = () => {
+
+				let Web = Tools.typen(Puts.response);
+
+				View.DOM([`div`, [Models.pools(Web)]]);
+			}
+		}
+
     	else if (this.State[3] === `p2p`) {
 
     		if (!Clients.mug) {
@@ -661,7 +679,7 @@ class Route {
 
     		if (Clients.mug) {
 
-    			history.pushState(``, ``, `/`);
+    			history.pushState(``, ``, `/my/wallet`);
 
     			this.Call();
     		}
