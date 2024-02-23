@@ -2189,7 +2189,8 @@ let Models = {
 	pools: function (Web) {
 
 		return [
-			`main`, {style: {background: `rgb(5, 5, 5)`, color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: `litera`, height: `${100}%`}}, 
+			`main`, {style: {
+				background: `rgb(5, 5, 5)`, color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: `cula`, height: `${100}%`}}, 
 				[
 					[`div`, {style: {margin: `${20}px ${24}px`}}, 
 						[
@@ -2214,15 +2215,15 @@ let Models = {
 								[`div`, {style: {[`line-height`]: 1.75}}, 
 									[
 										[`span`, {style: {
-											color: `#fff`,[`font-family`]: `litera`, [`font-size`]: `${26}px`, 
+											color: `#fff`, [`font-size`]: `${22}px`, 
 											[`font-weight`]: 300}}, `Liquidity Pools`],
 										[`span`, {style: {
-											color: `rgb(${161}, ${161}, ${161})`, [`font-size`]: `${14}px`, [`margin-top`]: `${8}px`}}, 
+											color: `rgb(${161}, ${161}, ${161})`, [`margin-top`]: `${8}px`}}, 
 											`Provide liquidity, earn trading profits & rewards`]]], 
 								[`div`, {style: {[`margin-top`]: `${48}px`}}, 
 									[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${255}, ${255}, ${255}, ${.15})`}}, 
 										[[`span`, {style: {
-											[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`, [`font-weight`]: 600, 
+											[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`,[`font-size`]: `${14}px`, [`font-weight`]: 600, 
 											padding: `${12}px 0`}}, `Promoted Pools`]]]]], 
 								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
 									[[`div`, {style: {
@@ -2257,13 +2258,13 @@ let Models = {
 																[
 																	[`span`, {}, `Runtime (Days)`],
 																	[`span`, {style: {
-																		color: `#fff`, [`font-family`]: `walsh`, [`font-size`]: `${16}px`, 
+																		color: `#fff`, [`font-family`]: `walsh`, 
 																		[`margin-top`]: `${8}px`, [`tet-align`]: `right`}}, `${(Web.runs).toFixed(1)}`]]],
 															[`div`, {style: {[`margin-left`]: `${32}px`}}, 
 																[
 																	[`span`, {}, `Transactions`],
 																	[`span`, {style: {
-																		color: `#fff`, [`font-family`]: `walsh`, [`font-size`]: `${16}px`, 
+																		color: `#fff`, [`font-family`]: `walsh`, 
 																		[`margin-top`]: `${8}px`, [`tet-align`]: `right`}}, `${Web.till}`]]]]],
 													[`div`, {class: `_gZz`, style: {flex: 0}}, 
 														[[`div`, {class: `_gM_a _agM _guZ`, style: {

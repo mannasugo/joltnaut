@@ -56,8 +56,7 @@
   font-family: moz;
   font-style: normal;
   font-weight: 400;
-  src: url(/ssl/given/glyphs/Inter-Regular.d55e957612a3.woff2) format("woff2")/*,
-  url("/media/protocol/fonts/Inter-Regular.1a7f90ff1f1e.woff") format("woff")*/
+  src: url(/ssl/given/glyphs/Inter-Regular.d55e957612a3.woff2) format("woff2")
 }
 
 @font-face {
@@ -66,6 +65,24 @@
   font-style: normal;
   font-weight: 400;
   src: url(/ssl/given/glyphs/GT-Walsheim-Regular-4ca5b57c.woff2) format("woff2")
+}
+
+@font-face {
+ font-family:cula;
+ font-weight:400;
+ font-style:normal;
+ src:url(/ssl/given/glyphs/CircularSpotifyText-Book.753a0cec.woff2) format("woff2"),
+ url(/ssl/given/glyphs/CircularSpotifyText-Book.986bbb13.woff) format("woff");
+ font-display:swap
+}
+
+@font-face {
+ font-family:cula;
+ font-weight:300;
+ font-style:normal;
+ src:url(/ssl/given/glyphs/CircularSpotifyText-Light.feeb6b9b.woff2) format("woff2"),
+ url(/ssl/given/glyphs/CircularSpotifyText-Light.ea58b4c1.woff) format("woff");
+ font-display:swap
 }
 
 a, article, body, div, footer, form, h1, h2, h3, h4, header, html, img, label, li, nav, p, section, span, time, ul {
@@ -107,18 +124,20 @@ a, a:visited {
 }
 
 #app, body, html {
-  height: 100%;
+  height: 100%;  
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 body, button, input, textarea {
-  font-family: litera;
-  font-size: 12px;
-  letter-spacing: .7px;
-  line-height: 18px;
+  letter-spacing: .16px;
 }
 
-body {
-  color: #000;
+body {  
+  color: #191414;
+  font-family: cula;
+  font-size: 16px;
+  font-weight: 300;
 }
 
 #app {
