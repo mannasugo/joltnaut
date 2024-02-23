@@ -218,7 +218,7 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					if (Web.mug) View.DOM([`div`, [Models.vaultOutSplash()]]); //View.DOM([`div`, [Models.outVaultVia()]]);
+					if (Web.mug) /**View.DOM([`div`, [Models.vaultOutSplash()]]);**/ View.DOM([`div`, [Models.outVaultVia()]]);
 				}
 			}
 
@@ -235,7 +235,9 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					/*if (Web.mug && Web.open < 9 || Web.open > 16) {
+					/**/
+
+					if (Web.mug && Web.open < 9 || Web.open > 16) {
 
 						console.log(Web)
 					}
@@ -254,7 +256,9 @@ class Route {
 						}
 
 						else window.location = `/account`;
-					}*/
+					}
+
+					/**/
 				}
 			}
 
@@ -404,19 +408,40 @@ class Route {
 
 		else if (this.State[3] === `pools`) {
 
-			document.title = `Liquidity Pools`;
+    		if (!State[4] && !Tools.slim[State[4]]) {
 
-			let Puts = Tools.pull([
-				`/json/web`, {
-					mug: (Clients.mug) ? Clients.mug: false,
-					pull: `pools`
-				}]);
+				document.title = `Liquidity Pools`;
 
-			Puts.onload = () => {
+				let Puts = Tools.pull([
+					`/json/web`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `pools`
+					}]);
 
-				let Web = Tools.typen(Puts.response);
+				Puts.onload = () => {
 
-				View.DOM([`div`, [Models.pools(Web)]]);
+					let Web = Tools.typen(Puts.response);
+
+					View.DOM([`div`, [Models.pools(Web)]]);
+				}
+			}
+
+    		else if (State[4] === `BTC_USDT` && !State[5] && !Tools.slim[State[5]]) {console.log(new Date())
+
+				document.title = `Pool | Bitcoin - Tether USD`;
+
+				let Puts = Tools.pull([
+					`/json/web`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `pools`
+					}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					View.DOM([`div`, [Models.pool(Web)]]);
+				}
 			}
 		}
 

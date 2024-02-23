@@ -1129,7 +1129,9 @@ class Route {
 
 								let open = new Date().getUTCHours();
 
-								/*if (Raw.mugs[1][Pulls.mug] && open >= 9 && open < 16) {
+								/**/
+
+								if (Raw.mugs[1][Pulls.mug] && open >= 9 && open < 16) {
 
 									if (Pulls.param.type === `stk`) {
 
@@ -1167,7 +1169,9 @@ class Route {
 											}]);
 										}
 									}
-								}*/
+								}
+
+								/**/
 							}
 
 							if (Pulls.pull === `vaultSlot`) {
