@@ -865,7 +865,7 @@ class Route {
 
 								Run = Run.sort((A, B) => {return B.ts_z - A.ts_z});
 
-								let era = Run[0].ts_z - Run[Run.length - 1].ts_z;
+								let era = /*Run[0].ts_z*/new Date().valueOf() - Run[Run.length - 1].ts_z;
 
 								Arg[1].end(Tools.coats({
 									pairs: Pairs,
