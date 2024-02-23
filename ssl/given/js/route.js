@@ -218,7 +218,7 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					if (Web.mug) /**View.DOM([`div`, [Models.vaultOutSplash()]]);**/ View.DOM([`div`, [Models.outVaultVia()]]);
+					if (Web.mug) /**/View.DOM([`div`, [Models.vaultOutSplash()]]);/**/ //View.DOM([`div`, [Models.outVaultVia()]]);
 				}
 			}
 
@@ -235,7 +235,7 @@ class Route {
 
 					let Web = Tools.typen(Puts.response);
 
-					/**/
+					/**
 
 					if (Web.mug && Web.open < 9 || Web.open > 16) {
 
@@ -258,7 +258,7 @@ class Route {
 						else window.location = `/account`;
 					}
 
-					/**/
+					**/
 				}
 			}
 
