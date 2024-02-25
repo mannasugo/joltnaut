@@ -3,7 +3,7 @@
     g {
       fill: none;
       stroke-width: 1px; 
-      stroke: #fff;
+      stroke: rgb(161,161,161);
     }
   </style>
   <g>

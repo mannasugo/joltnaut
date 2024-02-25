@@ -846,6 +846,161 @@ class Route {
 									Pairs.push(P2)
 								});
 
+								if (Pulls.mug != false) {
+
+									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
+									let TX = [[], []];
+
+									Raw.vows[0].forEach(Vow => {
+
+										if (Vow.via[0] === true && Vow.via[1] === true 
+											&& ((Vow.peers[0] === Pulls.mug && Vow.type === `outVault`) 
+												|| (Vow.peers[1] === Pulls.mug && Vow.type === `inVault`))) {
+
+											TX[0].push(Vow);
+										}
+									});
+
+									Raw.invoice[0].forEach(Bill => {
+
+										if (Bill.complete === true && Bill.mug === Pulls.mug) {
+
+											TX[0].push({
+												local: Bill.local/Bill.float,
+												float: Bill.float,
+												ts: Bill.ts,
+												type: `inVault`
+											});
+										}
+									});
+
+									Raw.payout[0].forEach(Pay => {
+
+										if (Pay.mug === Pulls.mug) {
+
+											TX[0].push({
+												complete: Pay.complete,
+												local: Pay.local/Pay.float,
+												float: Pay.float,
+												ts: Pay.ts,
+												type: `outVault`
+											});
+										}
+									});
+
+									let HoldXY = [[], 0];
+
+									Raw.till[0].sort((A, B) => {return A.ts - B.ts}).forEach(MD => {
+
+										if (MD.till[Pulls.mug] && MD.flag && MD.flag.w2w) {
+
+											let peer;
+
+											for (let vault in MD.till) {
+
+												if (vault !== `${hold}` || vault !== Pulls.mug) peer = vault;
+											}
+
+											TX[1].push({
+												float: (MD.till[Pulls.mug][1] < 0)? -(MD.till[Pulls.mug][1]): MD.till[Pulls.mug][1],
+												gas: (MD.till[Pulls.mug][1] < 0)? MD.till[hold]: 0, 
+												mail: Raw.mugs[1][peer].mail,
+												ts: MD.ts,
+												type: (MD.till[Pulls.mug][1] < 0)? `out`: `in`});
+										}
+
+										if (MD.till[Pulls.mug] && MD.ts < (new Date().valueOf() - 360000*24*354)) {
+
+											HoldXY[1] += MD.till[Pulls.mug][1];
+										}
+									});
+
+									let Day = new Date();
+
+									let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
+
+									let PNL = [0, 0, 0];
+
+									Raw.till[0].sort((A, B) => {return A.ts - B.ts}).forEach(TX => {
+
+										if (TX.flag && TX.flag.trade && TX.till[Pulls.mug] && TX.ts > ts) {
+
+											//PNL[0] += (TX.till[Pulls.mug][1]*100)/TX.principal;
+
+											PNL[1] += TX.till[Pulls.mug][1];								
+										}
+
+										if (TX.till[Pulls.mug] && TX.ts > (new Date().valueOf() - 360000*24*354)) {
+
+											HoldXY[1] += TX.till[Pulls.mug][1];
+
+											HoldXY[0].push({hold: HoldXY[1], ts: TX.ts});
+										}
+									});
+
+									let Run = [];
+
+									Raw.trades[0].forEach(Pair => {
+
+										PNL[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+										if (Pair.ts_a > ts) PNL[2] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100
+
+										if (parseInt(Pair.ts_z) > 0) Run.push(Pair);							
+										
+									});
+
+									Run = Run.sort((A, B) => {return B.ts_z - A.ts_z});
+
+									let era = new Date().valueOf() - Run[Run.length - 1].ts_z;
+
+									let Pool = [], pnl = 0;
+
+									Raw.till[0].forEach(TX => {
+
+										if (TX.flag && TX.flag.trade && TX.till[Pulls.mug]) {
+
+											let Pair = Raw.trades[1][TX.md];
+
+											let P2 = {amount: TX.principal, io: [Pair.pair[1][0], Pair.pair[1][1]], pair: Pair.pair[0], pnl: [0, 0, 0]};
+
+											P2.pnl[0] += (((Pair.pair[1][1] - Pair.pair[1][0])/Pair.pair[1][0]))*100;
+
+											P2.pnl[1] = parseFloat(TX.till[Pulls.mug][1]);
+
+											Raw.till[0].forEach(TX2 => {
+
+												if (TX2.till[Pulls.mug] && TX2.ts <= Pair.ts_z) P2.pnl[2] += parseFloat(TX2.till[Pulls.mug][1]);
+											});
+
+											let era = Pair.ts_z - Pair.ts_a;
+
+											if (era >= 3600000) P2.runs = `${(era/3600000).toFixed()}H ${(era - 3600000)/60000}MIN`;
+
+											if (era < 3600000) P2.runs = `${era/60000}MIN`;
+
+											P2.secs = Pair.ts_z;
+
+											P2.ts = [Pair.ts_a, Pair.ts_z];
+
+											Pool.push(P2)
+
+											pnl += parseFloat(TX.till[Pulls.mug][1]);
+										}
+									});
+
+									Arg[1].end(Tools.coats({ cumulative: pnl,
+										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+										holdXY: HoldXY[0],
+										pairs: Pairs,
+										pnl: PNL, pool: Pool, runs: era/86400000,
+										till: Raw.till[0].length,
+										ts: Raw.mugs[1][Pulls.mug][`secs`],
+										tx: TX,
+										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
+								}
+
 								let Day = new Date();
 
 								let ts = new Date(`${Day.getFullYear()}-${Day.getMonth() + 1}-${Day.getDate()}`).valueOf();
@@ -868,9 +1023,10 @@ class Route {
 								let era = /*Run[0].ts_z*/new Date().valueOf() - Run[Run.length - 1].ts_z;
 
 								Arg[1].end(Tools.coats({
+									cumulative: 0,
 									pairs: Pairs,
 									pnl: PNL, runs: era/86400000,
-									till: Raw.till[0].length}));
+									till: Raw.till[0].length, debit: 0}));
 							}
 
 							if (Pulls.pull === `putC2s`) {

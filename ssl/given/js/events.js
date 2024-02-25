@@ -263,7 +263,7 @@ class Events {
 
 					Clients.mug = Pull.mug;
 
-					window.location = `/my/wallet`;
+					window.location = `/pools/BTC_USDT`;
 				}
 			}
 
@@ -298,7 +298,7 @@ class Events {
 
 					Clients.mug = Pull.mug;
 
-					window.location = `/my/wallet`;
+					window.location = `/pools/BTC_USDT`;
 				}
 			}
 

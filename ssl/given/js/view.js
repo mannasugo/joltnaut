@@ -110,7 +110,7 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]		
 	},
 
-	/**/
+	/**
 
 	app: function (Arg) {
 
@@ -306,9 +306,9 @@ let Models = {
 							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]		
 	},
 
-	/**/
+	**/
 
-	app2: function () {
+	app: function () {
 
 		return [
 			`main`, {style: {background: `rgb(5, 5, 5)`, [`font-family`]: `moz`, height: `${100}%`}}, 
@@ -1442,7 +1442,7 @@ let Models = {
 		return [
 				`section`, {}, 
 					[ 
-						[`main`, {id: `mugin`, class: `_tY0`, style: {height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+						[`main`, {id: `mugin`, class: `_tY0`, style: {[`font-family`]: `litera`, [`font-size`]: `${12}px`, height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
 							[[`div`, {class: `_geQ`, style: {
 								[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 								[
@@ -2208,7 +2208,13 @@ let Models = {
 									[`font-size`]: `${10}px`,
 									[`font-weight`]: 300,
 									[`margin-left`]: `${8}px`,
-                            		padding: `${0}px ${6}px`}}, `BETA`]]]]],
+                            		padding: `${0}px ${6}px`}}, `BETA`], 
+                            	[`div`, {class: `_gZz`}, 
+                            		[[`div`, {style: {
+										[`align-items`]: `center`, background: `rgb(${25}, ${25}, ${25})`, [`border-radius`]: `${.375}rem`, 
+										display: (Clients.mug)? `none`: `flex`, [`justify-content`]: `center`, [`min-height`]: `${56}px`, opacity: 1,
+										width: `${215}px`}}, 
+										[[`a`, {href: `/signin`, style: {color: `#7abbff`, [`white-space`]: `nowrap`}}, `Open Wallet`]]]]]]]]],
 					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, padding: `0 ${24}px`,  [`margin-top`]: `${25}px`}}, 
 						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
 							[ 
@@ -2222,7 +2228,7 @@ let Models = {
 											[[`span`, {style: {
 												color: `#fff`, [`font-family`]: `walsh`, [`font-weight`]: 400, 
 												[`font-size`]: `${28}px`}}, `BTC / USDT`]]],
-										[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 400, [`margin-right`]: `${12}px`}}, `Returns ROI`],
+										[`span`, {style: {[`font-size`]: `${10}px`, [`font-weight`]: 400, [`margin-right`]: `${12}px`}}, `ROI(${(Web.runs).toFixed(0)}DAYS)`],
 										[`div`, {class: `_gZz`, style: {flex: 0}}, 
 											[
 												[`div`, {class: `_gxM _geQ`, style: {
@@ -2233,52 +2239,55 @@ let Models = {
 																	[`span`, {style: {
 																		color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `walsh`, 
 																		[`font-size`]: `${14}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]]]]]], 
-								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
+								[`div`, {style: {[`margin-top`]: `${40}px`}}, 
 									[[`div`, {style: {
-										background: `rgb(${255}, ${255}, ${255}, ${.05})`, [`border-radius`]: `${.25}rem`, opacity: 1,
-										padding: `${20}px ${16}px`}}, 
+										background: `rgb(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, opacity: 1,
+										padding: `${12}px ${16}px`}}, 
 										[
 											[`div`, {class: `_gxM _geQ`}, 
 												[
-													[`img`, {src: `/ssl/given/svg/tokens/btc.svg`, style: {
-														[`max-width`]: `${18}px`, transform: `translateX(${0}px)`}}],
-													[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {
-														[`max-width`]: `${18}px`, transform: `translateX(${-7.6667}px)`}}],
-													[`div`, {class: `_eYG`, style: {[`margin-left`]: `${2}px`}}, 
+													[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+													[`div`, {class: `_eYG`}, 
 														[[`span`, {style: {
-															 color: `#fff`, [`font-family`]: `walsh`, [`font-weight`]: 300, 
-															 [`font-size`]: `${20}px`}}, `BTC / USDT`]]],
+															color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
+															[`font-size`]: `${24}px`, [`font-weight`]: 400}}, `$${parseFloat(Web.debit).toFixed(2)}`]]],
 													[`div`, {class: `_gZz`, style: {flex: 0}}, 
-														[
-															[`div`, {class: `_gxM _geQ`, style: {
-																background: `rgb(${255}, ${215}, ${2}, ${.17})`, [`border-radius`]: `${.25}rem`, opacity: 1,
-																padding: `${4}px`}}, 
-																[
-																	[`span`, {class: `v20240221434`, style: {height: `${15}px`, [`margin-right`]: `${8}px`, width: `${15}px`}}],
-																	[`span`, {style: {
-																		color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `walsh`, 
-																		[`font-size`]: `${14}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]]]]]], 
-											[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${20}px`}}, 
-												[
-													[`div`, {class: `_eYG _gxM`, style: {margin: 0}}, 
-														[
-															[`div`, {}, 
-																[
-																	[`span`, {style: {[`font-size`]: `${14}px`}}, `Days`],
-																	[`span`, {style: {
-																		color: `#fff`, [`font-family`]: `walsh`, 
-																		[`margin-top`]: `${4}px`}}, `${(Web.runs).toFixed(1)}`]]],
-															[`div`, {style: {[`margin-left`]: `${24}px`}}, 
-																[
-																	[`span`, {style: {[`font-size`]: `${14}px`}}, `Transactions`],
-																	[`span`, {style: {
-																		color: `#fff`, [`font-family`]: `walsh`, 
-																		[`margin-top`]: `${4}px`}}, `${Web.till}`]]]]],
-													[`div`, {class: `_gZz`, style: {flex: 0}}, 
-														[[`a`, {href: `/pools/BTC_USDT`, style: {
-																background: `rgb(${255}, ${255}, ${255}, ${.15})`, [`border-radius`]: `${100}px`, 
-																color: `rgb(${161}, ${161}, ${161})`, [`font-size`]: `${14}px`, [`font-weight`]: 300, 
-																padding: `${15}px ${30}px`, [`white-space`]: `nowrap`}}, `Explore & Invest`]]]]]]]]]]]]]]];
+														[[`a`, {class: `_gxM _geQ`, href: `/mode/deposit`, style: {
+																background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`,
+																display: `flex`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+																[`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
+															[
+																[`span`, {class: `v202203191304`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
+																[`span`, {style: {}}, `ADD LIQUIDITY`]]]]]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${16}px`, width: `${100}%`}}, 
+									[
+										[`div`, {class: `_geQ`, style: {
+											[`align-items`]: `flex-start`, background: `rgb(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${.25}rem`, 
+											padding: `${12}px ${16}px`, width: `${100}%`}}, 
+											[
+												[`span`, {style: {[`font-size`]: `${10}px`, [`font-weight`]: 500, [`margin-bottom`]: `${4}px`, 
+													[`white-space`]: `nowrap`}}, `ROI / TODAY`], 
+												[`span`, {style: {
+													color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
+													[`font-size`]: `${14}px`, [`font-weight`]: 400}}, `+(${Web.pnl[2].toFixed(2)}%)`]]],
+										[`div`, {class: `_geQ`, style: {
+											[`align-items`]: `flex-start`, background: `rgb(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${.25}rem`, 
+											[`margin-left`]: `${16}px`, padding: `${12}px ${16}px`, width: `${100}%`}}, 
+											[
+												[`span`, {style: {[`font-size`]: `${10}px`, [`font-weight`]: 500, [`margin-bottom`]: `${4}px`, 
+													[`white-space`]: `nowrap`}}, `PNL / TODAY`], 
+												[`span`, {style: {
+													color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
+													[`font-size`]: `${14}px`, [`font-weight`]: 400}}, (Clients.mug)? `$${Web.pnl[1].toFixed(2)}`: `$0.00`]]],
+										[`div`, {class: `_geQ`, style: {
+											[`align-items`]: `flex-start`, background: `rgb(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${.25}rem`, 
+											[`margin-left`]: `${16}px`, padding: `${12}px ${16}px`, width: `${100}%`}}, 
+											[
+												[`span`, {style: {[`font-size`]: `${10}px`, [`font-weight`]: 500, [`margin-bottom`]: `${4}px`, 
+													[`white-space`]: `nowrap`}}, `CUMULATIVE PNL`], 
+												[`span`, {style: {
+													color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `walsh`, 
+													[`font-size`]: `${14}px`, [`font-weight`]: 400}}, `$${Web.cumulative.toFixed(2)}`]]]]]]]]]]];
 	},
 
 	pools: function (Web) {
