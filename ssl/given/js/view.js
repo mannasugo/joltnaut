@@ -2211,20 +2211,28 @@ let Models = {
                             		padding: `${0}px ${6}px`}}, `BETA`]]]]],
 					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, padding: `0 ${24}px`,  [`margin-top`]: `${25}px`}}, 
 						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
-							[
-								[`div`, {style: {[`line-height`]: 1.75}}, 
+							[ 
+								[`div`, {class: `_gxM _geQ`}, 
 									[
-										[`span`, {style: {
-											color: `#fff`, [`font-size`]: `${22}px`, 
-											[`font-weight`]: 300}}, `Liquidity Pools`],
-										[`span`, {style: {
-											color: `rgb(${161}, ${161}, ${161})`, [`margin-top`]: `${4}px`}}, 
-											`Provide liquidity, earn trading profits on daily basis.`]]], 
-								[`div`, {style: {[`margin-top`]: `${32}px`}}, 
-									[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${255}, ${255}, ${255}, ${.15})`}}, 
-										[[`span`, {style: {
-											[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`,[`font-size`]: `${14}px`, [`font-weight`]: 400, 
-											padding: `${12}px 0`}}, `Promoted Pools`]]]]], 
+										[`img`, {src: `/ssl/given/svg/tokens/btc.svg`, style: {
+											[`max-width`]: `${24}px`, transform: `translateX(${0}px)`}}],
+										[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {
+											[`max-width`]: `${26}px`, transform: `translateX(${-11.33337}px)`}}],
+										[`div`, {class: `_eYG`, style: {[`margin-left`]: `${6}px`}}, 
+											[[`span`, {style: {
+												color: `#fff`, [`font-family`]: `walsh`, [`font-weight`]: 400, 
+												[`font-size`]: `${28}px`}}, `BTC / USDT`]]],
+										[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 400, [`margin-right`]: `${12}px`}}, `Returns ROI`],
+										[`div`, {class: `_gZz`, style: {flex: 0}}, 
+											[
+												[`div`, {class: `_gxM _geQ`, style: {
+													background: `rgb(${255}, ${215}, ${2}, ${.17})`, [`border-radius`]: `${.25}rem`, opacity: 1,
+																padding: `${4}px`}}, 
+																[
+																	[`span`, {class: `v20240221434`, style: {height: `${15}px`, [`margin-right`]: `${8}px`, width: `${15}px`}}],
+																	[`span`, {style: {
+																		color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `walsh`, 
+																		[`font-size`]: `${14}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]]]]]], 
 								[`div`, {style: {[`margin-top`]: `${36}px`}}, 
 									[[`div`, {style: {
 										background: `rgb(${255}, ${255}, ${255}, ${.05})`, [`border-radius`]: `${.25}rem`, opacity: 1,
@@ -2343,13 +2351,13 @@ let Models = {
 														[
 															[`div`, {}, 
 																[
-																	[`span`, {style: {[`font-size`]: `${14}px`}}, `Days`],
+																	[`span`, {style: {[`font-size`]: `${12}px`}}, `Days`],
 																	[`span`, {style: {
 																		color: `#fff`, [`font-family`]: `walsh`, 
 																		[`margin-top`]: `${4}px`}}, `${(Web.runs).toFixed(1)}`]]],
 															[`div`, {style: {[`margin-left`]: `${24}px`}}, 
 																[
-																	[`span`, {style: {[`font-size`]: `${14}px`}}, `Transactions`],
+																	[`span`, {style: {[`font-size`]: `${12}px`}}, `Transactions`],
 																	[`span`, {style: {
 																		color: `#fff`, [`font-family`]: `walsh`, 
 																		[`margin-top`]: `${4}px`}}, `${Web.till}`]]]]],
