@@ -426,7 +426,7 @@ class Route {
 				}
 			}
 
-    		else if (State[4] === `BTC_USDT` && !State[5] && !Tools.slim[State[5]]) {console.log(new Date())
+    		else if (State[4] === `BTC_USDT` && !State[5] && !Tools.slim[State[5]]) {
 
 				document.title = `Pool | Bitcoin - Tether USD`;
 
@@ -441,6 +441,28 @@ class Route {
 					let Web = Tools.typen(Puts.response);
 
 					View.DOM([`div`, [Models.pool(Web)]]);
+				}
+			}
+
+    		else if (State[4] === `BTC_USDT` && State[5] === `supply` && !State[6] && !Tools.slim[State[6]]) {
+
+				document.title = `BTC/USDT PNL Projection`;
+
+				let Puts = Tools.pull([
+					`/json/web`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `pools`
+					}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					View.DOM([`div`, [Models.project(Web)]]);
+
+					Events.initWallet();
+
+					Events.projectSlot();
 				}
 			}
 		}

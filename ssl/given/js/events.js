@@ -105,6 +105,15 @@ class Events {
 
 	}
 
+	initWallet () {
+
+		this.listen([document.querySelector(`#initWallet`), `click`, S => {
+
+  			window.location = `/mode/deposit/`;
+		}]);
+
+	}
+
 	inVaultSlot () {
 
 		this.listen([document.querySelector(`#inVaultSlot`), `click`, S => {
@@ -453,6 +462,29 @@ class Events {
 
 				if (Pull && Pull.mug) window.location = `/reserve`;
 			}
+		}]);
+	}
+
+	projectSlot () {
+
+		this.listen([document.querySelector(`#projectSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			if (Slot.value > 0) {
+
+				document.querySelector(`#estSlot`).style.display = `flex`;
+
+				document.querySelector(`#pnlSlot`).innerHTML = `+${(Slot.value*(30*(1.05/100))).toFixed(2)} USDT`;
+			}
+
+			if (Slot.value <= 0) document.querySelector(`#estSlot`).style.display = `none`;
 		}]);
 	}
 
