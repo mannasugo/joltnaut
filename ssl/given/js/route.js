@@ -299,6 +299,29 @@ class Route {
     			this.Call();
     		}
 
+    		else if (State[4] && State[4] === `assets` && State[5] && State[5] === `USDT` && !State[6] 
+    			&& !Tools.slim[State[6]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						flag: `tron20`,
+						mug: Clients.mug,
+						pull: `vaultSlot`, way: `in`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						if (Web.id) {
+
+							View.DOM([`div`, [Models.asset(Web)]]);
+						}
+					}
+				}
+			}
+
     		else if (State[4] && State[4] === `peers` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
 				let Puts = Tools.pull([
@@ -446,7 +469,7 @@ class Route {
 
     		else if (State[4] === `BTC_USDT` && State[5] === `supply` && !State[6] && !Tools.slim[State[6]]) {
 
-				document.title = `BTC/USDT PNL Projection`;
+				document.title = `BTC/USDT Profit Analysis`;
 
 				let Puts = Tools.pull([
 					`/json/web`, {

@@ -668,7 +668,7 @@ class Route {
 
 								Raw.mugs[0].forEach(Mug => {
 
-									if (Mug.mail === Pulls.param[1]) Flaw.push(`mail`);
+									if (Mug.mail === Pulls.param[0]) Flaw.push(`mail`);
 								});
 
 								if (Flaw.length === 0) {
@@ -1370,7 +1370,7 @@ class Route {
 											Arg[1].end(Tools.coats({
 												mug: Pulls.mug,
 												open: open,
-												id: Raw.mugs[1][Pulls.mug].tron20.base58}));
+												id: Raw.mugs[1][Pulls.mug].tron20/*.base58*/}));
 										}
 
 										if (!Raw.mugs[1][Pulls.mug].tron20) {

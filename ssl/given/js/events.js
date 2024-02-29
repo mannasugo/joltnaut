@@ -109,7 +109,9 @@ class Events {
 
 		this.listen([document.querySelector(`#initWallet`), `click`, S => {
 
-  			window.location = `/mode/deposit/`;
+  			if (!Clients.mug) window.location = `/signin`;
+
+  			if (Clients.mug) window.location = `/my/assets/USDT`;
 		}]);
 
 	}
