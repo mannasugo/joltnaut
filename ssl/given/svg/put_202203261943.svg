@@ -7,6 +7,6 @@
     }
   </style>
   <g>
-    <path fill="#fff" d="M12 2 12 20z M2 22.5 22 22.5z M2.5 12 12 20 21.5 12"></path>
+    <path fill="transparent" d="M12 2 12 20z M2 22.5 22 22.5z M2.5 12 12 20 21.5 12"></path>
   </g>
   </svg>

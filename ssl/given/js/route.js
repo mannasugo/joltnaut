@@ -314,6 +314,8 @@ class Route {
 
 					if (Web.mug) {
 
+						document.title = `USDT | Pool Asset`;
+
 						if (Web.id) {
 
 							View.DOM([`div`, [Models.asset(Web)]]);

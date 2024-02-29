@@ -1367,10 +1367,13 @@ class Route {
 
 										if (Raw.mugs[1][Pulls.mug].tron20) {
 
+											let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
 											Arg[1].end(Tools.coats({
+												hold: (Hold.length > 0)? Hold[0].hold[1]: 0,
 												mug: Pulls.mug,
 												open: open,
-												id: Raw.mugs[1][Pulls.mug].tron20/*.base58*/}));
+												id: Raw.mugs[1][Pulls.mug].tron20.base58}));
 										}
 
 										if (!Raw.mugs[1][Pulls.mug].tron20) {
