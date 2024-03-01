@@ -324,6 +324,27 @@ class Route {
 				}
 			}
 
+    		else if (State[4] && State[4] === `assets` && State[5] && State[5] === `USDT` && State[6] && State[6] === `to`
+    			&& !Tools.slim[State[7]] && !Tools.slim[State[7]]) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `outVault`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web) {
+
+						document.title = `Withdraw Tether USD | Pool Asset`;
+
+						View.DOM([`div`, [Models.outVault(Web)]]);
+					}
+				}
+			}
+
     		else if (State[4] && State[4] === `peers` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
 
 				let Puts = Tools.pull([

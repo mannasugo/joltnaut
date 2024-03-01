@@ -421,7 +421,7 @@ let Models = {
 																[
 																	[`span`, {class: `v202203261943`, style: {height: `${18}px`, [`margin-right`]: `${8}px`, width: `${18}px`}}], 
 																	[`span`, {style: {}}, `DEPOSIT`]]], 
-															[`a`, {class: `_gxM _geQ`, href: `javascript:;`, style: {
+															[`a`, {class: `_gxM _geQ`, href: `/my/assets/USDT/to`, style: {
 																	background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`,
 																	display: `flex`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
 																	[`font-weight`]: 600, height: `${40}px`, [`justify-content`]: `center`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
@@ -1525,6 +1525,89 @@ let Models = {
 												[[`a`, {id: Slot.action[1], class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, style: { 
 													[`text-transform`]: `capitalize`}}, Slot.action[0]]]],
 											TC[0], TC[1]]]]]]]]]
+	},
+
+	outVault: function(Web) {
+
+		let Swap = [];
+
+		Web.swap.forEach(Meta => {
+
+			Swap.push([`div`, {class: `_gxM _geQ`, style: {cursor: `pointer`, [`margin-bottom`]: `${4}px`, padding: `${8}px ${0}px`}}, 
+				[
+					[`img`, {src: `/ssl/given/svg/flags/${Meta[2]}.svg`, style: {[`max-width`]: `${28}px`,}}],
+					[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
+						[
+							[`span`, {style: {
+								color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-weight`]: 600, [`font-size`]: `${16}px`, 
+								[`letter-spacing`]: `${.75}px`, [`line-height`]: `${22.4}px`, [`text-transform`]: `uppercase`}}, `${Meta[1]}`],
+							[`span`, {style: {
+								color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, [`font-size`]: `${12}px`, [`line-height`]: `${18.2}px`, 
+								[`text-transform`]: `capitalize`}}, `${Meta[0]}`]]], 
+							[`div`, {class: `_gZz`}, 
+								[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+									[
+										[`div`, {class: `_gxM _gZz _geQ`}, 
+											[[`span`, {style: {
+												color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+												[`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, 
+												`${Meta[3]} ${Meta[1]} / USDT`]]]]]]]]]);
+		});
+
+		return [
+			`main`, {style: {
+				background: `rgb(5, 5, 5)`, color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: `cula`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {margin: `${20}px ${24}px`}}, 
+						[]],
+					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, padding: `0 ${24}px`,  [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
+							[ 
+								[`div`, {}, 
+									[[`div`, {style: {
+										background: `rgb(${25}, ${25}, ${25})`, [`border-radius`]: `${.375}rem`, opacity: 1,
+										padding: `${24}px ${16}px`}}, 
+										[[`div`, {},
+											[
+												[`div`, {style: {[`margin-bottom`]: `${20}px`}}, 
+													[
+														[`div`, {class: `_gxM _geQ`}, 
+															[[`span`, {style: {
+																color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${19}px`, 
+																[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
+																`SELECT A CURRENCY`]]]]], 
+												[`div`, {}, 
+													[
+														[`div`, {class: `_gxM _geQ`, style: {
+															[`border-bottom`]: `1px solid rgba(${255}, ${255}, ${255}, ${.25})`, cursor: `pointer`, 
+															[`margin-bottom`]: `${4}px`, [`padding-bottom`]: `${12}px`, [`padding-top`]: `${8}px`}}, 
+																[
+																	[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {
+																		[`max-width`]: `${28}px`,}}],
+																	[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
+																		[
+																			[`span`, {style: {
+																				color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
+																				[`font-weight`]: 600, [`font-size`]: `${16}px`, 
+																				[`letter-spacing`]: `${.75}px`, [`line-height`]: `${22.4}px`}}, `SEND CRYPTO`],
+																			[`span`, {style: {
+																				color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 600, 
+																				[`font-size`]: `${12}px`, [`line-height`]: `${18.2}px`}}, 
+																				`Tether USD`]]], 
+																	[`div`, {class: `_gZz`}, 
+																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																			[
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[
+																						[`span`, {class: `v202312301635`, style: {
+																							height: `${20}px`, [`margin-right`]: `${8}px`, 
+																							width: `${20}px`}}],
+																						[`span`, {style: {color: `rgb(${230}, ${230}, ${230})`,
+																							[`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+																							[`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, 
+																							[`white-space`]: `nowrap`}}, 
+																							`${parseFloat(Web.hold).toFixed(2)} USDT`]]]]]]]]]]],
+												[`div`, {}, Swap]]]]]]]]]]]]];
 	},
 
 	outVaultC2s: function (Arg) {

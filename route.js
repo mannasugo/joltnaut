@@ -688,6 +688,23 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `outVault`) {
+
+								let hold = 0;
+
+								let Swap = [
+									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 141.56], [`us dollar`, `usd`, `us`, 1.01]]
+
+								if (Pulls.mug !== false) {
+
+									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
+
+									hold = (Hold.length > 0)? Hold[0].hold[1]: 0;
+								}
+
+								Arg[1].end(Tools.coats({hold: hold, swap: Swap}));
+							}
+
 							if (Pulls.pull === `outVaultPollVow`) {
 
 								if (Raw.mugs[1][Pulls.mug] && Raw.mugs[1][Pulls.md] && Pulls.mug !== Pulls.md 
