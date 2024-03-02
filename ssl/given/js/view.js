@@ -405,7 +405,7 @@ let Models = {
 																					`${parseFloat(Web.hold).toFixed(2)} USDT`]]]]]]]]], 
 													[`div`, {class: `_gxM _geQ`, style: {padding: `${16}px ${16}px`}}, 
 														[
-															[`a`, {class: `_gxM _geQ`, href: `/my/assets/USDT/buy`, style: {
+															[`a`, {class: `_gxM _geQ`, href: `/mode/deposit/stk`, style: {
 																	background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`,
 																	display: `flex`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
 																	[`font-weight`]: 600, height: `${40}px`, [`justify-content`]: `center`, [`letter-spacing`]: `${.75}px`, 
