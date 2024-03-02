@@ -102,7 +102,6 @@ class Events {
   				this.getSource(S).innerHTML = `COPY`;
 			}, 1500);
 		}]);
-
 	}
 
 	initWallet () {
@@ -113,7 +112,6 @@ class Events {
 
   			if (Clients.mug) window.location = `/my/assets/USDT`;
 		}]);
-
 	}
 
 	inVaultSlot () {
@@ -649,6 +647,47 @@ class Events {
 				if (Web.mug) window.location = `/`;
 			}
 		}]);
+	}
+
+	vaultSell (Arg) {
+
+		document.querySelectorAll(`#vaultSell`).forEach((Sell, count)=> {
+
+			this.listen([Sell, `click`, S => {
+
+				View.pop();
+
+				View.DOM([`div`, [Models.vaultSwap([Arg.swap[count], Arg.hold])]]);
+
+				let local = Arg.swap[count][3];
+
+				this.listen([document.querySelector(`#localSlot`), `keyup`, S => {
+
+					let Slot = this.getSource(S);
+
+					let a = Slot.value[Slot.value.length - 1];
+
+					if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+					else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+					document.querySelector(`#coinSlot`).value = (Slot.value/local).toFixed(2)
+				}]);
+
+				this.listen([document.querySelector(`#coinSlot`), `keyup`, S => {
+
+					let Slot = this.getSource(S);
+
+					let a = Slot.value[Slot.value.length - 1];
+
+					if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+					else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+					document.querySelector(`#localSlot`).value = (Slot.value*local).toFixed(2)
+				}]);
+			}]);
+		});
 	}
 
 	vetC2s (Vow) {

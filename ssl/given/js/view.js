@@ -1533,7 +1533,7 @@ let Models = {
 
 		Web.swap.forEach(Meta => {
 
-			Swap.push([`div`, {class: `_gxM _geQ`, style: {cursor: `pointer`, [`margin-bottom`]: `${4}px`, padding: `${8}px ${0}px`}}, 
+			Swap.push([`div`, {class: `_gxM _geQ`, id: `vaultSell`, style: {cursor: `pointer`, [`margin-bottom`]: `${4}px`, padding: `${8}px ${0}px`}}, 
 				[
 					[`img`, {src: `/ssl/given/svg/flags/${Meta[2]}.svg`, style: {[`max-width`]: `${28}px`,}}],
 					[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
@@ -1589,11 +1589,11 @@ let Models = {
 																			[`span`, {style: {
 																				color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
 																				[`font-weight`]: 600, [`font-size`]: `${16}px`, 
-																				[`letter-spacing`]: `${.75}px`, [`line-height`]: `${22.4}px`}}, `SEND CRYPTO`],
+																				[`letter-spacing`]: `${.75}px`, [`line-height`]: `${22.4}px`}}, `USDT`],
 																			[`span`, {style: {
-																				color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 600, 
+																				color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
 																				[`font-size`]: `${12}px`, [`line-height`]: `${18.2}px`}}, 
-																				`Tether USD`]]], 
+																				`TRC20 Tokens`]]], 
 																	[`div`, {class: `_gZz`}, 
 																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
 																			[
@@ -2642,7 +2642,8 @@ let Models = {
 											[`div`, {style: {[`margin-top`]: `${24}px`}}, 
 												[[`button`, {id: `initWallet`, style: {
 													background: `#7abbff`, border: `none`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, 
-													cursor: `pointer`, [`font-family`]: `walsh`,[`font-size`]: `${16}px`, [`font-weight`]: 700, height: `${56}px`,[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `CONNECT WALLET`]]]]]]]]]]]]];
+													cursor: `pointer`, [`font-family`]: `walsh`,[`font-size`]: `${16}px`, [`font-weight`]: 700, height: `${56}px`,
+													[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `CONNECT WALLET`]]]]]]]]]]]]];
 	},
 
 	vaultOutSplash: function () {
@@ -2732,6 +2733,109 @@ let Models = {
 										[`div`, {style: {[`margin-top`]: `${8}px`, padding: `${2}px ${8}px`, border: `${1}px solid #e3e3e3`, [`border-radius`]: `${6}px`, [`font-size`]: `${12}px`}}, 
 											[[`span`, {style: {color: `#a2a2a2`}}, `Deposit Wallet`], [`span`, {style: {color: `#666`, [`font-family`]: `geometria`, [`font-size`]: `${14}px`, [`font-weight`]: 600}}, `TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`]]],
 										[`span`, {style: {background: `#fbd6b545`, border: `${1}px solid #ff871c45`, [`border-radius`]: `${6}px`, [`margin-top`]: `${12}px`, color: `#84450c45`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${2}px ${8}px`}}, `20 confirmations (typically 1 minute) required before funds are available for trading.`]]]]]]]]]
+	},
+
+	vaultSwap: function (Arg) {
+
+		return [
+			`main`, {style: {
+				background: `rgb(5, 5, 5)`, color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: `cula`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {margin: `${20}px ${24}px`}}, 
+						[]],
+					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, padding: `0 ${24}px`,  [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
+							[ 
+								[`div`, {}, 
+									[[`div`, {style: {
+										background: `rgba(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, opacity: 1,
+										padding: `${24}px ${24}px`}}, 
+										[[`div`, {},
+											[
+												[`div`, {style: {[`margin-bottom`]: `${24}px`}}, 
+													[
+														[`div`, {class: `_gxM _geQ`}, 
+															[[`span`, {style: {
+																color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${19}px`, 
+																[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
+																`CONVERSION`]]]]], 
+												[`div`, {}, 
+													[
+														[`div`, {style: {
+															background: `rgba(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, 
+															padding: `${16}px ${12}px`}}, 
+															[
+																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
+																	[`font-size`]: `${12}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
+																	[`text-transform`]: `capitalize`}}, `You Pay`],
+															[`div`, {class: `_gxM _geQ`}, 
+																[
+																	[`img`, {src: `/ssl/given/svg/flags/${Arg[0][2]}.svg`, style: {
+																		[`max-width`]: `${24}px`}}],
+																	[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+																		[[`span`, {style: {color: `#fff`, [`font-family`]: `walsh`, 
+																		[`font-weight`]: 400, [`font-size`]: `${24}px`, 
+																		[`text-transform`]: `uppercase`}}, `${Arg[0][1]}`]]], 
+																	[`div`, {class: `_gZz`}, 
+																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																			[
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[
+																						[`span`, {class: `v202312301635`, style: {
+																							height: `${20}px`, [`margin-right`]: `${8}px`, 
+																							width: `${20}px`}}],
+																						[`span`, {style: {
+																							[`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+																							[`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, 
+																							[`text-transform`]: `uppercase`}}, 
+																							`${parseFloat(Arg[1]*Arg[0][3]).toFixed(2)} ${Arg[0][1]}`]]], 
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[[`input`, {id: `localSlot`, placeholder: `0.0`, style: {
+																						background: `transparent`, [`border-style`]: `none`, 
+																						color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
+																						[`font-size`]: `${24}px`, [`font-weight`]: 400, 
+																						[`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, 
+																						[`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+														[`div`, {style: {
+															background: `rgba(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, 
+															padding: `${16}px ${12}px`, [`margin-top`]: `${8}px`}}, 
+															[
+																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
+																	[`font-size`]: `${12}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
+																	[`text-transform`]: `capitalize`}}, `you get`],
+															[`div`, {class: `_gxM _geQ`}, 
+																[
+																	[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {
+																		[`max-width`]: `${24}px`}}],
+																	[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+																		[[`span`, {style: {color: `#fff`, [`font-family`]: `walsh`, 
+																		[`font-weight`]: 400, [`font-size`]: `${24}px`, 
+																		[`text-transform`]: `uppercase`}}, `usdt`]]], 
+																	[`div`, {class: `_gZz`}, 
+																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																			[
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[
+																						[`span`, {class: `v202312301635`, style: {
+																							height: `${20}px`, [`margin-right`]: `${8}px`, 
+																							width: `${20}px`}}],
+																						[`span`, {style: {
+																							[`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+																							[`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, 
+																							[`text-transform`]: `uppercase`}}, 
+																							`${parseFloat(Arg[1]).toFixed(2)} USDT`]]], 
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[[`input`, {id: `coinSlot`, placeholder: `0.0`, style: {
+																						background: `transparent`, [`border-style`]: `none`, 
+																						color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, 
+																						[`font-size`]: `${24}px`, [`font-weight`]: 400, 
+																						[`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, 
+																						[`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]]]], 
+											[`div`, {style: {[`margin-top`]: `${24}px`}}, 
+												[[`button`, {id: `initWallet`, style: {
+													background: `#7abbff`, border: `none`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, 
+													cursor: `pointer`, [`font-family`]: `walsh`,[`font-size`]: `${16}px`, [`font-weight`]: 700, height: `${56}px`,
+													[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `CONNECT WALLET`]]]]]]]]]]]]]]];
 	},
 
 	vetPeers: function (Arg) {

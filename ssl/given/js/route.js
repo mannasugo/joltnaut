@@ -341,6 +341,8 @@ class Route {
 						document.title = `Withdraw Tether USD | Pool Asset`;
 
 						View.DOM([`div`, [Models.outVault(Web)]]);
+
+						Events.vaultSell(Web);
 					}
 				}
 			}
