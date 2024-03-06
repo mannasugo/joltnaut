@@ -264,13 +264,13 @@ class Tools {
 		return Hold[2];
 	}
 
-	pairs (Raw) { //MERGE_HEAD
+	pairs (Raw) {
 
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [65775.15, 66013.96]],
-			ts_a: new Date(`2024-03-06 10:04`).valueOf(), 
-			ts_z: new Date(`2024-03-06 10:17`).valueOf()
+			pair: [`btc/fdusd`, [66232.26, 66546.67]],
+			ts_a: new Date(`2024-03-06 13:32`).valueOf(), 
+			ts_z: new Date(`2024-03-06 13:53`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
