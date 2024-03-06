@@ -264,7 +264,7 @@ class Tools {
 		return Hold[2];
 	}
 
-	pairs (Raw) {
+	pairs (Raw) { //MERGE_HEAD
 
 		let Pairs = [{
 			gas: 7.5/100,
