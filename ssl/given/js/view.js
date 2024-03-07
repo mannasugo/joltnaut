@@ -2767,7 +2767,7 @@ let Models = {
 															[
 																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
 																	[`font-size`]: `${12}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
-																	[`text-transform`]: `capitalize`}}, `You Pay`],
+																	[`text-transform`]: `capitalize`}}, `you receive`],
 															[`div`, {class: `_gxM _geQ`}, 
 																[
 																	[`img`, {src: `/ssl/given/svg/flags/${Arg[0][2]}.svg`, style: {
@@ -2802,7 +2802,7 @@ let Models = {
 															[
 																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
 																	[`font-size`]: `${12}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
-																	[`text-transform`]: `capitalize`}}, `you get`],
+																	[`text-transform`]: `capitalize`}}, `you sell`],
 															[`div`, {class: `_gxM _geQ`}, 
 																[
 																	[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {
