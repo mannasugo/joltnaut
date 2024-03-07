@@ -2646,6 +2646,46 @@ let Models = {
 													[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `CONNECT WALLET`]]]]]]]]]]]]];
 	},
 
+	swapOffline: function (Arg) {
+
+		return [
+			`main`, {style: {
+				background: `rgb(5, 5, 5)`, color: `rgb(${161}, ${161}, ${161})`, [`font-family`]: `cula`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {margin: `${20}px ${24}px`}}, 
+						[]],
+					[`section`, { class: `tY0 _geQ`, style: {background: `inherit`, padding: `0 ${24}px`,  [`margin-top`]: `${25}px`}}, 
+						[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
+							[ 
+								[`div`, {}, 
+									[[`div`, {style: {
+										background: `rgba(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, opacity: 1,
+										padding: `${24}px ${24}px`}}, 
+										[[`div`, {},
+											[
+												[`div`, {style: {[`margin-bottom`]: `${24}px`}}, 
+													[
+														[`div`, {class: `_gxM _geQ`}, 
+															[[`span`, {style: {
+																color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${19}px`, 
+																[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
+																`TRADING IN SESSION`]]]]], 
+												[`div`, {}, 
+													[
+														[`div`, {class: `_geQ _gxM`, style: {
+															background: `rgba(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, 
+															padding: `${16}px ${12}px`}}, 
+															[
+																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
+																	[`font-size`]: `${13}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${0}px`, 
+																	[`text-transform`]: `capitalize`}}, `Daily Withdrawal Period`],
+																[`div`, {class: `_gZz`}, 
+																	[[`span`, {style: {
+																		color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+																		[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
+																		`1200GMT - 1900GMT`]]]]]]]]]]]]]]]]]]];
+	},
+
 	vaultOutSplash: function () {
 
 		return [
@@ -2766,7 +2806,7 @@ let Models = {
 															padding: `${16}px ${12}px`}}, 
 															[
 																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
-																	[`font-size`]: `${12}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
+																	[`font-size`]: `${13}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
 																	[`text-transform`]: `capitalize`}}, `you receive`],
 															[`div`, {class: `_gxM _geQ`}, 
 																[
@@ -2801,7 +2841,7 @@ let Models = {
 															padding: `${16}px ${12}px`, [`margin-top`]: `${8}px`}}, 
 															[
 																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
-																	[`font-size`]: `${12}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
+																	[`font-size`]: `${13}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${8}px`, 
 																	[`text-transform`]: `capitalize`}}, `you sell`],
 															[`div`, {class: `_gxM _geQ`}, 
 																[
@@ -2832,10 +2872,10 @@ let Models = {
 																						[`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, 
 																						[`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]]]], 
 											[`div`, {style: {[`margin-top`]: `${24}px`}}, 
-												[[`button`, {id: `initWallet`, style: {
+												[[`button`, {flag: `${Arg[0][1]}`, id: `swap`, style: {
 													background: `#7abbff`, border: `none`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, 
 													cursor: `pointer`, [`font-family`]: `walsh`,[`font-size`]: `${16}px`, [`font-weight`]: 700, height: `${56}px`,
-													[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `CONNECT WALLET`]]]]]]]]]]]]]]];
+													[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `WITHDRAW`]]]]]]]]]]]]]]];
 	},
 
 	vetPeers: function (Arg) {
@@ -2889,6 +2929,61 @@ let Models = {
 								[
 									[`h1`, {style: {[`font-size`]: `${9}px`, [`font-weight`]: 600, [`margin-top`]: `${22}px`}}, `REQUESTS`],
 									[`section`, {}, Vet[0]]]]]]]]]];
+	},
+
+	vetSwap: function (Vow) {
+
+		let Slot = [
+			`Please confirm that the withdrawal amount and withdrawal account details below are correct before confirming 
+			payment.`,
+			`I have initiated payment from my real-name verified payment account consistent with my registered name on joltnaut.`],
+
+		VaultSlots = [];
+
+		Vow.vaultSlots.forEach(Slot => {
+
+				VaultSlots.push([
+					`div`, {style: {[`font-weight`]: 400, padding: `${12}px 0`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[[`span`, {id: `slotColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`]]],
+							[`div`, {style: {[`font-size`]: `${14}px`, [`font-weight`]: 400, [`line-height`]: `${23}px`,}}, 
+								[
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${14}px`}}, 
+										[
+											[`span`, {style: {color: `#666`,[`font-size`]: `${12}px`, [`font-weight`]: 300}}, `ACCOUNT NAME`], 
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `walsh`}}, (Slot.mug).toUpperCase()]]]]],
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {style: {color: `#666`,[`font-size`]: `${12}px`, [`font-weight`]: 300}}, `PHONE NUMBER`], 
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `walsh`}}, Slot.id]]]]]]]]]);
+			
+		});
+
+		return [
+			`section`, {}, 
+				[[`main`, {id: `inVaultVetVow`, class: ``, style: {height: `${100}%`, [`line-height`]: `${19}px`, padding: `${24}px`, [`margin-top`]: `${45}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {style: {[`font-size`]: `${20}px`, [`font-weight`]: 400}}, `Payment Confirmation`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202311051955`, href: `/my/assets/USDT/to`, style: {height:`${13}px`, width:`${13}px`}}]]]]],
+							[`div`, {style: {[`margin-top`]: `${24}px`}}, [[`span`, {}, Slot[0]]]],
+							[`section`, {id: `vaultSlots`}, VaultSlots],
+							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${18}px`}}, 
+								[
+									[`svg`, {style: {height: `${18}px`, [`max-width`]: `${18}px`}, vewBox: `0 0 18 18`}, 
+										[
+											[`circle`, {cy: 9, cx: 9, r: 7, stroke: `#11fe6e`, [`stroke-width`]: 1.25, fill: `none`}],
+											[`path`, {d: `M6 8 8 12 16 6`, fill: `none`, stroke: `#11fe6e`}]]], 
+									[`div`, {class: `_eYG`}, 
+										[[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${12}px`, [`line-height`]: 1.7}}, Slot[1].toUpperCase()]]]]],
+							[`div`, {class: `_gM_a _agM _guZ`, style: {
+								[`margin-top`]: `${16}px`, 
+								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
+								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetSwap`}, `CONTINUE`]]]]]]]]]
 	}, 
 
 	axis: function (Axis) {

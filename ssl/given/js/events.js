@@ -686,6 +686,76 @@ class Events {
 
 					document.querySelector(`#localSlot`).value = (Slot.value*local).toFixed(2)
 				}]);
+
+				this.listen([document.querySelector(`#swap`), `click`, S => {
+
+					let Values = 
+						[(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value),
+						(!Tools.slim(document.querySelector(`#localSlot`).value))? false: Tools.slim(document.querySelector(`#localSlot`).value)];
+
+					if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || parseFloat(Values[1]) > 10000) return;
+
+					if (parseFloat(Values[0]) <= 0 || 2.5 > parseFloat(Values[0])) return;
+
+					if (Arg.swap[count][1] === `kes`) {
+
+						let Puts = Tools.pull([
+							`/json/web/`, { 
+								mug: Clients.mug, 
+								param : {float: parseFloat(Values[0]), id: Arg.id, local: parseFloat(Values[1]), type: `stk`}, 
+								pull: `vaultOut`}]);
+
+						Values = [];
+
+						View.pop();
+
+						View.DOM([`div`, [Models.splash]]);
+
+						Puts.onload = () => {
+
+							let Web = JSON.parse(Puts.response);
+
+							if (Web.mug) window.location = `/pools/BTC_USDT`;
+						}
+
+						/**
+
+						let Puts = Tools.pull([
+							`/json/web/`, {
+							flag: `stk`,
+							mug: Clients.mug,
+							pull: `vaultSlot`}]);
+
+						Puts.onload = () => {
+
+							let Web = Tools.typen(Puts.response);
+
+							if (Web.mug) {
+
+								if (Web.vaultSlot.id) {
+
+									if (Web.mug && Web.open < 9 || Web.open > 16) {
+
+										View.pop();
+
+										View.DOM([`div`, [Models.swapOffline()]]);
+									}
+
+									if (Web.mug && Web.open >= 9 && Web.open < 16) {
+
+										View.pop();
+
+										View.DOM([`div`, [Models.vetSwap({vaultSlots: [Web.vaultSlot]})]]);
+									}
+								}
+
+								else window.location = `/account`;
+							}
+						}
+
+						**/
+					}
+				}]);
 			}]);
 		});
 	}
