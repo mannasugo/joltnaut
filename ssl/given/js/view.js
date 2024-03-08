@@ -851,11 +851,11 @@ let Models = {
 								[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
 								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600,[`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
 							[`section`, {id: `vaultSlots`}, VaultSlots],
-							[`span`, {id: `rateSwap`}, `1 usdt = 149.94 kes`], 
+							[`span`, {id: `rateSwap`}, `1 usdt = 145.04 kes`], 
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO PAY`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*149.94).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `0 - ${(Arg[0].vault*145.04).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]], 
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
@@ -1036,7 +1036,7 @@ let Models = {
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WILL RECEIVE`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
-									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*149.94).toFixed(2)} - ${(Arg.apex*149.94).toLocaleString()}`, type: `text`}]]], 
+									[[`input`, {class: `_aXZ`, id: `localSlot`, placeholder: `${(2.5*145.04).toFixed(2)} - ${(Arg.apex*145.04).toLocaleString()}`, type: `text`}]]], 
 								[`div`, {class: `_gZz`, style: {flex: 0}}, [[`span`, {style: {color: `#000`, [`font-weight`]: `600`, [`margin-left`]: `${12}px`}}, `KES`]]]]],
 							[`div`, {class: `_gM_a _agM _guZ`, style: {
 								[`margin-top`]: `${16}px`, 
@@ -1795,7 +1795,7 @@ let Models = {
 								[[`span`, {style: {color: `#a3a3a3`}}, `Available`], 
 								[`span`, {style: {[`font-family`]: `geometria`,[`font-weight`]: 600, [`margin-left`]: `${8}px`}}, `${Arg[0].vault} USDT`]]],
 							[`section`, {id: `vaultSlots`}, VaultSlots],
-							[`span`, {id: `rateSwap`}, `1 usdt = 149.84 kes`], 
+							[`span`, {id: `rateSwap`}, `1 usdt = 145.04 kes`], 
 							[`span`, {style: {color: `#666`,[`font-size`]: `${9}px`,[`margin-top`]: `${12}px`}}, `I WANT TO SELL`],
 							[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${8}px`}}, 
 								[[`div`, {class: `_eYG _aXZ`, style: {margin: 0, overflow: `revert`}}, 
@@ -2683,7 +2683,19 @@ let Models = {
 																	[[`span`, {style: {
 																		color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
 																		[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
-																		`1200GMT - 1900GMT`]]]]]]]]]]]]]]]]]]];
+																		`0900GMT - 1600GMT`]]]]],
+														[`div`, {class: `_geQ _gxM`, style: {
+															background: `rgba(${255}, ${255}, ${255}, ${.08})`, [`border-radius`]: `${8}px`, [`margin-top`]: `${8}px`, 
+															padding: `${16}px ${12}px`}}, 
+															[
+																[`span`, {style: {color: `rgb(${161}, ${161}, ${161})`, [`font-weight`]: 400, 
+																	[`font-size`]: `${13}px`, [`line-height`]: `${19.6}px`, [`margin-bottom`]: `${0}px`, 
+																	[`text-transform`]: `capitalize`}}, `Daily Withdrawal Limit`],
+																[`div`, {class: `_gZz`}, 
+																	[[`span`, {style: {
+																		color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
+																		[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
+																		`10,000 KES`]]]]]]]]]]]]]]]]]]];
 	},
 
 	vaultOutSplash: function () {

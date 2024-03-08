@@ -168,7 +168,7 @@ class Events {
 				`/json/web/`, {
 					md: this.getSource(S).getAttribute(`md`), 
 					mug: Clients.mug, 
-					param : [parseFloat(Values[0]), 149.94], 
+					param : [parseFloat(Values[0]), 145.04], 
 					pull: `inVaultPollVow`}]);
 
 			Values = [];
@@ -215,7 +215,7 @@ class Events {
 
 	local2Coin () {
 
-		let local = 149.94;
+		let local = 145.04;
 
 		if (Tools.typen(Clients.instance)[0] === `outVaultSlot`) local = 141.96;
 
@@ -699,6 +699,8 @@ class Events {
 
 					if (Arg.swap[count][1] === `kes`) {
 
+						/**
+
 						let Puts = Tools.pull([
 							`/json/web/`, { 
 								mug: Clients.mug, 
@@ -718,7 +720,7 @@ class Events {
 							if (Web.mug) window.location = `/pools/BTC_USDT`;
 						}
 
-						/**
+						**/
 
 						let Puts = Tools.pull([
 							`/json/web/`, {
@@ -752,8 +754,6 @@ class Events {
 								else window.location = `/account`;
 							}
 						}
-
-						**/
 					}
 				}]);
 			}]);

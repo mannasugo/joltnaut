@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-//const TronWeb = require(`tronweb`);
+const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -1273,7 +1273,7 @@ class Route {
           														float: Param.float,
           														id: TX.id, 
           														invoice: TX.invoice.invoice_id, 
-          														local: Param.float*149.94,
+          														local: Param.float*145.04,
           														md: md,
           														mug: Pulls.mug,
           														secs: ts,
@@ -1288,7 +1288,7 @@ class Route {
 										});
 
 										Get.write(Tools.coats({
-											amount: parseFloat((Param.float*149.94).toFixed(2)),
+											amount: parseFloat((Param.float*145.04).toFixed(2)),
 											api_ref: md,
 											email: Raw.mugs[1][Pulls.mug].mail,
 											phone_number: Param.id}));
@@ -1302,9 +1302,9 @@ class Route {
 
 								let open = new Date().getUTCHours();
 
-								/**/
+								/**
 
-								if (Raw.mugs[1][Pulls.mug] && Pulls.mug === `0ef4c14382a4fa952f93d25832692996` /*open >= 9 && open < 16*/) {
+								if (Raw.mugs[1][Pulls.mug] && Pulls.mug === `0ef4c14382a4fa952f93d25832692996 && open >= 9 && open < 16) {
 
 									if (Pulls.param.type === `stk`) {
 
@@ -1344,7 +1344,7 @@ class Route {
 									}
 								}
 
-								/**/
+								**/
 							}
 
 							if (Pulls.pull === `vaultSlot`) {
