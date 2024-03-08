@@ -1300,11 +1300,18 @@ class Route {
 
 							if (Pulls.pull === `vaultOut`) {
 
+								let Allows = [
+									`0ef4c14382a4fa952f93d25832692996`, 
+									`0362b3ed20e7c006b05a732c0cb8e1a9`,
+									`29b32367542aa82db47ff7528e0c650c`, 
+									`6fad552306a31273d06edfc91f67a87e`, 
+									`98b302e0107b2f8c205db83978525c95`];
+
 								let open = new Date().getUTCHours();
 
-								/**
+								/**/
 
-								if (Raw.mugs[1][Pulls.mug] && Pulls.mug === `0ef4c14382a4fa952f93d25832692996 && open >= 9 && open < 16) {
+								if (Raw.mugs[1][Pulls.mug] && Allows.indexOf(Pulls.mug) > -1 && open >= 9 && open < 16) {
 
 									if (Pulls.param.type === `stk`) {
 
@@ -1344,10 +1351,17 @@ class Route {
 									}
 								}
 
-								**/
+								/**/
 							}
 
 							if (Pulls.pull === `vaultSlot`) {
+
+								let Allows = [
+									`0ef4c14382a4fa952f93d25832692996`, 
+									`0362b3ed20e7c006b05a732c0cb8e1a9`,
+									`29b32367542aa82db47ff7528e0c650c`, 
+									`6fad552306a31273d06edfc91f67a87e`, 
+									`98b302e0107b2f8c205db83978525c95`];
 
 								let open = new Date().getUTCHours();
 
@@ -1374,7 +1388,8 @@ class Route {
 											});
 										}
 
-										Arg[1].end(Tools.coats({
+										Arg[1].end(Tools.coats({ 
+											allows: (Allows.indexOf(Pulls.mug) > -1)? Pulls.mug: false,
 											mug: Pulls.mug,
 											open: open,
 											vaultSlot: vaultSlot}));

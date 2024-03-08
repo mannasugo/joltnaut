@@ -693,34 +693,11 @@ class Events {
 						[(!Tools.slim(document.querySelector(`#coinSlot`).value))? false: Tools.slim(document.querySelector(`#coinSlot`).value),
 						(!Tools.slim(document.querySelector(`#localSlot`).value))? false: Tools.slim(document.querySelector(`#localSlot`).value)];
 
-					if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || parseFloat(Values[1]) > 10000) return;
-
-					if (parseFloat(Values[0]) <= 0 || 2.5 > parseFloat(Values[0])) return;
+					if (parseFloat(Values[0]) <= 0 || 2.5 > parseFloat(Values[0]) || parseFloat(Values[0]) > Arg.hold) return;
 
 					if (Arg.swap[count][1] === `kes`) {
 
-						/**
-
-						let Puts = Tools.pull([
-							`/json/web/`, { 
-								mug: Clients.mug, 
-								param : {float: parseFloat(Values[0]), id: Arg.id, local: parseFloat(Values[1]), type: `stk`}, 
-								pull: `vaultOut`}]);
-
-						Values = [];
-
-						View.pop();
-
-						View.DOM([`div`, [Models.splash]]);
-
-						Puts.onload = () => {
-
-							let Web = JSON.parse(Puts.response);
-
-							if (Web.mug) window.location = `/pools/BTC_USDT`;
-						}
-
-						**/
+						if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || parseFloat(Values[1]) > 10000) return;
 
 						let Puts = Tools.pull([
 							`/json/web/`, {
@@ -732,7 +709,7 @@ class Events {
 
 							let Web = Tools.typen(Puts.response);
 
-							if (Web.mug) {
+							if (Web.mug && Web.allows === Clients.mug) {
 
 								if (Web.vaultSlot.id) {
 
@@ -747,7 +724,29 @@ class Events {
 
 										View.pop();
 
-										View.DOM([`div`, [Models.vetSwap({vaultSlots: [Web.vaultSlot]})]]);
+										View.DOM([`div`, [Models.vetSwap({amount: parseFloat(Values[1]), vaultSlots: [Web.vaultSlot]})]]);
+
+										this.listen([document.querySelector(`#vetSwap`), `click`, S => {
+
+											let Puts = Tools.pull([
+												`/json/web/`, { 
+													mug: Clients.mug, 
+													param : {float: parseFloat(Values[0]), id: Arg.id, local: parseFloat(Values[1]), type: `stk`}, 
+													pull: `vaultOut`}]);
+
+											Values = [];
+
+											View.pop();
+
+											View.DOM([`div`, [Models.splash]]);
+
+											Puts.onload = () => {
+
+												let Web = JSON.parse(Puts.response);
+
+												if (Web.mug) window.location = `/pools/BTC_USDT`;
+											}
+										}]);
 									}
 								}
 

@@ -2968,7 +2968,15 @@ let Models = {
 									[`div`, {class: `_gxM _geQ`}, 
 										[
 											[`span`, {style: {color: `#666`,[`font-size`]: `${12}px`, [`font-weight`]: 300}}, `PHONE NUMBER`], 
-											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `walsh`}}, Slot.id]]]]]]]]]);
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `walsh`}}, Slot.id]]]]],
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {style: {color: `#666`,[`font-size`]: `${12}px`, [`font-weight`]: 300}}, `AMOUNT DEBITED`], 
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `walsh`}}, `${(Vow.amount).toFixed(2)} KES`]]]]],
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {style: {color: `#666`,[`font-size`]: `${12}px`, [`font-weight`]: 300}}, `WAIT TIME`], 
+											[`div`, {class: `_gZz`}, [[`span`, {style: {[`font-family`]: `walsh`}}, `25 MINS - 50 MINS`]]]]]]]]]);
 			
 		});
 
