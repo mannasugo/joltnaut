@@ -693,7 +693,7 @@ class Route {
 								let hold = 0;
 
 								let Swap = [
-									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 141.56], [`us dollar`, `usd`, `us`, 1.01]]
+									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 138.77], [`us dollar`, `usd`, `us`, 1.01]]
 
 								if (Pulls.mug !== false) {
 
@@ -1273,7 +1273,7 @@ class Route {
           														float: Param.float,
           														id: TX.id, 
           														invoice: TX.invoice.invoice_id, 
-          														local: Param.float*145.04,
+          														local: Param.float*139.57,
           														md: md,
           														mug: Pulls.mug,
           														secs: ts,
@@ -1288,7 +1288,7 @@ class Route {
 										});
 
 										Get.write(Tools.coats({
-											amount: parseFloat((Param.float*145.04).toFixed(2)),
+											amount: parseFloat((Param.float*139.57).toFixed(2)),
 											api_ref: md,
 											email: Raw.mugs[1][Pulls.mug].mail,
 											phone_number: Param.id}));
@@ -1329,7 +1329,7 @@ class Route {
           										complete: false,
           										float: Pulls.param.float,
           										id: Pulls.param.id,
-          										local: Pulls.param.float*141.96,
+          										local: Pulls.param.float*138.77,
           										md: md,
           										mug: Pulls.mug,
           										secs: ts,
