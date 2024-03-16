@@ -693,7 +693,7 @@ class Route {
 								let hold = 0;
 
 								let Swap = [
-									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 138.77], [`us dollar`, `usd`, `us`, 1.01]]
+									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 134.47], [`us dollar`, `usd`, `us`, 1.01]]
 
 								if (Pulls.mug !== false) {
 
@@ -1329,7 +1329,7 @@ class Route {
           										complete: false,
           										float: Pulls.param.float,
           										id: Pulls.param.id,
-          										local: Pulls.param.float*138.77,
+          										local: Pulls.param.float*134.47,
           										md: md,
           										mug: Pulls.mug,
           										secs: ts,
