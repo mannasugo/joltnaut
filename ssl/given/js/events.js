@@ -697,7 +697,7 @@ class Events {
 
 					if (Arg.swap[count][1] === `kes`) {
 
-						if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || parseFloat(Values[1]) > 10000) return;
+						if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || parseFloat(Values[1]) > 2000) return;
 
 						let Puts = Tools.pull([
 							`/json/web/`, {
