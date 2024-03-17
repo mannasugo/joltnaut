@@ -1303,7 +1303,7 @@ class Route {
 								let Allows = [
 									`0ef4c14382a4fa952f93d25832692996`, 
 									`0362b3ed20e7c006b05a732c0cb8e1a9`,
-									`29b32367542aa82db47ff7528e0c650c`, 
+									//`29b32367542aa82db47ff7528e0c650c`, 
 									`6fad552306a31273d06edfc91f67a87e`,  
 									`78ab8f16156200222538c90ae3b43fbe`,
 									//`816dd8bf6d3f688279c8b69402b3019c`, 
@@ -1361,7 +1361,7 @@ class Route {
 								let Allows = [
 									`0ef4c14382a4fa952f93d25832692996`, 
 									`0362b3ed20e7c006b05a732c0cb8e1a9`,
-									`29b32367542aa82db47ff7528e0c650c`,
+									//`29b32367542aa82db47ff7528e0c650c`,
 									`6fad552306a31273d06edfc91f67a87e`, 
 									`78ab8f16156200222538c90ae3b43fbe`,
 									//`816dd8bf6d3f688279c8b69402b3019c`, 

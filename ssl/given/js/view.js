@@ -2695,7 +2695,7 @@ let Models = {
 																	[[`span`, {style: {
 																		color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
 																		[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
-																		`10,000 KES`]]]]]]]]]]]]]]]]]]];
+																		`2,000 KES`]]]]]]]]]]]]]]]]]]];
 	},
 
 	vaultOutSplash: function () {
