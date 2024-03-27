@@ -303,13 +303,13 @@ class Route {
 
 											Raw.till[0].forEach(TX => {
 
-												if (TX.flag && TX.flag.trade && TX.till[Mug.md]) cumulate += parseFloat(TX.till[Mug.md][1]);
+												if (TX.flag && TX.flag.trade && TX.till[Mug.md]) Feat.cumulate += parseFloat(TX.till[Mug.md][1]);
 											});
 
 											Feats.push(Feat);
 
 										//}
-									})
+									}); console.log(Feats)
 
 									Arg[1].end(Tools.coats({
 										feats: Feats, mug: [Raw.mugs[1][Pulls.mug].vaultSlots[0].mug, Raw.mugs[1][Pulls.mug][`mail`]]}));
