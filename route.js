@@ -285,13 +285,13 @@ class Route {
 									`850cc0422e6710ee319bd7b14098a007`, 
 									`98b302e0107b2f8c205db83978525c95`]];
 
-								if (Raw.mugs[1][Pulls.mug]/** && Allows[0].indexOf(Pulls.mug) > -1**/) {
+								if (Raw.mugs[1][Pulls.mug] && Allows[0].indexOf(Pulls.mug) > -1) {
 
 									let Feats = [];
 
 									Raw.mugs[0].forEach(Mug => {
 
-										//if (Allows[1].indexOf(Pulls.mug) > -1) {
+										if (Allows[1].indexOf(Pulls.mug) > -1) {
 
 											let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
 
@@ -308,8 +308,8 @@ class Route {
 
 											Feats.push(Feat);
 
-										//}
-									}); console.log(Feats)
+										}
+									});
 
 									Arg[1].end(Tools.coats({
 										feats: Feats, mug: [Raw.mugs[1][Pulls.mug].vaultSlots[0].mug, Raw.mugs[1][Pulls.mug][`mail`]]}));
