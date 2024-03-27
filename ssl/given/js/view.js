@@ -2225,29 +2225,44 @@ let Models = {
 
 	portal: function (Arg) {
 
+		let Param = [
+			[], 
+			[[`account`, 25], [`balance`, 7.5, true], [`inflow`, 7.5, true], [`outflow`, 7.5, true], [``, 37.5], [`net gain`, 15, true]]];
+
+		Param[1].forEach(Feat => {
+
+			Param[0].push([`div`, {class: `geQ`, style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`text-align`]: (Feat[2])? `right`: `left`}}, Feat[0]]]])
+
+		});
+
+		let Row = [[], []];
+
+		Arg.feats.forEach(Account => {
+
+			let Meta = [(Account.account).toLowerCase(), `${parseFloat(Account.hold).toFixed(2)}`, 0, 0, ``, `${parseFloat(Account.cumulate).toFixed(2)}`];
+
+			Param[1].forEach((Feat, int)=> {
+
+				Row[1].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+					[[`span`, {style: {
+						[`font-family`]: (Feat[2])? `arcane`: `inherit`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`text-align`]: (Feat[2])? `right`: `left`, 
+						[`text-transform`]: ``}}, Meta[int]]]]);
+			});
+
+			Row[0].push([`div`, {class: `_geQ _gxM`, style: {padding: `${6}px ${0}`}}, Row[1]])
+
+			Row[1] = [];
+		});
+
 		return [
-			`main`, {id: `jms`, class: `_tY0`, style: {padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+			`main`, {id: `jms`, class: `_tY0`, style: {[`font-family`]: `litera`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
 				[[`div`, {class: `geQ`, style: {[`max-width`]: `${1280}px`, [`min-width`]: `${1040}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
 					[
 						[`div`, {id: ``}, 
 							[
-								[`div`, {class: `_gxM _geQ`}, 
-									[
-										[`span`, {class: `v202203171249`, style: {width: `${36}px`, height: `${36}px`}}],
-										[`h1`, {style: {
-											[`font-size`]: `${9}px`, 
-											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]],
-								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[0]]]],
-						[`div`, {id: ``, style: {[`margin-top`]: `${12}px`}}, 
-							[
-								[`div`, {class: `_gxM _geQ`}, 
-									[
-										[`span`, {class: `v202205081426`, style: {width: `${36}px`, height: `${36}px`}}],
-										[`h1`, {style: {
-											[`font-size`]: `${9}px`, 
-											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]]
-								/**/,
-								[`section`, {style: {[`margin-top`]: `${12}px`}}, ]]]]]]]
+								[`div`, {class: `_gxM _geQ`}, Param[0]],
+								[`section`, {style: {[`margin-top`]: `${8}px`}}, Row[0]]]]]]]]
 	},
 
 	pnl: function (Arg) {

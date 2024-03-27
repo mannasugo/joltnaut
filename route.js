@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -270,16 +270,49 @@ class Route {
 							if (Pulls.pull === `portal`) {
 
 								let Allows = [
-									`0ef4c14382a4fa952f93d25832692996`, 
-									`0362b3ed20e7c006b05a732c0cb8e1a9`,
+									[`0362b3ed20e7c006b05a732c0cb8e1a9`,`816dd8bf6d3f688279c8b69402b3019c`],
+									["0dc00226105bbc48f57f7eb1a68e4ada", 
+									`0ef4c14382a4fa952f93d25832692996`,
+									"29b32367542aa82db47ff7528e0c650c",
+									"3e7dde07ed4f9a694b242c5c46957d4c", 
+									"5db3abb92b1692edabfc4b7de0e47459",
+									`5fdacb67a06dc680e1b5952192ada4e5`, 
 									`6fad552306a31273d06edfc91f67a87e`,
-									`816dd8bf6d3f688279c8b69402b3019c`, 
-									`98b302e0107b2f8c205db83978525c95`];
+									`714a0f1cbbcff0b1c898b4ce64d5423c`, 
+									"78ab8f16156200222538c90ae3b43fbe",
+									"8bcb530c73d684f8a2e62dad3cfae428", 
+									`816dd8bf6d3f688279c8b69402b3019c`,
+									`850cc0422e6710ee319bd7b14098a007`, 
+									`98b302e0107b2f8c205db83978525c95`]];
 
-								if (Raw.mugs[1][Pulls.mug]/** && Allows.indexOf(Pulls.mug) > -1**/) {
+								if (Raw.mugs[1][Pulls.mug]/** && Allows[0].indexOf(Pulls.mug) > -1**/) {
 
-										Arg[1].end(Tools.coats({
-											mug: [Raw.mugs[1][Pulls.mug].vaultSlots[0].mug, Raw.mugs[1][Pulls.mug][`mail`]]}));
+									let Feats = [];
+
+									Raw.mugs[0].forEach(Mug => {
+
+										//if (Allows[1].indexOf(Pulls.mug) > -1) {
+
+											let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
+
+											let Feat = {
+												account: Mug.vaultSlots[0].mug,
+												cumulate: 0,
+												hold: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0
+											};
+
+											Raw.till[0].forEach(TX => {
+
+												if (TX.flag && TX.flag.trade && TX.till[Mug.md]) cumulate += parseFloat(TX.till[Pulls.mug][1]);
+											});
+
+											Feats.push(Feat);
+
+										//}
+									})
+
+									Arg[1].end(Tools.coats({
+										feats: Feats, mug: [Raw.mugs[1][Pulls.mug].vaultSlots[0].mug, Raw.mugs[1][Pulls.mug][`mail`]]}));
 								}
 							}
 						});
