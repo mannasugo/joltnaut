@@ -296,7 +296,7 @@ class Route {
 											let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
 
 											let Feat = {
-												account: Mug.vaultSlots[0].mug,
+												account: `${Mug.names[0]} ${Mug.names[1]}`,
 												cumulate: 0,
 												hold: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0
 											};
