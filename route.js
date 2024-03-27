@@ -303,7 +303,7 @@ class Route {
 
 											Raw.till[0].forEach(TX => {
 
-												if (TX.flag && TX.flag.trade && TX.till[Mug.md]) cumulate += parseFloat(TX.till[Pulls.mug][1]);
+												if (TX.flag && TX.flag.trade && TX.till[Mug.md]) cumulate += parseFloat(TX.till[Mug.md][1]);
 											});
 
 											Feats.push(Feat);
