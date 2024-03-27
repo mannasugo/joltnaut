@@ -291,7 +291,7 @@ class Route {
 
 									Raw.mugs[0].forEach(Mug => {
 
-										if (Allows[1].indexOf(Pulls.mug) > -1) {
+										if (Allows[1].indexOf(Mug.md) > -1) {
 
 											let Hold = Tools.hold([Raw, Mug.md]).sort((A, B) => {return B.secs - A.secs});
 
