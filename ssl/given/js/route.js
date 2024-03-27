@@ -515,6 +515,37 @@ class Route {
 			}
 		}
 
+    	else if (this.State[3] === `portal`) {
+
+    		if (!Clients.mug) {
+
+				Clients.instance = Tools.coats([`mugin`, new Date().valueOf()]);
+					
+				View.DOM([`div`, [Models.mugslot()]]);
+
+				Events.mugin({flag: `portal`});
+    		}
+
+    		else if (!State[4] && !Tools.slim[State[4]] && Clients.mug) {
+
+				let Puts = Tools.pull([
+					`/json/ms/`, {
+						mug: Clients.mug, pull: `portal`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						document.title = `Administration Portal`;
+
+						View.DOM([`div`, [Models.portal(Web)]]);
+					}
+				}
+			}
+    	}
+
     	else if (this.State[3] === `p2p`) {
 
     		if (!Clients.mug) {

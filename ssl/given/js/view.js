@@ -2223,6 +2223,33 @@ let Models = {
 									[`section`, {style: {[`margin-top`]: `${12}px`}}, Allows[0]]]]]]]]]];
 	},
 
+	portal: function (Arg) {
+
+		return [
+			`main`, {id: `jms`, class: `_tY0`, style: {padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
+				[[`div`, {class: `geQ`, style: {[`max-width`]: `${1280}px`, [`min-width`]: `${1040}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+					[
+						[`div`, {id: ``}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202203171249`, style: {width: `${36}px`, height: `${36}px`}}],
+										[`h1`, {style: {
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]],
+								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[0]]]],
+						[`div`, {id: ``, style: {[`margin-top`]: `${12}px`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`}, 
+									[
+										[`span`, {class: `v202205081426`, style: {width: `${36}px`, height: `${36}px`}}],
+										[`h1`, {style: {
+											[`font-size`]: `${9}px`, 
+											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]]
+								/**/,
+								[`section`, {style: {[`margin-top`]: `${12}px`}}, ]]]]]]]
+	},
+
 	pnl: function (Arg) {
 
 		let P2 = [[]];

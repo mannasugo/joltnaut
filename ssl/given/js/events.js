@@ -246,7 +246,7 @@ class Events {
 		}]);
 	}
 
-	mugin () {
+	mugin (Arg) {
 
 		this.listen([document.querySelector(`#signin`), `click`, S => {
 
@@ -272,7 +272,9 @@ class Events {
 
 					Clients.mug = Pull.mug;
 
-					window.location = `/pools/BTC_USDT`;
+					if (Arg && Arg.flag && Arg.flag === `portal`) window.location = `/portal`;
+
+					else window.location = `/pools/BTC_USDT`;
 				}
 			}
 
