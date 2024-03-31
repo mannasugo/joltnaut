@@ -298,8 +298,14 @@ class Route {
 											let Feat = {
 												account: `${Mug.names[0]} ${Mug.names[1]}`,
 												cumulate: 0,
-												hold: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0
+												hold: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
+												outflow: 0
 											};
+
+											Raw.payout[0].forEach(TX => {
+
+												if (TX.mug === Mug.md) Feat.outflow += parseFloat(TX.float);
+											});
 
 											Raw.till[0].forEach(TX => {
 

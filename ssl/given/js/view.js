@@ -2223,48 +2223,6 @@ let Models = {
 									[`section`, {style: {[`margin-top`]: `${12}px`}}, Allows[0]]]]]]]]]];
 	},
 
-	portal: function (Arg) {
-
-		let Param = [
-			[], 
-			[[`account`, 25], [`balance`, 7.5, true], [`inflow`, 7.5, true], [`outflow`, 7.5, true], [``, 37.5], [`net gain`, 15, true]]];
-
-		Param[1].forEach(Feat => {
-
-			Param[0].push([`div`, {class: `geQ`, style: {width: `${Feat[1]}%`}}, 
-				[[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`text-align`]: (Feat[2])? `right`: `left`}}, Feat[0]]]])
-
-		});
-
-		let Row = [[], []];
-
-		Arg.feats.forEach(Account => {
-
-			let Meta = [(Account.account).toLowerCase(), `${parseFloat(Account.hold).toFixed(2)}`, 0, 0, ``, `${parseFloat(Account.cumulate).toFixed(2)}`];
-
-			Param[1].forEach((Feat, int)=> {
-
-				Row[1].push([`div`, {style: {width: `${Feat[1]}%`}}, 
-					[[`span`, {style: {
-						[`font-family`]: (Feat[2])? `arcane`: `inherit`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`text-align`]: (Feat[2])? `right`: `left`, 
-						[`text-transform`]: ``}}, Meta[int]]]]);
-			});
-
-			Row[0].push([`div`, {class: `_geQ _gxM`, style: {padding: `${6}px ${0}`}}, Row[1]])
-
-			Row[1] = [];
-		});
-
-		return [
-			`main`, {id: `jms`, class: `_tY0`, style: {[`font-family`]: `litera`, padding: `${12}px`, [`margin-top`]: `${25}px`}}, 
-				[[`div`, {class: `geQ`, style: {[`max-width`]: `${1280}px`, [`min-width`]: `${1040}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
-					[
-						[`div`, {id: ``}, 
-							[
-								[`div`, {class: `_gxM _geQ`}, Param[0]],
-								[`section`, {style: {[`margin-top`]: `${8}px`}}, Row[0]]]]]]]]
-	},
-
 	pnl: function (Arg) {
 
 		let P2 = [[]];
@@ -2568,6 +2526,49 @@ let Models = {
 																background: `rgb(${255}, ${255}, ${255}, ${.15})`, [`border-radius`]: `${100}px`, 
 																color: `rgb(${161}, ${161}, ${161})`, [`font-size`]: `${14}px`, [`font-weight`]: 300, 
 																padding: `${15}px ${30}px`, [`white-space`]: `nowrap`}}, `Explore & Invest`]]]]]]]]]]]]]]];
+	},
+
+	portal: function (Arg) {
+
+		let Param = [
+			[], 
+			[[`account`, 25], [`balance`, 7.5, true], [`inflow`, 7.5, true], [`outflow`, 7.5, true], [``, 37.5], [`net gain`, 15, true]]];
+
+		Param[1].forEach(Feat => {
+
+			Param[0].push([`div`, {class: `geQ`, style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`text-align`]: (Feat[2])? `right`: `left`}}, Feat[0]]]])
+
+		});
+
+		let Row = [[], []];
+
+		Arg.feats.forEach(Account => {
+
+			let Meta = [(Account.account).toLowerCase(), `${parseFloat(Account.hold).toFixed(2)}`, 0, `${parseFloat(Account.outflow).toFixed(2)}`, ``, `${parseFloat(Account.cumulate).toFixed(2)}`];
+
+			Param[1].forEach((Feat, int)=> {
+
+				Row[1].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+					[[`span`, {style: {
+						[`font-family`]: (Feat[2])? `arcane`: `inherit`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`text-align`]: (Feat[2])? `right`: `left`, 
+						[`text-transform`]: ``}}, Meta[int]]]]);
+			});
+
+			Row[0].push([`div`, {class: `_geQ _gxM`, style: {padding: `${6}px ${0}`}}, Row[1]])
+
+			Row[1] = [];
+		});
+
+		return [
+			`main`, {id: `portal`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {class: `geQ`, style: {[`max-width`]: `${1280}px`, [`min-width`]: `${1040}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+					[
+						[`div`, {id: ``}, 
+							[
+								[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, [`max-width`]: `${1280}px`, [`min-width`]: `${1040}px`, padding: `${12}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+									[[`div`, {class: `_gxM _geQ`}, Param[0]]]],
+								[`section`, {style: {[`margin-top`]: `${36}px`, padding: `${12}px`}}, Row[0]]]]]]]]
 	},
 
 	project: function (Web) {

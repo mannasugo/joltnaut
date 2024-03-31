@@ -389,6 +389,8 @@ body {
 
 #mugin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
 
+#mugin input {font-family: litera;}
+
 #cellSlots input, #contactSlot input, #inletWallet input, #inVaultSlot input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, 
 #putFloat, #viafloat, #vialet {
   block-size: 40px;
