@@ -748,7 +748,7 @@ class Route {
 								let hold = 0;
 
 								let Swap = [
-									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 134.47], [`us dollar`, `usd`, `us`, 1.01]]
+									[`euro`, `eur`, `eu`, 0.93], [`kenya shilling`, `kes`, `ke`, 128.98], [`us dollar`, `usd`, `us`, 1.01]]
 
 								if (Pulls.mug !== false) {
 
@@ -1328,7 +1328,7 @@ class Route {
           														float: Param.float,
           														id: TX.id, 
           														invoice: TX.invoice.invoice_id, 
-          														local: Param.float*139.57,
+          														local: Param.float*130.07,
           														md: md,
           														mug: Pulls.mug,
           														secs: ts,
@@ -1343,7 +1343,7 @@ class Route {
 										});
 
 										Get.write(Tools.coats({
-											amount: parseFloat((Param.float*139.57).toFixed(2)),
+											amount: parseFloat((Param.float*130.07).toFixed(2)),
 											api_ref: md,
 											email: Raw.mugs[1][Pulls.mug].mail,
 											phone_number: Param.id}));
@@ -1358,7 +1358,7 @@ class Route {
 								let Allows = [
 									`0ef4c14382a4fa952f93d25832692996`, 
 									`0362b3ed20e7c006b05a732c0cb8e1a9`,
-									//`29b32367542aa82db47ff7528e0c650c`, 
+									`29b32367542aa82db47ff7528e0c650c`, 
 									`5fdacb67a06dc680e1b5952192ada4e5`,
 									`6fad552306a31273d06edfc91f67a87e`,  
 									`78ab8f16156200222538c90ae3b43fbe`,
@@ -1375,7 +1375,7 @@ class Route {
 
 										let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
 
-										if (Hold[0].hold[1] > Pulls.param.float && Pulls.param.local <= 2000) {
+										if (Hold[0].hold[1] > Pulls.param.float && Pulls.param.local <= 9000) {
 
 											let ts = new Date().valueOf();
 
@@ -1385,7 +1385,7 @@ class Route {
           										complete: false,
           										float: Pulls.param.float,
           										id: Pulls.param.id,
-          										local: Pulls.param.float*134.47,
+          										local: Pulls.param.float*128.98,
           										md: md,
           										mug: Pulls.mug,
           										secs: ts,
@@ -1417,7 +1417,7 @@ class Route {
 								let Allows = [
 									`0ef4c14382a4fa952f93d25832692996`, 
 									`0362b3ed20e7c006b05a732c0cb8e1a9`,
-									//`29b32367542aa82db47ff7528e0c650c`,
+									`29b32367542aa82db47ff7528e0c650c`,
 									`5fdacb67a06dc680e1b5952192ada4e5`,
 									`6fad552306a31273d06edfc91f67a87e`, 
 									`78ab8f16156200222538c90ae3b43fbe`,
