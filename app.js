@@ -12,7 +12,7 @@ Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
 Sql.pulls(Raw => {
 
-				/**/
+				/**
 
 				let md = `816dd8bf6d3f688279c8b69402b3019c`;
 
@@ -24,7 +24,7 @@ Sql.pulls(Raw => {
 													
 				Sql.places([`mugs`, Raw.mugs[1][md], Old, (Raw) => {}]);}
 
-				/**/
+				**/
 
 	Tools.pairs([Raw, (Puts) => {
 
