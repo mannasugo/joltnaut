@@ -16,7 +16,22 @@ Sql.pulls(Raw => {
 
 		Sql.puts([`trades`, Puts[0], (SQ) => {
 
-			Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+			Sql.putlist([`till`, Puts[1], (SQ) => {
+
+				/**/
+
+				if (Raw.mugs[1][md]) {
+
+				let md = `816dd8bf6d3f688279c8b69402b3019c`;
+
+    			let Old = Tools.typen(Tools.coats(Raw.mugs[1][md]));
+
+    			Raw.mugs[1][md].vaultSlots = [];
+													
+				Sql.places([`mugs`, Raw.mugs[1][md], Old, (Raw) => {}]);}
+
+				/**/
+			}]);
 		}]);
 
 	}]);
