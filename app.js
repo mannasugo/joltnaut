@@ -20,7 +20,7 @@ Sql.pulls(Raw => {
 
 				/**/
 
-				if (Raw.mugs[1][md]) {
+				if (Raw.mugs[1][md]) {console.log(Raw.mugs[1][md])
 
 				let md = `816dd8bf6d3f688279c8b69402b3019c`;
 
