@@ -12,20 +12,6 @@ Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
 Sql.pulls(Raw => {
 
-				/**
-
-				let md = `816dd8bf6d3f688279c8b69402b3019c`;
-
-				if (Raw.mugs[1][md]) {
-
-    			let Old = Tools.typen(Tools.coats(Raw.mugs[1][md]));
-
-    			Raw.mugs[1][md].vaultSlots = [];
-													
-				Sql.places([`mugs`, Raw.mugs[1][md], Old, (Raw) => {}]);}
-
-				**/
-
 	Tools.pairs([Raw, (Puts) => {
 
 		Sql.puts([`trades`, Puts[0], (SQ) => {
