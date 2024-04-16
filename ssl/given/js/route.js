@@ -91,7 +91,7 @@ class Route {
 
 				Clients.instance = Tools.coats([`mugup`, new Date().valueOf()]);
 
-				document.title = `Create Account`;
+				document.title = `Create account`;
 					
 				View.DOM([`div`, [Models.mugslot()]]);
 
