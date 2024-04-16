@@ -40,6 +40,8 @@ class Route {
 
 				Clients.instance = Tools.coats([`app`, new Date().valueOf()]);
 
+				document.title = `A Free & Zero-Trading Fees Forex & Cryptocurency Exchange`;
+
 				View.DOM([`div`, [Models.app(Web)]]);
 			}
 		}
@@ -88,6 +90,8 @@ class Route {
     		else if (!State[4] && !Tools.slim[State[4]] && !Clients.mug) {
 
 				Clients.instance = Tools.coats([`mugup`, new Date().valueOf()]);
+
+				document.title = `Create Account`;
 					
 				View.DOM([`div`, [Models.mugslot()]]);
 
@@ -813,6 +817,8 @@ class Route {
     		else if (!State[4] && !Tools.slim[State[4]] && !Clients.mug) {
 
 				Clients.instance = Tools.coats([`mugin`, new Date().valueOf()]);
+
+				document.title = `Sign in`;
 					
 				View.DOM([`div`, [Models.mugslot()]]);
 
