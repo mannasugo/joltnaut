@@ -78,6 +78,13 @@ class Route {
 			}
     	}
 
+    	else if (this.State[3] === `careers`) {
+
+			document.title = `Joltnaut Jobs`;
+
+			View.DOM([`div`, [Models.careers()]]);
+    	}
+
     	else if (this.State[3] === `enrol`) {
 
     		if (Clients.mug) {

@@ -489,6 +489,83 @@ let Models = {
 							[`section`, {id: `vaults`}, Vaults[1]]]]]]]];
 	},
 
+	careers: function () {
+
+		let Opening = [
+			[
+				`legal`, [`counsel`], [[`counsel`, `senior counsel, regulatory`, `europe`]]],
+			[
+				`marketing`, 
+				[`product marketing`], 
+				[
+					[`product marketing`, `senior product marketing manager`, `australia`], 
+					[`product marketing`, `senior product marketing manager`, `germany`], 
+					[`product marketing`, `senior product marketing manager`, `kenya`], 
+					[`product marketing`, `senior product marketing manager`, `new zealand`], 
+					[`product marketing`, `senior product marketing manager`, `norway`], 
+					[`product marketing`, `senior product marketing manager`, `sweden`], 
+					[`product marketing`, `senior product marketing manager`, `united kingdom`], 
+					[`product marketing`, `senior product marketing manager`, `united states`]]]];
+
+		let open = 0;
+
+		let Openings = [[]];
+
+		Opening.forEach(Pool => {
+
+			open += Pool[2].length;
+
+			Pool[1].forEach(tag => {
+
+				let Sub = [];
+
+				Pool[2].forEach(Open => {
+
+					if (Open[0] === tag) {
+
+						Sub.push([`a`, {href: `javascript:;`}, 
+							[[`div`, {style: {padding: `${24}px ${12}px`, [`text-transform`]: `capitalize`}}, 
+								[
+									[`h3`, {style: {color: `#2590ff`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`ltter-spacing`]: `${.5}px`}}, `${Open[1]}`], 
+									[`p`, {style: {color: `#545b6d`, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, `${tag} • ${Open[2]} • full time`]]]]])
+					}
+				});
+
+				Openings[0].push([`h2`, {style: {margin: `${36}px ${12}px ${16}px`, [`text-transform`]: `capitalize`}}, 
+					[
+						[`span`, {style: {color: `#7d8699`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Pool[0]}`], 
+						[`span`, {style: {display: `block`, color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`ltter-spacing`]: `${.5}px`}}, `${tag}`]]]);
+
+				Openings[0].push([`div`, {}, Sub]);
+			});
+		});
+
+		return [
+			`main`, {id: `careers`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, padding: `${12}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `-_tX v202304191915`}], 
+								[`h2`, {style: {
+                                        [`border-left`]: `${1}px solid #91919159`,
+                                        [`font-weight`]: 600, 
+                                        margin: `${0} ${14}px`,
+                                        padding: `${0} ${14}px`,
+                                        [`font-size`]: `${14}px`,
+                                        color: `#2590ff`,
+                                        overflow: `hidden`,
+                                        [`white-space`]: `nowrap`}}, `Careers & Job Openings`]]]]],
+					[`div`, {style: {[`max-width`]: `${720}px`, width: `${100}%`, margin: `${36}px auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {margin: `${56}px ${24}px 0`}}, 
+								[
+									[`p`, {style: {color: `#464646`, [`font-size`]: `${14}px`, [`line-height`]: `${1.75}em`}}, `Joltnaut opportunities are exclusively available on this page.Apply for roles directly on our official careers page. Beware of unauthorized third-party platforms – protect your data, apply securely with us.`], 
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${19}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${48}px ${0} ${0}`, }}, `Open Positions (${open})`]]], 
+							[`div`, {style: {padding: `0 ${12}px`}}, [[`div`, {style: {margin: `${16}px 0`}}, Openings[0]]]]]]]]
+
+	},
+
 	cellSlots: function () {
 
 		return [
