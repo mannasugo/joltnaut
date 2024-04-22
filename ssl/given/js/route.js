@@ -40,7 +40,7 @@ class Route {
 
 				Clients.instance = Tools.coats([`app`, new Date().valueOf()]);
 
-				document.title = `A Free & Zero-Trading Fees Forex & Cryptocurency Exchange`;
+				document.title = `Joltnaut | Zero-Trading Fees. Fiat Forex. Cryptocurrency Exchange.`;
 
 				View.DOM([`div`, [Models.app(Web)]]);
 			}
