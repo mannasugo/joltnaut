@@ -544,6 +544,8 @@ class Route {
 									});
 
 									Arg[1].end(Tools.coats({
+
+										debit: 0,
 										pairs: Pairs,
 										pnl: PNL,
 										till: Raw.till[0].length}));

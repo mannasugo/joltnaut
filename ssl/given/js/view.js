@@ -112,201 +112,74 @@ let Models = {
 
 	/**
 
-	app: function (Arg) {
+	app: function (Web) {
 
-		let P2 = [[]];
+		let Param = [
+			[], 
+			[[`pair`, 15], [`transactions`, 10, true], [`roi`, 15, true], [`runtime(days)`, 10, true], [`min. deposit(usd)`, 30, true], [``, 20, true]]];
 
-		Arg.pairs = Arg.pairs.sort((A, B) => {return B.secs - A.secs});
+		Param[1].forEach(Feat => {
 
-		Arg.pairs.slice(0, 5).forEach(Pair => {
+			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: (Feat[2])? `right`: `left`, [`text-transform`]: `uppercase`}}, Feat[0]]]])
 
-			P2[0].push([
-				`div`, {style: {border: `${1}px solid #e3e3e3`, [`border-radius`]: `${24}px`, [`line-height`]: 1.3, margin: `${10}px 0`, padding: `${15}px`}}, 
-					[
-						[`div`, {class: `_gxM _geQ`}, 
-							[
-								[`div`, {}, 
-									[
-										[`span`, {style: { 
-											[`font-family`]: ``, 
-											[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Pair.pair.toUpperCase()}`],
-										[`span`, {style: {
-											color: `#a3a3a3`,
-											[`font-size`]: `${10}px`, [`font-weight`]: 600}}, `SPOT GRID`]]], 
-								[`div`, {class: `_gZz`}, 
-									[
-										[`span`, {class: `v202203171249`, style: {height:`${14}px`, width:`${14}px`}}],
-										[`span`, {style: {
-											[`margin-left`]: `${2}px`, color: `#000`, [`font-family`]: `geometria`, 
-											[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Pair.mugs}`]]]]],
-						[`div`, {style: {margin: `${14}px 0 0`}},
-							[
-								[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `ROI`],
-								[`span`, {style: {
-									color: `#00ca29`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
-									[`margin-left`]: `${2}px`, }}, `${Pair.pnl[0].toFixed(2)}%`]]],
-						[`div`, {class: `_geQ _gxM`, style: {margin: `${14}px 0 0`}},
-							[
-								[`div`, {}, 
-									[
-										[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `CUMULATIVE PNL (USDT)`],
-										[`span`, {style: {
-											color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
-											[`margin-left`]: `${2}px`, }}, `${Pair.pnl[1].toFixed(4)}`]]],
-								[`div`, {class: `_gZz`},
-									[[`div`, {style: {[`text-align`]: `right`}}, 
-										[
-											[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `BOT RUNTIME`],
-											[`span`, {style: {
-												color: `#000`, [`font-family`]: ``, [`font-size`]: `${10}px`, [`font-weight`]: 300, 
-												[`margin-left`]: `${2}px`, }}, `${Pair.runs}`]]]]]]], 
-						[`div`, {class: `_geQ _gxM`, style: {[`line-height`]: 1.7,margin: `${14}px 0 0`}},
-							[
-								[`div`, {}, 
-									[
-										[`span`, {style: {color: `#00ca29`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `BUY (BTC)`],
-										[`span`, {style: {
-											color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
-											[`margin-left`]: `${2}px`, }}, `@${Pair.io[0]} FDUSD`],
-											[`span`, {style: {
-												color: `#6d0cce`, [`font-family`]: ``, [`font-size`]: `${10}px`, [`font-weight`]: 600, 
-												[`margin-left`]: `${2}px`, }}, `${Pair.ts[0]}`]]],
-								[`div`, {class: `_gZz`},
-									[[`div`, {style: {[`text-align`]: `right`}}, 
-										[
-											[`span`, {style: {color: `#ca0000`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `SELL (BTC)`],
-											[`span`, {style: {
-												color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
-												[`margin-left`]: `${2}px`, }}, `@${Pair.io[1]} FDUSD`],
-											[`span`, {style: {
-												color: `#6d0cce`, [`font-family`]: ``, [`font-size`]: `${10}px`, [`font-weight`]: 600, 
-												[`margin-left`]: `${2}px`, }}, `${Pair.ts[1]}`]]]]]]]]]);
 		});
 
 		return [
-			`section`, {}, 
-				[[`div`, {class: `_gxM`, style: {margin: `${20}px ${24}px`}}, 
+			`main`, {id: `careers`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, [[`span`, {class: `-_tX v202304191915`}]]]]],
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${36}px auto`, [`justify-content`]: `center`}}, 
 						[
-							[`div`, {class: `_-Xg _gxM _geQ`}, 
-								[
-									//[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
-									[`span`, {id: `vault`, style: {
-										background: `#000`,
-										color: `#fff`,
-										[`font-family`]: `cour`,
-										[`font-size`]: `${17}px`,
-										[`font-weight`]: 600,
-                                        margin: `${0} ${8}px`}}, `j|naut`]]]]],
-				[`main`, {id: `app`, class: `_tY0`, style: {height: `${100}%`, padding: `0 ${24}px`, [`margin-top`]: `${5}px`}}, 
-					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
-						[
-							[`div`, {class: `_gxM _geQ`}, 
-								[
-									[`h2`, {}, (Clients.mug)? `MY WALLET'S PERFORMANCE`: `QUANT PROFIT METRICS`], 
-									[`div`, {class: `_gZz`}, 
-										[[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet/pnl`: `/signin`, style: {height:`${18}px`, width:`${18}px`}}]]]]],
-							[`section`, {class: `_gxM _geQ`, style: {[`line-height`]: 1.5, margin: `${12}px 0 0`}},
-								[
-									[`span`, {class: `v202205042043`}],
-									[`div`, {class: `_eYG`}, 
-										[
-											[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (Clients.mug)? `TODAY'S GAIN`: `CUMULATIVE GAIN`],
-											[`div`, {class: `_gxM _geQ`}, 
-												[
-													[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, (Clients.mug)? `${Arg.pnl[1].toFixed(2)} USDT`: ``],
-													[`span`, {style: {color: `#00ca29`, 
-														[`font-family`]: `geometria`, [`font-weight`]: 600}}, `+(${Arg.pnl[0].toFixed(2)}%)`]]]]],
-									[`div`, {class: `_gZz`},
-										[[`div`, {class: `_gM_a _agM _guZ`, style: {
-											width: `${100}%`, 
-											[`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
-											[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/my/wallet`: `/signin`, id: ``, style: {
-												[`white-space`]: `nowrap`
-												}}, (Clients.mug)? `My Wallet`: `Sign in`]]]]]]],			,
-							[`div`, {style: {
-								background: `#000`, [`border-radius`]: `${24}px`, color: `#e3e3e3`, [`font-size`]: `${10}px`, [`margin-top`]: `${32}px`, 
-								padding: `${12}px`}}, 
-								[
-									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
-										[
-											[`span`, {class: `v202312231641`, style: {height:`${27}px`, width:`${27}px`}}], 
-											[`div`, {class: `_gZz`}, 
-												[
-													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
-														[
-															[`span`, {style: {color: `fff`, [`font-weight`]: 300}}, `TODAY'S GROWTH (ROI)`],
-															[`span`, {style: {
-																color: `#00ca29`, 
-																[`font-family`]: `geometria`, [`font-size`]: `${14}px`, [`font-weight`]: 600}}, `+${Arg.pnl[2].toFixed(2)}%`]]]]]]],
-									[`div`, {class: `_geQ _gxM`, style: {[`border-top`]: `${1}px solid #fff6`, padding: `${16}px ${8}px`}}, 
-										[
-											[`span`, {class: `v202312231716`, style: {height:`${24}px`, width:`${24}px`}}], 
-											[`div`, {class: `_gZz`}, 
-												[
-													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
-														[
-															[`span`, {style: {[`font-weight`]: 300}}, `TRANSACTIONS`],
-															[`span`, {style: { 
-																color: `#fff`,
-																[`font-family`]: `geometria`, 
-																[`font-size`]: `${14}px`, [`font-weight`]: 600}}, `${(Arg.till).toLocaleString()}`]]]]]]]]],			
-							[`div`, {style: {
-								background: `rgb(${0}, ${168}, ${86})`, color: `#fff`,
-								[`border-radius`]: `${24}px`,[`line-height`]: 1.35, margin: `${32}px 0`, padding: `${42}px ${28}px`}}, 
+							[`div`, {style: {[`border-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
 								[
 									[`div`, {class: `_gxM _geQ`}, 
 										[
-											[`span`, {class: `v202206131256`, style: {height:`${42}px`, width:`${42}px`}}],
-											[`div`, {class: `_gZz`},
-												[[`div`, {class: `_gM_a _agM _guZ`, style: {
-													[`block-size`]: `${40}px`, background: `#fff`, border: `${1}px solid #fff`}}, 
-													[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/mode/deposit`: `/enrol`, style: {
-														color: `#000`,
-														[`white-space`]: `nowrap`
-														}}, (Clients.mug)? `Deposit Now`: `Create Wallet`]]]]]]],
-									[`p`, {style: {
-										[`font-size`]: `${12}px`,[`font-weight`]: 600, [`margin-top`]: `${21}px`}}, 
-										`Blend the power of algorithimic profit trading into dynamic stablecoin wallets and earn hourly interests 
-										on your debit balance, that's paid out daily.`]]],			,
-							[`div`, {style: {
-								background: `#000`, [`border-radius`]: `${24}px`, color: `#a6a6a6`, [`font-weight`]: 600,
-								 [`margin-bottom`]: `${32}px`, 
-								padding: `${18}px ${20}px`}}, 
+											[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+											[`div`, {class: `_eYG`}, 
+												[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${24}px`, [`font-weight`]: 400}}, `$${parseFloat(Web.debit).toFixed(2)}`]]],
+											[`div`, {class: `_gZz`, style: {flex: 0}}, 
+												[[`a`, {class: `_gxM _geQ`, href: (Clients.mug)? `/my/wallet/in`: `/signin`, style: {background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${14}px`, [`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
+													[
+														[`span`, {class: `v202203191304`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
+														[`span`, {style: {}}, `DEPOSIT`]]]]]]]]], 
+							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
 								[
-									[`div`, {class: `_geQ _gxM`, style: {padding: `${12}px ${8}px`}}, 
-										[
-											[`span`, {style: {color: `#fff`,  [`font-size`]: `${10}px`}}, `BUILT FOR`]]],
-									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
-										[
-											[`span`, {class: `v202312301653`, style: {height:`${28}px`, [`min-width`]:`${28}px`}}], 
-											[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
-												[
-													[`div`, {style: {[`line-height`]: 1.75}}, 
-														[
-															[`span`, {style: {color: `#fff`}}, `Daily Profit`],
-															[`span`, {style: {[`margin-top`]: `${8}px`}}, `Earn hourly interest on your wallet balance, with 
-															at least 0.75% daily growth from market action.`]]]]]]],
-									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
-										[
-											[`span`, {class: `v202312301635`, style: {height:`${26}px`, [`min-width`]:`${26}px`}}], 
-											[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
-												[
-													[`div`, {style: {[`line-height`]: 1.75}}, 
-														[
-															[`span`, {style: {color: `#fff`}}, `Fiat & Crypto`],
-															[`span`, {style: {[`margin-top`]: `${8}px`}}, `Deposits & Withdrawals made easier 
-															through stablecoin wallets and fiat at zero fees.`]]]]]]]]],
-							[`div`, {class: `_gxM _geQ`}, 
-								[
-									[`h2`, {style: {color: `#000`, [`font-weight`]: 600}}, `Recent Auto-invest Bot trades`], 
-									[`div`, {class: `_gZz`}, 
-										[
-											[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {
-												height:`${18}px`, width:`${18}px`}}]]]]],
-							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]		
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Markets & Pools`],
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
+											[
+												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Crypto`],
+												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Forex`],
+												[`span`, {style: {[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`, [`font-size`]: `${14}px`, [`font-weight`]: 600, padding: `${12}px 0`}}, `Trading Bots`]]]]], 
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
+									[`div`, {}, 
+										[[`div`, {class: `_geQ _gxM`, style: {padding: `${12}px 0`}}, 
+											[
+												[`div`, {class: `_geQ _gxM`, style: {width: `${15}%`}}, 
+													[
+														[`img`, {src: `/ssl/given/svg/tokens/btc.svg`, style: {[`max-width`]: `${18}px`, transform: `translateX(${0}px)`}}],
+														[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {[`max-width`]: `${18}px`, transform: `translateX(${-7.6667}px)`}}], 
+														[`span`, {style: {[`font-size`]: `${12}px`}}, `BTC/USDT`]]], 
+												[`div`, {style: {width: `${10}%`}}, 
+													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${Web.till}`]]], 
+												[`div`, {class: `_geQ _gxM`, style: {[`justify-content`]: `end`, width: `${15}%`}},  
+													[
+														[`span`, {class: `v20240221434`, style: {height: `${15}px`, [`margin-right`]: `${8}px`, width: `${15}px`}}],
+														[`span`, {style: {color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `arcane`, [`font-size`]: `${12}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]], 
+												[`div`, {style: {width: `${10}%`}}, 
+													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.runs).toFixed(1)}`]]], 
+												[`div`, {style: {width: `${30}%`}}, 
+													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${2.5}`]]], 
+												[`div`, {style: {width: `${20}%`}}, 
+													[[`a`, {href: `/pools/BTC_USDT`, style: {[`fnt-family`]: `arcane`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`text-align`]: `right`, [`text-decoration`]: `underline`}}, `join`]]]]]]]]]]]]]
 	},
 
 	**/
+
+
+	/**/
 
 	app: function () {
 
@@ -361,6 +234,8 @@ let Models = {
 											color: `#000`,[`font-family`]: `walsh`, [`font-size`]: `${14}px`, [`text-transform`]: `uppercase`,
 											[`white-space`]: `nowrap`}}, `try jolnaut beta`]]]]]]]]]]];
 	},
+
+	/**/
 
 	asset: function (Web) {
 
@@ -3550,7 +3425,205 @@ let Models = {
 			[
 				//[`a`, {id: ``, class: `v202203261943`, style: {width: `${21}px`, height: `${21}px`, margin: `${0} ${10}px`}, href: `#`}]
 				[`a`, {class: `v202206131256`, style: {width: `${28}px`, height: `${28}px`, margin: `${0} ${10}px`}, href: `/wallets`}]/*,
-				[`a`, {id: ``, class: `v202207161737`, style: {width: `${21}px`, height: `${21}px`,margin: `${0} ${10}px`}, href: `javascript:;`}]*/]]
+				[`a`, {id: ``, class: `v202207161737`, style: {width: `${21}px`, height: `${21}px`,margin: `${0} ${10}px`}, href: `javascript:;`}]*/]],
+
+	/**
+
+	app: function (Arg) {
+
+		let P2 = [[]];
+
+		Arg.pairs = Arg.pairs.sort((A, B) => {return B.secs - A.secs});
+
+		Arg.pairs.slice(0, 5).forEach(Pair => {
+
+			P2[0].push([
+				`div`, {style: {border: `${1}px solid #e3e3e3`, [`border-radius`]: `${24}px`, [`line-height`]: 1.3, margin: `${10}px 0`, padding: `${15}px`}}, 
+					[
+						[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`div`, {}, 
+									[
+										[`span`, {style: { 
+											[`font-family`]: ``, 
+											[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Pair.pair.toUpperCase()}`],
+										[`span`, {style: {
+											color: `#a3a3a3`,
+											[`font-size`]: `${10}px`, [`font-weight`]: 600}}, `SPOT GRID`]]], 
+								[`div`, {class: `_gZz`}, 
+									[
+										[`span`, {class: `v202203171249`, style: {height:`${14}px`, width:`${14}px`}}],
+										[`span`, {style: {
+											[`margin-left`]: `${2}px`, color: `#000`, [`font-family`]: `geometria`, 
+											[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `${Pair.mugs}`]]]]],
+						[`div`, {style: {margin: `${14}px 0 0`}},
+							[
+								[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `ROI`],
+								[`span`, {style: {
+									color: `#00ca29`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
+									[`margin-left`]: `${2}px`, }}, `${Pair.pnl[0].toFixed(2)}%`]]],
+						[`div`, {class: `_geQ _gxM`, style: {margin: `${14}px 0 0`}},
+							[
+								[`div`, {}, 
+									[
+										[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `CUMULATIVE PNL (USDT)`],
+										[`span`, {style: {
+											color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
+											[`margin-left`]: `${2}px`, }}, `${Pair.pnl[1].toFixed(4)}`]]],
+								[`div`, {class: `_gZz`},
+									[[`div`, {style: {[`text-align`]: `right`}}, 
+										[
+											[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `BOT RUNTIME`],
+											[`span`, {style: {
+												color: `#000`, [`font-family`]: ``, [`font-size`]: `${10}px`, [`font-weight`]: 300, 
+												[`margin-left`]: `${2}px`, }}, `${Pair.runs}`]]]]]]], 
+						[`div`, {class: `_geQ _gxM`, style: {[`line-height`]: 1.7,margin: `${14}px 0 0`}},
+							[
+								[`div`, {}, 
+									[
+										[`span`, {style: {color: `#00ca29`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `BUY (BTC)`],
+										[`span`, {style: {
+											color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
+											[`margin-left`]: `${2}px`, }}, `@${Pair.io[0]} FDUSD`],
+											[`span`, {style: {
+												color: `#6d0cce`, [`font-family`]: ``, [`font-size`]: `${10}px`, [`font-weight`]: 600, 
+												[`margin-left`]: `${2}px`, }}, `${Pair.ts[0]}`]]],
+								[`div`, {class: `_gZz`},
+									[[`div`, {style: {[`text-align`]: `right`}}, 
+										[
+											[`span`, {style: {color: `#ca0000`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `SELL (BTC)`],
+											[`span`, {style: {
+												color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, 
+												[`margin-left`]: `${2}px`, }}, `@${Pair.io[1]} FDUSD`],
+											[`span`, {style: {
+												color: `#6d0cce`, [`font-family`]: ``, [`font-size`]: `${10}px`, [`font-weight`]: 600, 
+												[`margin-left`]: `${2}px`, }}, `${Pair.ts[1]}`]]]]]]]]]);
+		});
+
+		return [
+			`section`, {}, 
+				[[`div`, {class: `_gxM`, style: {margin: `${20}px ${24}px`}}, 
+						[
+							[`div`, {class: `_-Xg _gxM _geQ`}, 
+								[
+									//[`a`, {class: `-_tX v202304191915`, style: {[`min-width`]: `${32}px`, height: `${32}px`}, href: `/`}, ``], 
+									[`span`, {id: `vault`, style: {
+										background: `#000`,
+										color: `#fff`,
+										[`font-family`]: `cour`,
+										[`font-size`]: `${17}px`,
+										[`font-weight`]: 600,
+                                        margin: `${0} ${8}px`}}, `j|naut`]]]]],
+				[`main`, {id: `app`, class: `_tY0`, style: {height: `${100}%`, padding: `0 ${24}px`, [`margin-top`]: `${5}px`}}, 
+					[[`div`, {class: `geQ`, style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `0 auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {}, (Clients.mug)? `MY WALLET'S PERFORMANCE`: `QUANT PROFIT METRICS`], 
+									[`div`, {class: `_gZz`}, 
+										[[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet/pnl`: `/signin`, style: {height:`${18}px`, width:`${18}px`}}]]]]],
+							[`section`, {class: `_gxM _geQ`, style: {[`line-height`]: 1.5, margin: `${12}px 0 0`}},
+								[
+									[`span`, {class: `v202205042043`}],
+									[`div`, {class: `_eYG`}, 
+										[
+											[`span`, {style: {color: `#a3a3a3`, [`font-size`]: `${10}px`}}, (Clients.mug)? `TODAY'S GAIN`: `CUMULATIVE GAIN`],
+											[`div`, {class: `_gxM _geQ`}, 
+												[
+													[`span`, {style: {[`font-family`]: `geometria`, [`font-weight`]: 600}}, (Clients.mug)? `${Arg.pnl[1].toFixed(2)} USDT`: ``],
+													[`span`, {style: {color: `#00ca29`, 
+														[`font-family`]: `geometria`, [`font-weight`]: 600}}, `+(${Arg.pnl[0].toFixed(2)}%)`]]]]],
+									[`div`, {class: `_gZz`},
+										[[`div`, {class: `_gM_a _agM _guZ`, style: {
+											width: `${100}%`, 
+											[`block-size`]: `${40}px`, background: `#000`, border: `${1}px solid #000`}}, 
+											[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/my/wallet`: `/signin`, id: ``, style: {
+												[`white-space`]: `nowrap`
+												}}, (Clients.mug)? `My Wallet`: `Sign in`]]]]]]],			,
+							[`div`, {style: {
+								background: `#000`, [`border-radius`]: `${24}px`, color: `#e3e3e3`, [`font-size`]: `${10}px`, [`margin-top`]: `${32}px`, 
+								padding: `${12}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312231641`, style: {height:`${27}px`, width:`${27}px`}}], 
+											[`div`, {class: `_gZz`}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
+														[
+															[`span`, {style: {color: `fff`, [`font-weight`]: 300}}, `TODAY'S GROWTH (ROI)`],
+															[`span`, {style: {
+																color: `#00ca29`, 
+																[`font-family`]: `geometria`, [`font-size`]: `${14}px`, [`font-weight`]: 600}}, `+${Arg.pnl[2].toFixed(2)}%`]]]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`border-top`]: `${1}px solid #fff6`, padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312231716`, style: {height:`${24}px`, width:`${24}px`}}], 
+											[`div`, {class: `_gZz`}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.5, [`text-align`]: `right`}}, 
+														[
+															[`span`, {style: {[`font-weight`]: 300}}, `TRANSACTIONS`],
+															[`span`, {style: { 
+																color: `#fff`,
+																[`font-family`]: `geometria`, 
+																[`font-size`]: `${14}px`, [`font-weight`]: 600}}, `${(Arg.till).toLocaleString()}`]]]]]]]]],			
+							[`div`, {style: {
+								background: `rgb(${0}, ${168}, ${86})`, color: `#fff`,
+								[`border-radius`]: `${24}px`,[`line-height`]: 1.35, margin: `${32}px 0`, padding: `${42}px ${28}px`}}, 
+								[
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`span`, {class: `v202206131256`, style: {height:`${42}px`, width:`${42}px`}}],
+											[`div`, {class: `_gZz`},
+												[[`div`, {class: `_gM_a _agM _guZ`, style: {
+													[`block-size`]: `${40}px`, background: `#fff`, border: `${1}px solid #fff`}}, 
+													[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: (Clients.mug)? `/mode/deposit`: `/enrol`, style: {
+														color: `#000`,
+														[`white-space`]: `nowrap`
+														}}, (Clients.mug)? `Deposit Now`: `Create Wallet`]]]]]]],
+									[`p`, {style: {
+										[`font-size`]: `${12}px`,[`font-weight`]: 600, [`margin-top`]: `${21}px`}}, 
+										`Blend the power of algorithimic profit trading into dynamic stablecoin wallets and earn hourly interests 
+										on your debit balance, that's paid out daily.`]]],			,
+							[`div`, {style: {
+								background: `#000`, [`border-radius`]: `${24}px`, color: `#a6a6a6`, [`font-weight`]: 600,
+								 [`margin-bottom`]: `${32}px`, 
+								padding: `${18}px ${20}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${12}px ${8}px`}}, 
+										[
+											[`span`, {style: {color: `#fff`,  [`font-size`]: `${10}px`}}, `BUILT FOR`]]],
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312301653`, style: {height:`${28}px`, [`min-width`]:`${28}px`}}], 
+											[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.75}}, 
+														[
+															[`span`, {style: {color: `#fff`}}, `Daily Profit`],
+															[`span`, {style: {[`margin-top`]: `${8}px`}}, `Earn hourly interest on your wallet balance, with 
+															at least 0.75% daily growth from market action.`]]]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {padding: `${16}px ${8}px`}}, 
+										[
+											[`span`, {class: `v202312301635`, style: {height:`${26}px`, [`min-width`]:`${26}px`}}], 
+											[`div`, {class: `_eYG`, style: {[`margin-left`]: `${12}px`}}, 
+												[
+													[`div`, {style: {[`line-height`]: 1.75}}, 
+														[
+															[`span`, {style: {color: `#fff`}}, `Fiat & Crypto`],
+															[`span`, {style: {[`margin-top`]: `${8}px`}}, `Deposits & Withdrawals made easier 
+															through stablecoin wallets and fiat at zero fees.`]]]]]]]]],
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`h2`, {style: {color: `#000`, [`font-weight`]: 600}}, `Recent Auto-invest Bot trades`], 
+									[`div`, {class: `_gZz`}, 
+										[
+											[`a`, {class: `-_tX v202312061631`, href: (Clients.mug)? `/my/wallet`: `/signin`, style: {
+												height:`${18}px`, width:`${18}px`}}]]]]],
+							[`section`, {style: {margin: `${4}px 0 0`}}, P2[0]]]]]]]]		
+	},
+
+	**/
 }
 
 View = new View;
