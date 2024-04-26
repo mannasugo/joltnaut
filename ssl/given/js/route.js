@@ -415,32 +415,32 @@ class Route {
 				}
 			}
 
-    		else if (State[4] && State[4] === `wallet` && !State[5] && !Tools.slim[State[5]] && Clients.mug) {
+    		else if (State[4] && State[4] === `wallet` && !State[5] && !Tools.slim[State[5]]) {
 
 				let Puts = Tools.pull([
 					`/json/web/`, {
 						mug: Clients.mug,
-						pull: `app`}]);
+						pull: `pools`}]);
 
 				Puts.onload = () => {
 
 					let Web = Tools.typen(Puts.response);
 
-					if (Web.pnl) {
+					if (Web) {
 
-						Clients.debit = Web.debit;
-
-						Clients.pnl = Tools.coats([Web.pnl[0].toFixed(2), Web.pnl[1].toFixed(2)]);
-
-						Clients.ts = Web.ts;
-
-						Clients.vault = Web.vault;
+						/**
 
 						View.DOM([`div`, [Models.clientTX(Web.tx)]]);
 
 						View.pop()
 
 						if (document.querySelector(`#plane`) && Web.debit > 0) View.DOM([`#plane`, [Models.holdXY(Web.holdXY)]]);
+
+						**/
+
+						document.title = `Fiat & Crypto Overview`;
+
+						View.DOM([`div`, [Models.wallet(Web)]]);
 					}
 				}
 			}

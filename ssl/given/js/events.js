@@ -274,7 +274,7 @@ class Events {
 
 					if (Arg && Arg.flag && Arg.flag === `portal`) window.location = `/portal`;
 
-					else window.location = `/pools/BTC_USDT`;
+					else window.location = `/`;
 				}
 			}
 

@@ -116,12 +116,12 @@ let Models = {
 
 		let Param = [
 			[], 
-			[[`pair`, 15], [`transactions`, 10, true], [`roi`, 15, true], [`runtime(days)`, 10, true], [`min. deposit(usd)`, 30, true], [``, 20, true]]];
+			[[`pair`, 15], [`transactions`, 10, true], [`roi`, 15, true], [`runtime(days)`, 20, true], [`buyin(usd)`, 20, true], [``, 20, true]]];
 
 		Param[1].forEach(Feat => {
 
 			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
-				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: (Feat[2])? `right`: `left`, [`text-transform`]: `uppercase`}}, Feat[0]]]])
+				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
 
 		});
 
@@ -138,21 +138,22 @@ let Models = {
 										[
 											[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 											[`div`, {class: `_eYG`}, 
-												[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${24}px`, [`font-weight`]: 400}}, `$${parseFloat(Web.debit).toFixed(2)}`]]],
+												[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${24}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
 											[`div`, {class: `_gZz`, style: {flex: 0}}, 
-												[[`a`, {class: `_gxM _geQ`, href: (Clients.mug)? `/my/wallet/in`: `/signin`, style: {background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${14}px`, [`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
+												[[`a`, {class: `_gxM _geQ`, href: `/my/wallet/`, style: {background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${14}px`, [`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
 													[
 														[`span`, {class: `v202203191304`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
 														[`span`, {style: {}}, `DEPOSIT`]]]]]]]]], 
 							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
 								[
-									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Markets & Pools`],
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Markets Overview`],
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
 											[
 												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Crypto`],
+												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Spot`],
 												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Forex`],
-												[`span`, {style: {[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`, [`font-size`]: `${14}px`, [`font-weight`]: 600, padding: `${12}px 0`}}, `Trading Bots`]]]]], 
+												[`span`, {style: {[`border-bottom`]: `2px solid #7abbff`, color: `#7abbff`, [`font-size`]: `${14}px`, [`font-weight`]: 600, padding: `${12}px 0`}}, `Profit Pools`]]]]], 
 									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
 									[`div`, {}, 
 										[[`div`, {class: `_geQ _gxM`, style: {padding: `${12}px 0`}}, 
@@ -161,19 +162,48 @@ let Models = {
 													[
 														[`img`, {src: `/ssl/given/svg/tokens/btc.svg`, style: {[`max-width`]: `${18}px`, transform: `translateX(${0}px)`}}],
 														[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {[`max-width`]: `${18}px`, transform: `translateX(${-7.6667}px)`}}], 
-														[`span`, {style: {[`font-size`]: `${12}px`}}, `BTC/USDT`]]], 
+														[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `BTC/USDT`]]], 
 												[`div`, {style: {width: `${10}%`}}, 
 													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${Web.till}`]]], 
 												[`div`, {class: `_geQ _gxM`, style: {[`justify-content`]: `end`, width: `${15}%`}},  
 													[
 														[`span`, {class: `v20240221434`, style: {height: `${15}px`, [`margin-right`]: `${8}px`, width: `${15}px`}}],
 														[`span`, {style: {color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `arcane`, [`font-size`]: `${12}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]], 
-												[`div`, {style: {width: `${10}%`}}, 
+												[`div`, {style: {width: `${20}%`}}, 
 													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.runs).toFixed(1)}`]]], 
-												[`div`, {style: {width: `${30}%`}}, 
+												[`div`, {style: {width: `${20}%`}}, 
 													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${2.5}`]]], 
 												[`div`, {style: {width: `${20}%`}}, 
-													[[`a`, {href: `/pools/BTC_USDT`, style: {[`fnt-family`]: `arcane`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`text-align`]: `right`, [`text-decoration`]: `underline`}}, `join`]]]]]]]]]]]]]
+													[[`a`, {href: `/pools/BTC_USDT`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`text-align`]: `right`, [`text-decoration`]: `underline`}}, `deposit`]]]]]]]]]]], 
+					[`footer`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, margin: `${54}px auto`, [`max-width`]: `${1280}px`, padding: `${48}px ${24}px 0`, width: `${100}%`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`div`, {class: `_geQ`}, 
+										[
+											[`div`, {style: {width: `${100}%`}}, 
+												[
+													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `Products`],
+													[`a`, {style: {color: `#535353`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/pools`}, `Earning Pools`]]]]],
+									[`div`, {class: `_geQ`}, 
+										[
+											[`div`, {style: {width: `${100}%`}}, 
+												[
+													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `About`],
+													[`a`, {class: `_geQ _gxM`, style: {color: `#535353`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/careers`}, 
+														[
+															[`span`, {}, `Careers`],
+															[`span`, {style: {background: `blue`, color: `#fff`, [`font-size`]: `${10}px`, margin: `0 ${8}px`, padding: `${4}px ${8}px`}}, `HIRING`]]]]]]]]],
+							[`div`, {style: {[`border-top`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, color: `#535353`, [`font-size`]: `${10}px`, [`line-height`]: `${16}px`, margin: `${24}px 0`, padding: `${12}px 0`, [`text-transform`]: `uppercase`}}, 
+								[
+									[`p`, {style: {padding: `0 0 ${8}px`}}, `*jolnaut offers its products and services in partnership with licensed transmitters in their respective jurisdictions.`],
+									[`p`, {style: {padding: `0 0 ${8}px`}}, `*all trademarks and brand names belong to their respective owners, use of these trademarks and brand names do not represent endorsement by or association with joltnaut.`],
+									[`p`, {style: {padding: `0 0 ${8}px`}}, `*important information about procedures for opening a new account: to help the government fight the funding of terrorism and money laundering activities, federal law requires all financial institutions to obtain, verify and record information that identifies each person who opens an account, what this means for you: when you open an account we will ask for your name, address, date of birth and other information that will help us identify you.`]]],
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],
+									[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `2024`], 
+									[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `arcane`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]]
 	},
 
 	**/
@@ -2999,6 +3029,96 @@ let Models = {
 								[`margin-top`]: `${16}px`, 
 								width: `${100}%`, [`block-size`]: `${40}px`, background: `#11fe6e`, border: `${1}px solid #11fe6e`}}, 
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `vetSwap`}, `CONTINUE`]]]]]]]]]
+	},
+
+	wallet: function (Web) {
+
+		let Param = [
+			[], 
+			[[`currency`, 20], [`amount`, 15, true], [`price`, 15, true], [`change`, 15, true], [`value`, 15, true], [``, 10, true], [``, 10, true]]];
+
+		Param[1].forEach(Feat => {
+
+			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+
+		});
+
+		return [
+			`main`, {id: `careers`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, 
+									[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${15}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]]]]]],
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
+						[ 
+							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
+								[
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Cash & Crypto`],
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
+											[
+												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Fiat`]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
+									[`div`, {}, 
+										[[`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+											[
+												[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+													[
+														[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`}}], 
+														[`span`, {style: {[`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `Kenya Shilling`]]], 
+												[`div`, {style: {width: `${15}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `KES`]]], 
+												[`div`, {style: {width: `${15}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `USD`]]], 
+												[`div`, {style: {width: `${15}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `24H`]]], 
+												[`div`, {style: {width: `${15}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `USD`]]], 
+												[`div`, {style: {[`align-items`]: `end`, width: `${10}%`}}, 
+													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`}]]], 
+												[`div`, {style: {[`align-items`]: `end`, width: `${10}%`}}, 
+													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203262148`}]]]]]]]]]]], 
+					[`footer`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, margin: `${54}px auto`, [`max-width`]: `${1280}px`, padding: `${48}px ${24}px 0`, width: `${100}%`}}, 
+						[
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`div`, {class: `_geQ`}, 
+										[
+											[`div`, {style: {width: `${100}%`}}, 
+												[
+													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `Products`],
+													[`a`, {style: {color: `#535353`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/pools`}, `Earning Pools`]]]]],
+									[`div`, {class: `_geQ`}, 
+										[
+											[`div`, {style: {width: `${100}%`}}, 
+												[
+													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `About`],
+													[`a`, {class: `_geQ _gxM`, style: {color: `#535353`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/careers`}, 
+														[
+															[`span`, {}, `Careers`],
+															[`span`, {style: {background: `blue`, color: `#fff`, [`font-size`]: `${10}px`, margin: `0 ${8}px`, padding: `${4}px ${8}px`}}, `HIRING`]]]]]]]]],
+							[`div`, {style: {[`border-top`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, color: `#535353`, [`font-size`]: `${10}px`, [`line-height`]: `${16}px`, margin: `${24}px 0`, padding: `${12}px 0`, [`text-transform`]: `uppercase`}}, 
+								[
+									[`p`, {style: {padding: `0 0 ${8}px`}}, `*jolnaut offers its products and services in partnership with licensed transmitters in their respective jurisdictions.`],
+									[`p`, {style: {padding: `0 0 ${8}px`}}, `*all trademarks and brand names belong to their respective owners, use of these trademarks and brand names do not represent endorsement by or association with joltnaut.`],
+									[`p`, {style: {padding: `0 0 ${8}px`}}, `*important information about procedures for opening a new account: to help the government fight the funding of terrorism and money laundering activities, federal law requires all financial institutions to obtain, verify and record information that identifies each person who opens an account, what this means for you: when you open an account we will ask for your name, address, date of birth and other information that will help us identify you.`]]],
+							[`div`, {class: `_gxM _geQ`}, 
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],
+									[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `2024`], 
+									[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `arcane`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]]
 	}, 
 
 	axis: function (Axis) {
