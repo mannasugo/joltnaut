@@ -140,7 +140,7 @@ let Models = {
 											[`div`, {class: `_eYG`}, 
 												[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${24}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
 											[`div`, {class: `_gZz`, style: {flex: 0}}, 
-												[[`a`, {class: `_gxM _geQ`, href: `/my/wallet/`, style: {background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${14}px`, [`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
+												[[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${14}px`, [`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
 													[
 														[`span`, {class: `v202203191304`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
 														[`span`, {style: {}}, `DEPOSIT`]]]]]]]]], 
@@ -3035,13 +3035,60 @@ let Models = {
 
 		let Param = [
 			[], 
-			[[`currency`, 20], [`amount`, 15, true], [`price`, 15, true], [`change`, 15, true], [`value`, 15, true], [``, 10, true], [``, 10, true]]];
+			[[`currency`, 20], [`amount`, 17.5, true], [`price`, 17.5, true], [`change`, 17.5, true], [`value`, 20, true], [``, 7.5, true]/*, [``, 7.5, true]*/]];
 
 		Param[1].forEach(Feat => {
 
 			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
-				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+				[[`span`, {style: {color: `#b3b3b3`, [`font-size`]: `${10}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
 
+		});
+
+		let Fiat = [
+			[],
+			[
+				[`au`, `AUD`, `australian dollar`],
+				[`ca`, `CAD`, `canadian dollar`],
+				[`eu`, `EUR`, `euro`],
+				[`ke`, `KES`, `kenyan shilling`],
+				[`no`, `NOK`, `norwegian krone`],
+				[`nz`, `NZD`, `new zealand dollar`],
+				[`se`, `SEK`, `swedish krone`],
+				[`ch`, `CHF`, `swiss franc`],
+				[`uk`, `GBP`, `sterling pound`],
+				[`us`, `USD`, `us dollar`]]];
+
+		Fiat[1].forEach(Flag => {
+
+			Fiat[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/flags/${Flag[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
+							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `${Flag[1]}`], 
+									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}%`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+													[
+														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
+														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
+						[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]], 
+					/*[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
+						[[`a`, {href: `/pools/BTC_USDT`, class: `v202203262148`, style: {height: `${16}px`, [`max-width`]: `${16}px`}}]]]*/]]);
 		});
 
 		return [
@@ -3059,37 +3106,17 @@ let Models = {
 								[
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Cash & Crypto`],
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
-										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 											[
-												[`span`, {style: {color: `#535353`, [`font-size`]: `${14}px`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Fiat`]]]]],
+												[`span`, {style: {color: `#535353`, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Fiat`], 
+												[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+													[
+														[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Deposit`],
+														[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Withdraw`],
+														[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Transfer`],
+														[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Swap`]]]]]]],
 									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
-									[`div`, {}, 
-										[[`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
-											[
-												[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
-													[
-														[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`}}], 
-														[`span`, {style: {[`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `Kenya Shilling`]]], 
-												[`div`, {style: {width: `${15}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `KES`]]], 
-												[`div`, {style: {width: `${15}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `USD`]]], 
-												[`div`, {style: {width: `${15}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `24H`]]], 
-												[`div`, {style: {width: `${15}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.till).toFixed(2)}`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `USD`]]], 
-												[`div`, {style: {[`align-items`]: `end`, width: `${10}%`}}, 
-													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`}]]], 
-												[`div`, {style: {[`align-items`]: `end`, width: `${10}%`}}, 
-													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203262148`}]]]]]]]]]]], 
+									[`div`, {}, Fiat[0]]]]]], 
 					[`footer`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, margin: `${54}px auto`, [`max-width`]: `${1280}px`, padding: `${48}px ${24}px 0`, width: `${100}%`}}, 
 						[
 							[`div`, {class: `_gxM _geQ`}, 

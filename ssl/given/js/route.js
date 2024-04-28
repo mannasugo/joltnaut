@@ -557,6 +557,40 @@ class Route {
 			}
     	}
 
+    	else if (this.State[3] === `u`) {
+
+    		if (State[4] && State[4] === `wallet` && !State[5] && !Tools.slim[State[5]]) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `pools`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web) {
+
+						/**
+
+						View.DOM([`div`, [Models.clientTX(Web.tx)]]);
+
+						View.pop()
+
+						if (document.querySelector(`#plane`) && Web.debit > 0) View.DOM([`#plane`, [Models.holdXY(Web.holdXY)]]);
+
+						**/
+
+						document.title = `Fiat & Crypto Overview`;
+
+						View.DOM([`div`, [Models.wallet(Web)]]);
+					}
+				}
+			}
+
+    	}
+
     	else if (this.State[3] === `p2p`) {
 
     		if (!Clients.mug) {
