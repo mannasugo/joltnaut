@@ -110,7 +110,7 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]		
 	},
 
-	/**
+	/**/
 
 	app: function (Web) {
 
@@ -129,10 +129,19 @@ let Models = {
 			`main`, {id: `careers`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
 					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
-						[[`div`, {class: `_gxM _geQ`}, [[`span`, {class: `-_tX v202304191915`}]]]]],
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, 
+									[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${15}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
+								[`div`, {class: `_gZz`, style: {flex: 0}}, 
+												[[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${12}px`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
+													[
+														[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
+														[`span`, {style: {[`margin-bottom`]: `${2}px`}}, `Deposit`]]]]]]]]],
 					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${36}px auto`, [`justify-content`]: `center`}}, 
 						[
-							[`div`, {style: {[`border-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
+							/*[`div`, {style: {[`border-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
 								[
 									[`div`, {class: `_gxM _geQ`}, 
 										[
@@ -143,8 +152,8 @@ let Models = {
 												[[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `#7abbff`, [`border-radius`]: `${100}px`, color: `rgb(${6}, ${6}, ${6})`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${14}px`, [`font-weight`]: 600, height: `${40}px`, [`letter-spacing`]: `${.75}px`, padding: `${0}px ${16}px`, [`white-space`]: `nowrap`}}, 
 													[
 														[`span`, {class: `v202203191304`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
-														[`span`, {style: {}}, `DEPOSIT`]]]]]]]]], 
-							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
+														[`span`, {style: {}}, `DEPOSIT`]]]]]]]]]*/, 
+							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
 								[
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Markets Overview`],
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
@@ -206,10 +215,10 @@ let Models = {
 									[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `arcane`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]]
 	},
 
-	**/
-
-
 	/**/
+
+
+	/**
 
 	app: function () {
 
@@ -265,7 +274,7 @@ let Models = {
 											[`white-space`]: `nowrap`}}, `try jolnaut beta`]]]]]]]]]]];
 	},
 
-	/**/
+	**/
 
 	asset: function (Web) {
 
@@ -3092,7 +3101,7 @@ let Models = {
 		});
 
 		return [
-			`main`, {id: `careers`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+			`main`, {id: `wallet`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
 					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
 						[[`div`, {class: `_gxM _geQ`}, 
