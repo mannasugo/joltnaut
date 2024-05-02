@@ -116,13 +116,59 @@ let Models = {
 
 		let Param = [
 			[], 
-			[[`pair`, 22.5], [`transactions`, 20, true], [`roi`, 25, true], [`runtime(days)`, 12.5, true], [`buyin(usd)`, 12.5, true], [``, 7.5, true]]];
+			[[`pair`, 22.5], [`transactions`, 20, true], [`roi`, 25, true], [`runtime(days)`, 12.5, true], [`buyin(usd)`, 12.5, true], [``, 7.5, true]],
+			[], 
+			[[`asset`, 22.5], [`price`, 20, true], [`24h`, 10, true], [`vol. usd`, 20, true], [`market cap`, 20, true], [``, 7.5, true]]];
 
 		Param[1].forEach(Feat => {
 
 			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
-				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`padding-left`]: (Feat[2])? `${12}px`: `0`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`padding-left`]: (Feat[2])? `${12}px`: `0`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]]);
 
+		});
+
+		Param[3].forEach(Feat => {
+
+			Param[2].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`padding-left`]: (Feat[2])? `${12}px`: `0`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]]);
+
+		});
+
+		let Coin = [
+			[],
+			[
+				[`btc`, `bitcoin`],
+				[`usdt`, `tether`]]];
+
+		Coin[1].forEach(Flag => {
+
+			Coin[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/tokens/${Flag[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
+							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `${Flag[1]}`], 
+									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
+					[`div`, {style: {width: `${10}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
+					[`div`, {style: {width: `${10}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]*/]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
+					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
+						[[`a`, {href: `javascript:;`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
 		});
 
 		return [
@@ -139,7 +185,7 @@ let Models = {
 										[
 											[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
 											[`span`, {style: {[`marin-bottom`]: `${2}px`}}, `Deposit`]]]]]]]]],
-					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${36}px auto`, [`justify-content`]: `center`}}, 
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
 						[
 							/*[`div`, {style: {[`border-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
 								[
@@ -156,6 +202,16 @@ let Models = {
 							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
 								[
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Markets Overview`],
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
+											[
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Crypto`]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[2]],
+									[`div`, {}, Coin[0]],
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
+											[
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Forex`]]]]],
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
 											[
@@ -181,7 +237,7 @@ let Models = {
 													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${2.5}`]]], 
 												[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]]]]]]], 
-					[`footer`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, margin: `${54}px auto`, [`max-width`]: `${1280}px`, padding: `${48}px ${24}px 0`, width: `${100}%`}}, 
+					[`footer`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, margin: `${24}px auto`, [`max-width`]: `${1280}px`, padding: `${48}px ${24}px 0`, width: `${100}%`}}, 
 						[
 							[`div`, {class: `_gxM _geQ`}, 
 								[
