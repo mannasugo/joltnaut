@@ -629,7 +629,24 @@ class Route {
 
 									if (B64[1].length > 0) {
 
-										
+										let Param = Pulls.param;
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+          								Sql.puts([`b4`, {
+          									b64: B64[1][0],
+          									complete: false,
+          									float: Param.float,
+          									md: md,
+          									mug: Pulls.mug,
+          									symbol: Param.symbol,
+          									ts: ts,
+          									ts_z: ts + (60000*15)}, (SQ) => {
+
+												Arg[1].end(Tools.coats({float: Param.float, md: md, mug: Pulls.mug, ts_z: ts + (60000*15)}));
+										}]);
 									}
 								}
 							}
@@ -1391,6 +1408,17 @@ class Route {
 
 										Get.end();
 									}
+								}
+							}
+
+							if (Pulls.pull === `txCoin`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Raw.b4[1][Pulls.tx] && Raw.b4[1][Pulls.tx].mug === Pulls.mug) {
+
+									let B4 = Raw.b4[1][Pulls.tx];
+
+									Arg[1].end(Tools.coats({
+										b64: B4.b64, float: B4.float, md: B4.md, mug: Pulls.mug, symbol: B4.symbol, ts_z: B4.ts_z}));
 								}
 							}
 

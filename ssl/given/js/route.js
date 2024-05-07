@@ -604,6 +604,37 @@ class Route {
     			Events.createVow();
     		}
 
+    		else if (State[4] && State[4] === `wallet` && State[5] && State[5] === `coin` && State[6] && State[6] === `tx` && State[7] && !State[8] && !Tools.slim[State[8]]) {
+
+    			if (!Clients.mug) window.location = `/u/wallet/`;
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `txCoin`, tx: State[7]}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.mug) {
+
+						document.title = `Wallet Deposit Details`;
+
+    					View.DOM([`div`, [Models.txCoin(Web)]]);
+
+    					let ts = Web.ts_z//new Date().valueOf() + 60000*15;
+
+    					setInterval(() => {
+
+    						let Stop = [Math.floor((ts - new Date().valueOf())/60000), ((ts - new Date().valueOf())%60000).toString()];
+
+    						document.querySelector(`#lapse`).innerHTML = `${(Stop[0] < 10)? `0${Stop[0]}`: Stop[0]}:${(Stop[1] < 10000)? `0${Stop[1][0]}`: Stop[1].slice(0, 2)}`
+    					}, 1000);
+					}
+				}
+    		}
+
     	}
 
     	else if (this.State[3] === `p2p`) {

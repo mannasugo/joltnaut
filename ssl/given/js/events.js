@@ -105,7 +105,7 @@ class Events {
 			let Puts = Tools.pull([
 				`/json/web/`, { 
 					mug: Clients.mug, 
-					param : {symbol: Clients.selectCoin, float: parseFloat(Values[0]), id: Arg.id)}, 
+					param : {symbol: Clients.selectCoin, float: parseFloat(Values[0])}, 
 					pull: `createVow`}]);
 
 			Values = [];
@@ -116,10 +116,7 @@ class Events {
 
 				let Web = JSON.parse(Puts.response);
 
-				if (Web.mug) {
-
-					View.DOM([`div`, [Models.vowSplash()]]);
-				}
+				if (Web.mug) window.location = `/u/wallet/coin/tx/${Web.md}`;
 			}
 		}]);
 	}

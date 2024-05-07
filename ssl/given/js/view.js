@@ -2771,6 +2771,48 @@ let Models = {
 																		`9,000 KES`]]]]]]]]]]]]]]]]]]];
 	},
 
+	txCoin: function (Web) {
+
+		let Net = {btc: `BTC`, usdt: `TRX (TRC20)`}
+
+		return [
+			`main`, {id: `txCoin`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {padding: `${48}px ${24}px ${12}px`}}, 
+								[
+									[`div`, {class: `_gxM _geQ`},
+										[
+											[`h2`, {style: {color: `blue`, [`font-size`]: `${14}px`, [`font-weight`]: 600, margin: `${0}px ${0} ${0}`}}, `Deposit to wallet within`], 
+											[`div`, {class: `_gZz`}, 
+												[
+													[`span`, {class: `v202301071417`}], 
+													[`span`, {id: `lapse`, style: {color: `#000`, [`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`}}, ``]]]]],
+									[`div`, {style: {[`margin-top`]: `${24}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${40}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`img`, {src: `/ssl/given/svg/tokens/${Web.symbol}.svg`, style: {[`max-width`]: `${18}px`,}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#000`, [`font-weight`]: 600, [`font-size`]: `${18}px`}}, `${Web.symbol}`]]], 
+														[`div`, {class: `_gZz`}, 
+															[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																[ 
+																	[`div`, {class: `_gxM _gZz _geQ`}, 
+																		[[`span`, {style: {color: `#000`, [`font-family`]: `arcane`, [`font-size`]: `${20}px`, [`font-weight`]: 400, [`text-align`]: `right`}}, `${Web.float}`]]]]]]]]]]],
+									[`div`, {style: {[`margin`]: `${24}px 0 ${48}px`}}, 
+										[
+											[`h2`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${0}px ${0} ${0}`}}, `Wallet Address`],
+											[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${40}px`, margin: `${24}px ${0} ${0}`, padding: `${12}px ${16}px`}}, 
+												[
+													[`span`, {style: {color: `#515151`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`line-height`]: `${32}px`}}, `${Web.b64}`]]]]], 
+									[`div`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, padding: `${12}px 0`}}, 
+										[[`div`, {class: `_gxM _geQ`}, 
+											[
+												[`span`, {style: {color: `#6c6b6b`, [`font-size`]: `${12}px`, [`font-weight`]: 600,}}, `Network`], 
+												[`div`, {class: `_gZz`}, 
+													[[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600,}}, `${Net[Web.symbol]}`]]]]]]]]]]]]];
+	},
+
 	us: function () {
 
 		return [`footer`, {style: {[`border-top`]: `${1}px solid #d9d9d9`, margin: `${24}px auto`, [`max-width`]: `${1280}px`, padding: `${48}px ${24}px 0`, width: `${100}%`}}, 
