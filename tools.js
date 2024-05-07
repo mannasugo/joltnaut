@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`invoice`, `mugs`, `payout`, `peers`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`b4`, `invoice`, `mugs`, `payout`, `peers`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -36,7 +36,17 @@ class Sql {
 
 			Raw[1].forEach((Put, put) => {
 
-				if (put === 2) {
+				if (put === 1) {
+
+					Put.forEach(B4 => {
+
+						Puts.b4[0].push(JSON.parse(B4.json));
+
+						Puts.b4[1][JSON.parse(B4.json).md] = JSON.parse(B4.json);
+					});
+				}
+
+				if (put === 3) {
 
 					Put.forEach(Bill => {
 
@@ -46,7 +56,7 @@ class Sql {
 					});
 				}
 
-				if (put === 3) {
+				if (put === 4) {
 
 					Put.forEach(Mug => {
 
@@ -56,7 +66,7 @@ class Sql {
 					});
 				}
 
-				if (put === 5) {
+				if (put === 6) {
 
 					Put.forEach(Pay => {
 
@@ -66,7 +76,7 @@ class Sql {
 					});
 				}
 
-				if (put === 6) {
+				if (put === 7) {
 
 					Put.forEach(Peer => {
 
@@ -76,7 +86,7 @@ class Sql {
 					});
 				}
 
-				if (put === 8) {
+				if (put === 9) {
 
 					Put.forEach(Till => {
 
@@ -86,7 +96,7 @@ class Sql {
 					});
 				}
 
-				if (put === 9) {
+				if (put === 10) {
 
 					Put.forEach(Trade => {
 
@@ -96,7 +106,7 @@ class Sql {
 					});
 				}
 
-				if (put === 10) {
+				if (put === 11) {
 
 					Put.forEach(TRON => {
 
@@ -106,7 +116,7 @@ class Sql {
 					});
 				}
 
-				if (put === 12) {
+				if (put === 13) {
 
 					Put.forEach(Vow => {
 
@@ -268,9 +278,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [64146.56, 64467.00]],
-			ts_a: new Date(`2024-05-06 09:06`).valueOf(), 
-			ts_z: new Date(`2024-05-06 09:19`).valueOf()
+			pair: [`btc/fdusd`, [63239.44, 63723.55]],
+			ts_a: new Date(`2024-05-07 08:36`).valueOf(), 
+			ts_z: new Date(`2024-05-07 08:43`).valueOf()
 		}]
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));

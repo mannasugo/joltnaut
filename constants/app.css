@@ -387,7 +387,7 @@ body {
 
 #cellSlots #OptColor, #vaultOpt #OptColor, #vaultSlots #slotColor {height: 14px;margin-right: 8px;width: 4px}
 
-#mugin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
+#mugin h2, #vowCoin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
 
 #mugin input {font-family: litera;}
 
@@ -567,7 +567,7 @@ body {
 
   #mugs > ._aXZ {border: 1px solid #f4f4f4;border-radius: 4px;margin: 55px 0}
 
-  #mugin h2 {letter-spacing: -.5px;font-size: 28px;font-weight:normal;line-height: 36px;color:#000;}
+  #mugin h2, #vowCoin h2 {letter-spacing: -.5px;font-size: 28px;font-weight:normal;line-height: 36px;color:#000;}
 }
 
 @media (max-width: 920px) {
@@ -596,7 +596,7 @@ body {
 
 @media (max-width: 599px) {
 
-  #mugin h2 {font-size: 25px;line-height: 28px}
+  #mugin h2, #vowCoin h2 {font-size: 25px;line-height: 28px}
 
   #buy, #buyline {width: 100%; padding: 0; text-align: center;}
 

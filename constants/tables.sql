@@ -1,5 +1,7 @@
 select * from `asks`;
 
+select * from `b4`;
+
 select * from `bids`;
 
 select * from `invoice`;

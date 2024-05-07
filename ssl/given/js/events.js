@@ -89,6 +89,41 @@ class Events {
 		}]);
 	}
 
+	createVow (Arg) {
+
+		this.listen([document.querySelector(`#createVow`), `click`, S => {
+
+			let Values = 
+				[(!Tools.slim(document.querySelector(`#vowSlot`).value))? false: Tools.slim(document.querySelector(`#vowSlot`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+			if (parseFloat(Values[0]) <= 0 ) return;
+
+			if (!Clients.mug) window.location = `/signin`;
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					param : {symbol: Clients.selectCoin, float: parseFloat(Values[0]), id: Arg.id)}, 
+					pull: `createVow`}]);
+
+			Values = [];
+
+			View.pop();
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web.mug) {
+
+					View.DOM([`div`, [Models.vowSplash()]]);
+				}
+			}
+		}]);
+	}
+
 	idCopy (Arg) {
 
 		this.listen([document.querySelector(`#idCopy`), `click`, S => {
@@ -585,6 +620,18 @@ class Events {
 		}]);
 	}
 
+	selectCoin () {
+
+		document.querySelectorAll(`#token`).forEach((Coin, i)=> {
+
+			this.listen([Coin, `click`, S => {
+
+				Clients.selectCoin = Coin.getAttribute(`for`);
+
+				window.location = `/u/wallet/coin`;
+			}])})
+	}
+
 	STKPay (Arg) {
 
 		this.listen([document.querySelector(`#stk`), `click`, S => {
@@ -814,6 +861,20 @@ class Events {
 					window.location = `/p2p/${Vow.md}`;
 				}
 			}
+		}]);
+	}
+
+	vowSlot () {
+
+		this.listen([document.querySelector(`#vowSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
 		}]);
 	}
 

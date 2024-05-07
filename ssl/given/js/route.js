@@ -585,9 +585,24 @@ class Route {
 						document.title = `Fiat & Crypto Overview`;
 
 						View.DOM([`div`, [Models.wallet(Web)]]);
+
+						Events.selectCoin();
 					}
 				}
 			}
+
+    		else if (State[4] && State[4] === `wallet` && State[5] && State[5] === `coin` && !State[6] && !Tools.slim[State[6]]) {
+
+    			if (!Clients.selectCoin) window.location = `/u/wallet/`;
+
+    			document.title = `Deposit Crypto`;
+
+    			View.DOM([`div`, [Models.createVow()]]);
+
+    			Events.vowSlot();
+
+    			Events.createVow();
+    		}
 
     	}
 

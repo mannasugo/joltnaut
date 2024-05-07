@@ -595,6 +595,45 @@ class Route {
 								}]);
 							}
 
+							if (Pulls.pull === `createVow`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									let Wallet = {
+										btc: [
+										`1BDEtH9AufT4pZiJuaVuQ4G5RvXwKPYfwa`,
+										`bc1qfppprm37g0e9m602a0x84ap6qcqc2cf3742hd0`,
+										`bc1q2y8fnnhp5dsp37ndhfum2wjhx2p7tq06lre3s2`, 
+										`34miqr44ju9RVdAFa2pHjkQEtP9V8MQZ4M`, 
+										`387LYybUtUs6a6Nkgfsf2vpeeEhfqxReLo`], 
+										usdt: [
+										`TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`, 
+										`THGN8p5Hx4GNCLJM7Mtq8kFG7T9qwqX5K3`, 
+										`TU5jQ1o9HiP2LJMZbLFqgjGFjjpxLnDEtn`, 
+										`TWxNVYYtFWuZygwW346mqAZKfpmW6nU4mG`]};
+
+									let B64 = [[], []];
+
+									Raw.b4[0].forEach(B4 => {
+
+										if (B4.symbol === Pulls.param.symbol && B4.ts_z > new Date().valueOf()) {
+
+											B64[0].push(B4.b64);
+										}
+									});
+
+									Wallet[Pulls.param.symbol].forEach(b64 => {
+
+										if (B64[0].indexOf(b64) === -1) B64[1].push(b64);
+									});
+
+									if (B64[1].length > 0) {
+
+										
+									}
+								}
+							}
+
 							if (Pulls.pull === `idVault`) {
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT 

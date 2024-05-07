@@ -110,8 +110,6 @@ let Models = {
 								[[`a`, {class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, id: `w2w`}, `SEND USDT`]]]]]]]]]		
 	},
 
-	/**/
-
 	app: function (Web) {
 
 		let Param = [
@@ -285,8 +283,6 @@ let Models = {
 													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]]]]]]], 
 					this.us()]]
 	},
-
-	/**/
 
 	asset: function (Web) {
 
@@ -489,7 +485,6 @@ let Models = {
 									[`p`, {style: {color: `#464646`, [`font-size`]: `${14}px`, [`line-height`]: `${1.75}em`}}, `Joltnaut opportunities are exclusively available on this page.Apply for roles directly on our official careers page. Beware of unauthorized third-party platforms – protect your data, apply securely with us.`], 
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${19}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${48}px ${0} ${0}`, }}, `Open Positions (${open})`]]], 
 							[`div`, {style: {padding: `0 ${12}px`}}, [[`div`, {style: {margin: `${16}px 0`}}, Openings[0]]]]]]]]
-
 	},
 
 	cellSlots: function () {
@@ -647,6 +642,38 @@ let Models = {
 													color: `#a3a3a3`, 
 													[`font-size`]: `${10}px`}}, (TX[1].length > 0)? `RECENT WALLET TRANSCATIONS`: ``],
 												[`div`,  {}, TX[1]]]]]]]]]]]];
+	},
+
+	createVow: function () {
+
+		return [
+			`main`, {id: ``, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
+								[
+									[`h2`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, margin: `${12}px ${0} ${0}`, }}, `Enter ${Clients.selectCoin.toUpperCase()} Value`],
+									[`div`, {style: {[`margin-top`]: `${24}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${40}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`img`, {src: `/ssl/given/svg/tokens/${Clients.selectCoin}.svg`, style: {[`max-width`]: `${18}px`,}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#000`, [`font-weight`]: 600, [`font-size`]: `${18}px`}}, `${Clients.selectCoin}`]]], 
+														[`div`, {class: `_gZz`}, 
+															[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																[ 
+																	[`div`, {class: `_gxM _gZz _geQ`}, 
+																		[[`input`, {id: `vowSlot`, placeholder: `0.0`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `walsh`, [`font-size`]: `${24}px`, [`font-weight`]: 400, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+										[ 
+											[`div`, {class: `_eYG`}, []],
+												[`div`, {class: `_gZz`, style: {flex: 0}}, 
+									[[`a`, {class: `_gxM _geQ`, href: `javascript:;`, id: `createVow`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
+										[
+											[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
+											[`span`, {}, `${Clients.selectCoin.toUpperCase()} Deposit Details`]]]]]]]]]]]]];
+										
+
 	},
 
 	holdXY: (Arg) => {
@@ -3103,6 +3130,7 @@ let Models = {
 		let Coin = [
 			[],
 			[
+				[`btc`, `BTC`, `bitcoin`],
 				[`usdt`, `USDT`, `Tether`]]];
 
 		Coin[1].forEach(Flag => {
@@ -3133,7 +3161,7 @@ let Models = {
 														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
 														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
-						[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
+						[[`a`, {class: `v202203261943`, for: `${Flag[0]}`, href: `javascript:;`, id: `token`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
 		});
 
 		let Fiat = [
