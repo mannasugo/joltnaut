@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`b4`, `invoice`, `mugs`, `payout`, `peers`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`b4`, `book`, `invoice`, `mugs`, `payout`, `peers`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -46,7 +46,17 @@ class Sql {
 					});
 				}
 
-				if (put === 3) {
+				if (put === 2) {
+
+					Put.forEach(Book => {
+
+						Puts.book[0].push(JSON.parse(Book.json));
+
+						Puts.book[1][JSON.parse(Book.json).md] = JSON.parse(Book.json);
+					});
+				}
+
+				if (put === 4) {
 
 					Put.forEach(Bill => {
 
@@ -56,7 +66,7 @@ class Sql {
 					});
 				}
 
-				if (put === 4) {
+				if (put === 5) {
 
 					Put.forEach(Mug => {
 
@@ -66,7 +76,7 @@ class Sql {
 					});
 				}
 
-				if (put === 6) {
+				if (put === 7) {
 
 					Put.forEach(Pay => {
 
@@ -76,7 +86,7 @@ class Sql {
 					});
 				}
 
-				if (put === 7) {
+				if (put === 8) {
 
 					Put.forEach(Peer => {
 
@@ -86,7 +96,7 @@ class Sql {
 					});
 				}
 
-				if (put === 9) {
+				if (put === 10) {
 
 					Put.forEach(Till => {
 
@@ -96,7 +106,7 @@ class Sql {
 					});
 				}
 
-				if (put === 10) {
+				if (put === 11) {
 
 					Put.forEach(Trade => {
 
@@ -106,7 +116,7 @@ class Sql {
 					});
 				}
 
-				if (put === 11) {
+				if (put === 12) {
 
 					Put.forEach(TRON => {
 
@@ -116,7 +126,7 @@ class Sql {
 					});
 				}
 
-				if (put === 13) {
+				if (put === 14) {
 
 					Put.forEach(Vow => {
 
@@ -278,10 +288,10 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [61484.62, 61748.71]],
-			ts_a: new Date(`2024-05-09 08:38`).valueOf(), 
-			ts_z: new Date(`2024-05-09 09:14`).valueOf()
-		}]
+			pair: [`btc/fdusd`, [60661.62, 60948.71]],
+			ts_a: new Date(`2024-05-11 12:38`).valueOf(), 
+			ts_z: new Date(`2024-05-11 13:14`).valueOf()
+		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
@@ -363,6 +373,57 @@ class Tools {
 	}
 
 	typen (coat) { return JSON.parse(coat); }
+
+	/**
+
+	values (Raw) {
+		
+		let Pairs = [
+			{pair: [[`btc`, `usd`], [0, 61748.71]]}, 
+			{pair: [[`eth`, `usd`], [0, 61748.71]]}, 
+			{pair: [[`ltc`, `usd`], [0, 61748.71]]}, 
+			{pair: [[`usdt`, `usd`], [0, 61748.71]]}, 
+			{pair: [[`aud`, `usd`], [0, 61748.71]]}, 
+			{pair: [[`cad`, `usd`], [0, 61748.71]]}, 
+			{
+			pair: [[`eur`, `usd`], [0, 61748.71]]}, 
+			{
+			pair: [[`jpy`, `usd`], [0, 61748.71]]}, 
+			{
+			pair: [[`kes`, `usd`], [0, 61748.71]]}, {
+			pair: [[`nzd`, `usd`], [0, 61748.71]]}, {
+			pair: [[`zar`, `usd`], [0, 61748.71]]}, {
+			pair: [[`gbp`, `usd`], [0, 61748.71]]}, {
+			pair: [[`chf`, `usd`], [0, 61748.71]]}];
+
+		writeFileSync(`json/market.json`, this.coats(Pairs));
+
+		Pairs = this.typen(readFileSync(`json/market.json`, {encoding: `utf8`}));
+
+		let Putlist = [];
+
+		Pairs.forEach(Pair => {
+
+			Pair.ilk = `market`;
+
+			Pair.ts = new Date().valueOf();
+
+			Pair.md = createHash(`md5`).update(`${Pair.ts}`, `utf8`).digest(`hex`);
+
+			Pair.mug = hold;
+
+			Pair.side = `buy`;
+
+			Pair.ts_z = Pair.ts;
+
+			Putlist.push(Pair);
+
+		});
+
+		Raw[1]([Putlist]);
+	}
+
+	**/
 }
 
 module.exports = {

@@ -192,7 +192,7 @@ let Models = {
 				[`za`, `south african rand`],
 				[`uk`, `sterling pound`],
 				[`ch`, `swiss franc`],
-				[`us`, `US dollar`]]];
+				/*[`us`, `US dollar`]*/]];
 
 		Flag[1].forEach(Asset => {
 

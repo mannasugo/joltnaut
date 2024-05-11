@@ -14,6 +14,8 @@ Sql.pulls(Raw => {
 
 	Tools.pairs([Raw, (Puts) => {
 
+		//Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+
 		Sql.puts([`trades`, Puts[0], (SQ) => {
 
 			Sql.putlist([`till`, Puts[1], (SQ) => {}]);
