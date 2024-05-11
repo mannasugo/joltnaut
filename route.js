@@ -976,6 +976,24 @@ class Route {
 									Pairs.push(P2)
 								});
 
+								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+
+								let USD = {};
+
+								Holding.forEach(holding => {
+
+									let All = [];
+
+									Raw.book[0].forEach(Book => {
+
+										if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+									});
+
+									All = All.sort((A, B) => {return B[1] - A[1]});
+
+									USD[holding] = All[0][0];
+								});
+
 								if (Pulls.mug != false) {
 
 									let Hold = Tools.hold([Raw, Pulls.mug]).sort((A, B) => {return B.secs - A.secs});
@@ -1120,7 +1138,8 @@ class Route {
 										}
 									});
 
-									Arg[1].end(Tools.coats({ cumulative: pnl,
+									Arg[1].end(Tools.coats({ 
+										cumulative: pnl,
 										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
 										holdXY: HoldXY[0],
 										pairs: Pairs,
@@ -1128,7 +1147,8 @@ class Route {
 										till: Raw.till[0].length,
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
 										tx: TX,
-										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0}));
+										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0,
+										xUSD: USD}));
 								}
 
 								let Day = new Date();
@@ -1156,7 +1176,8 @@ class Route {
 									cumulative: 0,
 									pairs: Pairs,
 									pnl: PNL, runs: era/86400000,
-									till: Raw.till[0].length, debit: 0}));
+									till: Raw.till[0].length, debit: 0,
+										xUSD: USD}));
 							}
 
 							if (Pulls.pull === `putC2s`) {

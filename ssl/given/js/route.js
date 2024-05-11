@@ -634,7 +634,6 @@ class Route {
 					}
 				}
     		}
-
     	}
 
     	else if (this.State[3] === `p2p`) {

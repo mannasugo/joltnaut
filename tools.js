@@ -374,27 +374,27 @@ class Tools {
 
 	typen (coat) { return JSON.parse(coat); }
 
-	/**
+	/**/
 
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 61748.71]]}, 
-			{pair: [[`eth`, `usd`], [0, 61748.71]]}, 
-			{pair: [[`ltc`, `usd`], [0, 61748.71]]}, 
-			{pair: [[`usdt`, `usd`], [0, 61748.71]]}, 
-			{pair: [[`aud`, `usd`], [0, 61748.71]]}, 
-			{pair: [[`cad`, `usd`], [0, 61748.71]]}, 
-			{
-			pair: [[`eur`, `usd`], [0, 61748.71]]}, 
-			{
-			pair: [[`jpy`, `usd`], [0, 61748.71]]}, 
-			{
-			pair: [[`kes`, `usd`], [0, 61748.71]]}, {
-			pair: [[`nzd`, `usd`], [0, 61748.71]]}, {
-			pair: [[`zar`, `usd`], [0, 61748.71]]}, {
-			pair: [[`gbp`, `usd`], [0, 61748.71]]}, {
-			pair: [[`chf`, `usd`], [0, 61748.71]]}];
+			{pair: [[`btc`, `usd`], [0, 61222.01]]}, 
+			{pair: [[`eth`, `usd`], [0, 2926.42]]}, 
+			{pair: [[`ltc`, `usd`], [0, 80.96]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9996]]}, 
+			{pair: [[`aud`, `usd`], [0, .66024]]}, 
+			{pair: [[`cad`, `usd`], [0, 1/1.36738]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.07704]]}, 
+			{pair: [[`jpy`, `usd`], [0, 1/155.798]]},
+			{pair: [[`kes`, `usd`], [0, 1/133.01]]},
+			{pair: [[`nok`, `usd`], [0, 1/10.86100]]},
+			{pair: [[`nzd`, `usd`], [0, .60207]]}, 
+			{pair: [[`zar`, `usd`], [0, 1/18.44052]]}, 
+			{pair: [[`sek`, `usd`], [0, 1/10.85544]]},
+			{pair: [[`gbp`, `usd`], [0, 1.25256]]}, 
+			{pair: [[`chf`, `usd`], [0, .90668]]}
+		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));
 
@@ -423,7 +423,7 @@ class Tools {
 		Raw[1]([Putlist]);
 	}
 
-	**/
+	/**/
 }
 
 module.exports = {

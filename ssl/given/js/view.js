@@ -162,7 +162,7 @@ let Models = {
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Asset[0]])? `${(Web.xUSD[Asset[0]]).toLocaleString()}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${10}%`}}, 
 						[
@@ -183,16 +183,19 @@ let Models = {
 		let Flag = [
 			[],
 			[
-				[`au`, `australian dollar`],
-				[`ca`, `canadian dollar`],
-				[`eu`, `euro`],
-				[`jp`, `japanese yen`],
-				[`ke`, `kenyan shilling`],
-				[`nz`, `new zealand dollar`],
-				[`za`, `south african rand`],
-				[`uk`, `sterling pound`],
-				[`ch`, `swiss franc`],
-				/*[`us`, `US dollar`]*/]];
+				[`au`, `AUD`, `australian dollar`],
+				[`ca`, `CAD`, `canadian dollar`],
+				[`eu`, `EUR`, `euro`],
+				[`jp`, `JPY`, `japanese yen`],
+				[`ke`, `KES`, `kenyan shilling`],
+				[`no`, `NOK`, `norwegian krone`],
+				[`nz`, `NZD`, `new zealand dollar`],
+				[`za`, `ZAR`, `south african rand`],
+				[`se`, `SEK`, `swedish krone`],
+				[`ch`, `CHF`, `swiss franc`],
+				[`uk`, `GBP`, `sterling pound`],
+				//[`us`, `USD`, `us dollar`]
+			]];
 
 		Flag[1].forEach(Asset => {
 
@@ -203,11 +206,11 @@ let Models = {
 							[`img`, {src: `/ssl/given/svg/flags/${Asset[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
 							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
 								[
-									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Asset[1]}`], 
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Asset[2]}`], 
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toLocaleString()}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${10}%`}}, 
 						[
@@ -3192,7 +3195,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+														[`span`, {style: {[`font-family`]: `walsh`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Flag[0]])? `${(Web.xUSD[Flag[0]]).toLocaleString()}`: `-`], 
 														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[
@@ -3235,12 +3238,12 @@ let Models = {
 									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
+							[`span`, {style: {[`font-family`]: `walsh`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+						[
+							[`span`, {style: {[`font-family`]: `walsh`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Flag[1]).toLowerCase()])? `${(Web.xUSD[(Flag[1]).toLowerCase()]).toLocaleString()}`: `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[
 														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 

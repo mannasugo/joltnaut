@@ -12,15 +12,18 @@ Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
 Sql.pulls(Raw => {
 
-	Tools.pairs([Raw, (Puts) => {
+	Tools.values([Raw, (SQ) => {
 
-		//Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+		Sql.putlist([`book`, SQ[0], (SQ) => {
 
-		Sql.puts([`trades`, Puts[0], (SQ) => {
+			Tools.pairs([Raw, (Puts) => {
 
-			Sql.putlist([`till`, Puts[1], (SQ) => {}]);
-		}]);
+				Sql.puts([`trades`, Puts[0], (SQ) => {
 
+					Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+				}]);
+			}]);
+		}]);	
 	}]);
 });
 
