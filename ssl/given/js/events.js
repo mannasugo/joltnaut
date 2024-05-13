@@ -662,6 +662,31 @@ class Events {
 		}]);
 	}
 
+	tradeSlot () {
+
+		this.listen([document.querySelector(`#buySlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+		}]);
+
+		this.listen([document.querySelector(`#sellSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+		}])
+	}
+
 	vaultOut (Arg) {
 
 		this.listen([document.querySelector(`#vaultOut`), `click`, S => {

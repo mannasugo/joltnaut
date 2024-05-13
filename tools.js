@@ -288,9 +288,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [60831.02, 61096.64]],
-			ts_a: new Date(`2024-05-12 06:34`).valueOf(), 
-			ts_z: new Date(`2024-05-12 07:56`).valueOf()
+			pair: [`btc/fdusd`, [60735.01, 61177.41]],
+			ts_a: new Date(`2024-05-13 06:21`).valueOf(), 
+			ts_z: new Date(`2024-05-13 06:59`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -379,21 +379,21 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 60967.17]]}, 
-			{pair: [[`eth`, `usd`], [0, 2918.38]]}, 
-			{pair: [[`ltc`, `usd`], [0, 81.24]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9996]]}, 
-			{pair: [[`aud`, `usd`], [0, .66044]]}, 
-			{pair: [[`cad`, `usd`], [0, 1/1.36707]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.07684]]}, 
-			{pair: [[`jpy`, `usd`], [0, 1/155.772]]},
+			{pair: [[`btc`, `usd`], [0, 60942.03]]}, 
+			{pair: [[`eth`, `usd`], [0, 2886.93]]}, 
+			{pair: [[`ltc`, `usd`], [0, 79.83]]}, 
+			{pair: [[`usdt`, `usd`], [0, 1.0002]]}, 
+			{pair: [[`aud`, `usd`], [0, .65961]]}, 
+			{pair: [[`cad`, `usd`], [0, 1/1.36803]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.07722]]}, 
+			{pair: [[`jpy`, `usd`], [0, 1/155.820]]},
 			{pair: [[`kes`, `usd`], [0, 1/136.22]]},
-			{pair: [[`nok`, `usd`], [0, 1/10.83648]]},
-			{pair: [[`nzd`, `usd`], [0, .60177]]}, 
-			{pair: [[`zar`, `usd`], [0, 1/18.41592]]}, 
-			{pair: [[`sek`, `usd`], [0, 1/10.83595]]},
-			{pair: [[`gbp`, `usd`], [0, 1.25221]]}, 
-			{pair: [[`chf`, `usd`], [0, .90632]]}
+			{pair: [[`nok`, `usd`], [0, 1/10.86043]]},
+			{pair: [[`nzd`, `usd`], [0, .60095]]}, 
+			{pair: [[`zar`, `usd`], [0, 1/18.40216]]}, 
+			{pair: [[`sek`, `usd`], [0, 1/10.84259]]},
+			{pair: [[`gbp`, `usd`], [0, 1.25246]]}, 
+			{pair: [[`chf`, `usd`], [0, .90658]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));

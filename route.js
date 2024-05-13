@@ -270,7 +270,7 @@ class Route {
 							if (Pulls.pull === `portal`) {
 
 								let Allows = [
-									[`0362b3ed20e7c006b05a732c0cb8e1a9`,`816dd8bf6d3f688279c8b69402b3019c`],
+									[`0362b3ed20e7c006b05a732c0cb8e1a9`/*,`816dd8bf6d3f688279c8b69402b3019c`*/],
 									["0dc00226105bbc48f57f7eb1a68e4ada", 
 									`0ef4c14382a4fa952f93d25832692996`,
 									"29b32367542aa82db47ff7528e0c650c",
@@ -1429,6 +1429,28 @@ class Route {
 
 										Get.end();
 									}
+								}
+							}
+
+							if (Pulls.pull === `trade`) {
+
+								let Pairs = [`BTC_USD`, `ETH_USD`, `LTC_USD`, `USDT_USD`];
+
+								if (Pairs.indexOf(Pulls.pair) > -1) {
+
+									let Duo = Pulls.pair.toLowerCase().split(`_`);
+
+									let Book = [];
+
+									Raw.book[0].sort((A, B) => {return B.ts_z - A.ts_z}).forEach(Value => {
+
+										if (Value.pair[0][0] === Duo[0] && Value.pair[0][1] === Duo[1]) Book.push(Value);
+									});
+
+									Arg[1].end(Tools.coats({
+										debit: 0,
+										pair: [Pulls.pair.split(`_`)[0], Pulls.pair.split(`_`)[1]],
+										value: Book[0].pair[1][1]}));
 								}
 							}
 

@@ -162,7 +162,7 @@ let Models = {
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Asset[0]])? `${(Web.xUSD[Asset[0]]).toLocaleString()}`: `-`], 
+							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Asset[0]])? `${(Web.xUSD[Asset[0]])}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${10}%`}}, 
 						[
@@ -177,7 +177,7 @@ let Models = {
 							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
-						[[`a`, {href: `javascript:;`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
+						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
 		});
 
 		let Flag = [
@@ -210,7 +210,7 @@ let Models = {
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toLocaleString()}`: `-`], 
+							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toFixed(4)}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${10}%`}}, 
 						[
@@ -2772,6 +2772,102 @@ let Models = {
 																		color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
 																		[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
 																		`9,000 KES`]]]]]]]]]]]]]]]]]]];
+	}, 
+
+	trader: function (Web) {
+
+		let Flag = [[`BTC`, `ETH`, `LTC`, `USDT`], {USD: `us`}]
+
+		return [
+			`main`, {id: `trader`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, 
+									[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${15}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]], 
+								[`div`, {class: `_gZz`, style: {display: `none`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+									[
+										[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Transfer`],
+										[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Swap`]]]]]]],
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
+						[ 
+							[`div`, {style: {[`margin-top`]: `${12}px`, padding: `${0}px ${24}px ${12}px`}}, 
+								[
+									[`div`, {class: `_gxM _geQ`}, 
+										[
+											[`img`, {src: `/ssl/given/svg/${(Flag[0].indexOf(Web.pair[0]) > -1)? `tokens`: `flags`}/${(Flag[0].indexOf(Web.pair[0]) > -1)? Web.pair[0]: Flag[1][Web.pair[0]]}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${0}px)`}}],
+											[`img`, {src: `/ssl/given/svg/${(Flag[0].indexOf(Web.pair[1]) > -1)? `tokens`: `flags`}/${(Flag[0].indexOf(Web.pair[1]) > -1)? Web.pair[0]: Flag[1][Web.pair[1]]}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${-7.6667}px)`}}], 
+											[`div`, {},
+												[
+													[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.pair[0]}-${Web.pair[1]}`], 
+													[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `Spot Market`]]],
+											[`div`, {style: {[`margin-left`]: `${48}px`}},
+												[
+													[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.value} ${Web.pair[1]}`], 
+													[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `Market Price`]]]]]]], 
+							[`div`, {style: {[`margin-top`]: `${24}px`, padding: `${0}px ${24}px ${12}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`}, 
+										[
+											[`div`, {style: {padding: `0 ${12}px 0 0`, width: `${50}%`}}, 
+												[
+													[`div`, {class: `_gxM _geQ`},
+														[
+															[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `BUY`], 
+															[`div`, {class: `_gZz`}, 
+																[
+																	[`span`, {class: `v202312301635`, style: {height: `${24}px`, width: `${24}px`}}],
+																	[`span`, {style: {color: `#696969`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.debit.toFixed(2)} ${Web.pair[1]}`]]]]],
+													[`div`, {class: `_gxM _geQ`, style: {padding: `${12}px 0`}},
+														[
+															[`span`, {style: {[`font-size`]: `${12}px`}}, `Price`], 
+															[`div`, {class: `_gZz`}, 
+																[[`span`, {style: {color: `green`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, `Market`]]]]],
+													[`div`, {style: {[`margin`]: `${6}px 0`}}, 
+														[
+															[`span`, {style: {[`font-size`]: `${12}px`, [`margin-bottom`]: `${6}px`}}, `Amount`],
+															[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${24}px`, padding: `${6}px ${16}px`}}, 
+																[
+																	[`img`, {src: `/ssl/given/svg/tokens/${Web.pair[0]}.svg`, style: {[`max-width`]: `${18}px`,}}],
+																	[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+																		[[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `${Web.pair[0]}`]]], 
+																	[`div`, {class: `_gZz`}, 
+																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																			[ 
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[[`input`, {id: `buySlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+													[`a`, {href: `javascript:;`, style: {background: `#0fd064`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `BUY ${Web.pair[0]}`]]],
+											[`div`, {style: {padding: `0 0 0 ${12}px`, width: `${50}%`}}, 
+												[
+													[`div`, {class: `_gxM _geQ`},
+														[
+															[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `SELL`], 
+															[`div`, {class: `_gZz`}, 
+																[
+																	[`span`, {class: `v202312301635`, style: {height: `${24}px`, width: `${24}px`}}],
+																	[`span`, {style: {color: `#696969`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.debit.toFixed(2)} ${Web.pair[0]}`]]]]],
+													[`div`, {class: `_gxM _geQ`, style: {padding: `${12}px 0`}},
+														[
+															[`span`, {style: {[`font-size`]: `${12}px`}}, `Price`], 
+															[`div`, {class: `_gZz`}, 
+																[[`span`, {style: {color: `red`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, `Market`]]]]],
+													[`div`, {style: {[`margin`]: `${6}px 0`}}, 
+														[
+															[`span`, {style: {[`font-size`]: `${12}px`, [`margin-bottom`]: `${6}px`}}, `Amount`],
+															[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${24}px`, padding: `${6}px ${16}px`}}, 
+																[
+																	[`img`, {src: `/ssl/given/svg/tokens/${Web.pair[0]}.svg`, style: {[`max-width`]: `${18}px`}}],
+																	[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+																		[[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `${Web.pair[0]}`]]], 
+																	[`div`, {class: `_gZz`}, 
+																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																			[ 
+																				[`div`, {class: `_gxM _gZz _geQ`}, 
+																					[[`input`, {id: `sellSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+													[`a`, {href: `javascript:;`, id: ``, style: {background: `#d00f33`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `SELL ${Web.pair[0]}`]]]]]]]]], this.us()]]
+
 	},
 
 	txCoin: function (Web) {
@@ -3195,7 +3291,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[
-														[`span`, {style: {[`font-family`]: `walsh`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Flag[0]])? `${(Web.xUSD[Flag[0]]).toLocaleString()}`: `-`], 
+														[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Flag[0]])? `${(Web.xUSD[Flag[0]]).toLocaleString()}`: `-`], 
 														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[
@@ -3238,11 +3334,11 @@ let Models = {
 									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `walsh`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
+							[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `walsh`, [`font-size`]: `${10}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Flag[1]).toLowerCase()])? `${(Web.xUSD[(Flag[1]).toLowerCase()]).toLocaleString()}`: `-`], 
+							[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Flag[1]).toLowerCase()])? `${(Web.xUSD[(Flag[1]).toLowerCase()]).toLocaleString()}`: `-`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[

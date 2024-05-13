@@ -526,7 +526,7 @@ class Route {
 			}
 		}
 
-    	else if (this.State[3] === `portal`) {
+    	else if (this.State[3] === `remote`) {
 
     		if (!Clients.mug) {
 
@@ -549,12 +549,57 @@ class Route {
 
 					if (Web.mug) {
 
-						document.title = `Administration Portal`;
+						document.title = `Web Remote`;
 
 						View.DOM([`div`, [Models.portal(Web)]]);
 					}
 				}
 			}
+
+    		if (State[4] && State[4] === `incoming` && !State[5] && !Tools.slim[State[5]]) {
+
+				let Puts = Tools.pull([
+					`/json/ms/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `incoming`}]);	
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web) {
+
+						document.title = `Deposits | Web Remote`;
+
+						View.DOM([`div`, [Models.incoming(Web)]]);
+					}
+				}	
+    		}
+    	}
+
+		else if (this.State[3] === `trade`) {
+
+    		if (State[4] && !State[5] && !Tools.slim[State[5]]) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `trade`, pair: State[4]}]);	
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.pair) {
+
+						document.title = `${Web.pair[0]}${Web.pair[1]} | Joltnaut Spot`;
+
+						View.DOM([`div`, [Models.trader(Web)]]);
+
+						Events.tradeSlot();
+					}
+				}	
+    		}
     	}
 
     	else if (this.State[3] === `u`) {
