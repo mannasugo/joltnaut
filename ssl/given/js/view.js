@@ -162,7 +162,7 @@ let Models = {
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Asset[0]])? `${(Web.xUSD[Asset[0]])}`: `-`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[Asset[0]])? `${(Web.xUSD[Asset[0]])}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${10}%`}}, 
 						[
@@ -210,7 +210,7 @@ let Models = {
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `litera`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toFixed(4)}`: `-`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toFixed(4)}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${10}%`}}, 
 						[
@@ -228,6 +228,11 @@ let Models = {
 						[[`a`, {href: `javascript:;`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
 		});
 
+		if (Web.spot) {
+
+			for (let coin in Web.spot) Web.debit += Web.spot[coin]*Web.xUSD[coin]
+		}
+
 		return [
 			`main`, {id: `careers`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
@@ -236,7 +241,7 @@ let Models = {
 							[
 								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 								[`div`, {class: `_eYG`}, 
-									[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${17}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
+									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${17}px`, [`font-weight`]: 400, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
 								[`div`, {class: `_gZz`, style: {flex: 0}}, 
 									[[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${12}px`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
 										[
@@ -675,8 +680,6 @@ let Models = {
 										[
 											[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
 											[`span`, {}, `${Clients.selectCoin.toUpperCase()} Deposit Details`]]]]]]]]]]]]];
-										
-
 	},
 
 	holdXY: (Arg) => {
@@ -799,6 +802,31 @@ let Models = {
 										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#e80101`}}], [`span`, {}, `Airtel Money (Kenya)`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, href: `javascript:;`}]]]]],
 										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#049b04`}}], [`span`, {}, `M-PESA Safaricom (Kenya)`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, id: `cellSlots`, href: `javascript:;`}]]]]],
 										[`div`, {class: `_gxM _geQ`}, [[`span`, {id: `OptColor`, style: {background: `#04629b`}}], [`span`, {}, `Paypal`], [`div`, {class: `_gZz`}, [[`a`, {class: `-_tX v202203191304`, href: `javascript:;`}]]]]]]]]]]]]]
+	},
+
+	incoming: function (Web) {
+
+		let B4 = [[]];
+
+		Web.incoming.sort((A, B) => {return B.ts - A.ts}).forEach(TX => {
+
+			B4[0].push([`div`, {style: {[`border-bottom`]: `${1}px solid #d9d9d9`, padding: `${12}px 0`}}, 
+				[
+					[`span`, {}, TX.symbol],
+					[`span`, {}, TX.b64],
+					[`span`, {}, `${TX.float}`],
+					[`span`, {}, `${Tools.logs(TX.ts) + ` - ` + Tools.logs(TX.ts_z)}`], 
+					[`div`, {class: `_gxM _geQ`}, 
+						[
+							[`input`, {id: `float_${TX.md}`}],
+							[`div`, {class: `_gZz`}, 
+								[[`a`, {href: `javascript:;`, id: `pollB4`, md: TX.md, style: {background: `blue`, color: `#fff`, padding: `${4}px ${12}px`}}, `Approve`]]]]]]])
+		});
+
+		return [
+			`main`, {id: ``, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`, padding: `0 ${24}px`}}, 
+					B4[0]]]]
 	},
 
 	inlet: function () {
@@ -2797,8 +2825,8 @@ let Models = {
 								[
 									[`div`, {class: `_gxM _geQ`}, 
 										[
-											[`img`, {src: `/ssl/given/svg/${(Flag[0].indexOf(Web.pair[0]) > -1)? `tokens`: `flags`}/${(Flag[0].indexOf(Web.pair[0]) > -1)? Web.pair[0]: Flag[1][Web.pair[0]]}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${0}px)`}}],
-											[`img`, {src: `/ssl/given/svg/${(Flag[0].indexOf(Web.pair[1]) > -1)? `tokens`: `flags`}/${(Flag[0].indexOf(Web.pair[1]) > -1)? Web.pair[0]: Flag[1][Web.pair[1]]}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${-7.6667}px)`}}], 
+											[`img`, {src: `/ssl/given/svg/${(Flag[0].indexOf(Web.pair[0]) > -1)? `tokens`: `flags`}/${(Flag[0].indexOf(Web.pair[0]) > -1)? Web.pair[0].toLowerCase(): (Flag[1][Web.pair[0]])}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${0}px)`}}],
+											[`img`, {src: `/ssl/given/svg/${(Flag[0].indexOf(Web.pair[1]) > -1)? `tokens`: `flags`}/${(Flag[0].indexOf(Web.pair[1]) > -1)? Web.pair[0].toLowerCase(): Flag[1][Web.pair[1]]}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${-7.6667}px)`}}], 
 											[`div`, {},
 												[
 													[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.pair[0]}-${Web.pair[1]}`], 
@@ -2830,7 +2858,7 @@ let Models = {
 															[`span`, {style: {[`font-size`]: `${12}px`, [`margin-bottom`]: `${6}px`}}, `Amount`],
 															[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${24}px`, padding: `${6}px ${16}px`}}, 
 																[
-																	[`img`, {src: `/ssl/given/svg/tokens/${Web.pair[0]}.svg`, style: {[`max-width`]: `${18}px`,}}],
+																	[`img`, {src: `/ssl/given/svg/tokens/${Web.pair[0].toLowerCase()}.svg`, style: {[`max-width`]: `${18}px`,}}],
 																	[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
 																		[[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `${Web.pair[0]}`]]], 
 																	[`div`, {class: `_gZz`}, 
@@ -2858,7 +2886,7 @@ let Models = {
 															[`span`, {style: {[`font-size`]: `${12}px`, [`margin-bottom`]: `${6}px`}}, `Amount`],
 															[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${24}px`, height: `${24}px`, padding: `${6}px ${16}px`}}, 
 																[
-																	[`img`, {src: `/ssl/given/svg/tokens/${Web.pair[0]}.svg`, style: {[`max-width`]: `${18}px`}}],
+																	[`img`, {src: `/ssl/given/svg/tokens/${Web.pair[0].toLowerCase()}.svg`, style: {[`max-width`]: `${18}px`}}],
 																	[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
 																		[[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `${Web.pair[0]}`]]], 
 																	[`div`, {class: `_gZz`}, 
@@ -2867,7 +2895,6 @@ let Models = {
 																				[`div`, {class: `_gxM _gZz _geQ`}, 
 																					[[`input`, {id: `sellSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
 													[`a`, {href: `javascript:;`, id: ``, style: {background: `#d00f33`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `SELL ${Web.pair[0]}`]]]]]]]]], this.us()]]
-
 	},
 
 	txCoin: function (Web) {
@@ -3287,7 +3314,7 @@ let Models = {
 									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
+							[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.spot)? `${Web.spot[Flag[0]]}`: `${(0).toFixed(2)}`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 													[
@@ -3299,7 +3326,7 @@ let Models = {
 														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
+														[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.spot)? `${(Web.spot[Flag[0]]*Web.xUSD[Flag[0]]).toFixed(2)}`: `${(0).toFixed(2)}`], 
 														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {class: `v202203261943`, for: `${Flag[0]}`, href: `javascript:;`, id: `token`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
@@ -3352,6 +3379,11 @@ let Models = {
 						[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
 		});
 
+		if (Web.spot) {
+
+			for (let coin in Web.spot) Web.debit += Web.spot[coin]*Web.xUSD[coin]
+		}
+
 		return [
 			`main`, {id: `wallet`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
@@ -3360,7 +3392,7 @@ let Models = {
 							[
 								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 								[`div`, {class: `_eYG`}, 
-									[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${15}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]], 
+									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[
 										[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Transfer`],

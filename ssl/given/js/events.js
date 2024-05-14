@@ -421,6 +421,43 @@ class Events {
 		}]);
 	}
 
+	pollB4 (Arg) {
+
+		document.querySelectorAll(`#pollB4`).forEach(Allow => {
+
+			this.listen([Allow, `click`, S => {
+
+				let idSlot = `#float_${this.getSource(S).getAttribute(`md`)}`;
+
+				let Values = 
+					[(!Tools.slim(document.querySelector(idSlot).value))? false: Tools.slim(document.querySelector(idSlot).value)];
+
+				if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+				if (parseFloat(Values[0]) <= 0 ) return;
+
+				let Puts = Tools.pull([
+					`/json/ms/`, { 
+						float: parseFloat(Values[0]),
+						md: this.getSource(S).getAttribute(`md`), 
+						pull: `pollB4`}]);
+
+				Values = [];
+
+				View.pop();
+
+				View.DOM([`div`, [Models.splash]]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					if (Web) window.location = `/remote/incoming`;
+				}
+			}]);
+		});
+	}
+
 	pollCellSlots () {
 
 		this.listen([document.querySelector(`#pollCellSlots`), `click`, S => {

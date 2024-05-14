@@ -569,9 +569,11 @@ class Route {
 
 					if (Web) {
 
-						document.title = `Deposits | Web Remote`;
+						document.title = `Incoming | Web Remote`;
 
 						View.DOM([`div`, [Models.incoming(Web)]]);
+
+						Events.pollB4()
 					}
 				}	
     		}

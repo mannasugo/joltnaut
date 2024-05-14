@@ -253,6 +253,50 @@ class Route {
 								Arg[1].end(Tools.coats({mugs: Mug[0], pays: TX[0]}));
 							}
 
+							if (Pulls.pull === `incoming`) {
+
+								let Allows = [`0362b3ed20e7c006b05a732c0cb8e1a9`];
+
+								if (Pulls.mug/*Raw.mugs[1][Pulls.mug] /*&& Allows.indexOf(Pulls.mug) > -1*/) {
+
+									let TX = [];
+
+									Raw.b4[0].forEach(B4 => {
+
+										if (B4.complete === false) TX.push(B4);
+									});
+
+									Arg[1].end(Tools.coats({incoming: TX}));
+								}
+							}
+
+							if (Pulls.pull === `pollB4`) {	
+
+								if (Raw.b4[1][Pulls.md]) {
+
+									if (typeof Pulls.float !== `number` || Pulls.float <= 0) return;
+
+									let Bill = Raw.b4[1][Pulls.md];
+
+									Sql.puts([`spot`, {
+										md: Bill.md,
+										symbol: Bill.symbol,
+										till: {
+											[hold]: 0,
+											[Bill.mug]: [0, Pulls.float]},
+										ts: Bill.ts,
+										tx: false,
+										type: `coin`}, (Q) => {
+
+                							let Old = Tools.typen(Tools.coats(Bill));
+
+                							Bill.complete = true;
+
+											Sql.places([`b4`, Bill, Old, (Q) => {Arg[1].end(Tools.coats({}));}]);
+										}]);
+								}
+							}
+
 							if (Pulls.pull === `pollPay`) {
 
           						if (Raw.payout[1][Pulls.md]) {
@@ -1138,12 +1182,14 @@ class Route {
 										}
 									});
 
+									let Spot = Tools.holding([Raw, Pulls.mug]);
+
 									Arg[1].end(Tools.coats({ 
 										cumulative: pnl,
 										debit: (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0,
 										holdXY: HoldXY[0],
 										pairs: Pairs,
-										pnl: PNL, pool: Pool, runs: era/86400000,
+										pnl: PNL, pool: Pool, runs: era/86400000, spot: Spot,
 										till: Raw.till[0].length,
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
 										tx: TX,

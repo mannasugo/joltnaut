@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`b4`, `book`, `invoice`, `mugs`, `payout`, `peers`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`b4`, `book`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -98,6 +98,16 @@ class Sql {
 
 				if (put === 10) {
 
+					Put.forEach(Spot => {
+
+						Puts.spot[0].push(JSON.parse(Spot.json));
+
+						Puts.spot[1][JSON.parse(Spot.json).md] = JSON.parse(Spot.json);
+					});
+				}
+
+				if (put === 11) {
+
 					Put.forEach(Till => {
 
 						Puts.till[0].push(JSON.parse(Till.json));
@@ -106,7 +116,7 @@ class Sql {
 					});
 				}
 
-				if (put === 11) {
+				if (put === 12) {
 
 					Put.forEach(Trade => {
 
@@ -116,7 +126,7 @@ class Sql {
 					});
 				}
 
-				if (put === 12) {
+				if (put === 13) {
 
 					Put.forEach(TRON => {
 
@@ -126,7 +136,7 @@ class Sql {
 					});
 				}
 
-				if (put === 14) {
+				if (put === 15) {
 
 					Put.forEach(Vow => {
 
@@ -284,13 +294,39 @@ class Tools {
 		return Hold[2];
 	}
 
+	holding (Arg) {
+
+		let Spot = [[`btc`, `usdt`], {}];
+
+		let Till = this.typen(this.coats(Arg[0].spot[0]));
+
+		Spot[0].forEach(coin => {
+
+			let cumulate = 0;
+
+			Till.sort((A, B) => {return A.ts - B.ts}).forEach(MD => {
+
+				//let holden = 0;
+
+				if (MD.symbol === coin && MD.till[Arg[1]]) {
+
+					cumulate += MD.till[Arg[1]][1]
+				}
+			});
+
+			Spot[1][coin] = cumulate;
+		});
+
+		return Spot[1];
+	}
+
 	pairs (Raw) {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [60735.01, 61177.41]],
-			ts_a: new Date(`2024-05-13 06:21`).valueOf(), 
-			ts_z: new Date(`2024-05-13 06:59`).valueOf()
+			pair: [`btc/fdusd`, [61385.40, 61902.34]],
+			ts_a: new Date(`2024-05-14 09:21`).valueOf(), 
+			ts_z: new Date(`2024-05-14 09:39`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -379,21 +415,21 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 60942.03]]}, 
-			{pair: [[`eth`, `usd`], [0, 2886.93]]}, 
-			{pair: [[`ltc`, `usd`], [0, 79.83]]}, 
-			{pair: [[`usdt`, `usd`], [0, 1.0002]]}, 
-			{pair: [[`aud`, `usd`], [0, .65961]]}, 
-			{pair: [[`cad`, `usd`], [0, 1/1.36803]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.07722]]}, 
-			{pair: [[`jpy`, `usd`], [0, 1/155.820]]},
-			{pair: [[`kes`, `usd`], [0, 1/136.22]]},
-			{pair: [[`nok`, `usd`], [0, 1/10.86043]]},
-			{pair: [[`nzd`, `usd`], [0, .60095]]}, 
-			{pair: [[`zar`, `usd`], [0, 1/18.40216]]}, 
-			{pair: [[`sek`, `usd`], [0, 1/10.84259]]},
-			{pair: [[`gbp`, `usd`], [0, 1.25246]]}, 
-			{pair: [[`chf`, `usd`], [0, .90658]]}
+			{pair: [[`btc`, `usd`], [0, 61998.82]]}, 
+			{pair: [[`eth`, `usd`], [0, 2912.52]]}, 
+			{pair: [[`ltc`, `usd`], [0, 79.93]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9993]]}, 
+			{pair: [[`aud`, `usd`], [0, .66012]]}, 
+			{pair: [[`cad`, `usd`], [0, 1/1.36757]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.07865]]}, 
+			{pair: [[`jpy`, `usd`], [0, 1/156.484]]},
+			{pair: [[`kes`, `usd`], [0, 1/130.22]]},
+			{pair: [[`nok`, `usd`], [0, 1/10.81810]]},
+			{pair: [[`nzd`, `usd`], [0, .60202]]}, 
+			{pair: [[`zar`, `usd`], [0, 1/18.41496]]}, 
+			{pair: [[`sek`, `usd`], [0, 1/10.85879]]},
+			{pair: [[`gbp`, `usd`], [0, 1.25459]]}, 
+			{pair: [[`chf`, `usd`], [0, .90793]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));
