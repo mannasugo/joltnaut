@@ -33,7 +33,7 @@ let App = createSecureServer({
   	allowHTTP1: true
 }, (call, put) => {Call([call, put]);});
 
-pollPay();
+//pollPay();
 
 App.on(`error`, (err) => console.error(err));
 

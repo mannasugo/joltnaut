@@ -599,6 +599,8 @@ class Route {
 						View.DOM([`div`, [Models.trader(Web)]]);
 
 						Events.tradeSlot();
+
+						Events.pollBook([Web.pair]);
 					}
 				}	
     		}

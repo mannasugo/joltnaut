@@ -278,15 +278,15 @@ let Models = {
 														[`img`, {src: `/ssl/given/svg/tokens/usdt.svg`, style: {[`max-width`]: `${18}px`, transform: `translateX(${-7.6667}px)`}}], 
 														[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `BTC/USDT`]]], 
 												[`div`, {style: {width: `${20}%`}}, 
-													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${Web.till}`]]], 
+													[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${Web.till}`]]], 
 												[`div`, {class: `_geQ _gxM`, style: {[`justify-content`]: `end`, width: `${25}%`}},  
 													[
 														[`span`, {class: `v20240221434`, style: {height: `${15}px`, [`margin-right`]: `${8}px`, width: `${15}px`}}],
-														[`span`, {style: {color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `arcane`, [`font-size`]: `${12}px`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]], 
+														[`span`, {style: {color: `rgb(${255}, ${215}, ${2})`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `+${(Web.pnl[0]).toFixed(2)}%`]]], 
 												[`div`, {style: {width: `${12.5}%`}}, 
-													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(Web.runs).toFixed(1)}`]]], 
+													[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.runs).toFixed(1)}`]]], 
 												[`div`, {style: {width: `${12.5}%`}}, 
-													[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${2.5}`]]], 
+													[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${2.5}`]]], 
 												[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 													[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]]]]]]], 
 					this.us()]]
@@ -2804,8 +2804,10 @@ let Models = {
 
 	trader: function (Web) {
 
-		let Flag = [[`BTC`, `ETH`, `LTC`, `USDT`], {USD: `us`}]
+		let Flag = [[`BTC`, `ETH`, `LTC`, `USDT`], {USD: `us`}];
 
+		for (let coin in Web.spot) Web.debit += Web.spot[coin]*Web.xUSD[coin]
+		
 		return [
 			`main`, {id: `trader`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
@@ -2814,7 +2816,7 @@ let Models = {
 							[
 								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 								[`div`, {class: `_eYG`}, 
-									[[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${15}px`, [`font-weight`]: 400}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]], 
+									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 300, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]], 
 								[`div`, {class: `_gZz`, style: {display: `none`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[
 										[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Transfer`],
@@ -2833,7 +2835,7 @@ let Models = {
 													[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `Spot Market`]]],
 											[`div`, {style: {[`margin-left`]: `${48}px`}},
 												[
-													[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.value} ${Web.pair[1]}`], 
+													[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: 0}}, `${(Web.value).toLocaleString()} ${Web.pair[1]}`], 
 													[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `Market Price`]]]]]]], 
 							[`div`, {style: {[`margin-top`]: `${24}px`, padding: `${0}px ${24}px ${12}px`}}, 
 								[
@@ -2847,7 +2849,7 @@ let Models = {
 															[`div`, {class: `_gZz`}, 
 																[
 																	[`span`, {class: `v202312301635`, style: {height: `${24}px`, width: `${24}px`}}],
-																	[`span`, {style: {color: `#696969`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.debit.toFixed(2)} ${Web.pair[1]}`]]]]],
+																	[`span`, {style: {color: `#696969`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`line-height`]: `${14}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${(Web.spot[Web.pair[1].toLowerCase()])? Web.spot[Web.pair[1].toLowerCase()].toFixed(2): `${(0).toFixed(2)}`} ${Web.pair[1]}`]]]]],
 													[`div`, {class: `_gxM _geQ`, style: {padding: `${12}px 0`}},
 														[
 															[`span`, {style: {[`font-size`]: `${12}px`}}, `Price`], 
@@ -2865,8 +2867,8 @@ let Models = {
 																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
 																			[ 
 																				[`div`, {class: `_gxM _gZz _geQ`}, 
-																					[[`input`, {id: `buySlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
-													[`a`, {href: `javascript:;`, style: {background: `#0fd064`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `BUY ${Web.pair[0]}`]]],
+																					[[`input`, {id: `askSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+													[`a`, {href: `javascript:;`, id: `pollBook`, for: `askSlot`, symbol: Web.pair[1].toLowerCase(), style: {background: `#0fd064`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `BUY ${Web.pair[0]}`]]],
 											[`div`, {style: {padding: `0 0 0 ${12}px`, width: `${50}%`}}, 
 												[
 													[`div`, {class: `_gxM _geQ`},
@@ -2875,7 +2877,7 @@ let Models = {
 															[`div`, {class: `_gZz`}, 
 																[
 																	[`span`, {class: `v202312301635`, style: {height: `${24}px`, width: `${24}px`}}],
-																	[`span`, {style: {color: `#696969`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${Web.debit.toFixed(2)} ${Web.pair[0]}`]]]]],
+																	[`span`, {style: {color: `#696969`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`line-height`]: `${14}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `${(Web.spot[Web.pair[0].toLowerCase()])? Web.spot[Web.pair[0].toLowerCase()]: `${(0).toFixed(2)}`} ${Web.pair[0]}`]]]]],
 													[`div`, {class: `_gxM _geQ`, style: {padding: `${12}px 0`}},
 														[
 															[`span`, {style: {[`font-size`]: `${12}px`}}, `Price`], 
@@ -2893,8 +2895,8 @@ let Models = {
 																		[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
 																			[ 
 																				[`div`, {class: `_gxM _gZz _geQ`}, 
-																					[[`input`, {id: `sellSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `cula`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
-													[`a`, {href: `javascript:;`, id: ``, style: {background: `#d00f33`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `SELL ${Web.pair[0]}`]]]]]]]]], this.us()]]
+																					[[`input`, {id: `bidSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+													[`a`, {href: `javascript:;`, id: `pollBook`, for: `bidSlot`, symbol: Web.pair[0].toLowerCase(), style: {background: `#d00f33`, color: `#fff`, [`font-weight`]: 600, [`font-size`]: `${12}px`, margin: `${16}px 0 0 0`, padding: `${8}px ${8}px`, [`text-align`]: `center`}}, `SELL ${Web.pair[0]}`]]]]]]]]], this.us()]]
 	},
 
 	txCoin: function (Web) {
@@ -3314,20 +3316,20 @@ let Models = {
 									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.spot)? `${Web.spot[Flag[0]]}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.spot)? `${Web.spot[Flag[0]]}`: `${(0).toFixed(2)}`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[Flag[0]])? `${(Web.xUSD[Flag[0]]).toLocaleString()}`: `-`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[Flag[0]])? `${(Web.xUSD[Flag[0]]).toLocaleString()}`: `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.spot)? `${(Web.spot[Flag[0]]*Web.xUSD[Flag[0]]).toFixed(2)}`: `${(0).toFixed(2)}`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.spot)? `${(Web.spot[Flag[0]]*Web.xUSD[Flag[0]]).toFixed(2)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {class: `v202203261943`, for: `${Flag[0]}`, href: `javascript:;`, id: `token`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
 		});
@@ -3361,20 +3363,20 @@ let Models = {
 									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`text-align`]: `right`}}, (Web.xUSD[(Flag[1]).toLowerCase()])? `${(Web.xUSD[(Flag[1]).toLowerCase()]).toLocaleString()}`: `-`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[(Flag[1]).toLowerCase()])? `${(Web.xUSD[(Flag[1]).toLowerCase()]).toFixed(4)}`: `-`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
-													[
-														[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `${(0).toFixed(2)}`], 
-														[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  (Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]*Web.xUSD[Flag[1].toLowerCase()]).toFixed(2)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
 		});

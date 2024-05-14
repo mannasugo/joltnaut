@@ -296,7 +296,7 @@ class Tools {
 
 	holding (Arg) {
 
-		let Spot = [[`btc`, `usdt`], {}];
+		let Spot = [[`btc`, `usd`, `usdt`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 

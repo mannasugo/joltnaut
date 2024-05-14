@@ -458,6 +458,48 @@ class Events {
 		});
 	}
 
+	pollBook (Arg) {
+
+		document.querySelectorAll(`#pollBook`).forEach(Allow => {
+
+			this.listen([Allow, `click`, S => {
+
+				if (!Clients.mug) window.location = `/signin`;
+
+				let idSlot = this.getSource(S).getAttribute(`for`);
+
+				let Values = 
+					[(!Tools.slim(document.querySelector(`#` + idSlot).value))? false: Tools.slim(document.querySelector(`#` + idSlot).value)];
+
+				if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+				if (parseFloat(Values[0]) <= 0 ) return;
+
+				let Puts = Tools.pull([
+					`/json/web/`, { 
+						float: parseFloat(Values[0]),
+						mug: Clients.mug,
+						pair: [Arg[0][0].toLowerCase(), Arg[0][1].toLowerCase()],
+						pull: `pollBook`,
+						side: (idSlot === `askSlot`)? `buy`: `sell`,
+						symbol: this.getSource(S).getAttribute(`symbol`)}]);
+
+				Values = [];
+
+				View.pop();
+
+				View.DOM([`div`, [Models.splash]]);
+
+				Puts.onload = () => {
+
+					let Web = JSON.parse(Puts.response);
+
+					if (Web) window.location = window.location;
+				}
+			}]);
+		});
+	}
+
 	pollCellSlots () {
 
 		this.listen([document.querySelector(`#pollCellSlots`), `click`, S => {
@@ -701,7 +743,7 @@ class Events {
 
 	tradeSlot () {
 
-		this.listen([document.querySelector(`#buySlot`), `keyup`, S => {
+		this.listen([document.querySelector(`#askSlot`), `keyup`, S => {
 
 			let Slot = this.getSource(S);
 
@@ -712,7 +754,7 @@ class Events {
 			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
 		}]);
 
-		this.listen([document.querySelector(`#sellSlot`), `keyup`, S => {
+		this.listen([document.querySelector(`#bidSlot`), `keyup`, S => {
 
 			let Slot = this.getSource(S);
 

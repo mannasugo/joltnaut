@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -286,7 +286,7 @@ class Route {
 											[Bill.mug]: [0, Pulls.float]},
 										ts: Bill.ts,
 										tx: false,
-										type: `coin`}, (Q) => {
+										type: `deposit`}, (Q) => {
 
                 							let Old = Tools.typen(Tools.coats(Bill));
 
@@ -984,6 +984,94 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `pollBook`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									let Assets = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+
+									let USD = {usd: 1};
+
+									Assets.forEach(holding => {
+
+										let All = [];
+
+										Raw.book[0].forEach(Book => {
+
+											if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+										});
+
+										All = All.sort((A, B) => {return B[1] - A[1]});
+
+										USD[holding] = All[0][0];
+									});
+
+									let ts = new Date().valueOf();
+
+									let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+									let Row = [{
+										md: md, 
+										symbol: Pulls.pair[0],
+										till: {
+											[hold]: 0,
+											[Pulls.mug]: [0, -Pulls.float]},
+										ts: ts,
+										tx: false,
+										type: `trade`}, {
+										md: md, 
+										symbol: Pulls.pair[1],
+										till: {
+											[hold]: 0,
+											[Pulls.mug]: [0, Pulls.float*USD[Pulls.pair[0]]]},
+										ts: ts,
+										tx: false,
+										type: `trade`}];
+
+									let float = Pulls.float;
+
+									if (Pulls.side === `buy`) {
+
+										Pulls.float = Pulls.float*USD[Pulls.pair[0]];
+
+										Row = [{
+											md: md, 
+											symbol: Pulls.pair[0],
+											till: {
+												[hold]: 0,
+												[Pulls.mug]: [0, (Pulls.float/USD[Pulls.pair[0]])]},
+											ts: ts,
+											tx: false,
+											type: `trade`}, {
+											md: md, 
+											symbol: Pulls.pair[1],
+											till: {
+												[hold]: 0,
+												[Pulls.mug]: [0, -(Pulls.float)]},
+											ts: ts,
+											tx: false,
+											type: `trade`}];
+									}
+
+									let Holding = Tools.holding([Raw, Pulls.mug]);
+
+									if (Holding[Pulls.symbol] > Pulls.float) {
+
+										Sql.putlist([`spot`, Row, (Q) => {
+
+          									Sql.puts([`book`, {
+          										ilk: `market`,
+          										md: md,
+          										mug: Pulls.mug,
+          										pair: [Pulls.pair, [float, USD[Pulls.pair[0]]]], 
+          										side: Pulls.side,
+          										ts: ts,
+          										ts_z: ts}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
+											}]);
+									}
+								}
+							}
+
 							if (Pulls.pull === `pools`) {
 
 								let Pairs = [];
@@ -1022,7 +1110,7 @@ class Route {
 
 								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
 
-								let USD = {};
+								let USD = {usd: 1};
 
 								Holding.forEach(holding => {
 
@@ -1493,10 +1581,29 @@ class Route {
 										if (Value.pair[0][0] === Duo[0] && Value.pair[0][1] === Duo[1]) Book.push(Value);
 									});
 
+									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+
+									let USD = {usd: 1};
+
+									Holding.forEach(holding => {
+
+										let All = [];
+
+										Raw.book[0].forEach(Book => {
+
+											if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+										});
+
+										All = All.sort((A, B) => {return B[1] - A[1]});
+
+										USD[holding] = All[0][0];
+									});
+
 									Arg[1].end(Tools.coats({
 										debit: 0,
 										pair: [Pulls.pair.split(`_`)[0], Pulls.pair.split(`_`)[1]],
-										value: Book[0].pair[1][1]}));
+										spot: (Raw.mugs[1][Pulls.mug])? Tools.holding([Raw, Pulls.mug]): {},
+										value: Book[0].pair[1][1], xUSD: USD}));
 								}
 							}
 
