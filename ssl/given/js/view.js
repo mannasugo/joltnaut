@@ -3375,7 +3375,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  (Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]*Web.xUSD[Flag[1].toLowerCase()]).toFixed(2)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  (Web.spot && Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]*Web.xUSD[Flag[1].toLowerCase()]).toFixed(2)}`: `${(0).toFixed(2)}`], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {href: `/pools/BTC_USDT`, class: `v202203261943`, style: {height: `${18}px`, [`max-width`]: `${18}px`}}]]]]]);
