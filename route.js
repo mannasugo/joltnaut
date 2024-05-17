@@ -646,14 +646,14 @@ class Route {
 									let Wallet = {
 										btc: [
 										`1BDEtH9AufT4pZiJuaVuQ4G5RvXwKPYfwa`,
-										`bc1qfppprm37g0e9m602a0x84ap6qcqc2cf3742hd0`,
+										//`bc1qfppprm37g0e9m602a0x84ap6qcqc2cf3742hd0`,
 										`bc1q2y8fnnhp5dsp37ndhfum2wjhx2p7tq06lre3s2`, 
 										`34miqr44ju9RVdAFa2pHjkQEtP9V8MQZ4M`, 
 										`387LYybUtUs6a6Nkgfsf2vpeeEhfqxReLo`], 
 										usdt: [
 										`TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`, 
 										`THGN8p5Hx4GNCLJM7Mtq8kFG7T9qwqX5K3`, 
-										`TU5jQ1o9HiP2LJMZbLFqgjGFjjpxLnDEtn`, 
+										//`TU5jQ1o9HiP2LJMZbLFqgjGFjjpxLnDEtn`, 
 										`TWxNVYYtFWuZygwW346mqAZKfpmW6nU4mG`]};
 
 									let B64 = [[], []];
@@ -1508,7 +1508,7 @@ class Route {
 
 									let Param = Pulls.param;
 
-									if (Param.float >= 2.5) {
+									if (Param.float >= .75) {
 
 										let ts = new Date().valueOf();
 

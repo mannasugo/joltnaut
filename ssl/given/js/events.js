@@ -718,7 +718,7 @@ class Events {
 
 			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
 
-			if (parseFloat(Values[0]) <= 0 || Arg.apex < parseFloat(Values[0]) || 2.5 > parseFloat(Values[0])) return;
+			if (parseFloat(Values[0]) <= 0 || Arg.apex < parseFloat(Values[0]) || .75 > parseFloat(Values[0])) return;
 
 			let Puts = Tools.pull([
 				`/json/web/`, { 
