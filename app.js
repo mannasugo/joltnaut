@@ -30,8 +30,7 @@ Sql.pulls(Raw => {
 let App = createSecureServer({
   	key: readFileSync(`http2/ssl/privkey.pem`),
   	cert: readFileSync(`http2/ssl/fullchain.pem`),
-  	allowHTTP1: true
-}, (call, put) => {Call([call, put]);});
+  	allowHTTP1: true}, (call, put) => {Call([call, put]);});
 
 pollPay();
 
