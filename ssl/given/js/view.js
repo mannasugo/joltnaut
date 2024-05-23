@@ -360,6 +360,111 @@ let Models = {
 																	[`span`, {style: {}}, `WITHDRAW`]]]]]]]]]]]]]]]]];
 	},
 
+	autoFX: function (Web) {
+
+		let Param = [
+			[], 
+			[[`asset`, 20], [`amount`, 20, true], [`price`, 22.5, true], [`change`, 17.5, true], [`value`, 20, true]/*, [``, 7.5, true]*/]];
+
+		Param[1].forEach(Feat => {
+
+			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {color: `#b3b3b3`, [`font-size`]: `${10}px`, [`font-weight`]: 600, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+
+		});
+
+		let Coin = [];
+
+		if (Web.spot) {
+
+			Web[`now`] = 0
+
+			for (let coin in Web.spot) Web.now += Web.spot[coin]*Web.USD[coin]
+		}
+
+		let Fiat = [
+			[],
+			[
+				[`au`, `AUD`, `australian dollar`],
+				[`ca`, `CAD`, `canadian dollar`],
+				[`eu`, `EUR`, `euro`],
+				[`jp`, `JPY`, `japanese yen`],
+				[`ke`, `KES`, `kenyan shilling`],
+				[`no`, `NOK`, `norwegian krone`],
+				[`nz`, `NZD`, `new zealand dollar`],
+				[`za`, `ZAR`, `south african rand`],
+				[`se`, `SEK`, `swedish krone`],
+				[`ch`, `CHF`, `swiss franc`],
+				[`uk`, `GBP`, `sterling pound`],
+				[`us`, `USD`, `us dollar`]], []];
+
+		Web.spot[`kes`] = 37.91;
+
+		Fiat[1].forEach(Flag => {
+
+			if (Web.spot[Flag[1].toLowerCase()]) Fiat[2].push(Flag)
+		});
+
+		Fiat[2].forEach(Flag => {
+
+			Fiat[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/flags/${Flag[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
+							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `${Flag[1]}`], 
+									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.spot && Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]).toFixed(2)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.USD[(Flag[1]).toLowerCase()])? `${(Web.USD[(Flag[1]).toLowerCase()]).toFixed(4)}`: `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  (Web.spot && Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]*Web.USD[Flag[1].toLowerCase()]).toFixed(2)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]]]]);
+		});
+
+		return [
+			`main`, {id: `wallet`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, 
+									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 300, [`letter-spacing`]: 0}}, `${parseFloat(Web.now).toFixed(2)} USD`]]], 
+								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+									[
+										//[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Transfer`],
+										[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Deposit`]]]]]]],
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
+						[ 
+							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
+								[
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Portfolio Overview`],
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Fiat Allocation`]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
+									[`div`, {}, Fiat[0]],
+									/*[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Ledger`]]]]],			
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
+									[`div`, {}, Fiat[0]]*/]]]], this.us()]]},
+
 	c2s: function () {
 
 		let Vaults = [Tools.typen(Clients.inVaults), []];
@@ -513,6 +618,52 @@ let Models = {
 								[`div`, {class: `_aXZ`, style: {[`margin-top`]: `${12}px`}}, [[`input`, {id: `cellNumerals`, placeholder: `M-PESA Mobile Number eg. 254...`, type: `text`}]]],
 								[`div`, {class: `_gM_a _agM _guZ`, style: {[`margin-top`]: `${16}px`, width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
 									[[`a`, {id: `pollCellSlots`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`}, `save`]]]]]]]]]
+	},
+
+	clientSlot: function () {
+
+		let Slot = {
+			action: [`signin`, `signin`],
+			slots: [[`email`, `email`, `email`], [`password`, `lock`, `password`]]
+		}, TC = [[], []];
+
+		let Slots = [];
+
+		Slot.slots.forEach(Slot => {
+
+			let Tip = [[], [], []];
+
+			if (Slot[0] === `password`) {
+
+				Tip[1] = [`div`, {class: `_gxM _geQ`, style: {margin: `${12}px 0 -${8}px`}}, 
+					[[`div`, {class: `_gZz`}, 
+						[[`a`, {href: `javascript:;`, style: {
+							[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`, 
+							[`margin-left`]: `${12}px`}}, `FORGOT PASSWORD?`]]]]]
+			}
+
+			Slots.push([`div`, {class: `_sZ2`}, 
+				[
+					[`label`, {style: {[`font-weight`]: 600, margin: `0 ${0}px ${12}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
+						[[`span`, {}, Slot[0]]]], 
+					[`div`, {class: `_aXZ`}, [[`input`, {id: Slot[1], type: Slot[2]}]]], Tip[0], Tip[1]]]);
+
+		});
+
+		return [`section`, {}, 
+			[ 
+				[`main`, {id: `clientSlot`, class: `_tY0`, style: {[`font-family`]: `litera`, [`font-size`]: `${12}px`, height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `_geQ`, style: {[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _aXZ`, style: {[`margin-bottom`]: `-${10}px`}}, 
+								[[`a`, {class: `-_tX v202304191915`, href: `/`, style: {height: `${36}px`, width: `${36}px`}}]]],
+									[`h2`, {}, `Autotrade Signin`], 
+									[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
+										[
+											[`div`, {}, Slots],
+											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+												[[`a`, {id: `pollSlot`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, style: {[`text-transform`]: `capitalize`}}, `Sign in`]]],
+											TC[0], TC[1]]]]]]]]]
 	},
 
 	clientTX: function (Arg) {

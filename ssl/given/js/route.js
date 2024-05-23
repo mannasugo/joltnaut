@@ -78,6 +78,38 @@ class Route {
 			}
     	}
 
+    	else if (this.State[3] === `autotrade`) {
+
+    		if (Clients.client) {
+
+				let Puts = Tools.pull([
+					`/json/auto/`, {
+						client: Clients.client,
+						pull: `app`}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.spot) {
+
+    					document.title = `Autotrade Portfolio`;
+					
+						View.DOM([`div`, [Models.autoFX(Web)]]);
+					}
+				}
+			}
+
+    		else {
+
+    			document.title = `Sign in | Autotrade`;
+					
+				View.DOM([`div`, [Models.clientSlot()]]);
+
+				Events.clientSlot();
+    		}
+    	}
+
     	else if (this.State[3] === `careers`) {
 
 			document.title = `Joltnaut Jobs`;

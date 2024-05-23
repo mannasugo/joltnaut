@@ -387,11 +387,11 @@ body {
 
 #cellSlots #OptColor, #vaultOpt #OptColor, #vaultSlots #slotColor {height: 14px;margin-right: 8px;width: 4px}
 
-#mugin h2, #vowCoin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
+#clientSlot h2, #mugin h2, #vowCoin h2 {padding: 32px 0 8px;width: 100%;margin: 0;text-transform: capitalize;font-weight: normal;}
 
-#mugin input {font-family: litera;}
+#clientSlot input, #mugin input {font-family: litera;}
 
-#cellSlots input, #contactSlot input, #inletWallet input, #inVaultSlot input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, 
+#cellSlots input, #clientSlot input, #contactSlot input, #inletWallet input, #inVaultSlot input, #mugin input, #pitvalue, #wallet input, #inlet, #vow, textarea, #getFloat, 
 #putFloat, #viafloat, #vialet {
   block-size: 40px;
   background-color:#f4f4f4;
@@ -409,7 +409,7 @@ body {
 
 #pitvalue input {padding: 10px 8px; text-align: right; font-family: geometria; font-size: 12px}
 
-#inletWallet input:focus, #mugin input:focus, #inlet:focus, #vow:focus, textarea:focus, #getFloat:focus, #putFloat:focus, #viafloat:focus, #vialet:focus {
+#clientSlot input:focus, #inletWallet input:focus, #mugin input:focus, #inlet:focus, #vow:focus, textarea:focus, #getFloat:focus, #putFloat:focus, #viafloat:focus, #vialet:focus {
   border: 1px solid #d0d1d2;
   outline: none;
 }
@@ -567,7 +567,7 @@ body {
 
   #mugs > ._aXZ {border: 1px solid #f4f4f4;border-radius: 4px;margin: 55px 0}
 
-  #mugin h2, #vowCoin h2 {letter-spacing: -.5px;font-size: 28px;font-weight:normal;line-height: 36px;color:#000;}
+  #clientSlot h2, #mugin h2, #vowCoin h2 {letter-spacing: -.5px;font-size: 28px;font-weight:normal;line-height: 36px;color:#000;}
 }
 
 @media (max-width: 920px) {
@@ -596,7 +596,7 @@ body {
 
 @media (max-width: 599px) {
 
-  #mugin h2, #vowCoin h2 {font-size: 25px;line-height: 28px}
+  #clientSlot h2, #mugin h2, #vowCoin h2 {font-size: 25px;line-height: 28px}
 
   #buy, #buyline {width: 100%; padding: 0; text-align: center;}
 

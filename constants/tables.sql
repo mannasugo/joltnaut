@@ -1,10 +1,14 @@
 select * from `asks`;
 
+select * from `autospot`;
+
 select * from `b4`;
 
 select * from `book`;
 
 select * from `bids`;
+
+select * from `clients`;
 
 select * from `invoice`;
 

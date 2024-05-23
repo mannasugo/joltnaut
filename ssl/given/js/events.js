@@ -89,6 +89,39 @@ class Events {
 		}]);
 	}
 
+	clientSlot (Arg) {
+
+		this.listen([document.querySelector(`#pollSlot`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#email`).value))? false: Tools.slim(document.querySelector(`#email`).value),
+				(!Tools.slim(document.querySelector(`#lock`).value))? false: Tools.slim(document.querySelector(`#lock`).value)];
+
+			if (Values[0] === false || Values[1] === false) return;
+
+			let Puts = Tools.pull([`/json/auto/`, {pull: `clientSlot`, slot : Values}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull && Pull.client) {
+
+					Clients.client = Pull.client;
+
+					window.location = window.location;
+				}
+			}
+
+		}]);
+	}
+
 	createVow (Arg) {
 
 		this.listen([document.querySelector(`#createVow`), `click`, S => {

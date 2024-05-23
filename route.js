@@ -93,6 +93,92 @@ class Route {
 
 					Arg[1].setHeader(`Content-Type`, `application/json`);
 
+					if (State[2] === `auto`) {
+
+						Sql.pulls(Raw => {
+
+							if (Pulls.pull === `app`) {
+
+								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+
+								let USD = {usd: 1};
+
+								Holding.forEach(holding => {
+
+									let All = [];
+
+									Raw.book[0].forEach(Book => {
+
+										if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+									});
+
+									All = All.sort((A, B) => {return B[1] - A[1]});
+
+									USD[holding] = All[0][0];
+								});
+
+								let Spot = Tools.holding([Raw, Pulls.client, `auto`]);
+
+								Arg[1].end(Tools.coats({ 
+									spot: Spot,
+									USD: USD}));
+							}
+
+							if (Pulls.pull === `clientSlot`) {
+
+								let Client = [[`mannasugo@gmail.com`, 32658507, 254704174162, 50]];
+
+								let Slot = [[], [], []];
+
+								Raw.clients[0].forEach(MD => {
+
+									if (MD.mail === Pulls.slot[0] 
+										&& MD.lock === createHash(`md5`).update(`${Pulls.slot[1]}`, `utf8`).digest(`hex`)) {
+
+										Slot[0] = [MD.md];
+									}
+
+									if (MD.mail === Pulls.slot[0]) Slot[1].push(MD.mail)
+								});
+
+								if (Slot[0].length > 0) {
+
+									Arg[1].end(Tools.coats({client: Slot[0][0]}));
+								}
+
+								Client.forEach(Mail => {
+
+									if (Mail[0] === Pulls.slot[0]) Slot[2] = Mail
+								});
+
+								if (Slot[0].length === 0 && Slot[1].length === 0 && Slot[2].length > 0) {
+
+									let ts = new Date().valueOf();
+
+									Sql.puts([`clients`, {
+										call: Slot[2][2],
+										lock: createHash(`md5`).update(`${Slot[2][1]}`, `utf8`).digest(`hex`),
+										mail: Slot[2][0],
+										md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`),
+										ts: ts}, (Raw) => {
+
+          									Sql.puts([`autospot`, {
+												md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`), 
+												symbol: `usd`,
+												till: {
+													[hold]: 0,
+													[createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)]: [0, Slot[2][3]]},
+												ts: ts,
+												tx: false,
+												type: `deposit`}, (Raw) => {
+
+													Arg[1].end(Tools.coats({client: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)}));}]);
+									}]);
+								}
+							}
+						});
+					}
+
 					if (State[2] === `gradle`) {
 
 						let Put = {};
@@ -806,7 +892,8 @@ class Route {
 
 								Raw.mugs[0].forEach(Mug => {
 
-									if (Mug.mail === Pulls.param[0] && Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
+									if (Mug.mail === Pulls.param[0] 
+										&& Mug.lock === createHash(`md5`).update(`${Pulls.param[1]}`, `utf8`).digest(`hex`)) {
 
 										Mugin = [Mug.md];
 									}

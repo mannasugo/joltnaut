@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`b4`, `book`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`autospot`, `b4`, `book`, `clients`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -38,6 +38,16 @@ class Sql {
 
 				if (put === 1) {
 
+					Put.forEach(Spot => {
+
+						Puts.autospot[0].push(JSON.parse(Spot.json));
+
+						Puts.autospot[1][JSON.parse(Spot.json).md] = JSON.parse(Spot.json);
+					});
+				}
+
+				if (put === 2) {
+
 					Put.forEach(B4 => {
 
 						Puts.b4[0].push(JSON.parse(B4.json));
@@ -46,7 +56,7 @@ class Sql {
 					});
 				}
 
-				if (put === 2) {
+				if (put === 3) {
 
 					Put.forEach(Book => {
 
@@ -56,7 +66,17 @@ class Sql {
 					});
 				}
 
-				if (put === 4) {
+				if (put === 5) {
+
+					Put.forEach(Client => {
+
+						Puts.clients[0].push(JSON.parse(Client.json));
+
+						Puts.clients[1][JSON.parse(Client.json).md] = JSON.parse(Client.json);
+					});
+				}
+
+				if (put === 6) {
 
 					Put.forEach(Bill => {
 
@@ -66,7 +86,7 @@ class Sql {
 					});
 				}
 
-				if (put === 5) {
+				if (put === 7) {
 
 					Put.forEach(Mug => {
 
@@ -76,7 +96,7 @@ class Sql {
 					});
 				}
 
-				if (put === 7) {
+				if (put === 9) {
 
 					Put.forEach(Pay => {
 
@@ -86,7 +106,7 @@ class Sql {
 					});
 				}
 
-				if (put === 8) {
+				if (put === 10) {
 
 					Put.forEach(Peer => {
 
@@ -96,7 +116,7 @@ class Sql {
 					});
 				}
 
-				if (put === 10) {
+				if (put === 12) {
 
 					Put.forEach(Spot => {
 
@@ -106,7 +126,7 @@ class Sql {
 					});
 				}
 
-				if (put === 11) {
+				if (put === 13) {
 
 					Put.forEach(Till => {
 
@@ -116,7 +136,7 @@ class Sql {
 					});
 				}
 
-				if (put === 12) {
+				if (put === 14) {
 
 					Put.forEach(Trade => {
 
@@ -126,7 +146,7 @@ class Sql {
 					});
 				}
 
-				if (put === 13) {
+				if (put === 15) {
 
 					Put.forEach(TRON => {
 
@@ -136,7 +156,7 @@ class Sql {
 					});
 				}
 
-				if (put === 15) {
+				if (put === 17) {
 
 					Put.forEach(Vow => {
 
@@ -175,8 +195,7 @@ class Sql {
 
 		this.Sql([{
 			sql: `insert into ?? (json) values?`,
-			values: [Arg[0], Put]}, (Raw) => Arg[2](Raw)]);
-			
+			values: [Arg[0], Put]}, (Raw) => Arg[2](Raw)]);			
 	}
 
 	puts (Arg) {
@@ -185,8 +204,7 @@ class Sql {
 
 		this.Sql([{
 			sql: `insert into ?? set ?`,
-			values: [Arg[0], {json: JSON.stringify(Arg[1])}]}, (Raw) => Arg[2](Raw)]);
-			
+			values: [Arg[0], {json: JSON.stringify(Arg[1])}]}, (Raw) => Arg[2](Raw)]);			
 	}
 }
 
@@ -300,13 +318,13 @@ class Tools {
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 
+		if (Arg[2] && Arg[2] === `auto`) Till = this.typen(this.coats(Arg[0].autospot[0]));
+
 		Spot[0].forEach(coin => {
 
 			let cumulate = 0;
 
 			Till.sort((A, B) => {return A.ts - B.ts}).forEach(MD => {
-
-				//let holden = 0;
 
 				if (MD.symbol === coin && MD.till[Arg[1]]) {
 
@@ -320,7 +338,7 @@ class Tools {
 		return Spot[1];
 	}
 
-	pairs (Raw) { //here
+	pairs (Raw) {
 		
 		let Pairs = [{
 			gas: 7.5/100,
@@ -415,10 +433,10 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 69494.26]]}, 
-			{pair: [[`eth`, `usd`], [0, 3784.34]]}, 
-			{pair: [[`ltc`, `usd`], [0, 86.29]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
+			{pair: [[`btc`, `usd`], [0, 67488.22]]}, 
+			{pair: [[`eth`, `usd`], [0, 3722.03]]}, 
+			{pair: [[`ltc`, `usd`], [0, 83.25]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9993]]}, 
 			{pair: [[`aud`, `usd`], [0, .66741]]}, 
 			{pair: [[`cad`, `usd`], [0, 1/1.36190]]}, 
 			{pair: [[`eur`, `usd`], [0, 1.08621]]}, 
