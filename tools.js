@@ -320,7 +320,7 @@ class Tools {
 		return Spot[1];
 	}
 
-	pairs (Raw) {
+	pairs (Raw) { //here
 		
 		let Pairs = [{
 			gas: 7.5/100,
