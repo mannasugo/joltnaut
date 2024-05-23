@@ -428,7 +428,7 @@ class Tools {
 
 	typen (coat) { return JSON.parse(coat); }
 
-	/**/
+	/**/////
 
 	values (Raw) {
 		
