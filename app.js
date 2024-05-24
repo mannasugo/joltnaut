@@ -16,11 +16,20 @@ Sql.pulls(Raw => {
 
 		Sql.putlist([`book`, SQ[0], (SQ) => {
 
-			Tools.pairs([Raw, (Puts) => {
+			Tools.execute([Raw, (Spot) => {
 
-				Sql.puts([`trades`, Puts[0], (SQ) => {
+				Sql.puts([`book`, Spot[0], (SQ) => {
 
-					Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+					Sql.putlist([`autospot`, Spot[1], (SQ) => {
+
+						Tools.pairs([Raw, (Puts) => {
+
+							Sql.puts([`trades`, Puts[0], (SQ) => {
+
+								Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+							}]);
+						}]);
+					}]);
 				}]);
 			}]);
 		}]);	

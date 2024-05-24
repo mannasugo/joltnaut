@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`autospot`, `b4`, `book`, `clients`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -78,6 +78,16 @@ class Sql {
 
 				if (put === 6) {
 
+					Put.forEach(Action => {
+
+						Puts.execute[0].push(JSON.parse(Action.json));
+
+						Puts.execute[1][JSON.parse(Action.json).md] = JSON.parse(Action.json);
+					});
+				}
+
+				if (put === 7) {
+
 					Put.forEach(Bill => {
 
 						Puts.invoice[0].push(JSON.parse(Bill.json));
@@ -86,7 +96,7 @@ class Sql {
 					});
 				}
 
-				if (put === 7) {
+				if (put === 8) {
 
 					Put.forEach(Mug => {
 
@@ -96,7 +106,7 @@ class Sql {
 					});
 				}
 
-				if (put === 9) {
+				if (put === 10) {
 
 					Put.forEach(Pay => {
 
@@ -106,7 +116,7 @@ class Sql {
 					});
 				}
 
-				if (put === 10) {
+				if (put === 11) {
 
 					Put.forEach(Peer => {
 
@@ -116,7 +126,7 @@ class Sql {
 					});
 				}
 
-				if (put === 12) {
+				if (put === 13) {
 
 					Put.forEach(Spot => {
 
@@ -126,7 +136,7 @@ class Sql {
 					});
 				}
 
-				if (put === 13) {
+				if (put === 14) {
 
 					Put.forEach(Till => {
 
@@ -136,7 +146,7 @@ class Sql {
 					});
 				}
 
-				if (put === 14) {
+				if (put === 15) {
 
 					Put.forEach(Trade => {
 
@@ -146,7 +156,7 @@ class Sql {
 					});
 				}
 
-				if (put === 15) {
+				if (put === 16) {
 
 					Put.forEach(TRON => {
 
@@ -156,7 +166,7 @@ class Sql {
 					});
 				}
 
-				if (put === 17) {
+				if (put === 18) {
 
 					Put.forEach(Vow => {
 
@@ -259,6 +269,63 @@ class Tools {
 		});
 	}
 
+	execute (Raw) {
+
+		let ts = new Date(`2024-05-24 10:03`).valueOf();
+
+		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
+		
+		let Pair = {
+			allocate: 25/100,
+			ilk: `market`,
+			md: md,
+			mug: hold,
+			pair: [[`aud`, `usd`], [0, .66741]],
+			side: `buy`,
+			ts: ts,
+			ts_z: ts
+		};
+
+		if (Raw[0].book[1][md]) return;
+
+		let Putlist = [];
+
+		Raw[0].clients[0].forEach(Mug => {
+
+			let Bals = this.holding([Raw[0], Mug.md, `auto`]);
+
+			if (Pair.side === `buy` && Bals[Pair.pair[0][1]] && Bals[Pair.pair[0][1]] > 0) {
+
+				let cost = (Bals[Pair.pair[0][1]]*Pair.allocate)/Pair.pair[1][1];
+
+				Putlist.push({
+					md: md, 
+					symbol: Pair.pair[0][0],
+					till: {
+						[hold]: 0,
+						[Mug.md]: [0, cost]},
+					ts: ts,
+					tx: false,
+					type: `trade`});
+
+				Putlist.push({
+					md: md, 
+					symbol: Pair.pair[0][1],
+					till: {
+						[hold]: 0,
+						[Mug.md]: [0, -(Bals[Pair.pair[0][1]]*Pair.allocate)]},
+					ts: ts,
+					tx: false,
+					type: `trade`});
+
+				Pair.pair[1][0] += cost;
+			}
+				
+		});
+
+		Raw[1]([Pair, Putlist]);
+	}
+
 	gas (Arg) {
 
 		Arg[0] = parseFloat(Arg[0]);
@@ -314,7 +381,7 @@ class Tools {
 
 	holding (Arg) {
 
-		let Spot = [[`btc`, `usd`, `usdt`], {}];
+		let Spot = [[`aud`, `btc`, `usd`, `usdt`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 

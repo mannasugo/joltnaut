@@ -10,6 +10,8 @@ select * from `bids`;
 
 select * from `clients`;
 
+select * from `execute`;
+
 select * from `invoice`;
 
 select * from `mugs`;
