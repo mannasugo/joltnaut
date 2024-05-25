@@ -271,16 +271,16 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-05-25 15:51`).valueOf();
+		let ts = new Date(`2024-05-25 18:31`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: 33/100,
+			allocate: 50/100,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`eur`, `usd`], [0, 1.08472]],
+			pair: [[`btc`, `usd`], [0, 69177.56]],
 			side: `buy`,
 			ts: ts,
 			ts_z: ts
@@ -314,6 +314,33 @@ class Tools {
 					till: {
 						[hold]: 0,
 						[Mug.md]: [0, -(Bals[Pair.pair[0][1]]*Pair.allocate)]},
+					ts: ts,
+					tx: false,
+					type: `trade`});
+
+				Pair.pair[1][0] += cost;
+			}
+
+			if (Pair.side === `sell` && Bals[Pair.pair[0][0]] && Bals[Pair.pair[0][0]] > 0) {
+
+				let cost = (Bals[Pair.pair[0][0]]*Pair.allocate)*Pair.pair[1][1];
+
+				Putlist.push({
+					md: md, 
+					symbol: Pair.pair[0][1],
+					till: {
+						[hold]: 0,
+						[Mug.md]: [0, cost]},
+					ts: ts,
+					tx: false,
+					type: `trade`});
+
+				Putlist.push({
+					md: md, 
+					symbol: Pair.pair[0][0],
+					till: {
+						[hold]: 0,
+						[Mug.md]: [0, -(Bals[Pair.pair[0][0]]*Pair.allocate)]},
 					ts: ts,
 					tx: false,
 					type: `trade`});
@@ -381,7 +408,7 @@ class Tools {
 
 	holding (Arg) {
 
-		let Spot = [[`aud`, `btc`, `usd`, `usdt`], {}];
+		let Spot = [[`aud`, `btc`, `eur`, `kes`, `usd`, `usdt`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 

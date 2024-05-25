@@ -80,27 +80,7 @@ class Route {
 
     	else if (this.State[3] === `autotrade`) {
 
-    		if (Clients.client) {
-
-				let Puts = Tools.pull([
-					`/json/auto/`, {
-						client: Clients.client,
-						pull: `app`}]);
-
-				Puts.onload = () => {
-
-					let Web = Tools.typen(Puts.response);
-
-					if (Web.spot) {
-
-    					document.title = `Autotrade Portfolio`;
-					
-						View.DOM([`div`, [Models.autoFX(Web)]]);
-					}
-				}
-			}
-
-    		else {
+    		if (!Clients.client) {
 
     			document.title = `Sign in | Autotrade`;
 					
@@ -108,6 +88,50 @@ class Route {
 
 				Events.clientSlot();
     		}
+
+    		if (Clients.client) {
+
+    			if (!State[4] && !Tools.slim[State[4]]) {
+
+					let Puts = Tools.pull([
+						`/json/auto/`, {
+							client: Clients.client,
+							pull: `app`}]);
+
+					Puts.onload = () => {
+
+						let Web = Tools.typen(Puts.response);
+
+						if (Web.spot) {
+
+    						document.title = `Autotrade Portfolio`;
+					
+							View.DOM([`div`, [Models.autoFX(Web)]]);
+						}
+					}	
+    			}
+
+    			else if (State[4] && State[4] === `wallet` && !State[5] && !Tools.slim[State[5]]) {
+
+					let Puts = Tools.pull([
+						`/json/auto/`, {
+							client: Clients.client,
+							pull: `app`}]);
+
+					Puts.onload = () => {
+
+						let Web = Tools.typen(Puts.response);
+
+						if (Web.spot) {
+
+    						document.title = `Portfolio Wallet Deposit`;
+					
+							View.DOM([`div`, [Models.walletSlot(Web)]]);
+
+							Events.walletSlot(Web)
+						}
+					}}
+			}
     	}
 
     	else if (this.State[3] === `careers`) {

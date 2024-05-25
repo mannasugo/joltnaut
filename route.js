@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -174,6 +174,69 @@ class Route {
 
 													Arg[1].end(Tools.coats({client: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)}));}]);
 									}]);
+								}
+							}
+
+							if (Pulls.pull === `pollB4`) {
+
+								if (Raw.clients[1][Pulls.client]) {console.log(Pulls)
+
+									let Slot = Pulls.slot;
+
+									if (Slot.float > 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										let Get = HTTPS.request({
+        									hostname: `payment.intasend.com`,
+        									port: 443,
+        									path: `/api/v1/payment/mpesa-stk-push/`,
+        									method: `POST`,
+       										headers: {
+       											Authorization: `Bearer ISSecretKey_live_c3481e0a-b1c5-4529-b761-bcee74225b6c`,
+       											[`Content-Type`]: `application/json`,
+       											INTASEND_PUBLIC_API_KEY: `ISPubKey_live_be13c375-b61d-4995-8c50-4268c604c335`}}, Got => {
+
+												let got = ``;
+
+												Got.on(`data`, (buffer) => {got += buffer;});
+        										
+        										Got.on('end', () => {
+
+          											if (got) {
+
+          												let TX = Tools.typen(got);
+
+          												if (TX.id) {
+
+          													Sql.puts([`invoice`, {
+          														complete: false,
+          														float: null,
+          														id: `254` + Slot.call, 
+          														invoice: TX.invoice.invoice_id, 
+          														local: Slot.float,
+          														md: md,
+          														mug: Pulls.client,
+          														ts: ts,
+          														type: `autospot`}, (Bill) => {
+
+																Arg[1].end(Tools.coats({client: Pulls.client}));
+															}]);
+														}
+          											}
+        										});
+										});
+
+										Get.write(Tools.coats({
+											amount: parseFloat(Slot.float),
+											api_ref: md,
+											email: Raw.clients[1][Pulls.client].mail,
+											phone_number: `254` + Slot.call}));
+
+										Get.end();
+									}
 								}
 							}
 						});
@@ -2034,7 +2097,7 @@ class Route {
 
           							let TX = Tools.typen(got);
 
-          							if (TX.invoice.state === `COMPLETE` && !Raw.till[1][Bill.md]) {
+          							if (Bill.type === `stk` && TX.invoice.state === `COMPLETE` && !Raw.till[1][Bill.md]) {
 
 										Sql.puts([`till`, {
 											flag: {stk: Bill.md},
@@ -2047,6 +2110,26 @@ class Route {
 											ts: Bill.ts,
 											tx: false,
 											vow: false}, (Q) => {
+
+                							let Old = Tools.typen(Tools.coats(Bill));
+
+                							Bill.complete = true;
+
+											Sql.places([`invoice`, Bill, Old, (Q) => {}]);
+										}]);
+									}
+
+          							if (Bill.type === `autospot` && TX.invoice.state === `COMPLETE` && !Raw.autospot[1][Bill.md]) {
+
+										Sql.puts([`autospot`, {
+											md: Bill.md, 
+											symbol: `kes`,
+											till: {
+												[hold]: 0,
+												[Bill.mug]: [0, Bill.local]},
+											ts: Bill.ts,
+											tx: false,
+											type: `deposit`}, (Q) => {
 
                 							let Old = Tools.typen(Tools.coats(Bill));
 

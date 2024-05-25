@@ -1012,6 +1012,63 @@ class Events {
 		}]);
 	}
 
+	walletSlot (Web) {
+
+		this.listen([document.querySelector(`#callSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			if (!parseInt(Slot.value)) Slot.value = 0;
+
+			if (Slot.value.length > 9) Slot.value = Slot.value.substr(0, 8);
+
+			Slot.value = parseInt(Slot.value);
+		}]);
+
+		this.listen([document.querySelector(`#floatSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			document.querySelector(`#swap`).innerHTML = (parseFloat(Slot.value)*Web.USD[`kes`]).toFixed(2) + ` USD`
+		}]);
+
+		this.listen([document.querySelector(`#walletSlot`), `click`, S => {
+
+			let Values = 
+				[(!Tools.slim(document.querySelector(`#callSlot`).value))? false: Tools.slim(document.querySelector(`#callSlot`).value),
+				(!Tools.slim(document.querySelector(`#floatSlot`).value))? false: Tools.slim(document.querySelector(`#floatSlot`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || Values[1] === false || typeof parseFloat(Values[1]) !== `number`) return;
+
+			if (parseFloat(Values[1]) <= 0 || Values[0].toString().length !== 9) return;
+
+			let Puts = Tools.pull([
+				`/json/auto/`, { 
+					client: Clients.client, 
+					slot : {float: parseFloat(Values[1]), call: parseFloat(Values[0])}, 
+					pull: `pollB4`}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web) window.location = `/autotrade`;
+			}
+		}]);
+	}
+
 	slotin () {
 
 		this.listen([document.querySelector(`#mugin`), `click`, Plot => {
