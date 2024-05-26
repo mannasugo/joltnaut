@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-05-22 03:08`).valueOf();
+		let ts = new Date(`2024-05-22 01:08`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,7 +280,7 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`jpy`, `usd`], [0, 1/156.225]],
+			pair: [[`nzd`, `usd`], [0, 1/22.1827]],
 			side: `buy`,
 			ts: ts,
 			ts_z: ts
@@ -408,7 +408,7 @@ class Tools {
 
 	holding (Arg) {
 
-		let Spot = [[`aapl`, `amzn`, `aud`, `btc`, `eur`, `hood`, `kes`, `nflx`, `nvda`, `para`, `pypl`, `tsla`, `usd`, `usdt`, `wbd`], {}];
+		let Spot = [[`aapl`, `amzn`, `aud`, `btc`, `eur`, `hood`, `jpy`, `kes`, `nflx`, `nvda`, `nzd`, `para`, `pypl`, `tsla`, `usd`, `usdt`, `wbd`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 
