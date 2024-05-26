@@ -470,6 +470,61 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]]]]);
 		});
 
+		let Stock = [
+			[],
+			[
+				[`amd`, `AMD`, `advanced microdevices inc`],
+				[`googl`, `GOOGL`, `alphabet inc`],
+				[`amzn`, `AMZN`, `amazon`],
+				[`aapl`, `AAPL`, `apple inc`],
+				[`bmbl`, `BMBL`, `bumble inc`],
+				[`gme`, `GME`, `gamestop corp`],
+				[`intc`, `INTC`, `intel corp`],
+				[`meta`, `META`, `meta platforms`],
+				[`msft`, `MSFT`, `microsoft corp`],
+				[`nflx`, `NFLX`, `netflix inc`],
+				[`nvda`, `NVDA`, `nvidia corp`],
+				[`para`, `PARA`, `paramount global`],
+				[`pypl`, `PYPL`, `paypal holdings inc`],
+				[`hood`, `HOOD`, `robinhood markets inc`],
+				[`tsla`, `TSLA`, `tesla inc`],
+				[`upwk`, `UPWK`, `upwork inc`],
+				[`wbd`, `WBD`, `warner bros discovery inc`]], []];
+
+		Stock[1].forEach(Flag => {
+
+			if (Web.spot[Flag[1].toLowerCase()]) Stock[2].push(Flag)
+		});
+
+		Stock[2].forEach(Flag => {
+
+			Stock[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/stock/${Flag[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
+							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `${Flag[1]}`], 
+									[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]]]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.spot && Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]).toFixed(6)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.USD[(Flag[1]).toLowerCase()])? `${(Web.USD[(Flag[1]).toLowerCase()]).toLocaleString()}`: `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  (Web.spot && Web.spot[Flag[1].toLowerCase()])? `${(Web.spot[Flag[1].toLowerCase()]*Web.USD[Flag[1].toLowerCase()]).toFixed(2)}`: `${(0).toFixed(2)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]]]]);
+		});
+
 		return [
 			`main`, {id: `wallet`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
@@ -494,12 +549,20 @@ let Models = {
 												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Forex Allocation`]]]]],
 									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
 									[`div`, {}, Fiat[0]],
-									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+									[`div`, {style: {display: (Coin[0].length > 0)? `flex`: `none`, [`margin-top`]: `${12}px`}}, 
 										[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 											[
 												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Digital Assets Allocation`]]]]],			
-									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
-									[`div`, {}, Coin[0]]]]]], this.us()]]},
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, (Coin[0].length > 0)? Param[0]: []], 
+									[`div`, {}, (Coin[0].length > 0)? Coin[0]: []], 
+									[`div`, {style: {display: (Stock[0].length > 0)? `flex`: `none`}}, 
+										[
+											[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+												[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+													[
+														[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Stocks Allocation`]]]]],
+											[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
+											[`div`, {}, Stock[0]]]]]]]], this.us()]]},
 
 	c2s: function () {
 

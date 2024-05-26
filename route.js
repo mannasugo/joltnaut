@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -99,7 +99,9 @@ class Route {
 
 							if (Pulls.pull === `app`) {
 
-								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+								let Holding = [
+								`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, 
+								`nzd`, `para`, `pypl`, `sek`, `tsla`, `usdt`, `wbd`, `zar`];
 
 								let USD = {usd: 1};
 
@@ -114,7 +116,7 @@ class Route {
 
 									All = All.sort((A, B) => {return B[1] - A[1]});
 
-									USD[holding] = All[0][0];
+									USD[holding] = (All[0])? All[0][0]: 0
 								});
 
 								let Spot = Tools.holding([Raw, Pulls.client, `auto`]);
@@ -126,7 +128,10 @@ class Route {
 
 							if (Pulls.pull === `clientSlot`) {
 
-								let Client = [[`mannasugo@gmail.com`, 32658507, 254704174162, 50]];
+								let Client = [
+								//[`mannasugo@gmail.com`, 32658507, 254704174162, 50], 
+								[`gordonouma@joltnaut.com`, 13384247, 254722897207, 50]
+								];
 
 								let Slot = [[], [], []];
 
