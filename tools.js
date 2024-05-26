@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-05-23 16:08`).valueOf();
+		let ts = new Date(`2024-05-22 03:08`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,7 +280,7 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`nvda`, `usd`], [0, 949.50]],
+			pair: [[`jpy`, `usd`], [0, 1/156.225]],
 			side: `buy`,
 			ts: ts,
 			ts_z: ts
@@ -534,10 +534,10 @@ class Tools {
 			{pair: [[`aud`, `usd`], [0, .66741]]}, 
 			{pair: [[`cad`, `usd`], [0, 1/1.36190]]}, 
 			{pair: [[`eur`, `usd`], [0, 1.08621]]}, 
-			{pair: [[`jpy`, `usd`], [0, 1/155.637]]},
+			{pair: [[`jpy`, `usd`], [0, 1/156.945]]},
 			{pair: [[`kes`, `usd`], [0, 1/129.11]]},
 			{pair: [[`nok`, `usd`], [0, 1/10.71545]]},
-			{pair: [[`nzd`, `usd`], [0, .61213]]}, 
+			{pair: [[`nzd`, `usd`], [0, 1/22.4310]]}, 
 			{pair: [[`zar`, `usd`], [0, 1/18.22654]]}, 
 			{pair: [[`sek`, `usd`], [0, 1/10.72661]]},
 			{pair: [[`gbp`, `usd`], [0, 1.26670]]}, 
