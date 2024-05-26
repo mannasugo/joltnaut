@@ -271,16 +271,16 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-05-26 18:01`).valueOf();
+		let ts = new Date(`2024-05-23 16:03`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .39,
+			allocate: .19,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 69281.26]],
+			pair: [[`amzn`, `usd`], [0, 180.04]],
 			side: `buy`,
 			ts: ts,
 			ts_z: ts
@@ -408,7 +408,7 @@ class Tools {
 
 	holding (Arg) {
 
-		let Spot = [[`aapl`, `amzn`, `aud`, `btc`, `eur`, `hood`, `kes`, `nflx`, `para`, `pypl`, `tsla`, `usd`, `usdt`, `wbd`], {}];
+		let Spot = [[`aapl`, `amzn`, `aud`, `btc`, `eur`, `hood`, `kes`, `nflx`, `nvda`, `para`, `pypl`, `tsla`, `usd`, `usdt`, `wbd`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 
@@ -541,7 +541,11 @@ class Tools {
 			{pair: [[`zar`, `usd`], [0, 1/18.22654]]}, 
 			{pair: [[`sek`, `usd`], [0, 1/10.72661]]},
 			{pair: [[`gbp`, `usd`], [0, 1.26670]]}, 
-			{pair: [[`chf`, `usd`], [0, .90666]]}
+			{pair: [[`chf`, `usd`], [0, .90666]]},
+
+			{pair: [[`aapl`, `usd`], [0, 189.97]]},
+			{pair: [[`amzn`, `usd`], [0, 180.75]]},
+			{pair: [[`nvda`, `usd`], [0, 1064.69]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));

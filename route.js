@@ -101,7 +101,7 @@ class Route {
 
 								let Holding = [
 								`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, 
-								`nzd`, `para`, `pypl`, `sek`, `tsla`, `usdt`, `wbd`, `zar`];
+								`nvda`, `nzd`, `para`, `pypl`, `sek`, `tsla`, `usdt`, `wbd`, `zar`];
 
 								let USD = {usd: 1};
 
@@ -130,7 +130,7 @@ class Route {
 
 								let Client = [
 								//[`mannasugo@gmail.com`, 32658507, 254704174162, 50], 
-								[`gordonouma@joltnaut.com`, 13384247, 254722897207, 50]
+								//[`gordonouma@joltnaut.com`, 13384247, 254722897207, 50]
 								];
 
 								let Slot = [[], [], []];
