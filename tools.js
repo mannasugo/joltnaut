@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-05-23 08:08`).valueOf();
+		let ts = new Date(`2024-05-27 06:08`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,8 +280,8 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 66682]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 69241]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -436,9 +436,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [68992.16, 69236.31]],
-			ts_a: new Date(`2024-05-26 08:29`).valueOf(), 
-			ts_z: new Date(`2024-05-26 09:01`).valueOf()
+			pair: [`btc/fdusd`, [68330.70, 68644.42]],
+			ts_a: new Date(`2024-05-27 08:29`).valueOf(), 
+			ts_z: new Date(`2024-05-27 09:05`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -527,21 +527,21 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 69306.25]]}, 
-			{pair: [[`eth`, `usd`], [0, 3860.91]]}, 
-			{pair: [[`ltc`, `usd`], [0, 84.68]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9996]]}, 
-			{pair: [[`aud`, `usd`], [0, .66741]]}, 
-			{pair: [[`cad`, `usd`], [0, 1/1.36190]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.08621]]}, 
-			{pair: [[`jpy`, `usd`], [0, 1/156.945]]},
-			{pair: [[`kes`, `usd`], [0, 1/129.11]]},
-			{pair: [[`nok`, `usd`], [0, 1/10.71545]]},
-			{pair: [[`nzd`, `usd`], [0, 1/22.4310]]}, 
-			{pair: [[`zar`, `usd`], [0, 1/18.22654]]}, 
-			{pair: [[`sek`, `usd`], [0, 1/10.72661]]},
-			{pair: [[`gbp`, `usd`], [0, 1.26670]]}, 
-			{pair: [[`chf`, `usd`], [0, .90666]]},
+			{pair: [[`btc`, `usd`], [0, 68509.47]]}, 
+			{pair: [[`eth`, `usd`], [0, 3907.44]]}, 
+			{pair: [[`ltc`, `usd`], [0, 84.35]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
+			{pair: [[`aud`, `usd`], [0, .66346]]}, 
+			{pair: [[`cad`, `usd`], [0, 1/1.36627]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08469]]}, 
+			{pair: [[`jpy`, `usd`], [0, 1/156.810]]},
+			{pair: [[`kes`, `usd`], [0, 1/131.74]]},
+			{pair: [[`nok`, `usd`], [0, 1/10.56786]]},
+			{pair: [[`nzd`, `usd`], [0, .61290]]}, 
+			{pair: [[`zar`, `usd`], [0, 1/18.39371]]}, 
+			{pair: [[`sek`, `usd`], [0, 1/10.65319]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27437]]}, 
+			{pair: [[`chf`, `usd`], [0, .91478]]},
 
 			{pair: [[`aapl`, `usd`], [0, 189.97]]},
 			{pair: [[`amzn`, `usd`], [0, 180.75]]},

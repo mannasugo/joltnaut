@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-//const TronWeb = require(`tronweb`);
+const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
