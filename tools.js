@@ -276,12 +276,12 @@ class Tools {
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: 1,
+			allocate: .56,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`nzd`, `usd`], [0, .38241]],
-			side: `sell`,
+			pair: [[`cad`, `usd`], [0, 1/1.36587]],
+			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
