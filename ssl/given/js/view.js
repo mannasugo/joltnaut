@@ -116,9 +116,9 @@ let Models = {
 			[], 
 			[[`pair`, 22.5], [`transactions`, 20, true], [`roi`, 25, true], [`runtime(days)`, 12.5, true], [`buyin(usd)`, 12.5, true], [``, 7.5, true]],
 			[], 
-			[[`asset`, 22.5], [`price`, 20, true], [`24h`, 10, true], [`vol. usd`, 20, true], [`market cap`, 20, true], [``, 7.5, true]],
+			[[`asset`, 22.5], [`price`, 20, true], [`24h`, 10, true], [`vol. 24h`, 20, true], [`market cap`, 20, true], [``, 7.5, true]],
 			[], 
-			[[`currency`, 22.5], [`last trade`, 20, true], [`24h`, 10, true], [`vol. usd`, 20, true], [`liquidity`, 20, true], [``, 7.5, true]]];
+			[[`currency`, 22.5], [`last trade`, 20, true], [`24h`, 10, true], [`vol. 24h`, 20, true], [`liquidity`, 20, true], [``, 7.5, true]]];
 
 		Param[1].forEach(Feat => {
 
@@ -174,7 +174,7 @@ let Models = {
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]*/]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.volume[Asset[0]]).toFixed(3)}`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
@@ -222,7 +222,7 @@ let Models = {
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]*/]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${Web.volume[Asset[1].toLowerCase()].toFixed(3)}`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {href: `javascript:;`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);

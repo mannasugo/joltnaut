@@ -1437,6 +1437,7 @@ class Route {
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
 										tx: TX,
 										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0,
+										volume: Tools.volume(Raw),
 										xUSD: USD}));
 								}
 
@@ -1466,7 +1467,8 @@ class Route {
 									pairs: Pairs,
 									pnl: PNL, runs: era/86400000,
 									till: Raw.till[0].length, debit: 0,
-										xUSD: USD}));
+										volume: Tools.volume(Raw),
+									xUSD: USD}));
 							}
 
 							if (Pulls.pull === `putC2s`) {

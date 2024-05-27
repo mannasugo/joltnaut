@@ -408,7 +408,9 @@ class Tools {
 
 	holding (Arg) {
 
-		let Spot = [[`aapl`, `amzn`, `aud`, `btc`, `eur`, `hood`, `jpy`, `kes`, `nflx`, `nvda`, `nzd`, `para`, `pypl`, `tsla`, `usd`, `usdt`, `wbd`], {}];
+		let Spot = [
+		[`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, `nvda`, `nzd`, `para`, `pypl`, 
+		`sek`, `tsla`, `usd`, `usdt`, `wbd`, `zar`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 
@@ -522,26 +524,24 @@ class Tools {
 
 	typen (coat) { return JSON.parse(coat); }
 
-	/**/
-
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 68509.47]]}, 
-			{pair: [[`eth`, `usd`], [0, 3907.44]]}, 
-			{pair: [[`ltc`, `usd`], [0, 84.35]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
-			{pair: [[`aud`, `usd`], [0, .66346]]}, 
-			{pair: [[`cad`, `usd`], [0, 1/1.36627]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.08469]]}, 
-			{pair: [[`jpy`, `usd`], [0, 1/156.810]]},
-			{pair: [[`kes`, `usd`], [0, 1/131.74]]},
-			{pair: [[`nok`, `usd`], [0, 1/10.56786]]},
-			{pair: [[`nzd`, `usd`], [0, .61290]]}, 
-			{pair: [[`zar`, `usd`], [0, 1/18.39371]]}, 
-			{pair: [[`sek`, `usd`], [0, 1/10.65319]]},
-			{pair: [[`gbp`, `usd`], [0, 1.27437]]}, 
-			{pair: [[`chf`, `usd`], [0, .91478]]},
+			{pair: [[`btc`, `usd`], [0, 69942.51]]}, 
+			{pair: [[`eth`, `usd`], [0, 3926.04]]}, 
+			{pair: [[`ltc`, `usd`], [0, 85.97]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9990]]}, 
+			{pair: [[`aud`, `usd`], [0, .66549]]}, 
+			{pair: [[`cad`, `usd`], [0, .73362]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08579]]}, 
+			{pair: [[`jpy`, `usd`], [0, .00637]]},
+			{pair: [[`kes`, `usd`], [0, .00747]]},
+			{pair: [[`nok`, `usd`], [0, .09532]]},
+			{pair: [[`nzd`, `usd`], [0, .61940]]}, 
+			{pair: [[`zar`, `usd`], [0, .05456]]}, 
+			{pair: [[`sek`, `usd`], [0, .09423]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27687]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.09478]]},
 
 			{pair: [[`aapl`, `usd`], [0, 189.97]]},
 			{pair: [[`amzn`, `usd`], [0, 180.75]]},
@@ -575,7 +575,33 @@ class Tools {
 		Raw[1]([Putlist]);
 	}
 
-	/**/
+	volume (Raw) {
+
+		let Client = [], Volume = {};
+
+		Raw.mugs[0].forEach(Mug => {
+
+			Client.push(this.holding([Raw, Mug.md]));
+		});
+
+		Raw.clients[0].forEach(Mug => {
+
+			Client.push(this.holding([Raw, Mug.md, `auto`]));
+		});
+
+		Client.forEach(Hold => {
+
+			for (let flag in Hold) {
+
+				Volume[flag] = 0;
+			}
+
+			for (let flag in Volume)  Volume[flag] += Hold[flag]
+
+		});
+
+		return Volume;
+	}
 }
 
 module.exports = {
