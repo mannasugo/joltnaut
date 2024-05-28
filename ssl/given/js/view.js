@@ -116,9 +116,9 @@ let Models = {
 			[], 
 			[[`pair`, 22.5], [`transactions`, 20, true], [`roi`, 25, true], [`runtime(days)`, 12.5, true], [`buyin(usd)`, 12.5, true], [``, 7.5, true]],
 			[], 
-			[[`asset`, 22.5], [`price`, 20, true], [`24h`, 10, true], [`vol. 24h`, 20, true], [`market cap`, 20, true], [``, 7.5, true]],
+			[[`asset`, 22.5], [`price`, 20, true], [`24h%`, 15, true], [`24h diff`, 15, true], [`market cap`, 20, true], [``, 7.5, true]],
 			[], 
-			[[`currency`, 22.5], [`last trade`, 20, true], [`24h`, 10, true], [`vol. 24h`, 20, true], [`liquidity`, 20, true], [``, 7.5, true]]];
+			[[`currency`, 22.5], [`last trade`, 20, true], [`24h%`, 15, true], [`24h diff`, 15, true], [`liquidity`, 20, true], [``, 7.5, true]]];
 
 		Param[1].forEach(Feat => {
 
@@ -147,9 +147,26 @@ let Models = {
 				[`btc`, `bitcoin`],
 				[`eth`, `ethereum`],
 				[`ltc`, `litecoin`],
-				[`usdt`, `tether`]]];
+				[`usdt`, `tether`],
+				[`xmr`, `monero`],
+				[`xrp`, `ripple`]]];
 
 		Coin[1].forEach(Asset => {
+
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Asset[0]]) {
+
+				let USD24 = Web.USD24[Asset[0]], USD = Web.xUSD[Asset[0]];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
 
 			Coin[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
@@ -164,14 +181,10 @@ let Models = {
 						[
 							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[Asset[0]])? `${(Web.xUSD[Asset[0]])}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
-					[`div`, {style: {width: `${10}%`}}, 
-						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
-					[`div`, {style: {width: `${20}%`}}, 
-						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]*/]], 
+					[`div`, {style: {width: `${15}%`}}, 
+						[[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]]]], 
+					[`div`, {style: {width: `${15}%`}}, 
+						[[`span`, {style: {color: H24[1], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[2]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
 							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.volume[Asset[0]]).toFixed(3)}`], 
@@ -199,30 +212,38 @@ let Models = {
 
 		Flag[1].forEach(Asset => {
 
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Asset[1].toLowerCase()]) {
+
+				let USD24 = Web.USD24[Asset[1].toLowerCase()], USD = Web.xUSD[Asset[1].toLowerCase()];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`;
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
+
 			Flag[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
 					[`div`, {class: `_geQ _gxM`, style: {width: `${22.5}%`}}, 
 						[
 							[`img`, {src: `/ssl/given/svg/flags/${Asset[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
 							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
-								[
-									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Asset[2]}`], 
+								[[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Asset[2]}`], 
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
-						[
-							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toFixed(4)}`: `-`], 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, (Web.xUSD[(Asset[1]).toLowerCase()])? `${(Web.xUSD[(Asset[1]).toLowerCase()]).toFixed(4)}`: `-`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
-					[`div`, {style: {width: `${10}%`}}, 
-						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
+					[`div`, {style: {width: `${15}%`}}, 
+						[[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]]]], 
+					[`div`, {style: {width: `${15}%`}}, 
+						[[`span`, {style: {color: H24[1], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[2]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
-						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
-							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]*/]], 
-					[`div`, {style: {width: `${20}%`}}, 
-						[
-							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${Web.volume[Asset[1].toLowerCase()].toFixed(3)}`], 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${Web.volume[Asset[1].toLowerCase()].toFixed(3)}`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
 						[[`a`, {href: `javascript:;`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
@@ -3054,7 +3075,7 @@ let Models = {
 
 	trader: function (Web) {
 
-		let Flag = [[`BTC`, `ETH`, `LTC`, `USDT`], {USD: `us`}];
+		let Flag = [[`BTC`, `ETH`, `LTC`, `USDT`, `XMR`, `XRP`], {USD: `us`}];
 
 		for (let coin in Web.spot) Web.debit += Web.spot[coin]*Web.xUSD[coin]
 		

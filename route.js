@@ -1263,7 +1263,7 @@ class Route {
 									Pairs.push(P2)
 								});
 
-								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
 
 								let USD = {usd: 1};
 
@@ -1435,7 +1435,7 @@ class Route {
 										pnl: PNL, pool: Pool, runs: era/86400000, spot: Spot,
 										till: Raw.till[0].length,
 										ts: Raw.mugs[1][Pulls.mug][`secs`],
-										tx: TX,
+										tx: TX, USD24: Tools.USD24(Raw),
 										vault: (Hold[0])? (Hold[0].hold[0]).toFixed(2): 0,
 										volume: Tools.volume(Raw),
 										xUSD: USD}));
@@ -1466,8 +1466,9 @@ class Route {
 									cumulative: 0,
 									pairs: Pairs,
 									pnl: PNL, runs: era/86400000,
-									till: Raw.till[0].length, debit: 0,
-										volume: Tools.volume(Raw),
+									till: Raw.till[0].length, debit: 0, 
+									USD24: Tools.USD24(Raw),
+									volume: Tools.volume(Raw),
 									xUSD: USD}));
 							}
 
@@ -1725,7 +1726,7 @@ class Route {
 
 							if (Pulls.pull === `trade`) {
 
-								let Pairs = [`BTC_USD`, `ETH_USD`, `LTC_USD`, `USDT_USD`];
+								let Pairs = [`BTC_USD`, `ETH_USD`, `LTC_USD`, `USDT_USD`, `XMR_USD`, `XRP_USD`];
 
 								if (Pairs.indexOf(Pulls.pair) > -1) {
 
@@ -1738,7 +1739,7 @@ class Route {
 										if (Value.pair[0][0] === Duo[0] && Value.pair[0][1] === Duo[1]) Book.push(Value);
 									});
 
-									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
 
 									let USD = {usd: 1};
 
