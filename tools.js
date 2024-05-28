@@ -438,12 +438,12 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [68330.70, 68644.42]],
-			ts_a: new Date(`2024-05-27 08:29`).valueOf(), 
-			ts_z: new Date(`2024-05-27 09:05`).valueOf()
+			pair: [`btc/fdusd`, [67653.41, 67935.85]],
+			ts_a: new Date(`2024-05-28 04:36`).valueOf(), 
+			ts_z: new Date(`2024-05-28 06:53`).valueOf()
 		}];
 
-		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
@@ -527,21 +527,24 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 69942.51]]}, 
-			{pair: [[`eth`, `usd`], [0, 3926.04]]}, 
-			{pair: [[`ltc`, `usd`], [0, 85.97]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9990]]}, 
+			{pair: [[`btc`, `usd`], [0, 67732.10]]}, 
+			{pair: [[`eth`, `usd`], [0, 3849.84]]}, 
+			{pair: [[`ltc`, `usd`], [0, 83.07]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9992]]}, 
+			{pair: [[`xmr`, `usd`], [0, 143.8575]]}, 
+			{pair: [[`xrp`, `usd`], [0, .05256]]},
+
 			{pair: [[`aud`, `usd`], [0, .66549]]}, 
-			{pair: [[`cad`, `usd`], [0, .73362]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.08579]]}, 
-			{pair: [[`jpy`, `usd`], [0, .00637]]},
-			{pair: [[`kes`, `usd`], [0, .00747]]},
-			{pair: [[`nok`, `usd`], [0, .09532]]},
-			{pair: [[`nzd`, `usd`], [0, .61940]]}, 
-			{pair: [[`zar`, `usd`], [0, .05456]]}, 
-			{pair: [[`sek`, `usd`], [0, .09423]]},
-			{pair: [[`gbp`, `usd`], [0, 1.27687]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.09478]]},
+			{pair: [[`cad`, `usd`], [0, .73392]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08692]]}, 
+			{pair: [[`jpy`, `usd`], [0, .00639]]},
+			{pair: [[`kes`, `usd`], [0, .00749]]},
+			{pair: [[`nok`, `usd`], [0, .09537]]},
+			{pair: [[`nzd`, `usd`], [0, .61643]]}, 
+			{pair: [[`zar`, `usd`], [0, .05446]]}, 
+			{pair: [[`sek`, `usd`], [0, .09453]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27737]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.09718]]},
 
 			{pair: [[`aapl`, `usd`], [0, 189.97]]},
 			{pair: [[`amzn`, `usd`], [0, 180.75]]},
