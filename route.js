@@ -1263,7 +1263,8 @@ class Route {
 									Pairs.push(P2)
 								});
 
-								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, `sek`, `chf`, `gbp`];
+								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+								`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `nflx`, `nvda`, `para`, `pypl`, `tsla`, `wbd`];
 
 								let USD = {usd: 1};
 
@@ -1278,7 +1279,7 @@ class Route {
 
 									All = All.sort((A, B) => {return B[1] - A[1]});
 
-									USD[holding] = All[0][0];
+									USD[holding] = (All[0])? All[0][0]: 0
 								});
 
 								if (Pulls.mug != false) {

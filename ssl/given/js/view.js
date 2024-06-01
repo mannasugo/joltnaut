@@ -251,7 +251,7 @@ let Models = {
 
 		if (Web.spot) {
 
-			for (let coin in Web.spot) Web.debit += Web.spot[coin]*Web.xUSD[coin]
+			for (let coin in Web.spot) {Web.debit += Web.spot[coin]*Web.xUSD[coin];}
 		}
 
 		return [
@@ -3626,6 +3626,21 @@ let Models = {
 
 		Coin[1].forEach(Flag => {
 
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Flag[0]]) {
+
+				let USD24 = Web.USD24[Flag[0]], USD = Web.xUSD[Flag[0]];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
+
 			Coin[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
 					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
@@ -3645,7 +3660,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
@@ -3673,6 +3688,21 @@ let Models = {
 
 		Fiat[1].forEach(Flag => {
 
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Flag[1].toLowerCase()]) {
+
+				let USD24 = Web.USD24[Flag[1].toLowerCase()], USD = Web.xUSD[Flag[1].toLowerCase()];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
+
 			Fiat[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
 					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
@@ -3692,7 +3722,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
