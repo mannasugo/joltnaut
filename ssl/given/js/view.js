@@ -398,7 +398,10 @@ let Models = {
 
 			Web[`now`] = 0
 
-			for (let coin in Web.spot) Web.now += Web.spot[coin]*Web.USD[coin]
+			for (let coin in Web.spot) {
+
+				Web.now += Web.spot[coin]*Web.USD[coin]
+			}
 		}
 
 		let Fiat = [
@@ -424,6 +427,21 @@ let Models = {
 
 		Fiat[2].forEach(Flag => {
 
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Flag[1].toLowerCase()]) {
+
+				let USD24 = Web.USD24[Flag[1].toLowerCase()], USD = Web.USD[Flag[1].toLowerCase()];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
+
 			Fiat[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
 					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
@@ -443,7 +461,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
@@ -464,6 +482,21 @@ let Models = {
 
 		Coin[2].forEach(Flag => {
 
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Flag[0]]) {
+
+				let USD24 = Web.USD24[Flag[0]], USD = Web.USD[Flag[0]];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
+
 			Coin[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
 					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
@@ -483,7 +516,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
@@ -519,6 +552,23 @@ let Models = {
 
 		Stock[2].forEach(Flag => {
 
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			if (Web.USD24[Flag[1].toLowerCase()]) {
+
+				let USD24 = Web.USD24[Flag[1].toLowerCase()], USD = Web.USD[Flag[1].toLowerCase()];
+
+				if (USD24.length === 0) USD24[0] = [0, 0];
+
+				(USD24[0][1] > USD)? H24[1] = `red`: H24[1] = `green`;
+
+				(USD24[0][1] > USD)? H24[3] = `red`: H24[3] = `green`;
+
+				H24[0] = `${(((USD - USD24[0][1])/USD)*100).toFixed(2)}%`
+
+				H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+			}
+
 			Stock[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
 					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
@@ -538,7 +588,7 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `arcane`, [`font-size`]: `${12}px`, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]], 
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
@@ -567,7 +617,7 @@ let Models = {
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 										[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 											[
-												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Forex Allocation`]]]]],
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Currencies Allocation`]]]]],
 									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
 									[`div`, {}, Fiat[0]],
 									[`div`, {style: {display: (Coin[0].length > 0)? `flex`: `none`, [`margin-top`]: `${12}px`}}, 
@@ -581,7 +631,7 @@ let Models = {
 											[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 												[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 													[
-														[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Stocks Allocation`]]]]],
+														[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Equities Allocation`]]]]],
 											[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
 											[`div`, {}, Stock[0]]]]]]]], this.us()]]},
 

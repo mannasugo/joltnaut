@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -101,7 +101,7 @@ class Route {
 
 								let Holding = [
 								`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, 
-								`nvda`, `nzd`, `para`, `pypl`, `sek`, `tsla`, `usdt`, `wbd`, `zar`];
+								`nvda`, `nzd`, `para`, `pypl`, `sek`, `tsla`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`];
 
 								let USD = {usd: 1};
 
@@ -123,7 +123,7 @@ class Route {
 
 								Arg[1].end(Tools.coats({ 
 									spot: Spot,
-									USD: USD}));
+									USD: USD, USD24: Tools.USD24(Raw)}));
 							}
 
 							if (Pulls.pull === `clientSlot`) {
