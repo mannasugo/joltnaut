@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-03 09:45`).valueOf();
+		let ts = new Date(`2024-06-03 17:29`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,8 +280,8 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 69040.04]],
-			side: `sell`,
+			pair: [[`btc`, `usd`], [0, 68564.09]],
+			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -438,9 +438,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [68772.13, 69221.26]],
-			ts_a: new Date(`2024-06-03 09:25`).valueOf(), 
-			ts_z: new Date(`2024-06-03 09:41`).valueOf()
+			pair: [`btc/fdusd`, [68746.22, 69052.37]],
+			ts_a: new Date(`2024-06-04 09:09`).valueOf(), 
+			ts_z: new Date(`2024-06-04 09:39`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -549,30 +549,30 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 69525.31]]}, 
-			{pair: [[`eth`, `usd`], [0, 3828.04]]}, 
-			{pair: [[`ltc`, `usd`], [0, 83.69]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
-			{pair: [[`xmr`, `usd`], [0, 155.5517]]}, 
-			{pair: [[`xrp`, `usd`], [0, .05200]]},
+			{pair: [[`btc`, `usd`], [0, 68968.50]]}, 
+			{pair: [[`eth`, `usd`], [0, 3773.88]]}, 
+			{pair: [[`ltc`, `usd`], [0, 81.97]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9997]]}, 
+			{pair: [[`xmr`, `usd`], [0, 155.6734]]}, 
+			{pair: [[`xrp`, `usd`], [0, .05183]]},
 
-			{pair: [[`aud`, `usd`], [0, .66653]]}, 
-			{pair: [[`cad`, `usd`], [0, .73399]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.08442]]}, 
-			{pair: [[`jpy`, `usd`], [0, .00637]]},
-			{pair: [[`kes`, `usd`], [0, .00768]]},
-			{pair: [[`nok`, `usd`], [0, .09535]]},
-			{pair: [[`nzd`, `usd`], [0, .61602]]}, 
-			{pair: [[`zar`, `usd`], [0, .05336]]}, 
-			{pair: [[`sek`, `usd`], [0, .09529]]},
-			{pair: [[`gbp`, `usd`], [0, 1.27310]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.10999]]},
+			{pair: [[`aud`, `usd`], [0, .66637]]}, 
+			{pair: [[`cad`, `usd`], [0, .73159]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08938]]}, 
+			{pair: [[`jpy`, `usd`], [0, .00643]]},
+			{pair: [[`kes`, `usd`], [0, .00766]]},
+			{pair: [[`nok`, `usd`], [0, .09519]]},
+			{pair: [[`nzd`, `usd`], [0, .61839]]}, 
+			{pair: [[`zar`, `usd`], [0, .05363]]}, 
+			{pair: [[`sek`, `usd`], [0, .09592]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27962]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.11785]]},
 
-			{pair: [[`aapl`, `usd`], [0, 192.33]]},
-			{pair: [[`amzn`, `usd`], [0, 176.45]]},
-			{pair: [[`hood`, `usd`], [0, 20.91]]},
-			{pair: [[`nvda`, `usd`], [0, 1095.95]]},
-			{pair: [[`pypl`, `usd`], [0, 63.01]]}
+			{pair: [[`aapl`, `usd`], [0, 194.03]]},
+			{pair: [[`amzn`, `usd`], [0, 178.34]]},
+			{pair: [[`hood`, `usd`], [0, 21.28]]},
+			{pair: [[`nvda`, `usd`], [0, 1150.01]]},
+			{pair: [[`pypl`, `usd`], [0, 63.46]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));
