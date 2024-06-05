@@ -131,6 +131,7 @@ class Route {
 								let Client = [
 								//[`mannasugo@gmail.com`, 32658507, 254704174162, 50], 
 								//[`gordonouma@joltnaut.com`, 13384247, 254722897207, 50]
+								[`oyugijerry@joltnaut.com`, 37722239, 254795455168, .25]
 								];
 
 								let Slot = [[], [], []];
