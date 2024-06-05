@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-03 17:29`).valueOf();
+		let ts = new Date(`2024-06-05 10:57`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,8 +280,8 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 68564.09]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 71195.89]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -438,9 +438,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [68746.22, 69052.37]],
-			ts_a: new Date(`2024-06-04 09:09`).valueOf(), 
-			ts_z: new Date(`2024-06-04 09:39`).valueOf()
+			pair: [`btc/fdusd`, [70810.43, 71172.84]],
+			ts_a: new Date(`2024-06-05 03:45`).valueOf(), 
+			ts_z: new Date(`2024-06-05 04:41`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -549,24 +549,24 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 70281.60]]}, 
-			{pair: [[`eth`, `usd`], [0, 3797.91]]}, 
-			{pair: [[`ltc`, `usd`], [0, 83.42]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9999]]}, 
-			{pair: [[`xmr`, `usd`], [0, 159.2035]]}, 
-			{pair: [[`xrp`, `usd`], [0, .05261]]},
+			{pair: [[`btc`, `usd`], [0, 70108.17]]}, 
+			{pair: [[`eth`, `usd`], [0, 3804.59]]}, 
+			{pair: [[`ltc`, `usd`], [0, 83.91]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
+			{pair: [[`xmr`, `usd`], [0, 161.1833]]}, 
+			{pair: [[`xrp`, `usd`], [0, .05270]]},
 
-			{pair: [[`aud`, `usd`], [0, .66498]]}, 
-			{pair: [[`cad`, `usd`], [0, .73125]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.08795]]}, 
-			{pair: [[`jpy`, `usd`], [0, .0064603]]},
-			{pair: [[`kes`, `usd`], [0, .00766]]},
-			{pair: [[`nok`, `usd`], [0, .094728]]},
-			{pair: [[`nzd`, `usd`], [0, .61789]]}, 
-			{pair: [[`zar`, `usd`], [0, .053484]]}, 
-			{pair: [[`sek`, `usd`], [0, .095813]]},
-			{pair: [[`gbp`, `usd`], [0, 1.27718]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.12381]]},
+			{pair: [[`aud`, `usd`], [0, .66582]]}, 
+			{pair: [[`cad`, `usd`], [0, .73157]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08748]]}, 
+			{pair: [[`jpy`, `usd`], [0, .0064054]]},
+			{pair: [[`kes`, `usd`], [0, .0076481]]},
+			{pair: [[`nok`, `usd`], [0, .094944]]},
+			{pair: [[`nzd`, `usd`], [0, .61920]]}, 
+			{pair: [[`zar`, `usd`], [0, .053333]]}, 
+			{pair: [[`sek`, `usd`], [0, .095973]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27767]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.12016]]},
 
 			{pair: [[`aapl`, `usd`], [0, 194.35]]},
 			{pair: [[`amzn`, `usd`], [0, 179.34]]},
