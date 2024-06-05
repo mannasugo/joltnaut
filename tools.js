@@ -271,17 +271,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-05 17:44`).valueOf();
+		let ts = new Date(`2024-06-05 17:49`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .98,
+			allocate: .25,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`kes`, `usd`], [0, .0076592]],
-			side: `sell`,
+			pair: [[`tsla`, `usd`], [0, 174.51]],
+			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -549,7 +549,7 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 70825.60]]}, 
+			{pair: [[`btc`, `usd`], [0, 71002.77]]}, 
 			{pair: [[`eth`, `usd`], [0, 3798.81]]}, 
 			{pair: [[`ltc`, `usd`], [0, 84.13]]}, 
 			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
@@ -573,6 +573,7 @@ class Tools {
 			{pair: [[`hood`, `usd`], [0, 20.78]]},
 			{pair: [[`nvda`, `usd`], [0, 1164.37]]},
 			{pair: [[`pypl`, `usd`], [0, 63.33]]},
+			{pair: [[`tsla`, `usd`], [0, 174.56]]},
 			{pair: [[`wbd`, `usd`], [0, 8.23]]}
 		];
 
