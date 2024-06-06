@@ -271,16 +271,16 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-07 11:23`).valueOf();
+		let ts = new Date(`2024-06-07 06:54`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .25,
+			allocate: 1,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`aud`, `usd`], [0, .66447]],
+			pair: [[`btc`, `usd`], [0, 70863.17]],
 			side: `buy`,
 			ts: ts,
 			ts_z: ts
