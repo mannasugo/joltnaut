@@ -271,17 +271,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-05 17:49`).valueOf();
+		let ts = new Date(`2024-06-06 02:25`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .25,
+			allocate: .98,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`tsla`, `usd`], [0, 174.51]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 71200.29]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -549,7 +549,7 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 71002.77]]}, 
+			{pair: [[`btc`, `usd`], [0, 70985.40]]}, 
 			{pair: [[`eth`, `usd`], [0, 3798.81]]}, 
 			{pair: [[`ltc`, `usd`], [0, 84.13]]}, 
 			{pair: [[`usdt`, `usd`], [0, .9998]]}, 
@@ -568,13 +568,13 @@ class Tools {
 			{pair: [[`gbp`, `usd`], [0, 1.27843]]}, 
 			{pair: [[`chf`, `usd`], [0, 1.12048]]},
 
-			{pair: [[`aapl`, `usd`], [0, 195.55]]},
-			{pair: [[`amzn`, `usd`], [0, 179.34]]},
-			{pair: [[`hood`, `usd`], [0, 20.78]]},
-			{pair: [[`nvda`, `usd`], [0, 1164.37]]},
-			{pair: [[`pypl`, `usd`], [0, 63.33]]},
-			{pair: [[`tsla`, `usd`], [0, 174.56]]},
-			{pair: [[`wbd`, `usd`], [0, 8.23]]}
+			{pair: [[`aapl`, `usd`], [0, 195.87]]},
+			{pair: [[`amzn`, `usd`], [0, 181.28]]},
+			{pair: [[`hood`, `usd`], [0, 21.57]]},
+			{pair: [[`nvda`, `usd`], [0, 1224.39]]},
+			{pair: [[`pypl`, `usd`], [0, 63.53]]},
+			{pair: [[`tsla`, `usd`], [0, 174.97]]},
+			{pair: [[`wbd`, `usd`], [0, 8.30]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));
