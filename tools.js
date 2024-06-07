@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-06 22:19`).valueOf();
+		let ts = new Date(`2024-06-06 22:04`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,8 +280,8 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`tsla`, `usd`], [0, 178.91]],
-			side: `sell`,
+			pair: [[`spot`, `usd`], [0, 318.17]],
+			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -410,7 +410,7 @@ class Tools {
 
 		let Spot = [
 		[`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, `nvda`, `nzd`, `para`, `pypl`, 
-		`sek`, `tsla`, `usd`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`], {}];
+		`sek`, `spot`, `tsla`, `usd`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 
@@ -574,6 +574,7 @@ class Tools {
 			{pair: [[`nvda`, `usd`], [0, 1224.39]]},
 			{pair: [[`pypl`, `usd`], [0, 63.53]]},
 			{pair: [[`tsla`, `usd`], [0, 174.97]]},
+			{pair: [[`spot`, `usd`], [0, 319.51]]},
 			{pair: [[`wbd`, `usd`], [0, 8.30]]}
 		];
 

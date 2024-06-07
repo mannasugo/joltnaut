@@ -541,6 +541,7 @@ let Models = {
 				[`para`, `PARA`, `paramount global`],
 				[`pypl`, `PYPL`, `paypal holdings inc`],
 				[`hood`, `HOOD`, `robinhood markets inc`],
+				[`spot`, `SPOT`, `spotify technology SA`],
 				[`tsla`, `TSLA`, `tesla inc`],
 				[`upwk`, `UPWK`, `upwork inc`],
 				[`wbd`, `WBD`, `warner bros discovery inc`]], []];
