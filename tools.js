@@ -549,33 +549,33 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 71117.90]]}, 
-			{pair: [[`eth`, `usd`], [0, 3849.20]]}, 
-			{pair: [[`ltc`, `usd`], [0, 85.33]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9997]]}, 
-			{pair: [[`xmr`, `usd`], [0, 163.5238]]}, 
-			{pair: [[`xrp`, `usd`], [0, .05258]]},
+			{pair: [[`btc`, `usd`], [0, 71084.57]]}, 
+			{pair: [[`eth`, `usd`], [0, 3810.29]]}, 
+			{pair: [[`ltc`, `usd`], [0, 84.03]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9994]]}, 
+			{pair: [[`xmr`, `usd`], [0, 172.6120]]}, 
+			{pair: [[`xrp`, `usd`], [0, .05240]]},
 
-			{pair: [[`aud`, `usd`], [0, .66411]]}, 
-			{pair: [[`cad`, `usd`], [0, .73402]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.08751]]}, 
-			{pair: [[`jpy`, `usd`], [0, .0063951]]},
-			{pair: [[`kes`, `usd`], [0, .0076751]]},
-			{pair: [[`nok`, `usd`], [0, .094619]]},
-			{pair: [[`nzd`, `usd`], [0, .61795]]}, 
-			{pair: [[`zar`, `usd`], [0, .052823]]}, 
-			{pair: [[`sek`, `usd`], [0, .096264]]},
-			{pair: [[`gbp`, `usd`], [0, 1.27826]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.11993]]},
+			{pair: [[`aud`, `usd`], [0, .66688]]}, 
+			{pair: [[`cad`, `usd`], [0, .73122]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08881]]}, 
+			{pair: [[`jpy`, `usd`], [0, .0064350]]},
+			{pair: [[`kes`, `usd`], [0, .0077223]]},
+			{pair: [[`nok`, `usd`], [0, .094721]]},
+			{pair: [[`nzd`, `usd`], [0, .61911]]}, 
+			{pair: [[`zar`, `usd`], [0, .053037]]}, 
+			{pair: [[`sek`, `usd`], [0, .096458]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27913]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.12389]]},
 
-			{pair: [[`aapl`, `usd`], [0, 195.87]]},
-			{pair: [[`amzn`, `usd`], [0, 181.28]]},
-			{pair: [[`hood`, `usd`], [0, 21.57]]},
-			{pair: [[`nvda`, `usd`], [0, 1224.39]]},
-			{pair: [[`pypl`, `usd`], [0, 63.53]]},
-			{pair: [[`tsla`, `usd`], [0, 174.97]]},
+			{pair: [[`aapl`, `usd`], [0, 194.48]]},
+			{pair: [[`amzn`, `usd`], [0, 185.01]]},
+			{pair: [[`hood`, `usd`], [0, 22.97]]},
+			{pair: [[`nvda`, `usd`], [0, 1210.45]]},
+			{pair: [[`pypl`, `usd`], [0, 67.02]]},
+			{pair: [[`tsla`, `usd`], [0, 177.94]]},
 			{pair: [[`spot`, `usd`], [0, 319.51]]},
-			{pair: [[`wbd`, `usd`], [0, 8.30]]}
+			{pair: [[`wbd`, `usd`], [0, 8.35]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));
