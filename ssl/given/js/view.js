@@ -608,7 +608,7 @@ let Models = {
 									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 300, [`letter-spacing`]: 0}}, `${parseFloat(Web.now).toFixed(2)} USD`]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[
-										//[`a`, {href: `javascript:;`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Transfer`],
+										[`a`, {href: `/autotrade/liquidate`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Liquidate`],
 										[`a`, {href: `/autotrade/wallet`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Deposit`]]]]]]],
 					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
 						[ 
@@ -1814,6 +1814,63 @@ let Models = {
 											[`font-weight`]: 300, [`margin-left`]: `${6}px`}},  ``]]]
 								/**/,
 								[`section`, {style: {[`margin-top`]: `${12}px`}}, TX[1]]]]]]]]
+	},
+
+	liquidate: function (Web) {
+
+		return [
+			`main`, {id: ``, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {padding: `${48}px ${24}px ${12}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`}, 
+										[
+											[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`text-decoration`]: `underline`}}, `LIQUIDITY`],
+											[`div`, {class: `_gZz`}, 
+												[
+													[`span`, {class: `v202312301635`, style: {height: `${24}px`, width: `${24}px`}}],
+													[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`margin-left`]: `${8}px`}}, `${parseFloat(Web.spot[`usd`]*Web.USD[`usd`]).toFixed(2)} USD`]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${18}px`}}, 
+										[
+											[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${12}px ${0} ${0}`, }}, `Withdraw to`],
+											[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 300, margin: `${12}px ${0} ${0} ${16}px`, [`text-decoration`]: `underline`}}, `M-PESA SAFARICOM`]]],
+									[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#515151`, [`font-family`]: `geometria`, [`font-weight`]: 300, [`font-size`]: `${13}px`}}, ``]]], 
+														[`div`, {class: `_gZz`}, 
+															[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																[ 
+																	[`div`, {class: `_gxM _gZz _geQ`}, 
+																		[[`span`, {style: {color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, [`text-align`]: `right`}}, `+${Web.call}`]]]]]]]]]]],
+									[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${24}px ${0} ${0}`, }}, `Withdraw Amount`],
+									[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`div`, {style: {[`line-height`]: `${32}px`, width: `${75}%`}}, 
+													[ 
+														[`div`, {class: `_gxM _gZz _geQ`}, 
+															[[`input`, {id: `floatSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, width: `${100}%`}}]]]]], 
+														[`div`, {class: `_gZz`}, 
+															[
+												[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`,}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#000`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `KES`]]]]]]]]],
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+										[ 
+											[`div`, {}, 
+												[
+													[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${10}px`}}, `WITHDRAWAL AMOUNT`],
+													[`span`, {id: `swap`, style: {color: `#000`, [`font-family`]: `geometria`, [`font-weight`]: 600, [`font-size`]: `${13}px`}}, `0.00 USD`]]],
+											[`div`, {class: `_eYG`}, []],
+												[`div`, {class: `_gZz`, style: {flex: 0}}, 
+													[[`a`, {class: `_gxM _geQ`, href: `javascript:;`, id: `liquidate`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
+														[
+															[`span`, {class: `v202203262148`, style: {height: `${14}px`, [`margin-right`]: `${8}px`, width: `${14}px`}}], 
+															[`span`, {}, `Withdraw`]]]]]]]]]]]]];
 	},
 
 	mugslot: function () {

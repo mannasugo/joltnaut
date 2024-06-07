@@ -122,6 +122,7 @@ class Route {
 								let Spot = Tools.holding([Raw, Pulls.client, `auto`]);
 
 								Arg[1].end(Tools.coats({ 
+									call: Raw.clients[1][Pulls.client][`call`],
 									spot: Spot,
 									USD: USD, USD24: Tools.USD24(Raw)}));
 							}
@@ -183,9 +184,67 @@ class Route {
 								}
 							}
 
+							if (Pulls.pull === `liquidate`) {
+
+								if (Raw.clients[1][Pulls.client]) {
+
+									let Hold = Tools.holding([Raw, Pulls.client, `auto`]);
+
+									let Holding = [
+										`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, 
+									`nvda`, `nzd`, `para`, `pypl`, `sek`, `spot`, `tsla`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`];
+
+									let USD = {usd: 1};
+
+									Holding.forEach(holding => {
+
+										let All = [];
+
+										Raw.book[0].forEach(Book => {
+
+											if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+										});
+
+										All = All.sort((A, B) => {return B[1] - A[1]});
+
+										USD[holding] = (All[0])? All[0][0]: 0
+									});
+
+									if (Hold[`usd`] > Pulls.float*USD[`kes`] && Pulls.float <= 1/USD[`kes`]) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										Sql.puts([`payout`,  {
+          									complete: false,
+          									float: Pulls.float*USD[`kes`],
+          									id: Raw.clients[1][Pulls.client][`call`],
+          									local: Pulls.float,
+          									md: md,
+          									mug: Pulls.client,
+          									secs: ts,
+          									ts: ts,
+          									tx: {},
+          									type: `auto`}, (Q) => {
+
+          										Sql.puts([`autospot`, {
+													md: md, 
+													symbol: `usd`,
+													till: {
+														[hold]: 0,
+														[Pulls.client]: [0, -(Pulls.float*USD[`kes`])]},
+													ts: Bill.ts,
+													tx: false,
+													type: `withdrawal`}, (Pay) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
+										}]);
+									}
+								}	
+							}
+
 							if (Pulls.pull === `pollB4`) {
 
-								if (Raw.clients[1][Pulls.client]) {console.log(Pulls)
+								if (Raw.clients[1][Pulls.client]) {
 
 									let Slot = Pulls.slot;
 
