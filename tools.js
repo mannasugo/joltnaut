@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-06 22:04`).valueOf();
+		let ts = new Date(`2024-06-07 08:48`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,8 +280,8 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`spot`, `usd`], [0, 318.17]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 71439.23]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -549,12 +549,12 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 71084.57]]}, 
-			{pair: [[`eth`, `usd`], [0, 3810.29]]}, 
-			{pair: [[`ltc`, `usd`], [0, 84.03]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9994]]}, 
-			{pair: [[`xmr`, `usd`], [0, 172.6120]]}, 
-			{pair: [[`xrp`, `usd`], [0, .05240]]},
+			{pair: [[`btc`, `usd`], [0, 70217.50]]}, 
+			{pair: [[`eth`, `usd`], [0, 3762.02]]}, 
+			{pair: [[`ltc`, `usd`], [0, 82.97]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9989]]}, 
+			{pair: [[`xmr`, `usd`], [0, 161.4176]]}, 
+			{pair: [[`xrp`, `usd`], [0, .05188]]},
 
 			{pair: [[`aud`, `usd`], [0, .66688]]}, 
 			{pair: [[`cad`, `usd`], [0, .73122]]}, 
@@ -568,14 +568,14 @@ class Tools {
 			{pair: [[`gbp`, `usd`], [0, 1.27913]]}, 
 			{pair: [[`chf`, `usd`], [0, 1.12389]]},
 
-			{pair: [[`aapl`, `usd`], [0, 194.48]]},
-			{pair: [[`amzn`, `usd`], [0, 185.01]]},
-			{pair: [[`hood`, `usd`], [0, 22.97]]},
-			{pair: [[`nvda`, `usd`], [0, 1210.45]]},
-			{pair: [[`pypl`, `usd`], [0, 67.02]]},
-			{pair: [[`tsla`, `usd`], [0, 177.94]]},
-			{pair: [[`spot`, `usd`], [0, 319.51]]},
-			{pair: [[`wbd`, `usd`], [0, 8.35]]}
+			{pair: [[`aapl`, `usd`], [0, 196.26]]},
+			{pair: [[`amzn`, `usd`], [0, 185.81]]},
+			{pair: [[`hood`, `usd`], [0, 22.68]]},
+			{pair: [[`nvda`, `usd`], [0, 1213.17]]},
+			{pair: [[`pypl`, `usd`], [0, 68.03]]},
+			{pair: [[`tsla`, `usd`], [0, 177.54]]},
+			{pair: [[`spot`, `usd`], [0, 311.97]]},
+			{pair: [[`wbd`, `usd`], [0, 8.26]]}
 		];
 
 		writeFileSync(`json/market.json`, this.coats(Pairs));
