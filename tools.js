@@ -271,7 +271,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-07 08:48`).valueOf();
+		let ts = new Date(`2024-06-07 16:48`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
@@ -280,7 +280,7 @@ class Tools {
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 71439.23]],
+			pair: [[`spot`, `usd`], [0, 333.16]],
 			side: `sell`,
 			ts: ts,
 			ts_z: ts
@@ -438,9 +438,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [70812.47, 71293.84]],
-			ts_a: new Date(`2024-06-07 03:19`).valueOf(), 
-			ts_z: new Date(`2024-06-07 05:22`).valueOf()
+			pair: [`btc/fdusd`, [69240.10, 69512.67]],
+			ts_a: new Date(`2024-06-08 09:45`).valueOf(), 
+			ts_z: new Date(`2024-06-08 10:58`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -549,7 +549,7 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 70217.50]]}, 
+			{pair: [[`btc`, `usd`], [0, 69370.45]]}, 
 			{pair: [[`eth`, `usd`], [0, 3762.02]]}, 
 			{pair: [[`ltc`, `usd`], [0, 82.97]]}, 
 			{pair: [[`usdt`, `usd`], [0, .9989]]}, 
@@ -560,13 +560,13 @@ class Tools {
 			{pair: [[`cad`, `usd`], [0, .73122]]}, 
 			{pair: [[`eur`, `usd`], [0, 1.08881]]}, 
 			{pair: [[`jpy`, `usd`], [0, .0064350]]},
-			{pair: [[`kes`, `usd`], [0, .0077223]]},
+			{pair: [[`kes`, `usd`], [0, .0076125]]},
 			{pair: [[`nok`, `usd`], [0, .094721]]},
 			{pair: [[`nzd`, `usd`], [0, .61911]]}, 
 			{pair: [[`zar`, `usd`], [0, .053037]]}, 
 			{pair: [[`sek`, `usd`], [0, .096458]]},
 			{pair: [[`gbp`, `usd`], [0, 1.27913]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.12389]]},
+			{pair: [[`chf`, `usd`], [0, 1.11549]]},
 
 			{pair: [[`aapl`, `usd`], [0, 196.26]]},
 			{pair: [[`amzn`, `usd`], [0, 185.81]]},
@@ -574,7 +574,7 @@ class Tools {
 			{pair: [[`nvda`, `usd`], [0, 1213.17]]},
 			{pair: [[`pypl`, `usd`], [0, 68.03]]},
 			{pair: [[`tsla`, `usd`], [0, 177.54]]},
-			{pair: [[`spot`, `usd`], [0, 311.97]]},
+			{pair: [[`spot`, `usd`], [0, 308.21]]},
 			{pair: [[`wbd`, `usd`], [0, 8.26]]}
 		];
 
