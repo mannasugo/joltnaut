@@ -271,17 +271,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-08 05:37`).valueOf();
+		let ts = new Date(`2024-06-08 10:49`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .66667,
+			allocate: 1,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 69278.55]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 69506.39]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -438,12 +438,12 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [69240.10, 69512.67]],
-			ts_a: new Date(`2024-06-08 09:45`).valueOf(), 
-			ts_z: new Date(`2024-06-08 10:58`).valueOf()
+			pair: [`btc/fdusd`, [69119.92, 69414.90]],
+			ts_a: new Date(`2024-06-09 06:25`).valueOf(), 
+			ts_z: new Date(`2024-06-09 10:01`).valueOf()
 		}];
 
-		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
@@ -549,7 +549,7 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 69430.03]]}, 
+			{pair: [[`btc`, `usd`], [0, 69306.99]]}, 
 			{pair: [[`eth`, `usd`], [0, 3695.30]]}, 
 			{pair: [[`ltc`, `usd`], [0, 79.91]]}, 
 			{pair: [[`usdt`, `usd`], [0, .9996]]}, 
