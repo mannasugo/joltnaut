@@ -100,7 +100,7 @@ class Route {
 							if (Pulls.pull === `app`) {
 
 								let Holding = [
-								`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, 
+								`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `msft`, `nflx`, `nok`, 
 								`nvda`, `nzd`, `para`, `pypl`, `sek`, `spot`, `tsla`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`];
 
 								let USD = {usd: 1};
@@ -191,7 +191,7 @@ class Route {
 									let Hold = Tools.holding([Raw, Pulls.client, `auto`]);
 
 									let Holding = [
-										`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, 
+										`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `msft`, `nflx`, `nok`, 
 									`nvda`, `nzd`, `para`, `pypl`, `sek`, `spot`, `tsla`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`];
 
 									let USD = {usd: 1};
@@ -1324,7 +1324,7 @@ class Route {
 								});
 
 								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
-								`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
+								`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
 
 								let USD = {usd: 1};
 

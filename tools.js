@@ -271,17 +271,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-11 11:07`).valueOf();
+		let ts = new Date(`2024-06-12 07:39`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .88,
+			allocate: 1,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 67515.03]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 67607.22]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -409,7 +409,7 @@ class Tools {
 	holding (Arg) {
 
 		let Spot = [
-		[`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `nflx`, `nok`, `nvda`, `nzd`, `para`, `pypl`, 
+		[`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `msft`, `nflx`, `nok`, `nvda`, `nzd`, `para`, `pypl`, 
 		`sek`, `spot`, `tsla`, `usd`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
@@ -438,9 +438,9 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [67419.22, 67846.53]],
-			ts_a: new Date(`2024-06-11 09:54`).valueOf(), 
-			ts_z: new Date(`2024-06-11 10:30`).valueOf()
+			pair: [`btc/fdusd`, [67284.29, 67579.34]],
+			ts_a: new Date(`2024-06-12 05:06`).valueOf(), 
+			ts_z: new Date(`2024-06-12 07:39`).valueOf()
 		}];
 
 		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
@@ -549,12 +549,12 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 66749.69]]}, 
-			{pair: [[`eth`, `usd`], [0, 3472.18]]}, 
-			{pair: [[`ltc`, `usd`], [0, 77.05]]}, 
-			{pair: [[`usdt`, `usd`], [0, .99949]]}, 
-			{pair: [[`xmr`, `usd`], [0, 173.58]]}, 
-			{pair: [[`xrp`, `usd`], [0, .047896]]},
+			{pair: [[`btc`, `usd`], [0, 67381.67]]}, 
+			{pair: [[`eth`, `usd`], [0, 3523.03]]}, 
+			{pair: [[`ltc`, `usd`], [0, 77.36]]}, 
+			{pair: [[`usdt`, `usd`], [0, .99979]]}, 
+			{pair: [[`xmr`, `usd`], [0, 178.88]]}, 
+			{pair: [[`xrp`, `usd`], [0, .047985]]},
 
 			{pair: [[`aud`, `usd`], [0, .66053]]}, 
 			{pair: [[`cad`, `usd`], [0, .72602]]}, 
