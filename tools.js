@@ -549,12 +549,12 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 67581.05]]}, 
-			{pair: [[`eth`, `usd`], [0, 3518.18]]}, 
-			{pair: [[`ltc`, `usd`], [0, 79.41]]}, 
-			{pair: [[`usdt`, `usd`], [0, 1.0001]]}, 
-			{pair: [[`xmr`, `usd`], [0, 176.21]]}, 
-			{pair: [[`xrp`, `usd`], [0, .0487]]},
+			{pair: [[`btc`, `usd`], [0, 66958.44]]}, 
+			{pair: [[`eth`, `usd`], [0, 3469.52]]}, 
+			{pair: [[`ltc`, `usd`], [0, 78.65]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9997]]}, 
+			{pair: [[`xmr`, `usd`], [0, 172.9591]]}, 
+			{pair: [[`xrp`, `usd`], [0, .04831]]},
 
 			{pair: [[`aud`, `usd`], [0, .66556]]}, 
 			{pair: [[`cad`, `usd`], [0, .72792]]}, 
@@ -571,8 +571,8 @@ class Tools {
 			{pair: [[`aapl`, `usd`], [0, 213.07]]},
 			{pair: [[`amzn`, `usd`], [0, 186.89]]},
 			{pair: [[`hood`, `usd`], [0, 22.18]]},
-			{pair: [[`msft`, `usd`], [0, 441.06]]},
-			{pair: [[`nflx`, `usd`], [0, 650.06]]},
+			{pair: [[`msft`, `usd`], [0, 441.81]]},
+			{pair: [[`nflx`, `usd`], [0, 650.39]]},
 			{pair: [[`nvda`, `usd`], [0, 1208.88]]},
 			{pair: [[`pypl`, `usd`], [0, 67.30]]},
 			{pair: [[`tsla`, `usd`], [0, 177.29]]},
