@@ -549,12 +549,12 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 67677.88]]}, 
-			{pair: [[`eth`, `usd`], [0, 3505.34]]}, 
-			{pair: [[`ltc`, `usd`], [0, 78.41]]}, 
-			{pair: [[`usdt`, `usd`], [0, .99996]]}, 
-			{pair: [[`xmr`, `usd`], [0, 177.5631]]}, 
-			{pair: [[`xrp`, `usd`], [0, .04888]]},
+			{pair: [[`btc`, `usd`], [0, 67387.21]]}, 
+			{pair: [[`eth`, `usd`], [0, 3481.76]]}, 
+			{pair: [[`ltc`, `usd`], [0, 79.41]]}, 
+			{pair: [[`usdt`, `usd`], [0, .99976]]}, 
+			{pair: [[`xmr`, `usd`], [0, 177.16]]}, 
+			{pair: [[`xrp`, `usd`], [0, .0488637]]},
 
 			{pair: [[`aud`, `usd`], [0, .66556]]}, 
 			{pair: [[`cad`, `usd`], [0, .72792]]}, 
@@ -566,7 +566,7 @@ class Tools {
 			{pair: [[`zar`, `usd`], [0, .054332]]}, 
 			{pair: [[`sek`, `usd`], [0, .096474]]},
 			{pair: [[`gbp`, `usd`], [0, 1.27906]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.11748]]},
+			{pair: [[`chf`, `usd`], [0, 1.11664]]},
 
 			{pair: [[`aapl`, `usd`], [0, 213.07]]},
 			{pair: [[`amzn`, `usd`], [0, 186.89]]},
