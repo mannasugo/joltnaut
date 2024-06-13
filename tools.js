@@ -271,17 +271,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-13 09:11`).valueOf();
+		let ts = new Date(`2024-06-13 10:45`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: 1,
+			allocate: .88,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`chf`, `usd`], [0, 1.117405]],
-			side: `sell`,
+			pair: [[`chf`, `usd`], [0, 1.117143]],
+			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -549,33 +549,33 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 67711.45]]}, 
-			{pair: [[`eth`, `usd`], [0, 3522.37]]}, 
-			{pair: [[`ltc`, `usd`], [0, 77.55]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9999]]}, 
-			{pair: [[`xmr`, `usd`], [0, 178.12]]}, 
-			{pair: [[`xrp`, `usd`], [0, .048332]]},
+			{pair: [[`btc`, `usd`], [0, 67677.88]]}, 
+			{pair: [[`eth`, `usd`], [0, 3505.34]]}, 
+			{pair: [[`ltc`, `usd`], [0, 78.41]]}, 
+			{pair: [[`usdt`, `usd`], [0, .99996]]}, 
+			{pair: [[`xmr`, `usd`], [0, 177.5631]]}, 
+			{pair: [[`xrp`, `usd`], [0, .04888]]},
 
-			{pair: [[`aud`, `usd`], [0, .66158]]}, 
-			{pair: [[`cad`, `usd`], [0, .72771]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.07467]]}, 
-			{pair: [[`jpy`, `usd`], [0, .0063579]]},
-			{pair: [[`kes`, `usd`], [0, .0078222]]},
-			{pair: [[`nok`, `usd`], [0, .093747]]},
-			{pair: [[`nzd`, `usd`], [0, .61439]]}, 
-			{pair: [[`zar`, `usd`], [0, .053233]]}, 
-			{pair: [[`sek`, `usd`], [0, .095499]]},
-			{pair: [[`gbp`, `usd`], [0, 1.27511]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.11679]]},
+			{pair: [[`aud`, `usd`], [0, .66556]]}, 
+			{pair: [[`cad`, `usd`], [0, .72792]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.08139]]}, 
+			{pair: [[`jpy`, `usd`], [0, .0063588]]},
+			{pair: [[`kes`, `usd`], [0, .0077669]]},
+			{pair: [[`nok`, `usd`], [0, .094389]]},
+			{pair: [[`nzd`, `usd`], [0, .61787]]}, 
+			{pair: [[`zar`, `usd`], [0, .054332]]}, 
+			{pair: [[`sek`, `usd`], [0, .096474]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27906]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.11748]]},
 
-			{pair: [[`aapl`, `usd`], [0, 196.89]]},
-			{pair: [[`amzn`, `usd`], [0, 184.30]]},
+			{pair: [[`aapl`, `usd`], [0, 213.07]]},
+			{pair: [[`amzn`, `usd`], [0, 186.89]]},
 			{pair: [[`hood`, `usd`], [0, 22.18]]},
-			{pair: [[`msft`, `usd`], [0, 432.68]]},
-			{pair: [[`nflx`, `usd`], [0, 648.55]]},
+			{pair: [[`msft`, `usd`], [0, 441.06]]},
+			{pair: [[`nflx`, `usd`], [0, 650.06]]},
 			{pair: [[`nvda`, `usd`], [0, 1208.88]]},
 			{pair: [[`pypl`, `usd`], [0, 67.30]]},
-			{pair: [[`tsla`, `usd`], [0, 177.48]]},
+			{pair: [[`tsla`, `usd`], [0, 177.29]]},
 			{pair: [[`spot`, `usd`], [0, 308.21]]},
 			{pair: [[`wbd`, `usd`], [0, 8.27]]}
 		];
