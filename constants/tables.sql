@@ -26,6 +26,8 @@ select * from `positions`;
 
 select * from `spot`;
 
+select * from `terminal`;
+
 select * from `till`;
 
 select * from `trades`;

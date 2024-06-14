@@ -403,7 +403,7 @@ class Events {
 
 			if (Values[0] === false || Values[1] === false || Values[2] === false || Values[3] === false) return;
 
-			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values}]);
+			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values, vow: Tools.slim(document.querySelector(`#vowSlot`).value)}]);
 
 			Values = [];
 
@@ -419,7 +419,7 @@ class Events {
 
 					Clients.mug = Pull.mug;
 
-					window.location = `/pools/BTC_USDT`;
+					window.location = `/`;
 				}
 			}
 
@@ -816,6 +816,39 @@ class Events {
 
 				if (Web.mug) window.location = `/`;
 			}
+		}]);
+	}
+
+	terminalSlot (Arg) {
+
+		this.listen([document.querySelector(`#terminalSlot`), `click`, S => {
+
+			let Values = [
+				(!Tools.slim(document.querySelector(`#email`).value))? false: Tools.slim(document.querySelector(`#email`).value),
+				(!Tools.slim(document.querySelector(`#lock`).value))? false: Tools.slim(document.querySelector(`#lock`).value)];
+
+			if (Values[0] === false || Values[1] === false) return;
+
+			let Puts = Tools.pull([`/json/360/`, {pull: `terminalSlot`, slot : Values}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull && Pull.terminal) {
+
+					Clients.terminal = Pull.terminal;
+
+					window.location = window.location;
+				}
+			}
+
 		}]);
 	}
 

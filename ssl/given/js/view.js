@@ -116,7 +116,7 @@ let Models = {
 			[], 
 			[[`pair`, 22.5], [`transactions`, 20, true], [`roi`, 25, true], [`runtime(days)`, 12.5, true], [`buyin(usd)`, 12.5, true], [``, 7.5, true]],
 			[], 
-			[[`asset`, 22.5], [`price`, 20, true], [`24h%`, 15, true], [`24h diff`, 15, true], [`market cap`, 20, true], [``, 7.5, true]],
+			[[`asset`, 22.5], [`price`, 20, true], [`24h diff`, 15, true], /*[`24h diff`, 15, true],*/ [`volume`, 22.5, true], [``, 20, true]],
 			[], 
 			[[`currency`, 22.5], [`last trade`, 20, true], [`24h%`, 15, true], [`24h diff`, 15, true], [`liquidity`, 20, true], [``, 7.5, true]]];
 
@@ -183,14 +183,16 @@ let Models = {
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `${Flag[1]}`]*/]], 
 					[`div`, {style: {width: `${15}%`}}, 
 						[[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]]]], 
-					[`div`, {style: {width: `${15}%`}}, 
-						[[`span`, {style: {color: H24[1], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[2]]]], 
-					[`div`, {style: {width: `${20}%`}}, 
+					//[`div`, {style: {width: `${15}%`}}, 
+						//[[`span`, {style: {color: H24[1], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[2]]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
 						[
 							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.volume[Asset[0]]).toFixed(3)}`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
-					[`div`, {style: {[`align-items`]: `end`, width: `${7.5}%`}}, 
-						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]]]]]);
+					[`div`, {style: {[`align-items`]: `end`, width: `${20}%`}}, 
+						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, style: {border: `1px solid blue`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${2}px ${8}px`}}, `trade`]
+						//[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]
+						]]]]);
 		});
 
 		let Flag = [
@@ -263,11 +265,14 @@ let Models = {
 								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 								[`div`, {class: `_eYG`}, 
 									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${17}px`, [`font-weight`]: 400, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
-								[`div`, {class: `_gZz`, style: {flex: 0}}, 
-									[[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`fnt-family`]: `walsh`, [`font-size`]: `${12}px`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
-										[
-											[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
-											[`span`, {style: {[`marin-bottom`]: `${2}px`}}, `Deposit`]]]]]]]]],
+								[`div`, {class: `_gZz`, style: {flex: 0, [`font-size`]: `${12}px`}}, 
+									[
+										(Clients.mug)? []: [`a`, {href: `/signin`, style: {background: `#0000ff30`, color: `blue`, [`font-weight`]: 600, margin: `0 ${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `login`],
+										[`a`, {href: `/earn`, style: {background: `blue`, color: `#fff`, margin: `0 ${8}px`, padding: `${4}px ${8}px`}}, `Earn`],
+										[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
+											[
+												//[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
+												[`span`, {style: {[`marin-bottom`]: `${2}px`}}, `Deposit`]]]]]]]]],
 					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
 						[
 							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
@@ -634,7 +639,8 @@ let Models = {
 													[
 														[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Equities Allocation`]]]]],
 											[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
-											[`div`, {}, Stock[0]]]]]]]], this.us()]]},
+											[`div`, {}, Stock[0]]]]]]]], this.us()]];
+	},
 
 	c2s: function () {
 
@@ -1878,7 +1884,7 @@ let Models = {
 		let Slot = {
 			action: [`signin`, `signin`],
 			slots: [[`email`, `email`, `email`], [`password`, `lock`, `password`]]
-		}, TC = [[], []];
+		}, TC = [[], []], PROMO = [[]];
 
 		TC[0] = [`span`, {style: {
 			color: `#a1a1a1`, 
@@ -1898,6 +1904,20 @@ let Models = {
 					[`password`, `lock`, `password`]
 				]
 			}
+
+			PROMO[0] = [`div`, {class: `_sZ2`}, 
+				[
+					[`div`, {class: `_gxM`}, [[`div`, {class: `gZz`}, [[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`margin-bottom`]: `${6}px`, [`text-decoration`]: `underline`}}, `Optional (5 USD Reward Voucher)`]]]]],
+					[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+						[
+							[`span`, {style: {color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, `PROMO CODE`],
+							[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+								[[`span`, {style: {color: `#515151`, [`font-family`]: `geometria`, [`font-weight`]: 300, [`font-size`]: `${13}px`}}, ``]]], 
+							[`div`, {class: `_gZz`}, 
+								[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+									[ 
+										[`div`, {class: `_gxM _gZz _geQ`}, 
+											[[`input`, {id: `vowSlot`, placeholder: `ENTER HERE`, style: {background: `transparent`, [`block-size`]: `unset`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]]
 
 			TC[0] = [
 			`span`, {
@@ -1946,6 +1966,8 @@ let Models = {
 							[[`input`, {id: Slot[1], type: Slot[2]}]]], Tip[0], Tip[1]]]);
 
 		});
+
+		Slots.push(PROMO[0])
 
 		return [
 				`section`, {}, 
@@ -3179,6 +3201,79 @@ let Models = {
 																		color: `rgb(${230}, ${230}, ${230})`, [`font-family`]: `walsh`, [`font-size`]: `${14}px`, 
 																		[`font-weight`]: 600, [`line-height`]: `${32}px`, [`letter-spacing`]: `${.75}px`}}, 
 																		`9,000 KES`]]]]]]]]]]]]]]]]]]];
+	},
+
+	terminal: function(Web) {
+
+		return [
+			`main`, {id: `terminal`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, []], 
+								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+									[
+										/**[`a`, {href: `/autotrade/liquidate`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Liquidate`],
+										[`a`, {href: `/autotrade/wallet`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Deposit`]**/]]]]]],
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
+						[ 
+							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
+								[
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Portfolio`]]]]], 
+					[`div`, {style: {background: `#fff`, [`border-top`]: `${1}px solid #d9d9d9`, bottom: 0, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],
+								[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `2024`], 
+								[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]];
+	},
+
+	terminalSlot: function () {
+
+		let Slot = {
+			action: [`signin`, `signin`],
+			slots: [[`work email`, `email`, `email`], [`passcode`, `lock`, `password`]]
+		}, TC = [[], []];
+
+		let Slots = [];
+
+		Slot.slots.forEach(Slot => {
+
+			let Tip = [[], [], []];
+
+			if (Slot[0] === `passcode`) {
+
+				Tip[1] = [`div`, {class: `_gxM _geQ`, style: {margin: `${12}px 0 -${8}px`}}, 
+					[[`div`, {class: `_gZz`}, 
+						[[`a`, {href: `javascript:;`, style: {
+							[`text-decoration`]: `underline`, color: `#666`, [`font-size`]: `${10}px`, 
+							[`margin-left`]: `${12}px`}}, `FORGOT PASSWORD?`]]]]]
+			}
+
+			Slots.push([`div`, {class: `_sZ2`}, 
+				[
+					[`label`, {style: {[`font-weight`]: 600, margin: `0 ${0}px ${12}px`, color: `#5c5e62`, [`line-height`]: 1.414, [`text-transform`]: `capitalize`}}, 
+						[[`span`, {}, Slot[0]]]], 
+					[`div`, {class: `_aXZ`}, [[`input`, {id: Slot[1], type: Slot[2]}]]], Tip[0], Tip[1]]]);
+
+		});
+
+		return [`section`, {}, 
+			[ 
+				[`main`, {id: `clientSlot`, class: `_tY0`, style: {[`font-family`]: `litera`, [`font-size`]: `${12}px`, height: `${100}%`, padding: `${24}px`, [`margin-top`]: `${25}px`}}, 
+					[[`div`, {class: `_geQ`, style: {[`max-width`]: `${362}px`, width: `${100}%`, margin: `auto`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {class: `_gxM _aXZ`, style: {[`margin-bottom`]: `-${10}px`}}, 
+								[[`a`, {class: `-_tX v202304191915`, href: `/`, style: {height: `${36}px`, width: `${36}px`}}]]],
+									[`h2`, {}, `Joltnaut 360 Signin`], 
+									[`div`, {class: `_aXZ`, style: {margin: `${16}px 0 ${40}px`}}, 
+										[
+											[`div`, {}, Slots],
+											[`div`, {class: `_gM_a _agM _guZ`, style: {width: `${100}%`, [`block-size`]: `${40}px`, background: `#1185fe`}}, 
+												[[`a`, {id: `terminalSlot`, class: `_TX_a _atX _dMG _aWz`, href: `javascript:;`, style: {[`text-transform`]: `capitalize`}}, `Sign in`]]],
+											TC[0], TC[1]]]]]]]]]
 	}, 
 
 	trader: function (Web) {

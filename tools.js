@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `terminal`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -138,6 +138,16 @@ class Sql {
 
 				if (put === 14) {
 
+					Put.forEach(Port => {
+
+						Puts.terminal[0].push(JSON.parse(Port.json));
+
+						Puts.terminal[1][JSON.parse(Port.json).md] = JSON.parse(Port.json);
+					});
+				}
+
+				if (put === 15) {
+
 					Put.forEach(Till => {
 
 						Puts.till[0].push(JSON.parse(Till.json));
@@ -146,7 +156,7 @@ class Sql {
 					});
 				}
 
-				if (put === 15) {
+				if (put === 16) {
 
 					Put.forEach(Trade => {
 
@@ -156,7 +166,7 @@ class Sql {
 					});
 				}
 
-				if (put === 16) {
+				if (put === 17) {
 
 					Put.forEach(TRON => {
 
@@ -166,7 +176,7 @@ class Sql {
 					});
 				}
 
-				if (put === 18) {
+				if (put === 19) {
 
 					Put.forEach(Vow => {
 
@@ -549,11 +559,11 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 67168.64]]}, 
-			{pair: [[`eth`, `usd`], [0, 3520.07]]}, 
-			{pair: [[`ltc`, `usd`], [0, 79.49]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9994]]}, 
-			{pair: [[`xmr`, `usd`], [0, 172.92]]}, 
+			{pair: [[`btc`, `usd`], [0, 67216.03]]}, 
+			{pair: [[`eth`, `usd`], [0, 3515.12]]}, 
+			{pair: [[`ltc`, `usd`], [0, 80.14]]}, 
+			{pair: [[`usdt`, `usd`], [0, .9995]]}, 
+			{pair: [[`xmr`, `usd`], [0, 176.11]]}, 
 			{pair: [[`xrp`, `usd`], [0, .047904]]},
 
 			{pair: [[`aud`, `usd`], [0, .66137]]}, 

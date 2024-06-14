@@ -46,6 +46,89 @@ class Route {
 			}
 		}
 
+    	else if (this.State[3] === `360`) {
+
+    		if (!Clients.terminal) {
+
+    			document.title = `Sign in | Joltnaut 360`;
+					
+				View.DOM([`div`, [Models.terminalSlot()]]);
+
+				Events.terminalSlot();
+    		}
+
+    		if (Clients.terminal) {
+
+    			if (!State[4] && !Tools.slim[State[4]]) {
+
+					let Puts = Tools.pull([
+						`/json/360/`, {
+							terminal: Clients.terminal,
+							pull: `app`}]);
+
+					Puts.onload = () => {
+
+						let Web = Tools.typen(Puts.response);
+
+						if (Web) {
+
+    						document.title = `Joltnaut 360`;
+					
+							View.DOM([`div`, [Models.terminal(Web)]]);
+						}
+					}	
+    			}
+
+    			/**
+
+    			else if (State[4] && State[4] === `liquidate` && !State[5] && !Tools.slim[State[5]]) {
+
+					let Puts = Tools.pull([
+						`/json/auto/`, {
+							client: Clients.client,
+							pull: `app`}]);
+
+					Puts.onload = () => {
+
+						let Web = Tools.typen(Puts.response);
+
+						if (Web.spot) {
+
+    						document.title = `Portfolio Wallet Liquidate`;
+					
+							View.DOM([`div`, [Models.liquidate(Web)]]);
+
+							Events.liquidate(Web)
+						}
+					}
+				}
+
+    			else if (State[4] && State[4] === `wallet` && !State[5] && !Tools.slim[State[5]]) {
+
+					let Puts = Tools.pull([
+						`/json/auto/`, {
+							client: Clients.client,
+							pull: `app`}]);
+
+					Puts.onload = () => {
+
+						let Web = Tools.typen(Puts.response);
+
+						if (Web.spot) {
+
+    						document.title = `Portfolio Wallet Deposit`;
+					
+							View.DOM([`div`, [Models.walletSlot(Web)]]);
+
+							Events.walletSlot(Web)
+						}
+					}
+				}
+
+				**/
+			}
+    	}
+
     	else if (this.State[3] === `account`) {
 
     		if (!Clients.mug) {

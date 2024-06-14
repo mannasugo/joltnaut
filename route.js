@@ -93,6 +93,66 @@ class Route {
 
 					Arg[1].setHeader(`Content-Type`, `application/json`);
 
+					if (State[2] === `360`) {
+
+						Sql.pulls(Raw => {
+
+							if (Pulls.pull === `app`) {
+
+								Arg[1].end(Tools.coats({ 
+									call: Raw.terminal[1][Pulls.terminal][`call`]}));
+							}
+
+							if (Pulls.pull === `terminalSlot`) {
+
+								let Client = [
+								//[`mannasugo@joltnaut.com`, 32658507, 254704174162, 50, [`pm`, `portfolio manager`]], 
+								//[`gordonouma@joltnaut.com`, 13384247, 254722897207, 50]
+								//[`oyugijerry@joltnaut.com`, 37722239, 254795455168, .25]
+								];
+
+								let Slot = [[], [], []];
+
+								Raw.terminal[0].forEach(MD => {
+
+									if (MD.mail === Pulls.slot[0] 
+										&& MD.lock === createHash(`md5`).update(`${Pulls.slot[1]}`, `utf8`).digest(`hex`)) {
+
+										Slot[0] = [MD.md];
+									}
+
+									if (MD.mail === Pulls.slot[0]) Slot[1].push(MD.mail)
+								});
+
+								if (Slot[0].length > 0) {
+
+									Arg[1].end(Tools.coats({terminal: Slot[0][0]}));
+								}
+
+								Client.forEach(Mail => {
+
+									if (Mail[0] === Pulls.slot[0]) Slot[2] = Mail
+								});
+
+								if (Slot[0].length === 0 && Slot[1].length === 0 && Slot[2].length > 0) {
+
+									let ts = new Date().valueOf();
+
+									Sql.puts([`terminal`, {
+										assign: Slot[2][4][0],
+										call: Slot[2][2],
+										lock: createHash(`md5`).update(`${Slot[2][1]}`, `utf8`).digest(`hex`),
+										mail: Slot[2][0],
+										md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`),
+										ts: ts}, (Raw) => {
+
+											Arg[1].end(Tools.coats({terminal: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)}));
+									}]);
+								}
+							}
+						});
+					}
+
 					if (State[2] === `auto`) {
 
 						Sql.pulls(Raw => {
