@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -99,8 +99,45 @@ class Route {
 
 							if (Pulls.pull === `app`) {
 
+								let REFS = [[], []];
+
+								Raw.promos[0].forEach(MD => {
+
+									if (MD.issuant === Pulls.terminal) {
+
+										REFS[0].push(MD);
+
+										if (MD.mug.length === 1) {
+
+											Raw.mugs[1][MD.mug[0]][`ref`] = MD.promo
+
+											REFS[1].push(Raw.mugs[1][MD.mug[0]]);
+										}
+									}
+								});
+
 								Arg[1].end(Tools.coats({ 
-									call: Raw.terminal[1][Pulls.terminal][`call`]}));
+									call: Raw.terminal[1][Pulls.terminal][`call`], clients: REFS[1], refs: REFS[0]}));
+							}
+
+							if (Pulls.pull === `pollRef`) {
+
+								if (Raw.terminal[1][Pulls.terminal]) {
+
+									let ts = new Date().valueOf();
+
+									let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+									Sql.puts([`promos`, {
+										issuant: Pulls.terminal,
+										md: md,
+										mug: [],
+										promo: (`${md.substr(0, 4)}${md.substr((md.length - 1) - 4, md.length - 1)}`).toUpperCase(),
+										ts: ts}, (Raw) => {
+
+											Arg[1].end(Tools.coats({terminal: Pulls.terminal}));
+									}]);
+								}
 							}
 
 							if (Pulls.pull === `terminalSlot`) {
@@ -1113,9 +1150,31 @@ class Route {
 										md: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`),
 										names: [Tools.safe(Pulls.param[1]), Tools.safe(Pulls.param[3])],
 										secs: secs
-									}, (Raw) => {
+									}, (SQ) => {
 
-										Arg[1].end(Tools.coats({mug: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`)}));
+										if (Pulls.ref && Pulls.ref.length === 9) {
+
+											let ref;
+
+											Raw.promos[0].forEach(MD => {
+
+												if (Pulls.ref === MD.promo && MD.mug.length === 0) ref = MD.md;
+											});
+
+											if (ref && ref.length > 9) {
+
+                								let Old = Tools.typen(Tools.coats(Raw.promos[1][ref]));
+
+                								Raw.promos[1][ref].mug[0] = createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`);
+
+												Sql.places([`promos`, Raw.promos[1][ref], Old, (Raw) => {
+
+													Arg[1].end(Tools.coats({mug: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`)}));
+												}]);	
+											}
+										}
+
+										else Arg[1].end(Tools.coats({mug: createHash(`md5`).update(`${secs}`, `utf8`).digest(`hex`)}));
 									}]);
 								}
 							}

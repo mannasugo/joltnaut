@@ -79,29 +79,29 @@ class Route {
 					}	
     			}
 
-    			/**
-
-    			else if (State[4] && State[4] === `liquidate` && !State[5] && !Tools.slim[State[5]]) {
+    			else if (State[4] && State[4] === `referrals` && !State[5] && !Tools.slim[State[5]]) {
 
 					let Puts = Tools.pull([
-						`/json/auto/`, {
-							client: Clients.client,
+						`/json/360/`, {
+							terminal: Clients.terminal,
 							pull: `app`}]);
 
 					Puts.onload = () => {
 
 						let Web = Tools.typen(Puts.response);
 
-						if (Web.spot) {
+						if (Web) {
 
-    						document.title = `Portfolio Wallet Liquidate`;
+    						document.title = `Referrals | Joltnaut 360`;
 					
-							View.DOM([`div`, [Models.liquidate(Web)]]);
+							View.DOM([`div`, [Models.referrals(Web)]]);
 
-							Events.liquidate(Web)
+							Events.referrals(Web)
 						}
 					}
 				}
+
+				/**
 
     			else if (State[4] && State[4] === `wallet` && !State[5] && !Tools.slim[State[5]]) {
 

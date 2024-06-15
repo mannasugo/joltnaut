@@ -617,7 +617,7 @@ let Models = {
 										[`a`, {href: `/autotrade/wallet`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Deposit`]]]]]]],
 					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
 						[ 
-							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
+							[`div`, {style: {padding: `${0}px ${24}px ${12}px`}}, 
 								[
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Portfolio Overview`],
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
@@ -1917,7 +1917,7 @@ let Models = {
 								[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
 									[ 
 										[`div`, {class: `_gxM _gZz _geQ`}, 
-											[[`input`, {id: `vowSlot`, placeholder: `ENTER HERE`, style: {background: `transparent`, [`block-size`]: `unset`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]]
+											[[`input`, {id: `refSlot`, placeholder: `ENTER HERE`, style: {background: `transparent`, [`block-size`]: `unset`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]]
 
 			TC[0] = [
 			`span`, {
@@ -3151,6 +3151,32 @@ let Models = {
 													[`letter-spacing`]: `${.75}px`, padding: `0 ${24}px`}}, `CONNECT WALLET`]]]]]]]]]]]]];
 	},
 
+	referrals: function (Web) {
+
+		let Refs = [[]];
+
+		Web.refs.forEach(Ref => {
+
+			Refs[0].push([`div`, {class: `_gxM _geQ`, style: {margin: `${6}px 0`}}, 
+				[
+					[`span`, {id: ``, style: {background: `#0000ffe5`, color: `#fff`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`line-height`]: `${18}px`, padding: `${2}px ${8}px`}}, Ref.promo],
+					[`div`, {class: `_gZz`}, 
+						[[`span`, {style: {color: `#acacac`, [`font-family`]: `geometria`, [`font-size`]: `${12}px`, [`font-weight`]: 600, [`letter-spacing`]: 0}}, Tools.logs(Ref.ts)]]]]]);
+		});
+
+		return [
+			`main`, {id: ``, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {padding: `${48}px ${24}px ${12}px`}}, 
+								[
+									[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Unclaimed referrals`], 
+												[`div`, {class: `_gZz`}, [[`a`, {id: `referral`, href: `javascript:;`, style: {background: `#0000ff30`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `generate referral`]]]]],
+									[`div`, {style: {[`margin-top`]: `${18}px`}}, Refs[0]]]]]]]];
+	},
+
 	swapOffline: function (Arg) {
 
 		return [
@@ -3205,6 +3231,41 @@ let Models = {
 
 	terminal: function(Web) {
 
+		let Param = [
+			[], 
+			[[`client`, 20], [`referral`, 20, true], [`inflow`, 22.5, true], [`outflow`, 17.5, true], [`balance`, 20, true]]];
+
+		Param[1].forEach(Feat => {
+
+			Param[0].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+				[[`span`, {style: {color: `#b3b3b3`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+
+		});
+
+		let Client = [[]];
+
+		Web.clients.forEach(Mug => {
+
+			Client[0].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+						[
+							[`svg`, {style: {[`min-height`]: `${21}px`, width: `${21}px`}, viewBox: `0 0 21 21`}, 
+								[
+									[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: `#47008c`}],
+									[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {[`text-transform`]: `uppercase`, [`letter-spacing`]: `normal`, [`font-size`]: `${11}px`}}, Mug.mail[0]]]], 
+							[`div`, {style: {color: `#000`, [`max-width`]: `${100}%`}}, 
+								[[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`txt-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Mug.mail}`]]]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+					[`span`, {style: {color: `blue`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`, [`text-decoration`]: `underline`}}, Mug.ref]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+						[[`span`, {style: {color: `H24[3]`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, ``]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  `${(0).toFixed(2)}`]]]]]);});
+
 		return [
 			`main`, {id: `terminal`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
 				[
@@ -3221,8 +3282,15 @@ let Models = {
 						[ 
 							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
 								[
-									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Portfolio`]]]]], 
-					[`div`, {style: {background: `#fff`, [`border-top`]: `${1}px solid #d9d9d9`, bottom: 0, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, margin: `${12}px ${0} ${0}`, [`text-transform`]: `uppercase`}}, `Portfolio Management`],
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+											[
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `My Clients`], 
+												[`div`, {class: `_gZz`}, [[`a`, {href: `/360/referrals`, style: {background: `#0000ff30`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `generate referrals`]]]]]]],
+									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]],
+									[`div`, {}, Client[0]]]]]], 
+					[`div`, {style: {background: `#fff`, [`border-top`]: `${1}px solid #d9d9d9`, bottom: 0, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${6}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
 						[[`div`, {class: `_gxM _geQ`}, 
 							[
 								[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],

@@ -28,7 +28,7 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `peers`, `spot`, `terminal`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `promos`, `peers`, `spot`, `terminal`, `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -128,6 +128,16 @@ class Sql {
 
 				if (put === 13) {
 
+					Put.forEach(Vow => {
+
+						Puts.promos[0].push(JSON.parse(Vow.json));
+
+						Puts.promos[1][JSON.parse(Vow.json).md] = JSON.parse(Vow.json);
+					});
+				}
+
+				if (put === 14) {
+
 					Put.forEach(Spot => {
 
 						Puts.spot[0].push(JSON.parse(Spot.json));
@@ -136,7 +146,7 @@ class Sql {
 					});
 				}
 
-				if (put === 14) {
+				if (put === 15) {
 
 					Put.forEach(Port => {
 
@@ -146,7 +156,7 @@ class Sql {
 					});
 				}
 
-				if (put === 15) {
+				if (put === 16) {
 
 					Put.forEach(Till => {
 
@@ -156,7 +166,7 @@ class Sql {
 					});
 				}
 
-				if (put === 16) {
+				if (put === 17) {
 
 					Put.forEach(Trade => {
 
@@ -166,7 +176,7 @@ class Sql {
 					});
 				}
 
-				if (put === 17) {
+				if (put === 18) {
 
 					Put.forEach(TRON => {
 
@@ -176,7 +186,7 @@ class Sql {
 					});
 				}
 
-				if (put === 19) {
+				if (put === 20) {
 
 					Put.forEach(Vow => {
 

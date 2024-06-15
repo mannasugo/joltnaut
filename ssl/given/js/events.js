@@ -403,7 +403,7 @@ class Events {
 
 			if (Values[0] === false || Values[1] === false || Values[2] === false || Values[3] === false) return;
 
-			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values, vow: Tools.slim(document.querySelector(`#vowSlot`).value)}]);
+			let Puts = Tools.pull([`/json/web/`, {pull: `mugup`, param : Values, ref: Tools.slim(document.querySelector(`#refSlot`).value)}]);
 
 			Values = [];
 
@@ -769,6 +769,26 @@ class Events {
 			Puts.onload = () => {
 
 				window.location = `/s2c/${Vow.md}`;
+			}
+
+		}]);
+	}
+
+	referrals (Arg) {
+
+		this.listen([document.querySelector(`#referral`), `click`, S => {
+
+			let Puts = Tools.pull([`/json/360/`, {pull: `pollRef`, terminal: Clients.terminal}]);
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Pull = JSON.parse(Puts.response);
+
+				if (Pull.terminal) window.location = window.location;
 			}
 
 		}]);

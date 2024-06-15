@@ -24,6 +24,8 @@ select * from `peers`;
 
 select * from `positions`;
 
+select * from `promos`;
+
 select * from `spot`;
 
 select * from `terminal`;
