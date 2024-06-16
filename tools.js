@@ -569,12 +569,12 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 66296.31]]}, 
-			{pair: [[`eth`, `usd`], [0, 3563.3]]}, 
-			{pair: [[`ltc`, `usd`], [0, 79.52]]}, 
-			{pair: [[`usdt`, `usd`], [0, .9994]]}, 
-			{pair: [[`xmr`, `usd`], [0, 175.53]]}, 
-			{pair: [[`xrp`, `usd`], [0, .048819]]},
+			{pair: [[`btc`, `usd`], [0, 66489.19]]}, 
+			{pair: [[`eth`, `usd`], [0, 3563.49]]}, 
+			{pair: [[`ltc`, `usd`], [0, 79.84]]}, 
+			{pair: [[`usdt`, `usd`], [0, .999302]]}, 
+			{pair: [[`xmr`, `usd`], [0, 174.98]]}, 
+			{pair: [[`xrp`, `usd`], [0, .0492967]]},
 
 			{pair: [[`aud`, `usd`], [0, .66144]]}, 
 			{pair: [[`cad`, `usd`], [0, .72816]]}, 
