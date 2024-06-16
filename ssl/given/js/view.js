@@ -293,7 +293,7 @@ let Models = {
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
 										[[`div`, {class: `_gxM`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`}}, 
 											[
-												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Earn`]]]]], 
+												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`, padding: `${12}px 0`}}, `Liquidity Pools`]]]]], 
 									[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, Param[0]], 
 									[`div`, {}, 
 										[[`div`, {class: `_geQ _gxM`, style: {padding: `${12}px 0`}}, 
@@ -3495,12 +3495,12 @@ let Models = {
 												[
 													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `Products`],
 													[`a`, {style: {color: `#535353`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/u/wallet`}, `Wallet`],
-													[`a`, {style: {color: `#535353`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/pools`}, `Earn`]]]]],
+													[`a`, {style: {color: `#535353`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/earn`}, `Earn`]]]]],
 									[`div`, {class: `_geQ`}, 
 										[
 											[`div`, {style: {width: `${100}%`}}, 
 												[
-													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `Company`],
+													[`h4`, {style: {color: `#000`, [`font-size`]: `${14}px`, [`font-weight`]: 600, [`margin-bottom`]: `${12}px`}}, `Us`],
 													[`a`, {class: `_geQ _gxM`, style: {color: `#535353`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-bottom`]: `${12}px`}, href: `/careers`}, 
 														[
 															[`span`, {}, `Careers`],
