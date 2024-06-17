@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const TronWeb = require(`tronweb`);
+//const TronWeb = require(`tronweb`);
 
 const { Sql, Tools } = require(`./tools`);
 
@@ -1004,6 +1004,11 @@ class Route {
 										}]);
 									}
 								}
+							}
+
+							if (Pulls.pull === `earn`) {
+
+								Arg[1].end(Tools.coats({mug: Pulls.mug}));
 							}
 
 							if (Pulls.pull === `idVault`) {

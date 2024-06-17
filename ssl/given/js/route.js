@@ -247,6 +247,27 @@ class Route {
 			View.DOM([`div`, [Models.careers()]]);
     	}
 
+		else if (this.State[3] === `earn`) {
+
+    		if (!State[4] && !Tools.slim[State[4]]) {
+
+				document.title = `Earn | Diversified Pool Joltnaut Quant`;
+
+				let Puts = Tools.pull([
+					`/json/web`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `earn`
+					}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					View.DOM([`div`, [Models.earn(Web)]]);
+				}
+			}
+		}
+
     	else if (this.State[3] === `enrol`) {
 
     		if (Clients.mug) {

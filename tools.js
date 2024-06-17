@@ -28,7 +28,8 @@ class Sql {
 
 		this.Sql([readFileSync(`constants/tables.sql`, {encoding: `utf8`}), (Raw) => {
 
-			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `promos`, `peers`, `spot`, `terminal`, `till`, `trades`, `tron20`, `vows`];
+			let Put = [`autospot`, `b4`, `book`, `clients`, `execute`, `invoice`, `mugs`, `payout`, `positions`, `promos`, `peers`, `spot`, `terminal`,
+			 `till`, `trades`, `tron20`, `vows`];
 
 			let Puts = {};
 
@@ -123,6 +124,16 @@ class Sql {
 						Puts.peers[0].push(JSON.parse(Peer.json));
 
 						Puts.peers[1][JSON.parse(Peer.json).md] = JSON.parse(Peer.json);
+					});
+				}
+
+				if (put === 12) {
+
+					Put.forEach(State => {
+
+						Puts.positions[0].push(JSON.parse(State.json));
+
+						Puts.positions[1][JSON.parse(State.json).md] = JSON.parse(State.json);
 					});
 				}
 
@@ -291,22 +302,38 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-15 11:12`).valueOf();
+		let ts = new Date(`2024-06-17 12:14`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .54,
+			allocate: .4,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`nzd`, `usd`], [0, .6154]],
+			pair: [[`btc`, `usd`], [0, 66117.79]],
 			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
 
 		if (Raw[0].book[1][md]) return;
+
+		let State = [{}, {}];
+
+		Raw[0].positions[0].forEach(MD => {
+
+			if (MD.pair[0] === Pair.pair[0][0] && MD.pair[1] === Pair.pair[0][1] && MD.close.length === 0) {
+
+				State[0] = this.typen(this.coats(MD));
+
+				State[1] = this.typen(this.coats(MD));
+			}
+		});
+
+		if (Pair.side === `buy` && State[0].open) State[1].open = [Pair.pair[1][1], ts];
+
+		if (Pair.side === `sell` && State[0].open) State[1].close = [Pair.pair[1][1], ts];
 
 		let Putlist = [];
 
@@ -370,7 +397,7 @@ class Tools {
 				
 		});
 
-		Raw[1]([Pair, Putlist]);
+		Raw[1]([Pair, Putlist, State]);
 	}
 
 	gas (Arg) {

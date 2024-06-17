@@ -2,6 +2,8 @@
 
 const { createSecureServer } = require(`http2`);
 
+const { createHash } = require(`crypto`);
+
 const { readFileSync, writeFileSync } = require(`fs`);
 
 const { Sql, Tools } = require(`./tools`);
@@ -22,13 +24,40 @@ Sql.pulls(Raw => {
 
 					Sql.putlist([`autospot`, Spot[1], (SQ) => {
 
-						Tools.pairs([Raw, (Puts) => {
+						if (Spot[2][0].open) {
 
-							Sql.puts([`trades`, Puts[0], (SQ) => {
+							Sql.places([`positions`, Spot[2][1], Spot[2][0], (State) => {
 
-								Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+								Tools.pairs([Raw, (Puts) => {
+
+									Sql.puts([`trades`, Puts[0], (SQ) => {
+
+										Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+									}]);
+								}]);
 							}]);
-						}]);
+						}
+
+						if (Spot[0].side === `buy` && !Spot[2][0].open) {
+
+							let ts = new Date().valueOf();
+
+							let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
+
+							Sql.puts([`positions`, {
+								close: [],
+								open: [Spot[0].pair[1][1], ts],
+								pair: Spot[0].pair[0], md: md, ts: ts}, (State) => {
+
+								Tools.pairs([Raw, (Puts) => {
+
+									Sql.puts([`trades`, Puts[0], (SQ) => {
+
+										Sql.putlist([`till`, Puts[1], (SQ) => {}]);
+									}]);
+								}]);
+							}]);
+						}
 					}]);
 				}]);
 			}]);
@@ -41,7 +70,7 @@ let App = createSecureServer({
   	cert: readFileSync(`http2/ssl/fullchain.pem`),
   	allowHTTP1: true}, (call, put) => {Call([call, put]);});
 
-pollPay();
+//pollPay();
 
 App.on(`error`, (err) => console.error(err));
 

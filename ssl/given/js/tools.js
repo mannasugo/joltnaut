@@ -158,3 +158,26 @@ class Tools {
 Tools = new Tools();
 
 let Clients = sessionStorage;
+
+const Constants = {
+
+	equities: [
+		[`amd`, `AMD`, `advanced microdevices inc`],
+		[`googl`, `GOOGL`, `alphabet inc`],
+		[`amzn`, `AMZN`, `amazon`],
+		[`aapl`, `AAPL`, `apple inc`],
+		[`bmbl`, `BMBL`, `bumble inc`],
+		[`gme`, `GME`, `gamestop corp`],
+		[`intc`, `INTC`, `intel corp`],
+		[`meta`, `META`, `meta platforms`],
+		[`msft`, `MSFT`, `microsoft corp`],
+		[`nflx`, `NFLX`, `netflix inc`],
+		[`nvda`, `NVDA`, `nvidia corp`],
+		[`para`, `PARA`, `paramount global`],
+		[`pypl`, `PYPL`, `paypal holdings inc`],
+		[`hood`, `HOOD`, `robinhood markets inc`],
+		[`spot`, `SPOT`, `spotify technology SA`],
+		[`tsla`, `TSLA`, `tesla inc`],
+		[`upwk`, `UPWK`, `upwork inc`],
+		[`wbd`, `WBD`, `warner bros discovery inc`]]
+}
