@@ -70,7 +70,7 @@ let App = createSecureServer({
   	cert: readFileSync(`http2/ssl/fullchain.pem`),
   	allowHTTP1: true}, (call, put) => {Call([call, put]);});
 
-//pollPay();
+pollPay();
 
 App.on(`error`, (err) => console.error(err));
 
