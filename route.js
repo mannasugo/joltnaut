@@ -143,9 +143,8 @@ class Route {
 							if (Pulls.pull === `terminalSlot`) {
 
 								let Client = [
-								//[`mannasugo@joltnaut.com`, 32658507, 254704174162, 50, [`pm`, `portfolio manager`]], 
-								//[`gordonouma@joltnaut.com`, 13384247, 254722897207, 50]
-								//[`oyugijerry@joltnaut.com`, 37722239, 254795455168, .25]
+								[`max@joltnaut.com`, 202406181157, 254790858214, 50, [`pm`, `portfolio manager`]
+								//[`mannasugo@joltnaut.com`, 32658507, 254704174162, 50, [`pm`, `portfolio manager`]]
 								];
 
 								let Slot = [[], [], []];
