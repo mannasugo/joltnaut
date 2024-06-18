@@ -116,8 +116,17 @@ class Route {
 									}
 								});
 
-								Arg[1].end(Tools.coats({ 
-									call: Raw.terminal[1][Pulls.terminal][`call`], clients: REFS[1], refs: REFS[0]}));
+								let Old = [Tools.typen(Tools.coats(Raw.promos[1][`0937b26d0357d5bb7a2585cd11d590a2`]))];
+
+								Raw.promos[1][`0937b26d0357d5bb7a2585cd11d590a2`][`mug`] = [`878006f49acb52827dd47bc47ff97d46`];
+
+								Old.push(Raw.promos[1][`0937b26d0357d5bb7a2585cd11d590a2`]);
+
+								Sql.places([`promos`, Old[1], Old[0], (State) => {
+
+									Arg[1].end(Tools.coats({ 
+										call: Raw.terminal[1][Pulls.terminal][`call`], clients: REFS[1], refs: REFS[0]}));
+									}]);
 							}
 
 							if (Pulls.pull === `pollRef`) {
@@ -143,7 +152,7 @@ class Route {
 							if (Pulls.pull === `terminalSlot`) {
 
 								let Client = [
-								[`max@joltnaut.com`, 202406181157, 254790858214, 50, [`pm`, `portfolio manager`]]
+								//[`max@joltnaut.com`, 202406181157, 254790858214, 50, [`pm`, `portfolio manager`]]
 								//[`mannasugo@joltnaut.com`, 32658507, 254704174162, 50, [`pm`, `portfolio manager`]]
 								];
 
