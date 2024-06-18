@@ -143,7 +143,7 @@ class Route {
 							if (Pulls.pull === `terminalSlot`) {
 
 								let Client = [
-								[`max@joltnaut.com`, 202406181157, 254790858214, 50, [`pm`, `portfolio manager`]
+								[`max@joltnaut.com`, 202406181157, 254790858214, 50, [`pm`, `portfolio manager`]]
 								//[`mannasugo@joltnaut.com`, 32658507, 254704174162, 50, [`pm`, `portfolio manager`]]
 								];
 
