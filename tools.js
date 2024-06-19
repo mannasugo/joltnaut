@@ -302,17 +302,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-17 13:27`).valueOf();
+		let ts = new Date(`2024-06-18 03:27`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: .8,
+			allocate: 1,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 65602.27]],
-			side: `buy`,
+			pair: [[`btc`, `usd`], [0, 65902.27]],
+			side: `sell`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -492,12 +492,12 @@ class Tools {
 		
 		let Pairs = [{
 			gas: 7.5/100,
-			pair: [`btc/fdusd`, [66934.13, 67187.53]],
-			ts_a: new Date(`2024-06-14 10:31`).valueOf(), 
-			ts_z: new Date(`2024-06-14 10:54`).valueOf()
+			pair: [`btc/fdusd`, [64812.73, 65073.03]],
+			ts_a: new Date(`2024-06-19 17:29`).valueOf(), 
+			ts_z: new Date(`2024-06-19 17:46`).valueOf()
 		}];
 
-		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
@@ -603,30 +603,30 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 65563.56]]}, 
-			{pair: [[`eth`, `usd`], [0, 3443.19]]}, 
-			{pair: [[`ltc`, `usd`], [0, 73.37]]}, 
-			{pair: [[`usdt`, `usd`], [0, .99981]]}, 
-			{pair: [[`xmr`, `usd`], [0, 171.56]]}, 
-			{pair: [[`xrp`, `usd`], [0, .048991]]},
+			{pair: [[`btc`, `usd`], [0, 64927.11]}, 
+			{pair: [[`eth`, `usd`], [0, 3522.47]]}, 
+			{pair: [[`ltc`, `usd`], [0, 73.82]]}, 
+			{pair: [[`usdt`, `usd`], [0, .99959]]}, 
+			{pair: [[`xmr`, `usd`], [0, 169.18]]}, 
+			{pair: [[`xrp`, `usd`], [0, .049205]]},
 
-			{pair: [[`aud`, `usd`], [0, .66296]]}, 
-			{pair: [[`cad`, `usd`], [0, .72834]]}, 
-			{pair: [[`eur`, `usd`], [0, 1.07299]]}, 
-			{pair: [[`jpy`, `usd`], [0, .0063338]]},
-			{pair: [[`kes`, `usd`], [0, .0078271]]},
-			{pair: [[`nok`, `usd`], [0, .093386]]},
-			{pair: [[`nzd`, `usd`], [0, .61237]]}, 
-			{pair: [[`zar`, `usd`], [0, .054947]]}, 
-			{pair: [[`sek`, `usd`], [0, .095574]]},
-			{pair: [[`gbp`, `usd`], [0, 1.26963]]}, 
-			{pair: [[`chf`, `usd`], [0, 1.12408]]},
+			{pair: [[`aud`, `usd`], [0, .66717]]}, 
+			{pair: [[`cad`, `usd`], [0, .73002]]}, 
+			{pair: [[`eur`, `usd`], [0, 1.07512]]}, 
+			{pair: [[`jpy`, `usd`], [0, .0063336]]},
+			{pair: [[`kes`, `usd`], [0, .0077196]]},
+			{pair: [[`nok`, `usd`], [0, .094701]]},
+			{pair: [[`nzd`, `usd`], [0, .61339]]}, 
+			{pair: [[`zar`, `usd`], [0, .055576]]}, 
+			{pair: [[`sek`, `usd`], [0, .095919]]},
+			{pair: [[`gbp`, `usd`], [0, 1.27309]]}, 
+			{pair: [[`chf`, `usd`], [0, 1.13151]]},
 
 			{pair: [[`aapl`, `usd`], [0, 213.07]]},
 			{pair: [[`amzn`, `usd`], [0, 186.89]]},
 			{pair: [[`hood`, `usd`], [0, 22.18]]},
 			{pair: [[`msft`, `usd`], [0, 441.81]]},
-			{pair: [[`nflx`, `usd`], [0, 675.83]]},
+			{pair: [[`nflx`, `usd`], [0, 685.67]]},
 			{pair: [[`nvda`, `usd`], [0, 1208.88]]},
 			{pair: [[`pypl`, `usd`], [0, 67.30]]},
 			{pair: [[`tsla`, `usd`], [0, 177.29]]},

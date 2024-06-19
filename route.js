@@ -116,6 +116,8 @@ class Route {
 									}
 								});
 
+								/**
+
 								let Old = [Tools.typen(Tools.coats(Raw.promos[1][`0937b26d0357d5bb7a2585cd11d590a2`]))];
 
 								Raw.promos[1][`0937b26d0357d5bb7a2585cd11d590a2`][`mug`] = [`878006f49acb52827dd47bc47ff97d46`];
@@ -124,9 +126,11 @@ class Route {
 
 								Sql.places([`promos`, Old[1], Old[0], (State) => {
 
+								**/
+
 									Arg[1].end(Tools.coats({ 
 										call: Raw.terminal[1][Pulls.terminal][`call`], clients: REFS[1], refs: REFS[0]}));
-									}]);
+									//}]);
 							}
 
 							if (Pulls.pull === `pollRef`) {
@@ -1016,7 +1020,40 @@ class Route {
 
 							if (Pulls.pull === `earn`) {
 
-								Arg[1].end(Tools.coats({mug: Pulls.mug}));
+								let PAIRS = [];
+
+								Raw.positions[0].forEach(MD => {
+
+									if (MD.close.length === 0) PAIRS.push(MD)
+								});
+
+								let USD = {usd: 1};
+
+								PAIRS.forEach(Position => {
+
+									let All = [];
+
+									Raw.book[0].forEach(Book => {
+
+										if (Book.pair[0][0] === Position.pair[0]) All.push([Book.pair[1][1], Book.ts_z]);
+									});
+
+									All = All.sort((A, B) => {return B[1] - A[1]});
+
+									USD[Position.pair[0]] = (All[0])? All[0][0]: 0
+
+									Position[`cost`] = USD[Position.pair[0]]
+								});
+
+								//if (Raw.mugs[1][Pulls.mug]) {
+
+
+								//}
+
+								//else {
+
+									Arg[1].end(Tools.coats({mug: Pulls.mug, states: PAIRS}));
+								//}
 							}
 
 							if (Pulls.pull === `idVault`) {

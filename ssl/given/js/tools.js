@@ -161,6 +161,10 @@ let Clients = sessionStorage;
 
 const Constants = {
 
+	coins: [
+		[`btc`, `BTC`, `bitcoin`],
+		[`usdt`, `USDT`, `Tether`]],
+
 	equities: [
 		[`amd`, `AMD`, `advanced microdevices inc`],
 		[`googl`, `GOOGL`, `alphabet inc`],
