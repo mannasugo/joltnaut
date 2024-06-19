@@ -302,17 +302,17 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-18 03:27`).valueOf();
+		let ts = new Date(`2024-06-19 17:53`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
 		
 		let Pair = {
-			allocate: 1,
+			allocate: .89,
 			ilk: `market`,
 			md: md,
 			mug: hold,
-			pair: [[`btc`, `usd`], [0, 65902.27]],
-			side: `sell`,
+			pair: [[`btc`, `usd`], [0, 64941.82]],
+			side: `buy`,
 			ts: ts,
 			ts_z: ts
 		};
@@ -497,7 +497,7 @@ class Tools {
 			ts_z: new Date(`2024-06-19 17:46`).valueOf()
 		}];
 
-		writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
