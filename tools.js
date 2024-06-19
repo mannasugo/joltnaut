@@ -497,7 +497,7 @@ class Tools {
 			ts_z: new Date(`2024-06-19 17:46`).valueOf()
 		}];
 
-		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
