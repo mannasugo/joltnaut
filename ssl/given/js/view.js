@@ -3375,7 +3375,7 @@ let Models = {
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[[`span`, {style: {color: `H24[3]`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, ``]]], 
 					[`div`, {style: {width: `${20}%`}}, 
-						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  `${(0).toFixed(2)}`]]]]]);});
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  `${(Mug.debit).toFixed(2)}`]]]]]);});
 
 		return [
 			`main`, {id: `terminal`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 

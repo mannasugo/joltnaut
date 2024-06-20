@@ -109,7 +109,11 @@ class Route {
 
 										if (MD.mug.length === 1) {
 
-											Raw.mugs[1][MD.mug[0]][`ref`] = MD.promo
+											let Hold = Tools.hold([Raw, MD.mug[0]]).sort((A, B) => {return B.secs - A.secs});
+
+											Raw.mugs[1][MD.mug[0]][`debit`] = (Hold[0])? (Hold[0].hold[1]).toFixed(2): 0;
+
+											Raw.mugs[1][MD.mug[0]][`ref`] = MD.promo;
 
 											REFS[1].push(Raw.mugs[1][MD.mug[0]]);
 										}
