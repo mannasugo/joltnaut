@@ -603,18 +603,18 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-			{pair: [[`btc`, `usd`], [0, 65657.27]]}, 
-			{pair: [[`eth`, `usd`], [0, 3577.69]]}, 
-			{pair: [[`ltc`, `usd`], [0, 74.19]]}, 
-			{pair: [[`usdt`, `usd`], [0, .99973]]}, 
-			{pair: [[`xmr`, `usd`], [0, 168.07]]}, 
-			{pair: [[`xrp`, `usd`], [0, .049704]]},
+			{pair: [[`btc`, `usd`], [0, 64758.46]]}, 
+			{pair: [[`eth`, `usd`], [0, 3493.5]]}, 
+			{pair: [[`ltc`, `usd`], [0, 73.85]]}, 
+			{pair: [[`usdt`, `usd`], [0, .99956]]}, 
+			{pair: [[`xmr`, `usd`], [0, 169.83]]}, 
+			{pair: [[`xrp`, `usd`], [0, .049364]]},
 
 			{pair: [[`aud`, `usd`], [0, .66686]]}, 
 			{pair: [[`cad`, `usd`], [0, .72920]]}, 
 			{pair: [[`eur`, `usd`], [0, 1.07281]]}, 
 			{pair: [[`jpy`, `usd`], [0, .0063126]]},
-			{pair: [[`kes`, `usd`], [0, .0078210]]},
+			{pair: [[`kes`, `usd`], [0, .0077827]]},
 			{pair: [[`nok`, `usd`], [0, .094940]]},
 			{pair: [[`nzd`, `usd`], [0, .61284]]}, 
 			{pair: [[`zar`, `usd`], [0, .055514]]}, 
