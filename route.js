@@ -111,7 +111,7 @@ class Route {
 
 											let Hold = Tools.hold([Raw, MD.mug[0]]).sort((A, B) => {return B.secs - A.secs});
 
-											Raw.mugs[1][MD.mug[0]][`debit`] = parseFloat(Hold[0])? (Hold[0].hold[1]): 0;
+											Raw.mugs[1][MD.mug[0]][`debit`] = (Hold[0])? parseFloat(Hold[0].hold[1]): 0;
 
 											Raw.mugs[1][MD.mug[0]][`ref`] = MD.promo;
 
