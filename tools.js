@@ -6,7 +6,7 @@ const { mkdir, readFile, readFileSync, stat, writeFileSync } = require(`fs`);
 
 const { createHash } = require(`crypto`);
 
-const pullHTTPContent = require(`request`);
+const pulls = require(`request`);
 
 const hold = new Date(`1996-01-20`).valueOf();
 
@@ -275,7 +275,7 @@ class Tools {
 			}
 		});
 
-		pullHTTPContent(`https://apilist.tronscan.org/api/token_trc20/transfers?relatedAddress=TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`, (flaw, State, coat) => {
+		pulls(`https://apilist.tronscan.org/api/token_trc20/transfers?relatedAddress=TH9BuLCBLmCTfvtgBWB14Y4TxCjPdYx4WK`, (flaw, State, coat) => {
 
 			if (!flaw && State.statusCode === 200) {
 
@@ -304,7 +304,7 @@ class Tools {
 
 		let ts = new Date(`2024-06-21 11:07`).valueOf();
 
-		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`)
+		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
 		
 		let Pair = {
 			allocate: .75,
@@ -563,6 +563,41 @@ class Tools {
 		});
 	}
 
+	spot (Raw) {
+
+		setInterval(() => {
+
+			let Coin = [`BTC`, `ETH`, `LTC`, `USDT`, `XMR`, `XRP`]; //{"data":{"amount":"3483.535","base":"ETH","currency":"USD"}}
+
+			Coin.forEach(coin => {
+
+				pulls(`https://api.coinbase.com/v2/prices/${coin}-USD/spot`, (flaw, State, coat) => {
+
+					if (!flaw && State.statusCode === 200 && this.typen(coat) && this.typen(coat).data 
+						&& parseFloat(this.typen(coat).data.amount) > 0) {
+		
+						let cost = parseFloat(this.typen(coat).data.amount), ts = new Date().valueOf();
+
+						if (coin === `XMR`) cost = cost.toFixed(3)
+
+						let Pair = {
+							allocate: 1,
+							ilk: `market`,
+							md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`),
+							mug: hold,
+							pair: [[coin.toLowerCase(), `usd`], [0, cost]],
+							side: `buy`,
+							ts: ts,
+							ts_z: ts
+						};
+
+						Raw[0]([Pair]);
+					}
+				});
+			});
+		}, 30000);
+	}
+
 	safe (String) {
 
 		String = String.replace(new RegExp(`&`, `g`), `u0026`);
@@ -603,12 +638,17 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
+		
+			/**
+
 			{pair: [[`btc`, `usd`], [0, 64291.34]]}, 
 			{pair: [[`eth`, `usd`], [0, 3256.2]]}, 
 			{pair: [[`ltc`, `usd`], [0, 73.03]]}, 
 			{pair: [[`usdt`, `usd`], [0, .99942]]}, 
 			{pair: [[`xmr`, `usd`], [0, 169.93]]}, 
 			{pair: [[`xrp`, `usd`], [0, .048982]]},
+
+			**/
 
 			{pair: [[`aud`, `usd`], [0, .66559]]}, 
 			{pair: [[`cad`, `usd`], [0, .73048]]}, 

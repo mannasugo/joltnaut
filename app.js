@@ -72,6 +72,11 @@ let App = createSecureServer({
 
 pollPay();
 
+Tools.spot([(Spot) => {
+
+	Sql.puts([`book`, Spot[0], (SQ) => {}]);
+}]);
+
 App.on(`error`, (err) => console.error(err));
 
 App.listen(8124);
