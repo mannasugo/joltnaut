@@ -1039,7 +1039,7 @@ class Route {
 
 									Raw.book[0].forEach(Book => {
 
-										if (Book.pair[0][0] === Position.pair[0]) All.push([Book.pair[1][1], Book.ts_z]);
+										if (Book.pair[0][0] === Position.pair[0] && Book.ts_z > 0) All.push([Book.pair[1][1], Book.ts_z]);
 									});
 
 									All = All.sort((A, B) => {return B[1] - A[1]});

@@ -183,5 +183,19 @@ const Constants = {
 		[`spot`, `SPOT`, `spotify technology SA`],
 		[`tsla`, `TSLA`, `tesla inc`],
 		[`upwk`, `UPWK`, `upwork inc`],
-		[`wbd`, `WBD`, `warner bros discovery inc`]]
+		[`wbd`, `WBD`, `warner bros discovery inc`]],
+
+	fiat: [
+		[`au`, `AUD`, `australian dollar`],
+		[`ca`, `CAD`, `canadian dollar`],
+		[`eu`, `EUR`, `euro`],
+		[`jp`, `JPY`, `japanese yen`],
+		[`ke`, `KES`, `kenyan shilling`],
+		[`no`, `NOK`, `norwegian krone`],
+		[`nz`, `NZD`, `new zealand dollar`],
+		[`za`, `ZAR`, `south african rand`],
+		[`se`, `SEK`, `swedish krone`],
+		[`ch`, `CHF`, `swiss franc`],
+		[`uk`, `GBP`, `sterling pound`],
+		[`us`, `USD`, `us dollar`]]
 }

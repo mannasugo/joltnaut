@@ -187,10 +187,10 @@ let Models = {
 						//[[`span`, {style: {color: H24[1], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[2]]]], 
 					[`div`, {style: {width: `${22.5}%`}}, 
 						[
-							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.volume[Asset[0]]).toFixed(3)}`], 
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.volume[Asset[0]]).toFixed(6)}`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${20}%`}}, 
-						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, style: {border: `1px solid blue`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${2}px ${8}px`}}, `trade`]
+						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, style: {background: `#0fd064`, boder: `1px solid green`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${2}px ${8}px`}}, `buy`]
 						//[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]
 						]]]]);
 		});
@@ -1030,7 +1030,7 @@ let Models = {
 
 		let Fiat = [
 		[[`pair`, 20], [`open cost`, 20, true], [`open volume`, 22.5, true], [`price`, 20, true], [`p&l`, 17.5, true]],
-		[]];
+		[], []];
 
 		let Coin = [
 		[[`pair`, 20], [`open cost`, 20, true], [`open volume`, 22.5, true], [`price`, 20, true], [`p&l`, 17.5, true]],
@@ -1044,18 +1044,36 @@ let Models = {
 			});
 		});
 
+		Web.states.forEach(Position => {
+
+			Constants.fiat.forEach(Flag => {
+
+				if (Position.pair[0] === Flag[1].toLowerCase()) {Position.flag = Flag[0]; Fiat[1].push(Position);}
+			});
+		});
+
 		Coin[1].forEach(Flag => {
+
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			(Flag.open[0] > Flag.cost)? H24[1] = `red`: H24[1] = `green`;
+
+			(Flag.open[0] > Flag.cost)? H24[3] = `red`: H24[3] = `green`;
+
+			H24[0] = `${(((Flag.cost - Flag.open[0])/Flag.cost)*100).toFixed(2)}%`
+
+			//H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
 
 			Coin[2].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
 				[
-					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+					[`div`, {class: `_geQ _gxM`, style: { width: `${20}%`}}, 
 						[
-							[`img`, {src: `/ssl/given/svg/tokens/${Flag.pair[0]}.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${0}px)`}}],
-							[`img`, {src: `/ssl/given/svg/flags/us.svg`, style: {[`max-width`]: `${24}px`, transform: `translateX(${-7.6667}px)`}}], 
-							[`div`, {style: {color: `#000`, width: `${100}%`}},
+							[`img`, {src: `/ssl/given/svg/tokens/${Flag.pair[0]}.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${0}px)`}}],
+							[`img`, {src: `/ssl/given/svg/flags/us.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${-7.6667}px)`}}],
+							[`div`, {class: ``, style: {color: `#000`, width: `${70}%`}},
 								[
-									[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Flag.pair[0]}-${Flag.pair[1]}`], 
-									[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`}}, `Spot`]]]]], 
+									[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, `${Flag.pair[0]}-${Flag.pair[1]}`], 
+									[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `Spot`]]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
 							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.open[0]).toLocaleString()}`], 
@@ -1066,12 +1084,52 @@ let Models = {
 							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`, [`text-transform`]: `uppercase`}}, `${Flag.pair[0]}`]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
-							[`span`, {style: {color: `H24[3]`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.cost).toLocaleString()}`], 
-							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `24H`]]], 
+							[`span`, {style: {color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.cost).toLocaleString()}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
 					[`div`, {style: {width: `${17.5}%`}}, 
 						[
 							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  ``], 
-							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]]]]);
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]]]]]]);
+		});
+
+		Fiat[1].forEach(Flag => {
+
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			(Flag.open[0] > Flag.cost)? H24[1] = `red`: H24[1] = `green`;
+
+			(Flag.open[0] > Flag.cost)? H24[3] = `red`: H24[3] = `green`;
+
+			H24[0] = `${(((Flag.cost - Flag.open[0])/Flag.cost)*100).toFixed(2)}%`
+
+			//H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+
+			Fiat[2].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {width: `${20}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/flags/${Flag.flag}.svg`, style: {[`max-width`]: `${22}px`, transform: `translateX(${0}px)`}}],
+							[`img`, {src: `/ssl/given/svg/flags/us.svg`, style: {[`max-width`]: `${22}px`, transform: `translateX(${-7.6667}px)`}}], 
+							[`div`, {style: {color: `#000`, width: `${65}%`}},
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, `${Flag.pair[0]}-${Flag.pair[1]}`], 
+									[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `Spot`]]]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.open[0]).toFixed(6)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`, [`text-transform`]: `uppercase`}}, `${Flag.pair[1]}`]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`, [`text-transform`]: `uppercase`}}, `${Flag.pair[0]}`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.cost).toFixed(6)}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  ``], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]]]]]]);
 		});
 
 		return [
@@ -1098,13 +1156,13 @@ let Models = {
 													[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Equities Allocation Positions`]]],
 											[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, paramify([Equities[0], []])],
 											/*[`div`, {}, Client[0]]*/]],
-									[`div`, {style: {display: (Fiat[1].length == 0)? `flex`: `none`,[`margin-top`]: `${12}px`}}, 
+									[`div`, {style: {display: (Fiat[1])? `flex`: `none`,[`margin-top`]: `${12}px`}}, 
 										[
 											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 												[
 													[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Currencies Allocation Positions`]]],
 											[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, paramify([Fiat[0], []])],
-											/*[`div`, {}, Client[0]]*/]],
+											[`div`, {}, Fiat[2]]]],
 									[`div`, {style: {display: (Coin[1])? `flex`: `none`,[`margin-top`]: `${12}px`}}, 
 										[
 											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
