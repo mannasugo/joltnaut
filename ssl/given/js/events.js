@@ -154,6 +154,81 @@ class Events {
 		}]);
 	}
 
+	fiat (Arg) {
+
+		document.querySelectorAll(`#fiat`).forEach(Allow => {
+
+			this.listen([Allow, `click`, S => {
+
+				let idSlot = this.getSource(S).getAttribute(`for`);
+
+				if (idSlot === `mpesa`) {
+
+					View.pop();
+
+					View.DOM([`div`, [Models.fiatSlot([idSlot, Arg[0], Arg[1][Arg[0].toLowerCase()], Arg[1][`kes`]])]]);
+
+					this.listen([document.querySelector(`#callSlot`), `keyup`, S => {
+
+						let Slot = this.getSource(S);
+
+						if (!parseInt(Slot.value)) Slot.value = 0;
+
+						if (Slot.value.length > 9) Slot.value = Slot.value.substr(0, 8);
+
+						Slot.value = parseInt(Slot.value);
+					}]);
+
+					this.listen([document.querySelector(`#floatSlot`), `keyup`, S => {
+
+						let Slot = this.getSource(S);
+
+						let a = Slot.value[Slot.value.length - 1];
+
+						if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+						else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+						if (parseFloat(Slot.value) > 0) document.querySelector(`#swap`).innerHTML = (parseFloat(Slot.value)*Arg[1][`kes`]).toFixed(2) + ` USD/${((parseFloat(Slot.value)*Arg[1][`kes`])/Arg[1][Arg[0].toLowerCase()]).toFixed(5)} ${Arg[0]}`
+					}]);
+
+					this.listen([document.querySelector(`#fiatSlot`), `click`, S => {
+
+						if (!Clients.mug) window.location = `/signup`
+
+						let Values = 
+							[(!Tools.slim(document.querySelector(`#callSlot`).value))? false: Tools.slim(document.querySelector(`#callSlot`).value),
+							(!Tools.slim(document.querySelector(`#floatSlot`).value))? false: Tools.slim(document.querySelector(`#floatSlot`).value)];
+
+						if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || Values[1] === false || typeof parseFloat(Values[1]) !== `number`) return;
+
+						if (parseFloat(Values[1]) <= 0 || Values[0].toString().length !== 9) return;
+
+						let Puts = Tools.pull([
+							`/json/auto/`, { 
+								fiat: idSlot,
+								mug: Clients.mug, 
+								slot : {float: parseFloat(Values[1]), call: parseFloat(Values[0]), coin: Arg[0].toLowerCase()}, 
+								pull: `fiatSlot`}]);
+
+						Values = [];
+
+						View.pop();
+
+						View.DOM([`div`, [Models.splash]]);
+
+						Puts.onload = () => {
+
+							let Web = JSON.parse(Puts.response);
+
+							if (Web) window.location = `/u/wallet`;
+						}
+					}]);
+				}
+			}]);
+		});
+	}
+
 	idCopy (Arg) {
 
 		this.listen([document.querySelector(`#idCopy`), `click`, S => {

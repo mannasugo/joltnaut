@@ -155,7 +155,7 @@ let Models = {
 
 			let H24 = [`-`, `#000`, `-`, `#000`];
 
-			if (Web.USD24[Asset[0]]) {
+			if (Web.USD24[Asset[0]] && Web.USD24[Asset[0]].length > 0) {
 
 				let USD24 = Web.USD24[Asset[0]], USD = Web.xUSD[Asset[0]];
 
@@ -175,7 +175,7 @@ let Models = {
 							[`img`, {src: `/ssl/given/svg/tokens/${Asset[0]}.svg`, style: {[`max-width`]: `${18}px`}}], 
 							[`div`, {style: {color: `#000`, width: `${100}%`}}, 
 								[
-									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `${Asset[1]}`], 
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Asset[1]}`], 
 									/*[`span`, {style: {color: `#515151`, [`font-size`]: `${12}px`, [`margin-left`]: `${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `capitalize`, [`white-space`]: `nowrap`}}, `${Flag[2]}`]*/]]]], 
 					[`div`, {style: {width: `${20}%`}}, 
 						[
@@ -190,7 +190,7 @@ let Models = {
 							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Web.volume[Asset[0]]).toFixed(6)}`], 
 							/*[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]*/]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${20}%`}}, 
-						[[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, style: {background: `#0fd064`, boder: `1px solid green`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${2}px ${8}px`}}, `buy`]
+						[[`a`, {href: `/fiat/${Asset[0].toUpperCase()}`, style: {background: `#0fd064`, boder: `1px solid green`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${2}px ${8}px`}}, `BUY`]
 						//[`a`, {href: `/trade/${Asset[0].toUpperCase()}_USD`, class: `v202205042043`, style: {height: `${20}px`, [`max-width`]: `${20}px`}}]
 						]]]]);
 		});
@@ -264,10 +264,11 @@ let Models = {
 							[
 								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 								[`div`, {class: `_eYG`}, 
-									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${17}px`, [`font-weight`]: 400, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
+									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
 								[`div`, {class: `_gZz`, style: {flex: 0, [`font-size`]: `${12}px`}}, 
 									[
 										(Clients.mug)? []: [`a`, {href: `/signin`, style: {background: `#0000ff30`, color: `blue`, [`font-weight`]: 600, margin: `0 ${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `login`],
+										[`a`, {href: `/`, style: {background: `blue`, color: `#fff`, [`margin-left`]: `${8}px`, padding: `${4}px ${8}px`}}, `Spot`],
 										[`a`, {href: `/earn`, style: {background: `blue`, color: `#fff`, margin: `0 ${8}px`, padding: `${4}px ${8}px`}}, `Earn`],
 										[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
 											[
@@ -275,7 +276,7 @@ let Models = {
 												[`span`, {style: {[`marin-bottom`]: `${2}px`}}, `Deposit`]]]]]]]]],
 					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
 						[
-							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${48}px ${24}px ${12}px`}}, 
+							[`div`, {style: {padding: `${32}px ${24}px ${12}px`}}, 
 								[
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: `${-.5}px`, margin: `${12}px ${0} ${0}`, }}, `Markets Overview`],
 									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
@@ -489,7 +490,7 @@ let Models = {
 
 			let H24 = [`-`, `#000`, `-`, `#000`];
 
-			if (Web.USD24[Flag[0]]) {
+			if (Web.USD24[Flag[0]] && Web.USD24[Flag[0]].length > 0) {
 
 				let USD24 = Web.USD24[Flag[0]], USD = Web.USD[Flag[0]];
 
@@ -1176,7 +1177,108 @@ let Models = {
 								[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],
 								[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `2024`], 
 								[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]];
+	},
 
+	fiat: function (Web) {
+
+		let Pay = [
+		[[`airtel`, `red`, `Airtel Money`], 
+		[`mpesa`, `green`, `M-PESA Kenya (Safaricom)`], 
+		[`scb`, `blue`, `Standard Chartered Bank`]], []];
+
+		Pay[0].forEach(Mode => {
+
+			Pay[1].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${10}px 0`}}, 
+				[
+					[`svg`, {style: {[`min-height`]: `${24}px`, width: `${24}px`}, viewBox: `0 0 21 21`}, 
+						[
+							[`circle`, {cy: 10.5, cx: 10.5, r: 10.5, stroke: `none`, fill: Mode[1]}],
+							[`text`, {x: 10.5, y: 14, [`text-anchor`]: `middle`, fill: `#fff`, style: {[`text-transform`]: `uppercase`, [`letter-spacing`]: `normal`, [`font-size`]: `${11}px`}}, Mode[2][0]]]], 
+					[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 300, margin: `0 0 0 ${8}px`}}, Mode[2]], 
+					[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+						[[`a`, {for: Mode[0], id: `fiat`, href: `javascript:;`, style: {background: `#0000ff30`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `Buy at Zero Fee`]]]]]);
+		});
+
+		return [
+			`main`, {id: `fiats`, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[
+					[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #d9d9d9`, display: `none`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, []], 
+								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+									[
+										[`a`, {href: `/u/wallet`, style: {background: `#0000ff30`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `Deposit Crypto`]]]]]]],
+					[`div`, {style: {[`max-width`]: `${540}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
+						[ 
+							[`div`, {style: {padding: `${0}px ${24}px ${12}px`}}, 
+								[
+									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, margin: `${12}px ${0} ${0}`, [`text-transform`]: `capitalize`}}, `buy ${Web.symbol[2]}`],
+									[`div`, {style: {[`margin-top`]: `${24}px`}}, 
+										[
+											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+												[
+													[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Pay with`]]],
+											[`div`, {style: {[`margin-top`]: `${12}px`}}, Pay[1]]]]]]]]]];
+	},
+
+	fiatSlot: function (Arg) {
+
+		return [
+			`main`, {id: ``, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {padding: `${48}px ${24}px ${12}px`}}, 
+								[
+									[`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, margin: `${12}px 0`}}, 
+										[[`div`, {class: `_geQ _gxM`, style: {}}, 
+											[
+												[`img`, {src: `/ssl/given/svg/tokens/${Arg[1]}.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${0}px)`}}],
+												[`img`, {src: `/ssl/given/svg/flags/us.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${-7.6667}px)`}}],
+												[`div`, {class: ``, style: {color: `#000`}},
+													[
+														[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, `${Arg[1]}-USD`], 
+														[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `Spot`]]],
+												[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#000`, [`font-family`]: `geometria`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `${Arg[2]} USD`]]]]]]], 
+									[`div`, {class: `_geQ _gxM`}, 
+										[
+											[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${12}px ${0} ${0}`, }}, `Buy with`],
+											[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 300, margin: `${12}px ${0} ${0} ${16}px`, [`text-decoration`]: `underline`}}, `M-PESA SAFARICOM`]]],
+									[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#515151`, [`font-family`]: `geometria`, [`font-weight`]: 300, [`font-size`]: `${13}px`}}, `+254`]]], 
+														[`div`, {class: `_gZz`}, 
+															[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																[ 
+																	[`div`, {class: `_gxM _gZz _geQ`}, 
+																		[[`input`, {id: `callSlot`, placeholder: `712345678`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+									[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${24}px ${0} ${0}`, }}, `Amount to Spend`],
+									[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`div`, {style: {[`line-height`]: `${32}px`, width: `${75}%`}}, 
+													[ 
+														[`div`, {class: `_gxM _gZz _geQ`}, 
+															[[`input`, {id: `floatSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, width: `${100}%`}}]]]]], 
+														[`div`, {class: `_gZz`}, 
+															[
+												[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`,}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#000`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `KES`]]]]]]]]],
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+										[ 
+											[`div`, {}, 
+												[
+													[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${10}px`}}, `APPROX. AMOUNT`],
+													[`span`, {id: `swap`, style: {color: `#000`, [`font-family`]: `geometria`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `0.00USD/0${Arg[1]}`]]],
+											[`div`, {class: `_eYG`}, []],
+												[`div`, {class: `_gZz`, style: {flex: 0}}, 
+													[[`a`, {class: `_gxM _geQ`, href: `javascript:;`, id: `fiatSlot`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
+														[[`span`, {}, `BUY ${Arg[1]}`]]]]]]]]]]]]];
 	},
 
 	holdXY: (Arg) => {
@@ -4018,7 +4120,7 @@ let Models = {
 
 			let H24 = [`-`, `#000`, `-`, `#000`];
 
-			if (Web.USD24[Flag[0]]) {
+			if (Web.USD24[Flag[0]] && Web.USD24[Flag[0]].length > 0) {
 
 				let USD24 = Web.USD24[Flag[0]], USD = Web.xUSD[Flag[0]];
 
@@ -4080,7 +4182,7 @@ let Models = {
 
 			let H24 = [`-`, `#000`, `-`, `#000`];
 
-			if (Web.USD24[Flag[1].toLowerCase()]) {
+			if (Web.USD24[Flag[1].toLowerCase()] && Web.USD24[Flag[1].toLowerCase()].length > 0) {
 
 				let USD24 = Web.USD24[Flag[1].toLowerCase()], USD = Web.xUSD[Flag[1].toLowerCase()];
 

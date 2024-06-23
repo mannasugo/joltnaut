@@ -1060,6 +1060,117 @@ class Route {
 								//}
 							}
 
+							if (Pulls.pull === `fiat`) {
+
+								let Coin = [`BTC`, `ETH`, `LTC`, `USDT`, `XMR`, `XRP`];
+
+								if (Coin.indexOf(Pulls.asset) > -1) {
+
+									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+									`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
+
+									let USD = {usd: 1};
+
+									Holding.forEach(holding => {
+
+										let All = [];
+
+										Raw.book[0].forEach(Book => {
+
+											if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+										});
+
+										All = All.sort((A, B) => {return B[1] - A[1]});
+
+										USD[holding] = (All[0])? All[0][0]: 0
+									});
+
+									Arg[1].end(Tools.coats({asset: Pulls.asset, mug: Pulls.mug, USD: USD}));
+								}
+							}
+
+							if (Pulls.pull === `fiatSlot`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Pulls.fiat === `mpesa`) {
+
+									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+									`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
+
+									let USD = {usd: 1};
+
+									Holding.forEach(holding => {
+
+										let All = [];
+
+										Raw.book[0].forEach(Book => {
+
+											if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+										});
+
+										All = All.sort((A, B) => {return B[1] - A[1]});
+
+										USD[holding] = (All[0])? All[0][0]: 0
+									});
+
+									let Slot = Pulls.slot;
+
+									if (Slot.float > 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										let Get = HTTPS.request({
+        									hostname: `payment.intasend.com`,
+        									port: 443,
+        									path: `/api/v1/payment/mpesa-stk-push/`,
+        									method: `POST`,
+       										headers: {
+       											Authorization: `Bearer ISSecretKey_live_c3481e0a-b1c5-4529-b761-bcee74225b6c`,
+       											[`Content-Type`]: `application/json`,
+       											INTASEND_PUBLIC_API_KEY: `ISPubKey_live_be13c375-b61d-4995-8c50-4268c604c335`}}, Got => {
+
+												let got = ``;
+
+												Got.on(`data`, (buffer) => {got += buffer;});
+        										
+        										Got.on('end', () => {
+
+          											if (got) {
+
+          												let TX = Tools.typen(got);
+
+          												if (TX.id) {
+
+          													Sql.puts([`invoice`, {
+          														complete: false,
+          														float: parseFloat(Slot.float)*USD[`kes`],
+          														id: `254` + Slot.call, 
+          														invoice: TX.invoice.invoice_id, 
+          														local: Slot.float,
+          														md: md,
+          														mug: Pulls.mug,
+          														ts: ts,
+          														type: `fiatSpot`, pair: [Slot.coin, `usd`]}, (Bill) => {
+
+																Arg[1].end(Tools.coats({mug: Pulls.mug}));
+															}]);
+														}
+          											}
+        										});
+										});
+
+										Get.write(Tools.coats({
+											amount: parseFloat(Slot.float),
+											api_ref: md,
+											email: Raw.mugs[1][Pulls.mug].mail,
+											phone_number: `254` + Slot.call}));
+
+										Get.end();
+									}
+								}
+							}
+
 							if (Pulls.pull === `idVault`) {
 
 								if (Raw.mugs[1][Pulls.mug].inlet && Raw.mugs[1][Pulls.mug].inlet.USDT 
@@ -2388,6 +2499,55 @@ class Route {
                 							Bill.complete = true;
 
 											Sql.places([`invoice`, Bill, Old, (Q) => {}]);
+										}]);
+									}
+
+          							if (Bill.type === `fiatSpot` && TX.invoice.state === `COMPLETE` && !Raw.spot[1][Bill.md]) {
+
+										let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+										`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
+
+										let USD = {usd: 1};
+
+										Holding.forEach(holding => {
+
+											let All = [];
+
+											Raw.book[0].forEach(Book => {
+
+												if (Book.pair[0][0] === holding) All.push([Book.pair[1][1], Book.ts_z]);
+											});
+
+											All = All.sort((A, B) => {return B[1] - A[1]});
+
+											USD[holding] = (All[0])? All[0][0]: 0
+										});
+
+										Sql.puts([`spot`, {
+											md: Bill.md, 
+											symbol: Bill.pair[0],
+											till: {
+												[hold]: 0,
+												[Bill.mug]: [0, parseFloat(Bill.float)/USD[Bill.pair[0]]]},
+											ts: Bill.ts,
+											tx: false,
+											type: `trade`}, (Q) => {
+
+                							let Old = Tools.typen(Tools.coats(Bill));
+
+                							Bill.complete = true;
+
+											Sql.places([`invoice`, Bill, Old, (SQ) => {
+
+          										Sql.puts([`book`, {
+          											ilk: `market`,
+          											md: Bill.md,
+          											mug: Bill.mug,
+          											pair: [Bill.pair, [parseFloat(Bill.float)/USD[Bill.pair[0]], USD[Bill.pair[0]]]], 
+          											side: `buy`,
+          											ts: Bill.ts,
+          											ts_z: Bill.ts}, (B) => {}]);
+          									}]);
 										}]);
 									}
 

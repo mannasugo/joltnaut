@@ -163,7 +163,11 @@ const Constants = {
 
 	coins: [
 		[`btc`, `BTC`, `bitcoin`],
-		[`usdt`, `USDT`, `Tether`]],
+		[`eth`, `ETH`, `ethereum`],
+		[`ltc`, `LTC`, `litecoin`],
+		[`usdt`, `USDT`, `tether`],
+		[`xmr`, `XMR`, `monero`],
+		[`xrp`, `XRP`, `ripple`]],
 
 	equities: [
 		[`amd`, `AMD`, `advanced microdevices inc`],

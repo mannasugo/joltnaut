@@ -289,6 +289,40 @@ class Route {
 			}
     	}
 
+		else if (this.State[3] === `fiat`) {
+
+    		if (State[4] && !State[5] && !Tools.slim[State[5]]) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `fiat`, asset: State[4]}]);	
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.asset) {
+
+						let Coin = [];
+
+						Constants.coins.forEach(Buy => {
+
+							if (Buy[1] === Web.asset) Coin = Buy;
+						});
+
+						Web.symbol = Coin;
+
+						document.title = `Buy ${Coin[2][0].toUpperCase()}${Coin[2].substr(1)} | Joltnaut Express`;
+
+						View.DOM([`div`, [Models.fiat(Web)]]);
+
+						Events.fiat([Web.asset, Web.USD]);
+					}
+				}	
+    		}
+    	}
+
     	else if (this.State[3] === `jms`) {
 
     		if (!Clients.mug) {
