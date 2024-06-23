@@ -1234,7 +1234,7 @@ let Models = {
 									[`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, margin: `${12}px 0`}}, 
 										[[`div`, {class: `_geQ _gxM`, style: {}}, 
 											[
-												[`img`, {src: `/ssl/given/svg/tokens/${Arg[1]}.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${0}px)`}}],
+												[`img`, {src: `/ssl/given/svg/tokens/${Arg[1].toLowerCase()}.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${0}px)`}}],
 												[`img`, {src: `/ssl/given/svg/flags/us.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${-7.6667}px)`}}],
 												[`div`, {class: ``, style: {color: `#000`}},
 													[

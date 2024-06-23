@@ -194,7 +194,7 @@ class Events {
 
 					this.listen([document.querySelector(`#fiatSlot`), `click`, S => {
 
-						if (!Clients.mug) window.location = `/signup`
+						if (!Clients.mug) window.location = `/signin`
 
 						let Values = 
 							[(!Tools.slim(document.querySelector(`#callSlot`).value))? false: Tools.slim(document.querySelector(`#callSlot`).value),
@@ -205,7 +205,7 @@ class Events {
 						if (parseFloat(Values[1]) <= 0 || Values[0].toString().length !== 9) return;
 
 						let Puts = Tools.pull([
-							`/json/auto/`, { 
+							`/json/web/`, { 
 								fiat: idSlot,
 								mug: Clients.mug, 
 								slot : {float: parseFloat(Values[1]), call: parseFloat(Values[0]), coin: Arg[0].toLowerCase()}, 
