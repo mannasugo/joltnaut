@@ -267,7 +267,7 @@ let Models = {
 									[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${15}px`, [`font-weight`]: 600, [`letter-spacing`]: 0}}, `${parseFloat(Web.debit).toFixed(2)} USD`]]],
 								[`div`, {class: `_gZz`, style: {flex: 0, [`font-size`]: `${12}px`}}, 
 									[
-										(Clients.mug)? []: [`a`, {href: `/signin`, style: {background: `#0000ff30`, color: `blue`, [`font-weight`]: 600, margin: `0 ${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `login`],
+										(Clients.mug)? []: [`a`, {href: `/signin`, style: {background: `#0000ff30`, color: `blue`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `signin`],
 										[`a`, {href: `/`, style: {background: `blue`, color: `#fff`, [`margin-left`]: `${8}px`, padding: `${4}px ${8}px`}}, `Spot`],
 										[`a`, {href: `/earn`, style: {background: `blue`, color: `#fff`, margin: `0 ${8}px`, padding: `${4}px ${8}px`}}, `Earn`],
 										[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
