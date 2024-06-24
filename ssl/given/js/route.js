@@ -796,6 +796,31 @@ class Route {
     		}
     	}
 
+		else if (this.State[3] === `spot`) {
+
+    		if (!State[4] && !Tools.slim[State[4]]) {
+
+				document.title = `Spot Pairs`;
+
+				let Puts = Tools.pull([
+					`/json/web`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `spot`
+					}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					View.DOM([`div`, [Models.spot(Web)]]);
+
+					document.querySelector(`body`).style.background = `#000`
+
+					document.querySelector(`#app`).style.height = `unset`
+				}
+			}
+		}
+
 		else if (this.State[3] === `trade`) {
 
     		if (State[4] && !State[5] && !Tools.slim[State[5]]) {

@@ -2005,6 +2005,39 @@ class Route {
 								}			
 							}
 
+							if (Pulls.pull === `spot`) {
+
+								let Spot = [
+								[[[`aud`, `usd`], 5], 
+								[[`btc`, `usd`], 1], 
+								[[`eth`, `usd`], 2], 
+								[[`eur`, `usd`], 5], 
+								[[`gbp`, `usd`], 5], 
+								[[`usd`, `cad`], 5], 
+								[[`usd`, `chf`], 5], 
+								[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
+
+								Spot[0].forEach(S => {
+
+									let All = [];
+
+									Raw.book[0].forEach(B => {
+
+										if (((B.pair[0][0] === S[0][0] && B.pair[0][1] === S[0][1]) || (B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])) && B.ts_z > 0) {
+
+											(B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])? All.push([(1/B.pair[1][1]), B.ts_z]): All.push([B.pair[1][1], B.ts_z]);
+										}
+									});
+
+									All = All.sort((A, B) => {return B[1] - A[1]});
+
+									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1]]
+								});
+
+								Arg[1].end(Tools.coats({
+									mug: Pulls.mug, spot: Spot[1]}));
+							}
+
 							if (Pulls.pull === `STKPay`) {
 
 								if (Raw.mugs[1][Pulls.mug]) {

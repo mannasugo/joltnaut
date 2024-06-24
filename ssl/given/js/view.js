@@ -268,7 +268,7 @@ let Models = {
 								[`div`, {class: `_gZz`, style: {flex: 0, [`font-size`]: `${12}px`}}, 
 									[
 										(Clients.mug)? []: [`a`, {href: `/signin`, style: {background: `#0000ff30`, color: `blue`, [`font-weight`]: 300, [`margin-left`]: `${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `signin`],
-										[`a`, {href: `/`, style: {background: `blue`, color: `#fff`, [`margin-left`]: `${8}px`, padding: `${4}px ${8}px`}}, `Spot`],
+										[`a`, {href: `/spot`, style: {background: `blue`, color: `#fff`, [`margin-left`]: `${8}px`, padding: `${4}px ${8}px`}}, `Spot`],
 										[`a`, {href: `/earn`, style: {background: `blue`, color: `#fff`, margin: `0 ${8}px`, padding: `${4}px ${8}px`}}, `Earn`],
 										[`a`, {class: `_gxM _geQ`, href: `/u/wallet/`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-weight`]: 600, heght: `${40}px`, [`ltter-spacing`]: `${.75}px`, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
 											[
@@ -3446,6 +3446,78 @@ let Models = {
 												[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Unclaimed referrals`], 
 												[`div`, {class: `_gZz`}, [[`a`, {id: `referral`, href: `javascript:;`, style: {background: `#0000ff30`, color: `blue`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${8}px`, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `generate referral`]]]]],
 									[`div`, {style: {[`margin-top`]: `${18}px`}}, Refs[0]]]]]]]];
+	},
+
+	spot: function (Web) {
+
+		let paramify = (PARA) => {
+
+			PARA[0].forEach(Feat => {
+
+				PARA[1].push([`div`, {style: {width: `${Feat[1]}%`}}, 
+					[[`span`, {style: {color: ``, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+
+			});
+
+			return PARA[1];
+		};
+
+
+		let Pairs = [
+		[[`pair`, 20], [`price`, 20, true], [`24h diff`, 22.5, true], [`24h %`, 20, true], [``, 17.5, true]],
+		[], []];
+
+		for (let spot in Web.spot) {
+
+			let Spot = Web.spot[spot];
+
+			Pairs[2].push([`div`, {class: `_geQ _gxM`, style: {padding: `${6}px ${24}px`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: {[`max-width`]: `${22.5}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/${Constants.SVG[Spot[0][0]]}.svg`, style: {[`max-width`]: `${20}px`, transform: `translateX(${0}px)`}}],
+							[`img`, {src: `/ssl/given/svg/${Constants.SVG[Spot[0][1]]}.svg`, style: {[`max-width`]: `${20}px`, transform: `translateX(${-6.6667}px)`}}], 
+							[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Spot[0][0]}/${Spot[0][1]}`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+					[`div`, {style: {[`align-items`]: `end`, width: `${17.5}%`}}, 
+						[[`a`, {for: ``, id: ``, href: `javascript:;`, style: {background: `blue`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `trade`]]]]])
+		}
+
+		return [
+			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {background: `#07073c`, [`border-bottom`]: `${1}px solid #0000ff30`, [`mx-width`]: `${1280}px`, padding: `${12}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
+								[`div`, {class: `_eYG`}, 
+									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, `Spot`]]],  
+								[`div`, {class: `_eYG`}, []], 
+								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${24}px`, width: `${24}px`}}]]]]]]],
+					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
+						[ 
+							//[`section`, {style: {height:`${64}px`}}],
+							[`div`, {style: {padding: `${0}px ${0}px ${12}px`}}, 
+								[
+									[`div`, {style: {[`margin-top`]: `${12}px`}}, 
+										[
+											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
+												[
+													[`span`, {style: {color: ``, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px`}}, `Trading Pairs`]]],
+											[`div`, {class: `_geQ _gxM`, style: {[`margin`]: `${12}px ${24}px 0`}}, paramify([Pairs[0], []])],
+											[`div`, {}, Pairs[2]]]]]]]], 
+					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #0000ff30`, bottom: 0, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${6}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],
+								[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `2024`], 
+								[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]];
 	},
 
 	swapOffline: function (Arg) {

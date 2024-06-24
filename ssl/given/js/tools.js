@@ -201,5 +201,19 @@ const Constants = {
 		[`se`, `SEK`, `swedish krone`],
 		[`ch`, `CHF`, `swiss franc`],
 		[`uk`, `GBP`, `sterling pound`],
-		[`us`, `USD`, `us dollar`]]
+		[`us`, `USD`, `us dollar`]],
+
+	SVG: {
+		aud: `flags/au`,
+		cad: `flags/ca`,
+		chf: `flags/ch`,
+		btc: `tokens/btc`,
+		eth: `tokens/eth`,
+		eur: `flags/eu`,
+		gbp: `flags/uk`,
+		jpy: `flags/jp`,
+		kes: `flags/ke`,
+		usd: `flags/us`,
+		zar: `flags/za`
+	}
 }
