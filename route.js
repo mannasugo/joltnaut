@@ -1062,11 +1062,11 @@ class Route {
 
 							if (Pulls.pull === `fiat`) {
 
-								let Coin = [`BTC`, `ETH`, `LTC`, `USDT`, `XMR`, `XRP`];
+								let Coin = [`BNB`, `BTC`, `DOGE`, `ETH`, `LTC`, `SOL`, `USDC`, `USDT`, `XMR`, `XRP`];
 
 								if (Coin.indexOf(Pulls.asset) > -1) {
 
-									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+									let Holding = [`bnb`, `btc`, `doge`, `eth`, `ltc`, `sol`, `usdc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
 									`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
 
 									let USD = {usd: 1};
@@ -1093,7 +1093,7 @@ class Route {
 
 								if (Raw.mugs[1][Pulls.mug] && Pulls.fiat === `mpesa`) {
 
-									let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+									let Holding = [`bnb`, `btc`, `doge`, `eth`, `ltc`, `sol`, `usdc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
 									`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
 
 									let USD = {usd: 1};
@@ -1607,7 +1607,7 @@ class Route {
 									Pairs.push(P2)
 								});
 
-								let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
+								let Holding = [`bnb`, `btc`, `doge`, `eth`, `ltc`, `sol`, `usdc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
 								`sek`, `chf`, `gbp`, `aapl`, `amzn`, `hood`, `msft`, `nflx`, `nvda`, `para`, `pypl`, `spot`, `tsla`, `wbd`];
 
 								let USD = {usd: 1};
@@ -2007,15 +2007,20 @@ class Route {
 
 							if (Pulls.pull === `spot`) {
 
-								let Spot = [
-								[[[`aud`, `usd`], 5], 
-								[[`btc`, `usd`], 1], 
-								[[`eth`, `usd`], 2], 
-								[[`eur`, `usd`], 5], 
-								[[`gbp`, `usd`], 5], 
-								[[`usd`, `cad`], 5], 
-								[[`usd`, `chf`], 5], 
-								[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
+								let Spot = [[
+									[[`usdt`, `usd`], 5],
+									[[`btc`, `usd`], 1], 
+									[[`eth`, `usd`], 2], 
+									[[`usdc`, `usd`], 5],  
+									[[`eur`, `usd`], 5],  
+									[[`sol`, `usd`], 2],
+									[[`usd`, `chf`], 5], 
+									[[`doge`, `usd`], 5], 
+									[[`xrp`, `usd`], 5],
+									[[`aud`, `usd`], 5], 
+									[[`gbp`, `usd`], 5], 
+									[[`usd`, `cad`], 5], 
+									[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
 
 								Spot[0].forEach(S => {
 
@@ -2029,9 +2034,16 @@ class Route {
 										}
 									});
 
+									let SPOT24 = [0, []];
+
+									All.sort((A, B) => {return A[1] - B[1]}).forEach(A => {
+
+										if (A[1] > (new Date().valueOf() - 3600000*24)) SPOT24[1].push(A);
+									});
+
 									All = All.sort((A, B) => {return B[1] - A[1]});
 
-									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1]]
+									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1], SPOT24[1]]
 								});
 
 								Arg[1].end(Tools.coats({

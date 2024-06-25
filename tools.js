@@ -463,8 +463,8 @@ class Tools {
 	holding (Arg) {
 
 		let Spot = [
-		[`aapl`, `amzn`, `aud`, `btc`, `cad`, `chf`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `msft`, `nflx`, `nok`, `nvda`, `nzd`, `para`, `pypl`, 
-		`sek`, `spot`, `tsla`, `usd`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`], {}];
+		[`aapl`, `amzn`, `aud`, `bnb`, `btc`, `cad`, `chf`, `doge`, `eth`, `eur`, `gbp`, `hood`, `jpy`, `kes`, `ltc`, `msft`, `nflx`, `nok`, `nvda`, `nzd`, `para`, `pypl`, 
+		`sek`, `sol`, `spot`, `tsla`, `usd`, `usdc`, `usdt`, `wbd`, `xmr`, `xrp`, `zar`], {}];
 
 		let Till = this.typen(this.coats(Arg[0].spot[0]));
 
@@ -567,7 +567,9 @@ class Tools {
 
 		setInterval(() => {
 
-			let Coin = [`BTC`, `ETH`, `LTC`, `USDT`, `XMR`, `XRP`]; //{"data":{"amount":"3483.535","base":"ETH","currency":"USD"}}
+			let Coin = [`BNB`, `BTC`, `DOGE`, `ETH`, `LTC`, `SOL`, `USDC`, `USDT`, `XMR`, `XRP`]; 
+
+			//{"data":{"amount":"3483.535","base":"ETH","currency":"USD"}}
 
 			Coin.forEach(coin => {
 
@@ -638,18 +640,6 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
-		
-			/**
-
-			{pair: [[`btc`, `usd`], [0, 64291.34]]}, 
-			{pair: [[`eth`, `usd`], [0, 3256.2]]}, 
-			{pair: [[`ltc`, `usd`], [0, 73.03]]}, 
-			{pair: [[`usdt`, `usd`], [0, .99942]]}, 
-			{pair: [[`xmr`, `usd`], [0, 169.93]]}, 
-			{pair: [[`xrp`, `usd`], [0, .048982]]},
-
-			**/
-
 			{pair: [[`aud`, `usd`], [0, .66599]]}, 
 			{pair: [[`cad`, `usd`], [0, 1/1.36572]]}, 
 			{pair: [[`eur`, `usd`], [0, 1.07296]]}, 

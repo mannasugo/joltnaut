@@ -208,12 +208,17 @@ const Constants = {
 		cad: `flags/ca`,
 		chf: `flags/ch`,
 		btc: `tokens/btc`,
+		doge: `tokens/doge`,
 		eth: `tokens/eth`,
 		eur: `flags/eu`,
 		gbp: `flags/uk`,
 		jpy: `flags/jp`,
 		kes: `flags/ke`,
+		sol: `tokens/sol`,  
 		usd: `flags/us`,
+		usdc: `tokens/usdc`,
+		usdt: `tokens/usdt`,
+		xrp: `tokens/xrp`,
 		zar: `flags/za`
 	}
 }

@@ -800,7 +800,7 @@ class Route {
 
     		if (!State[4] && !Tools.slim[State[4]]) {
 
-				document.title = `Spot Pairs`;
+				document.title = `Spot Prices & Market Volume`;
 
 				let Puts = Tools.pull([
 					`/json/web`, {
@@ -814,9 +814,11 @@ class Route {
 
 					View.DOM([`div`, [Models.spot(Web)]]);
 
-					document.querySelector(`body`).style.background = `#000`
+					document.querySelector(`body`).style.background = `#000`;
 
-					document.querySelector(`#app`).style.height = `unset`
+					document.querySelector(`#app`).style.height = `unset`;
+
+					Events.spot(Web);
 				}
 			}
 		}

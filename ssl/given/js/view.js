@@ -146,10 +146,14 @@ let Models = {
 			[
 				[`btc`, `bitcoin`],
 				[`eth`, `ethereum`],
+				[`bnb`, `binance coin`],
+				[`sol`, `solana`],
+				[`usdc`, `USD coin`],
 				[`ltc`, `litecoin`],
 				[`usdt`, `tether`],
 				[`xmr`, `monero`],
-				[`xrp`, `ripple`]]];
+				[`xrp`, `ripple`],
+				[`doge`, `dogecoin`]]];
 
 		Coin[1].forEach(Asset => {
 
@@ -1027,7 +1031,7 @@ let Models = {
 
 		let Equities = [
 		[[`asset`, 20], [`open cost`, 20, true], [`open volume`, 22.5, true], [`price`, 20, true], [`p&l`, 17.5, true]],
-		[]];
+		[], []];
 
 		let Fiat = [
 		[[`pair`, 20], [`open cost`, 20, true], [`open volume`, 22.5, true], [`price`, 20, true], [`p&l`, 17.5, true]],
@@ -1036,6 +1040,14 @@ let Models = {
 		let Coin = [
 		[[`pair`, 20], [`open cost`, 20, true], [`open volume`, 22.5, true], [`price`, 20, true], [`p&l`, 17.5, true]],
 		[], []];
+
+		Web.states.forEach(Position => {
+
+			Constants.equities.forEach(Flag => {
+
+				if (Position.pair[0] === Flag[0]) {Position.full = Flag[2]; Equities[1].push(Position);}
+			});
+		});
 
 		Web.states.forEach(Position => {
 
@@ -1051,6 +1063,46 @@ let Models = {
 
 				if (Position.pair[0] === Flag[1].toLowerCase()) {Position.flag = Flag[0]; Fiat[1].push(Position);}
 			});
+		});
+
+		Equities[1].forEach(Flag => {
+
+			let H24 = [`-`, `#000`, `-`, `#000`];
+
+			(Flag.open[0] > Flag.cost)? H24[1] = `red`: H24[1] = `green`;
+
+			(Flag.open[0] > Flag.cost)? H24[3] = `red`: H24[3] = `green`;
+
+			H24[0] = `${(((Flag.cost - Flag.open[0])/Flag.cost)*100).toFixed(2)}%`
+
+			//H24[2] = `${(USD - USD24[0][1]).toLocaleString()}`;
+
+			Equities[2].push([`div`, {class: `_geQ _gxM`, style: {[`line-height`]: `${19}px`, padding: `${12}px 0`}}, 
+				[
+					[`div`, {class: `_geQ _gxM`, style: { width: `${20}%`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/stock/${Flag.pair[0]}.svg`, style: {[`margin-right`]: `${8}px`, [`width`]: `${22}px`, transform: `translateX(${0}px)`}}],
+							//[`img`, {src: `/ssl/given/svg/flags/us.svg`, style: {[`width`]: `${22}px`, transform: `translateX(${-7.6667}px)`}}],
+							[`div`, {style: {color: `#000`, width: `${70}%`}},
+								[
+									[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, `${Flag.pair[0]}`], 
+									[`span`, {style: {color: `#696969`, [`font-size`]: `${12}px`, [`line-height`]: `${14}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `${Flag.full}`]]]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.open[0]).toLocaleString()}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`, [`text-transform`]: `uppercase`}}, `${Flag.pair[1]}`]]], 
+					[`div`, {style: {width: `${22.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`, [`text-align`]: `right`, [`text-transform`]: `uppercase`}}, `${Flag.pair[0]} shares`]]], 
+					[`div`, {style: {width: `${20}%`}}, 
+						[
+							[`span`, {style: {color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${(Flag.cost).toLocaleString()}`], 
+							[`span`, {style: {color: `#535353`, [`font-size`]: `${10}px`, [`font-weight`]: 300, [`text-align`]: `right`}}, `USD`]]], 
+					[`div`, {style: {width: `${17.5}%`}}, 
+						[
+							[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}},  ``], 
+							[`span`, {style: {color: H24[3], [`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, H24[0]]]]]]);
 		});
 
 		Coin[1].forEach(Flag => {
@@ -1141,22 +1193,20 @@ let Models = {
 							[
 								[`span`, {class: `v202312301635`, style: {height: `${32}px`, width: `${32}px`}}], 
 								[`div`, {class: `_eYG`}, []], 
-								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
-									[
-										//[`a`, {href: `/autotrade/liquidate`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `Liquidate`],
-										[`a`, {href: `/earn/wallet`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`}}, `MANAGE LIQUIDITY`]]]]]]],
+								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 300}}, 
+									[[`a`, {href: `/earn/wallet`, style: {background: `blue`, color: `#fff`, margin: `0 0 0 ${8}px`, padding: `${4}px ${8}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, `MANAGE LIQUIDITY`]]]]]]],
 					[`div`, {style: {[`max-width`]: `${1280}px`, width: `${100}%`, margin: `${64}px auto`, [`justify-content`]: `center`}}, 
 						[ 
 							[`div`, {style: {[`boder-bottom`]: `${1}px solid #d9d9d9`, padding: `${0}px ${24}px ${12}px`}}, 
 								[
 									[`h1`, {style: {color: `#000`, [`font-size`]: `${16}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, margin: `${12}px ${0} ${0}`, [`text-transform`]: `uppercase`}}, `positions overview`],
-									[`div`, {style: {display: (Equities[1].length == 0)? `flex`: `none`,[`margin-top`]: `${12}px`}}, 
+									[`div`, {style: {display: (Equities[0])? `flex`: `none`,[`margin-top`]: `${12}px`}}, 
 										[
 											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 												[
 													[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px 0 0`}}, `Equities Allocation Positions`]]],
 											[`div`, {class: `_geQ _gxM`, style: {[`margin-top`]: `${12}px`}}, paramify([Equities[0], []])],
-											/*[`div`, {}, Client[0]]*/]],
+											[`div`, {}, Equities[2]]]],
 									[`div`, {style: {display: (Fiat[1])? `flex`: `none`,[`margin-top`]: `${12}px`}}, 
 										[
 											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
@@ -3455,7 +3505,7 @@ let Models = {
 			PARA[0].forEach(Feat => {
 
 				PARA[1].push([`div`, {style: {width: `${Feat[1]}%`}}, 
-					[[`span`, {style: {color: ``, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
+					[[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
 
 			});
 
@@ -3464,26 +3514,29 @@ let Models = {
 
 
 		let Pairs = [
-		[[`pair`, 20], [`price`, 20, true], [`24h diff`, 22.5, true], [`24h %`, 20, true], [``, 17.5, true]],
+		[[`pair`, 30], [`price`, 22.5, true], [`24h %`, 15, true], [`24h vol.`, 15, true],, [``, 17.5, true]],
 		[], []];
 
 		for (let spot in Web.spot) {
 
 			let Spot = Web.spot[spot];
 
-			Pairs[2].push([`div`, {class: `_geQ _gxM`, style: {padding: `${6}px ${24}px`}}, 
+			Pairs[2].push([`div`, {id: spot, class: `_geQ _gxM`, style: {padding: `${6}px ${24}px`}}, 
 				[
-					[`div`, {class: `_geQ _gxM`, style: {[`max-width`]: `${22.5}%`}}, 
+					[`div`, {class: `_geQ _gxM`, style: {[`width`]: `${30}%`}}, 
 						[
-							[`img`, {src: `/ssl/given/svg/${Constants.SVG[Spot[0][0]]}.svg`, style: {[`max-width`]: `${20}px`, transform: `translateX(${0}px)`}}],
-							[`img`, {src: `/ssl/given/svg/${Constants.SVG[Spot[0][1]]}.svg`, style: {[`max-width`]: `${20}px`, transform: `translateX(${-6.6667}px)`}}], 
-							[`span`, {style: {[`font-size`]: `${12}px`, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Spot[0][0]}/${Spot[0][1]}`]]], 
-					[`div`, {style: {width: `${20}%`}}, 
-						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
+							[`img`, {src: `/ssl/given/svg/${Constants.SVG[Spot[0][0]]}.svg`, style: {height: `${20}px`, [`max-width`]: `${20}px`, transform: `translateX(${0}px)`}}],
+							[`img`, {src: `/ssl/given/svg/${Constants.SVG[Spot[0][1]]}.svg`, style: {height: `${20}px`,[`max-width`]: `${20}px`, transform: `translateX(${-6.6667}px)`}}], 
+							[`div`, {class: `_gxM`, style: {[`align-items`]: `baseline`}}, 
+								[ 
+									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Spot[0][0]}`], 
+									[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `/${Spot[0][1]}`]]]]], 
 					[`div`, {style: {width: `${22.5}%`}}, 
+						[[`span`, {style: {id: `COST`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
+					[`div`, {style: {width: `${15}%`}}, 
 						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
-					[`div`, {style: {width: `${20}%`}}, 
-						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+					[`div`, {style: {width: `${15}%`}}, 
+						[[`span`, {id: `MOD`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${17.5}%`}}, 
 						[[`a`, {for: ``, id: ``, href: `javascript:;`, style: {background: `blue`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `trade`]]]]])
 		}

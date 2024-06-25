@@ -881,6 +881,41 @@ class Events {
 			}])})
 	}
 
+	spot (Arg) {
+
+		setInterval(() => {
+
+			for (let spot in Arg.spot) {
+
+				let S24 = [];
+
+				let Spot = Arg.spot[spot];
+
+				Spot[3].forEach(S => {
+
+					if (S[1] > (new Date().valueOf() - 3600000*24) - 3000 && S[1] < (new Date().valueOf() - 3600000*24) + 3000) S24.push(S);
+				});
+
+				if (S24.length > 0) {
+
+					let cost = parseFloat(document.querySelector(`#${spot} #COST`).innerHTML);
+
+					let H24 = [`-`, `#000`, `-`, `#000`];
+
+					(S24[0] > cost)? H24[1] = `red`: H24[1] = `green`;
+
+					(S24[0] > cost)? H24[3] = `red`: H24[3] = `green`;
+
+					H24[0] = `${(((cost - S24[0])/cost)*100).toFixed(2)}%`
+
+					document.querySelector(`#${spot} #MOD`).innerHTML = H24[0];
+
+					document.querySelector(`#${spot} #MOD`).style.color = H24[1]
+				}
+			}
+		}, 8000);
+	}
+
 	STKPay (Arg) {
 
 		this.listen([document.querySelector(`#stk`), `click`, S => {
