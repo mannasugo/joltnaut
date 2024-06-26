@@ -567,27 +567,48 @@ class Tools {
 
 		setInterval(() => {
 
-			let Coin = [`BNB`, `BTC`, `DOGE`, `ETH`, `LTC`, `SOL`, `USDC`, `USDT`, `XMR`, `XRP`]; 
+			let Coin = [
+				[`AUD`, `USD`],
+				[`BNB`, `USD`], 
+				[`BTC`, `USD`],  
+				[`CAD`, `USD`], 
+				[`CHF`, `USD`],
+				[`DOGE`, `USD`], 
+				[`ETH`, `USD`], 
+				[`EUR`, `USD`], 
+				[`GBP`, `USD`], 
+				[`JPY`, `USD`], 
+				[`KES`, `USD`], 
+				[`LTC`, `USD`], 
+				[`NOK`, `USD`], 
+				[`NZD`, `USD`], 
+				[`SEK`, `USD`], 
+				[`SOL`, `USD`], 
+				[`USDC`, `USD`], 
+				[`USDT`,`USD`], 
+				[`XMR`, `USD`], 
+				[`XRP`, `USD`], 
+				[`ZAR`, `USD`]]; 
 
 			//{"data":{"amount":"3483.535","base":"ETH","currency":"USD"}}
 
-			Coin.forEach(coin => {
+			Coin.forEach(C => {
 
-				pulls(`https://api.coinbase.com/v2/prices/${coin}-USD/spot`, (flaw, State, coat) => {
+				pulls(`https://api.coinbase.com/v2/prices/${C[0]}-${C[1]}/spot`, (flaw, State, coat) => {
 
 					if (!flaw && State.statusCode === 200 && this.typen(coat) && this.typen(coat).data 
 						&& parseFloat(this.typen(coat).data.amount) > 0) {
 		
 						let cost = parseFloat(this.typen(coat).data.amount), ts = new Date().valueOf();
 
-						if (coin === `XMR`) cost = cost.toFixed(3)
+						if (C[0] === `XMR`) cost = cost.toFixed(3)
 
 						let Pair = {
 							allocate: 1,
 							ilk: `market`,
 							md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`),
 							mug: hold,
-							pair: [[coin.toLowerCase(), `usd`], [0, cost]],
+							pair: [[C[0].toLowerCase(), C[1].toLowerCase()], [0, cost]],
 							side: `buy`,
 							ts: ts,
 							ts_z: ts
@@ -640,6 +661,9 @@ class Tools {
 	values (Raw) {
 		
 		let Pairs = [
+
+			/**
+
 			{pair: [[`aud`, `usd`], [0, .66599]]}, 
 			{pair: [[`cad`, `usd`], [0, 1/1.36572]]}, 
 			{pair: [[`eur`, `usd`], [0, 1.07296]]}, 
@@ -651,6 +675,8 @@ class Tools {
 			{pair: [[`sek`, `usd`], [0, 1/10.47923]]},
 			{pair: [[`gbp`, `usd`], [0, 1.26926]]}, 
 			{pair: [[`chf`, `usd`], [0, 1/.89335]]},
+
+			**/
 
 			{pair: [[`aapl`, `usd`], [0, 213.07]]},
 			{pair: [[`amzn`, `usd`], [0, 186.89]]},
