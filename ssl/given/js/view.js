@@ -3534,9 +3534,9 @@ let Models = {
 					[`div`, {style: {width: `${22.5}%`}}, 
 						[[`span`, {id: `COST`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
-						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+						[[`span`, {id: `MOD`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
-						[[`span`, {id: `MOD`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${17.5}%`}}, 
 						[[`a`, {for: ``, id: ``, href: `javascript:;`, style: {background: `blue`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `trade`]]]]])
 		}

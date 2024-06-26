@@ -900,7 +900,7 @@ class Events {
 
 					let cost = parseFloat(document.querySelector(`#${spot} #COST`).innerHTML);
 
-					let H24 = [`-`, `#000`, `-`, `#000`]; //console.log(S24[0], cost)
+					let H24 = [`-`, `#000`, `-`, `#000`];
 
 					(S24[0][0] > cost)? H24[1] = `red`: H24[1] = `green`;
 
@@ -913,7 +913,7 @@ class Events {
 					document.querySelector(`#${spot} #MOD`).style.color = H24[1]
 				}
 			}
-		}, 8000);
+		}, 3000);
 	}
 
 	STKPay (Arg) {
