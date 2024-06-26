@@ -3532,7 +3532,7 @@ let Models = {
 									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Spot[0][0]}`], 
 									[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `/${Spot[0][1]}`]]]]], 
 					[`div`, {style: {width: `${22.5}%`}}, 
-						[[`span`, {style: {id: `COST`, [`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
+						[[`span`, {id: `COST`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
 						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
