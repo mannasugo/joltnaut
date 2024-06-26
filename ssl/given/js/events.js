@@ -900,13 +900,13 @@ class Events {
 
 					let cost = parseFloat(document.querySelector(`#${spot} #COST`).innerHTML);
 
-					let H24 = [`-`, `#000`, `-`, `#000`]; console.log(S24[0], cost)
+					let H24 = [`-`, `#000`, `-`, `#000`]; //console.log(S24[0], cost)
 
-					(S24[0] > cost)? H24[1] = `red`: H24[1] = `green`;
+					(S24[0][0] > cost)? H24[1] = `red`: H24[1] = `green`;
 
-					(S24[0] > cost)? H24[3] = `red`: H24[3] = `green`;
+					(S24[0][0] > cost)? H24[3] = `red`: H24[3] = `green`;
 
-					H24[0] = `${(((cost - S24[0])/cost)*100).toFixed(2)}%`
+					H24[0] = `${(((cost - S24[0][0])/cost)*100).toFixed(2)}%`
 
 					document.querySelector(`#${spot} #MOD`).innerHTML = H24[0];
 
