@@ -302,7 +302,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-24 16:41`).valueOf();
+		let ts = new Date(`2024-06-25 17:41`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
 		
@@ -493,8 +493,8 @@ class Tools {
 		let Pairs = [{
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [63782, 64439]],
-			ts_a: new Date(`2024-06-25 09:51`).valueOf(), 
-			ts_z: new Date(`2024-06-25 10:30`).valueOf()
+			ts_a: new Date(`2024-06-27 09:51`).valueOf(), 
+			ts_z: new Date(`2024-06-27 10:30`).valueOf()
 		}];
 
 		writeFileSync(`json/pairs.json`, this.coats(Pairs));

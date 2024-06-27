@@ -913,7 +913,7 @@ class Events {
 					document.querySelector(`#${spot} #MOD`).style.color = H24[1]
 				}
 			}
-		}, 3000);
+		}, 2000);
 	}
 
 	STKPay (Arg) {
