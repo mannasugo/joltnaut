@@ -883,6 +883,16 @@ class Events {
 
 	spot (Arg) {
 
+		io().on(`spot`, Spot => {
+
+			for (let spot in Spot) {
+
+				let SPOT = Spot[spot];
+
+				document.querySelector(`#${spot} #COST`).innerHTML = SPOT[1].toFixed(SPOT[2])
+			}
+		});
+
 		setInterval(() => {
 
 			for (let spot in Arg.spot) {

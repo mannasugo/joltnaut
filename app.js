@@ -8,7 +8,7 @@ const { readFileSync, writeFileSync } = require(`fs`);
 
 const { Sql, Tools } = require(`./tools`);
 
-const { Call, pollPay} = require(`./route`);
+const { Call, io, pollPay} = require(`./route`);
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
@@ -72,7 +72,9 @@ let App = createSecureServer({
 
 pollPay();
 
-Tools.spot([(Spot) => {Sql.puts([`book`, Spot[0], (SQ) => {}]);}]);
+Tools.spot([(Spot) => {Sql.putlist([`book`, Spot[0], (SQ) => {}]);}]);
+
+io(require(`socket.io`)(App));
 
 App.on(`error`, (err) => console.error(err));
 

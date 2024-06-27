@@ -8,8 +8,6 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-//const TronWeb = require(`tronweb`);
-
 const { Sql, Tools } = require(`./tools`);
 
 const APK_VER = 202307201417;
@@ -2477,6 +2475,23 @@ class Route {
 		}
 	}
 
+	io (App) {
+
+		App.on(`connection`, Polling => {
+
+			setInterval(() => {
+
+				readFile(`json/spot.json`, {encoding: `utf8`}, (flaw, Coat) => {
+
+					Coat = Tools.typen(Coat);
+
+					if (Coat.length > 0) App.emit(`spot`, Tools.pairSpot([Coat]));
+				});
+
+			}, 4000);		
+		});
+	}
+
 	pollPay () {
 
 		setInterval(()=> {
@@ -2616,7 +2631,7 @@ class Route {
 					}
 				});
 			});
-		}, 10000);
+		}, 40000);
 	}
 }
 

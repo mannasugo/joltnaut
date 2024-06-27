@@ -3568,7 +3568,7 @@ let Models = {
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #0000ff30`, bottom: 0, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${6}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
 						[[`div`, {class: `_gxM _geQ`}, 
 							[
-								[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, `joltnaut ®`],
+								[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300}}, `joltnaut ®`],
 								[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 600}}, `2024`], 
 								[`div`, {class: `_gZz`}, [[`span`, {style: {color: `#535353`, [`font-family`]: `geometria`, [`font-size`]: `${10}px`, [`font-weight`]: 300}}, `v0.24.3`]]]]]]]]];
 	},
