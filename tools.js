@@ -618,21 +618,51 @@ class Tools {
 
 						Spot.push(Pair);
 
+						let Book = this.typen(readFileSync(`json/book.json`, {encoding: `utf8`}));
+
+						if (typeof Book === `object`) Book.push(Pair);
+
+						writeFileSync(`json/book.json`, this.coats(Book));
+
 						if (Spot.length > 20) {
 
 							writeFileSync(`json/spot.json`, this.coats(Spot));
 
-							Raw[0]([Spot]);
+							//Raw[0]([Spot]);
 						}
 					}
 				});
 			});
-		}, 8000);
+		}, 6000);
+
+		setInterval(() => {
+
+			let BK = this.typen(readFileSync(`json/book.json`, {encoding: `utf8`}));
+
+			writeFileSync(`json/book.json`, this.coats([]));
+
+			if (typeof BK !== `object`) return;
+
+		/**
+
+			let SP = [];
+
+			BK.forEach(B => {
+
+				if (!Raw[0].book[B.md]) SP.push(B);
+
+				if (Raw[0].book[B.md] && )
+			});
+
+		**/
+
+			Raw[0]([BK]);		
+		}, 50000)
 	}
 
 	pairSpot (Arg) {
 
-								let Spot = [[
+		let Spot = [[
 									[[`usdt`, `usd`], 5],
 									[[`btc`, `usd`], 1], 
 									[[`eth`, `usd`], 2], 
@@ -647,7 +677,7 @@ class Tools {
 									[[`usd`, `cad`], 5], 
 									[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
 
-								Spot[0].forEach(S => {
+		Spot[0].forEach(S => {
 
 									let All = [];
 
