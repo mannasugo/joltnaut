@@ -70,12 +70,12 @@ let App = createSecureServer({
   	cert: readFileSync(`http2/ssl/fullchain.pem`),
   	allowHTTP1: true}, (call, put) => {Call([call, put]);});
 
+App.on(`error`, (err) => console.error(err));
+
+App.listen(8124);
+
 pollPay();
 
 Tools.spot([(Spot) => {Sql.putlist([`book`, Spot[0], (SQ) => {}]);}]);
 
 io(require(`socket.io`)(App));
-
-App.on(`error`, (err) => console.error(err));
-
-App.listen(8124);
