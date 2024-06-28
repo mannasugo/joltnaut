@@ -627,7 +627,7 @@ class Tools {
 					}
 				});
 			});
-		}, 12000);
+		}, 8000);
 	}
 
 	pairSpot (Arg) {
