@@ -3562,7 +3562,7 @@ let Models = {
 										[
 											[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `1px solid rgb(${130}, ${130}, ${130}, ${.15})`, [`font-size`]: `${14}px`, [`padding-bottom`]: `${12}px`}}, 
 												[
-													[`span`, {style: {color: ``, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px`}}, `Trading Pairs`]]],
+													[`span`, {style: {color: ``, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `0 ${24}px`}}, `Spot Prices`]]],
 											[`div`, {class: `_geQ _gxM`, style: {[`margin`]: `${12}px ${24}px 0`}}, paramify([Pairs[0], []])],
 											[`div`, {}, Pairs[2]]]]]]]], 
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #0000ff30`, bottom: 0, magin: `auto`, [`mx-width`]: `${1280}px`, padding: `${6}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 

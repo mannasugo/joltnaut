@@ -302,7 +302,7 @@ class Tools {
 
 	execute (Raw) {
 
-		let ts = new Date(`2024-06-25 17:41`).valueOf();
+		let ts = new Date(`2024-06-25 17:43`).valueOf();
 
 		let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
 		
@@ -493,11 +493,11 @@ class Tools {
 		let Pairs = [{
 			gas: 7.5/100,
 			pair: [`btc/fdusd`, [63782, 64439]],
-			ts_a: new Date(`2024-06-27 09:51`).valueOf(), 
-			ts_z: new Date(`2024-06-27 10:30`).valueOf()
+			ts_a: new Date(`2024-06-28 09:51`).valueOf(), 
+			ts_z: new Date(`2024-06-28 10:30`).valueOf()
 		}];
 
-		//writeFileSync(`json/pairs.json`, this.coats(Pairs));
+		writeFileSync(`json/pairs.json`, this.coats(Pairs));
 
 		Pairs = this.typen(readFileSync(`json/pairs.json`, {encoding: `utf8`}));
 
@@ -627,7 +627,7 @@ class Tools {
 					}
 				});
 			});
-		}, 7000);
+		}, 12000);
 	}
 
 	pairSpot (Arg) {
