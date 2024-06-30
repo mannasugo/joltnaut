@@ -643,7 +643,7 @@ class Tools {
 
 			if (typeof BK !== `object`) return;
 
-		/**
+			/**
 
 			let SP = [];
 
@@ -654,7 +654,7 @@ class Tools {
 				if (Raw[0].book[B.md] && )
 			});
 
-		**/
+			**/
 
 			Raw[0]([BK]);		
 		}, 50000)
@@ -674,31 +674,31 @@ class Tools {
 									[[`xrp`, `usd`], 5],
 									[[`aud`, `usd`], 5], 
 									[[`gbp`, `usd`], 5], 
-									[[`usd`, `cad`], 5], 
-									[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
+			[[`usd`, `cad`], 5], 
+			[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
 
 		Spot[0].forEach(S => {
 
-									let All = [];
+			let All = [];
 
-									Arg[0].forEach(B => {
+			Arg[0].forEach(B => {
 
-										if (((B.pair[0][0] === S[0][0] && B.pair[0][1] === S[0][1]) || (B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])) && B.ts_z > 0) {
+				if (((B.pair[0][0] === S[0][0] && B.pair[0][1] === S[0][1]) || (B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])) && B.ts_z > 0) {
 
-											(B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])? All.push([(1/B.pair[1][1]), B.ts_z]): All.push([B.pair[1][1], B.ts_z]);
-										}
-									});
+					(B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])? All.push([(1/B.pair[1][1]), B.ts_z]): All.push([B.pair[1][1], B.ts_z]);
+				}
+			});
 
-									let SPOT24 = [0, []];
+			let SPOT24 = [0, []];
 
-									All.sort((A, B) => {return A[1] - B[1]}).forEach(A => {
+			All.sort((A, B) => {return A[1] - B[1]}).forEach(A => {
 
-										if (A[1] > (new Date().valueOf() - 3600000*24)) SPOT24[1].push(A);
-									});
+				if (A[1] > (new Date().valueOf() - 3600000*24)) SPOT24[1].push(A);
+			});
 
-									All = All.sort((A, B) => {return B[1] - A[1]});
+			All = All.sort((A, B) => {return B[1] - A[1]});
 
-									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1], SPOT24[1]]
+			Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1], SPOT24[1]]
 		});
 
 		return Spot[1];
@@ -830,6 +830,11 @@ class Tools {
 }
 
 module.exports = {
+
+	Constants : {
+
+		plot: [`BTC-USD`]
+	},
 	
 	Sql : new Sql([{
 		host: `localhost`,

@@ -2,7 +2,7 @@
   <style>
     g {
       fill: none;
-      stroke-width: 1; 
+      stroke-width: 2; 
       stroke: #fff
     }
   </style>

@@ -8,7 +8,7 @@ const get = require(`request`);
 
 const HTTPS = require(`https`);
 
-const { Sql, Tools } = require(`./tools`);
+const { Constants, Sql, Tools } = require(`./tools`);
 
 const APK_VER = 202307201417;
 
@@ -1435,6 +1435,45 @@ class Route {
 									});
 
 									Arg[1].end(Tools.coats({mug: Pulls.mug, peers: Peers}));
+								}
+							}
+
+							if (Pulls.pull === `plot`) {
+
+								if (Constants.plot.indexOf(Pulls.pair) > -1) {
+
+									let n = new Date();
+
+									let z = new Date(`${n.getFullYear()}-${n.getMonth() + 1}-${n.getDate()} ${n.getHours() }:00`).valueOf();
+
+									let S = (Pulls.pair).toLowerCase().split(`-`);
+
+									let Kline = [];
+
+									for (let i = 0; i < 240; i++) {
+
+										let All = [];
+
+										Raw.book[0].forEach(B => {
+
+											let ts_z = z - (3600000*i)
+
+											if (((B.pair[0][0] === S[0] && B.pair[0][1] === S[1]) || (B.pair[0][0] === S[1] 
+												&& B.pair[0][1] === S[0])) && B.ts_z > 0 && B.ts_z > ts_z && B.ts_z < (ts_z + 3600000)) {
+
+												(B.pair[0][0] === S[1] && B.pair[0][1] === S[0])? All.push([(1/B.pair[1][1]), B.ts_z]): All.push([B.pair[1][1], B.ts_z]);
+											}
+										});
+
+										let OC = Tools.typen(Tools.coats(All)).sort((A, B) => {return A[1] - B[1]});
+
+										let HL = Tools.typen(Tools.coats(All)).sort((A, B) => {return B[0] - A[0]});
+										
+										Kline.push([z, (OC.length > 0)? [OC[0][0], OC[OC.length -1][0]]: [], (HL.length > 0)? [HL[0][0], HL[HL.length -1][0]]: []]) //OCHL
+									}
+
+									Arg[1].end(Tools.coats({
+										kline: Kline, pair: Pulls.pair}));
 								}
 							}
 

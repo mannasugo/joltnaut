@@ -3006,6 +3006,54 @@ let Models = {
 									[`section`, {style: {[`margin-top`]: `${12}px`}}, Allows[0]]]]]]]]]];
 	},
 
+	plot: (Arg) => {
+
+		let HL = [];
+
+		Arg.kline.forEach(K => {
+
+			if (K[2].length > 0) {HL.push(K[2][0]); HL.push(K[2][1])}
+		});
+
+		HL.sort((A, B) => {return B - A});
+    
+  		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
+
+		let Plot = [[], []];
+
+		for (let i = 0; i < 30; i++) {
+					
+			Plot[0].push([`line`, {x1: i*171.5, y1: 1, x2: i*171.5, y2: 1001, stroke: `#353535`, [`stroke-width`]: .95}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
+		}
+
+		Arg.kline.sort((A, B) => {return A[0] - B[0]}).forEach((K, i) => {
+
+			if (K[2].length > 0) {
+
+				Plot[1].push([`line`, {x1: i*7.5, y1: .15*Y + ((HL[0] - K[1][0])*.3*Y)/(HL[0] - HL[HL.length - 1]), x2: i*7.5, y2: .15*Y + ((HL[0] - K[1][1])*.3*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
+			}
+		});
+
+		return [
+			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
+				[
+					[`div`, {style: {background: `#07073c`, [`border-bottom`]: `${1}px solid #353535`, height: `${40}px`, padding: `${0}px ${12}px`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`span`, {class: `v202312301635`, style: {height: `${26}px`, width: `${26}px`}}], 
+								[`div`, {class: `_eYG`, style: {[`border-left`]: `${1}px solid #353535`, height: `${100}%`,}}, 
+									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, ``]]], 
+								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
+									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${18}px`, width: `${18}px`}}]]]]]]],
+					[`section`, {style: {transform: `translateX(${-550}px)`, width: `${100}%`}}, 
+						[[`svg`, {height: `${1000}px`, width: `${30*172}px`}, 
+							[ 
+								[`g`, {}, Plot[0]],
+								[`g`, {}, Plot[1]]]]]], 
+					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${6}px ${24}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
+						[]]]];	
+	},
+
 	pnl: function (Arg) {
 
 		let P2 = [[]];
@@ -3505,13 +3553,11 @@ let Models = {
 			PARA[0].forEach(Feat => {
 
 				PARA[1].push([`div`, {style: {width: `${Feat[1]}%`}}, 
-					[[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]])
-
+					[[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-align`]: (Feat[2])? `right`: `left`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`, [`white-space`]: `nowrap`}}, Feat[0]]]]);
 			});
 
 			return PARA[1];
 		};
-
 
 		let Pairs = [
 		[[`pair`, 30], [`price`, 22.5, true], [`24h %`, 15, true], [`24h vol.`, 15, true],, [``, 17.5, true]],
@@ -3538,7 +3584,7 @@ let Models = {
 					[`div`, {style: {width: `${15}%`}}, 
 						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${17.5}%`}}, 
-						[[`a`, {for: ``, id: ``, href: `javascript:;`, style: {background: `blue`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `trade`]]]]])
+						[[`a`, {for: ``, id: ``, href: `/spot/${Spot[0][0].toUpperCase()}-${Spot[0][1].toUpperCase()}`, style: {background: `blue`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `trade`]]]]])
 		}
 
 		return [
@@ -4434,433 +4480,12 @@ let Models = {
 														[
 															//[`span`, {class: `v202204282015`, style: {height: `${20}px`, [`margin-right`]: `${8}px`, width: `${20}px`}}], 
 															[`span`, {}, `Deposit`]]]]]]]]]]]]];
-	}, 
-
-	axis: function (Axis) {
-
-				let AXIS = [Tools.typen(Clients.axis), ``, [], [], ``];
-
-				let Y = [Axis[0][2], Axis[0][3]];
-
-				let X = [AXIS[0][AXIS[0].length - 1][0], AXIS[0][0][0]];
-
-				let x = AXIS[0][AXIS[0].length - 1][0] - AXIS[0][0][0],
-
-				y = Y[1] - Y[0];
-
-				AXIS[0].forEach(Vault => {
-
-						AXIS[1] += `${(((Vault[0] - AXIS[0][0][0])/x)*Axis[1])} ${(y === 0)? 50: ((Vault[1] - Y[1])/y)*(-185)} `;
-				});
-
-				X.forEach(Span => {
-
-						let Day = new Date(Span);
-
-						if (x >= 3600000*24) AXIS[4] = `${Day.getMonth() + 1}/${Day.getDate()}`
-
-						else if (x <= 3600000*24) AXIS[4] = `${(Day.getHours() > 9)? Day.getHours(): `0` + Day.getHours()}:${(Day.getMinutes() > 9)? Day.getMinutes(): `0` + Day.getMinutes()}`
-
-						AXIS[2].push([`text`, {x: (((Span - AXIS[0][0][0])/x)*(Axis[1] - 12.25)), y: 200, fill: `#a6a6a6`, style: {
-								//[`font-family`]: `geometria`,
-								[`font-size`]: `${10}px`}}, AXIS[4]]);
-				});
-
-				let Value = Tools.typen(Clients.axis).sort((A, B) => {return B[1] - A[1]});
-
-				let Feats = [Value[Value.length - 1], Value[0]];
-
-				Feats.forEach(Feat => {
-
-				let XY = [(((Feat[0] - AXIS[0][0][0])/x)*Axis[1]), ((Feat[1] - Y[1])/y)*(-185)];
-
-								(XY[1] < 5)? XY[1] = 7.5: XY[1];
-
-								(XY[1] > 195)? XY[1] = 191: XY[1];
-
-								(XY[0] < 5)? XY[0] = 6: XY[0] = XY[0] + 2.5;
-
-								(XY[0] > Axis[1] - 75)? XY[0] = Axis[1] - 70: XY[0] = XY[0] + 2.5;
-
-								AXIS[3].push(
-										[`text`, {x: XY[0], y: XY[1], fill: `#000`, style: {
-												[`font-family`]: `geometria`,
-												[`font-size`]: `${9}px`}}, `${(Feat[1]).toFixed(1)}`]);
-						});
-
-				let Span = [[], [`1H`, `1D`, `1W`, `All`]];
-
-				Span[1].forEach((a) => {
-
-						Span[0].push([`span`, {id: `span`, style: {opacity: (a === Axis[2])? 1: .3, padding: `${0} ${7.5}px`}}, a]);
-				});
-
-				return [
-						`div`, {}, 
-								[
-										[`div`, {class: `_gxM`}, 
-												[
-														[`span`, {class: `_tXx`, style: {
-																[`font-family`]: `geometria`,
-																[`font-size`]: `${12}px`}}, `${(Axis[0][1]).toFixed(2)} USD`], 
-														[`div`, {class: `_eYG`}, 
-																[[`span`, {class: `tXx`, style: {
-																		color: (((Axis[0][1] - Axis[0][0])/Axis[0][1])*100 >= 0) ? `#1bd401`: `#d40101`,
-																		[`font-family`]: `geometria`,
-																		[`font-size`]: `${10}px`}}, `${(((Axis[0][1] - Axis[0][0])/Axis[0][1])*100 >= 0) ? `+`: ``}${(((Axis[0][1] - Axis[0][0])/Axis[0][1])*100).toFixed(2)}%`]]], 
-														[`div`, {id: `reals`, class: `_gZz`, role: `daily-btc`, style: {[`font-size`]: `${10}px`}}, 
-																Span[0]]]],
-										[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
-												[
-														[`g`, {}, AXIS[2]],
-														[`g`, {}, AXIS[3]],
-														[`path`, {stroke: `#5841d8`, [`stroke-width`]: 1, fill: `none`, d: `M${AXIS[1]}`}]]]]];
 	},
-
-	buyline: function () {
-
-		let Pit = [[], [], [], ``, []];
-
-		let Axis = Tools.typen(Clients.quo).btc[1][5];
-
-		let Span = [document.querySelector(`#buyline`).clientWidth, 200];
-
-		let Y = [Axis[2], Axis[3]];
-
-		let y = Y[1] - Y[0];
-
-		let AXIS = [Tools.typen(Clients.axis)];
-
-		let X = [AXIS[0][AXIS[0].length - 1][0], AXIS[0][0][0]];
-
-			let x = AXIS[0][AXIS[0].length - 1][0] - AXIS[0][0][0];
-
-			AXIS[0].forEach(Vault => {
-
-				Pit[3] += `${(((Vault[0] - AXIS[0][0][0])/x)*Span[0]) + 0} ${(y === 0)? 50: ((Vault[1] - Y[1])/y)*(-185)} `;
-			});
-
-			let Value = Tools.typen(Clients.axis).sort((A, B) => {return B[1] - A[1]});
-
-			let Feats = [Value[Value.length - 1], Value[0]];
-
-			Feats.forEach(Feat => {
-
-				let XY = [(((Feat[0] - AXIS[0][0][0])/x)*Span[0]), ((Feat[1] - Y[1])/y)*(-185)];
-
-				(XY[1] < 5)? XY[1] = 7.5: XY[1];
-
-				(XY[1] > 195)? XY[1] = 191: XY[1];
-
-				(XY[0] < 5)? XY[0] = 6: XY[0] = XY[0] + 2.5;
-
-				(XY[0] > Span[0] - 75)? XY[0] = Span[0] - 70: XY[0] = XY[0] + 2.5;
-
-				Pit[4].push(
-					[`text`, {x: XY[0], y: XY[1], fill: `#fff`, style: {
-						[`font-family`]: `consola`,
-						[`font-size`]: `${9}px`}}, `${(Feat[1]).toFixed(0)}`]);
-			});		
-
-				Pit[2] = 
-				[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
-					[
-						[`path`, {
-							opacity: .75,
-							stroke: `#1bd401`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M15 ${((37515 - Y[1])/y)*(-175) + 5.5} ${Span[0]} ${((37515 - Y[1])/y)*(-175) + 7.5}`}], 
-						[`path`, {
-							opacity: 1,
-							stroke: `#5841d8`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M${Pit[3]}`}], 
-						[`g`, {}, Pit[4]]]];
-
-			return [`div`, {}, 
-				[
-					[`div`, {class: `_gxM`}, 
-						[
-							[`span`, {style: {[`font-size`]: `${12}px`}}, `Bitcoin This Hour`]]],
-					[`div`, {class: `_gxM`}, 
-						[
-							[`span`, {style: {
-								[`font-family`]: `consola`,
-								[`font-size`]: `${12}px`,
-								[`font-weight`]: 600}}, `${(parseFloat(Tools.typen(Clients.quo).btc[0])).toFixed(1)} USD`],
-							Pit[1]]],
-					Pit[2]]];
-	},
-
-	coinline: function () {
-
-		let Pit = [[], [], [], ``, []];
-
-		let Hold = [ 
-				((Tools.typen(Clients.vault)*.25)/37515)*Tools.typen(Clients.quo).btc[0]];
-
-		let Axis = Tools.typen(Clients.quo).btc[1][5];
-
-		let pit = ((Tools.typen(Clients.vault)*.25)/37515);
-
-		let Span = [document.querySelector(`#coinline`).clientWidth, 200];
-
-		let Y = [Axis[2], Axis[3]];
-
-		let y = Y[1] - Y[0];
-
-			//if ((new Date().valueOf() - Pit[0][0].secs) > 3600000) {
-
-				let AXIS = [Tools.typen(Clients.axis)];
-
-			let X = [AXIS[0][AXIS[0].length - 1][0], AXIS[0][0][0]];
-
-			let x = AXIS[0][AXIS[0].length - 1][0] - AXIS[0][0][0];
-
-			AXIS[0].forEach(Vault => {
-
-				Pit[3] += `${(((Vault[0] - AXIS[0][0][0])/x)*Span[0]) + 0} ${(y === 0)? 50: ((Vault[1] - Y[1])/y)*(-185)} `;
-			});
-
-			let Value = Tools.typen(Clients.axis).sort((A, B) => {return B[1] - A[1]});
-
-			let Feats = [Value[Value.length - 1], Value[0]];
-
-			Feats.forEach(Feat => {
-
-				let XY = [(((Feat[0] - AXIS[0][0][0])/x)*Span[0]), ((Feat[1] - Y[1])/y)*(-185)];
-
-				(XY[1] < 5)? XY[1] = 7.5: XY[1];
-
-				(XY[1] > 195)? XY[1] = 191: XY[1];
-
-				(XY[0] < 5)? XY[0] = 6: XY[0] = XY[0] + 2.5;
-
-				(XY[0] > Span[0] - 75)? XY[0] = Span[0] - 70: XY[0] = XY[0] + 2.5;
-
-				Pit[4].push(
-					[`text`, {x: XY[0], y: XY[1], fill: `#000`, style: {
-						[`font-family`]: `geometria`,
-						[`font-size`]: `${9}px`}}, `${(Feat[1]*pit).toFixed(3)} USD`]);
-			});
-
-				Pit[1] = [`div`, {class: `_eYG`}, 
-					[[`span`, {style: {
-						color: (((Axis[1] - 37515)/Axis[1])*100 >= 0) ? `#1bd401`: `#d40101`,
-						[`font-family`]: `geometria`, 
-						[`font-size`]: `${11}px`}}, 
-						`${(((Axis[1] - 37515)/Axis[1])*100 >= 0) ? `+`: ``}${((pit*Axis[1]) - (pit*37515)).toFixed(2)} (${(((Axis[1] - 37515)/Axis[1])*100).toFixed(2)}%)`]]];
-
-				Pit[2] = 
-				[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
-					[
-						[`path`, {
-							opacity: .75,
-							stroke: `#1bd401`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M15 ${((37515 - Y[1])/y)*(-175) + 5.5} ${Span[0]} ${((37515 - Y[1])/y)*(-175) + 7.5}`}], 
-						[`text`, {x: 0, y: ((37515 - Y[1])/y)*(-175) + 7.5, fill: `#a6a6a6`, style: {
-							[`font-family`]: `geometria`,
-							[`font-size`]: `${8}px`}}, `${(37515*pit).toFixed(3)}`], 
-						[`path`, {
-							opacity: 1,
-							stroke: `#5841d8`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M${Pit[3]}`}], 
-						[`g`, {}, Pit[4]]]];
-			//}
-
-			return [`div`, {}, 
-				[
-					[`div`, {class: `_gxM`}, 
-						[
-							[`span`, {style: {[`font-size`]: `${12}px`}}, `Bitcoin Portfolio`],
-							[`div`, {class: `_gZz`}, [
-								[`span`, {style: {
-									[`text-decoration`]: `underline`,
-									color: `#feef11`, [`font-size`]: `${12}px`}}, `Principal`], 
-								[`span`, {style: {
-									margin: `${0} ${0} ${0} ${8}px`,
-									[`font-family`]: `geometria`,
-									[`font-size`]: `${12}px`}}, `${(Tools.typen(Clients.vault)*.25).toFixed(3)} USD`]]]]],
-					[`div`, {class: `_gxM`}, 
-						[
-							[`span`, {style: {
-								[`font-family`]: `geometria`,
-								[`font-size`]: `${12}px`,
-								[`font-weight`]: 600}}, `${(parseFloat(Hold[0])).toFixed(2)} USD`],
-							Pit[1]]],
-					Pit[2]]];
-	},
-
-	foot: function () {
-				
-				return [`section`, {id: `foot`, style: {/*padding: `${24}px`, background: `#fff`, color: `#262626`*/}}, 
-						[[`div`, {style: {
-								width: `${100}%`,
-								[`max-width`]: `${1000}px`, margin: `${0} auto`}}, 
-								[
-										[`div`, {class: `_wrap_202203262208`}, 
-												[
-														[`div`, {class: `foot`}, 
-																[
-																		[`span`, {class: `foot-title`}, `Features`],
-																		[`div`, {}, 
-																				[
-																						[`a`, {href: ``}, `Margin Trading`], 
-																						[`a`, {href: ``}, `Quant Trading`], 
-																						[`a`, {href: ``}, `Proof of Reserves`]]]]], 
-														[`div`, {class: `foot`}, 
-																[
-																		[`span`, {class: `foot-title`}, `Prices`],
-																		[`div`, {}, 
-																				[
-																						[`a`, {href: ``}, `Prices Analysis`], 
-																						[`a`, {href: ``}, `Crypto Prices`]]]]], 
-														[`div`, {class: `foot`}, 
-																[
-																		[`span`, {class: `foot-title`}, `About`],
-																		[`div`, {}, 
-																				[ 
-																						[`a`, {href: ``}, `Team`],
-																						[`a`, {href: ``}, `Why Joltquid`], 
-																						[`a`, {href: ``}, `Careers`], 
-																						[`a`, {href: ``}, `Contact`], 
-																						[`a`, {href: ``}, `Press`]]]]]]], 
-										[`div`, {class: `_geQ`, style: {
-												padding: `${24}px ${0}`, [`font-size`]: `${11}px`}}, `©2022 Joltquid Capital, LLC. All Rights Reserved`]]]]]
-	},
-
-	loadWallet: [
-		`div`, {class: `_gxM`}, 
-			[
-				//[`a`, {class: `v202206131256`, style: {margin: `${0} ${10}px`}, href: `#`}],
-				[`a`, {id: `mugin`, class: `v202206131254`, style: {margin: `${0} ${10}px`}, href: `javascript:;`}]]],
 
 	splash: [
 			`main`, {class: `_xC2 _aA2`, style: {height: `${100}%`}}, 
 				[[`div`, {class: `_geQ`, style: {[`justify-content`]: `center`}}, 
-					[[`span`, {class: `v202304191915`, style: {width:`${56}px`, height: `${56}px`}}]]]]],
-
-	pitaxis: function () {
-
-		let Pit = [[], [], [], ``, []];
-
-		let Moves = Tools.typen(Clients.pitmoves).sort((A, B) => {return B.secs - A.secs});
-
-		Moves.forEach(Move => {
-
-			if (Move.side === `buy` && Move.open === false) Pit[0].push(Move);
-		});
-
-		let Axis = Tools.typen(Clients.quo).btc[1][5];
-
-		let pit = Tools.typen(Clients.wallet)[2][1];
-
-		let Span = [document.querySelector(`#pitaxis`).clientWidth, 200];
-
-		let Y = [Axis[2], Axis[3]];
-
-		let y = Y[1] - Y[0];
-
-		if ((new Date().valueOf() - Pit[0][0].secs) > 3600000) {
-
-				let AXIS = [Tools.typen(Clients.axis)];
-
-			let X = [AXIS[0][AXIS[0].length - 1][0], AXIS[0][0][0]];
-
-			let x = AXIS[0][AXIS[0].length - 1][0] - AXIS[0][0][0];
-
-			AXIS[0].forEach(Vault => {
-
-				Pit[3] += `${(((Vault[0] - AXIS[0][0][0])/x)*Span[0]) + 0} ${(y === 0)? 50: ((Vault[1] - Y[1])/y)*(-185)} `;
-			});
-
-			let Value = Tools.typen(Clients.axis).sort((A, B) => {return B[1] - A[1]});
-
-			let Feats = [Value[Value.length - 1], Value[0]];
-
-			Feats.forEach(Feat => {
-
-				let XY = [(((Feat[0] - AXIS[0][0][0])/x)*Span[0]), ((Feat[1] - Y[1])/y)*(-185)];
-
-				(XY[1] < 5)? XY[1] = 7.5: XY[1];
-
-				(XY[1] > 195)? XY[1] = 191: XY[1];
-
-				(XY[0] < 5)? XY[0] = 6: XY[0] = XY[0] + 2.5;
-
-				(XY[0] > Span[0] - 75)? XY[0] = Span[0] - 70: XY[0] = XY[0] + 2.5;
-
-				Pit[4].push(
-					[`text`, {x: XY[0], y: XY[1], fill: `#000`, style: {
-						[`font-family`]: `geometria`,
-						[`font-size`]: `${9}px`}}, `${(Feat[1]*pit).toFixed(3)} USD`]);
-			});
-
-				Pit[1] = [`div`, {class: `_eYG`}, 
-					[[`span`, {style: {
-						color: (((Axis[1] - Pit[0][0].coin[1])/Axis[1])*100 >= 0) ? `#1bd401`: `#d40101`,
-						[`font-family`]: `geometria`, 
-						[`font-size`]: `${11}px`}}, 
-						`${(((Axis[1] - Pit[0][0].coin[1])/Axis[1])*100 >= 0) ? `+`: ``}${((pit*Axis[1]) - (pit*Pit[0][0].coin[1])).toFixed(2)} (${(((Axis[1] - Pit[0][0].coin[1])/Axis[1])*100).toFixed(2)}%)`]]];
-				
-				Pit[2] = 
-				[`svg`, {height: `${200}px`, style: {[`margin-top`]: `${30}px`}}, 
-					[
-						[`path`, {
-							opacity: .75,
-							stroke: `#1bd401`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M15 ${((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 5.5} ${Span[0]} ${((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 7.5}`}], 
-						[`text`, {x: 0, y: ((Pit[0][0].coin[1] - Y[1])/y)*(-175) + 7.5, fill: `#a6a6a6`, style: {
-							[`font-family`]: `geometria`,
-							[`font-size`]: `${8}px`}}, `${(Pit[0][0].coin[1]*pit).toFixed(3)}`], 
-						[`path`, {
-							opacity: 1,
-							stroke: `#5841d8`, 
-							[`stroke-width`]: 1, 
-							fill: `none`, d: `M${Pit[3]}`}], 
-						[`g`, {}, Pit[4]]]];
-			}
-
-			return [`div`, {}, 
-				[
-					[`div`, {class: `_gxM`}, 
-						[
-							[`span`, {style: {[`font-size`]: `${12}px`}}, `Portfolio Balance`],
-							[`div`, {class: `_gZz`}, [[`span`, {style: {
-								[`text-decoration`]: `underline`,
-								color: `#feef11`, [`font-size`]: `${12}px`}}, `BTC`]]]]],
-					[`div`, {class: `_gxM`}, 
-						[
-							[`span`, {style: {
-								[`font-family`]: `geometria`,
-								[`font-size`]: `${12}px`,
-								[`font-weight`]: 600}}, `${(parseFloat(Axis[1])*pit).toFixed(2)} USD`],
-							Pit[1]]],
-					Pit[2]]];
-	},
-
-	utilFooter: function () {
-
-		if (!Clients.mug) return [];
-
-		return [`section`, {style: {width: `${100}%`, position: `fixed`, left: 0, bottom: 0, background: `#fff`}}, 
-			[[`div`, {class: `_gxM`, style: {width: `${100}%`, padding: `${10}px ${24}px`, [`border-top`]: `${1}px solid #e6e6e6`}}, 
-				[
-					[`span`, {class: `v202205081343`}],
-					[`div`, {class: `_eYG _tXx`, style: {
-						[`font-family`]: `consola`,
-						[`font-size`]: `${10}px`}}, `${(Clients.mug)}`]]]]]
-	},
-
-	utilWallet: [
-		`div`, {class: `_gxM`, style: {[`align-items`]: `center`}}, 
-			[
-				//[`a`, {id: ``, class: `v202203261943`, style: {width: `${21}px`, height: `${21}px`, margin: `${0} ${10}px`}, href: `#`}]
-				[`a`, {class: `v202206131256`, style: {width: `${28}px`, height: `${28}px`, margin: `${0} ${10}px`}, href: `/wallets`}]/*,
-				[`a`, {id: ``, class: `v202207161737`, style: {width: `${21}px`, height: `${21}px`,margin: `${0} ${10}px`}, href: `javascript:;`}]*/]]
+					[[`span`, {class: `v202304191915`, style: {width:`${56}px`, height: `${56}px`}}]]]]]
 }
 
 View = new View;

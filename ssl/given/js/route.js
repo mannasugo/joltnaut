@@ -821,6 +821,32 @@ class Route {
 					Events.spot(Web);
 				}
 			}
+
+    		if (State[4] && !State[5] && !Tools.slim[State[5]]) {
+
+				let Puts = Tools.pull([
+					`/json/web/`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `plot`, pair: State[4]}]);	
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					if (Web.pair) {
+
+						document.title = `${Web.pair} | Joltnaut Spot`;
+
+						View.DOM([`div`, [Models.plot(Web)]]);
+
+						document.querySelector(`body`).style.overflowY = `hidden`;
+
+						document.querySelector(`body`).style.background = `#000`;
+
+						//document.querySelector(`#app`).style.height = `unset`;
+					}
+				}	
+    		}
 		}
 
 		else if (this.State[3] === `trade`) {
