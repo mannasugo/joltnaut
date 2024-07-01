@@ -12,6 +12,8 @@ const { Call, io, pollPay} = require(`./route`);
 
 Sql.Sql([readFileSync(`constants/sql.sql`, {encoding: `utf8`}), () => {}]);
 
+/**
+
 Sql.pulls(Raw => {
 
 	Tools.values([Raw, (SQ) => {
@@ -64,6 +66,8 @@ Sql.pulls(Raw => {
 		}]);	
 	}]);
 });
+
+**/
 
 let App = createSecureServer({
   	key: readFileSync(`http2/ssl/privkey.pem`),
