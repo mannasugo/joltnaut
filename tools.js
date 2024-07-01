@@ -565,30 +565,34 @@ class Tools {
 
 	spot (Raw) {
 
-		setInterval(() => {
+		let n = new Date();
 
-			let Coin = [
-				[`AUD`, `USD`],
-				[`BNB`, `USD`], 
-				[`BTC`, `USD`],  
-				[`CAD`, `USD`], 
-				[`CHF`, `USD`],
-				[`DOGE`, `USD`], 
-				[`ETH`, `USD`], 
-				[`EUR`, `USD`], 
-				[`GBP`, `USD`], 
-				[`JPY`, `USD`], 
-				[`KES`, `USD`], 
-				[`LTC`, `USD`], 
-				[`NOK`, `USD`], 
-				[`NZD`, `USD`], 
-				[`SEK`, `USD`], 
-				[`SOL`, `USD`], 
-				[`USDC`, `USD`], 
-				[`USDT`,`USD`], 
-				[`XMR`, `USD`], 
-				[`XRP`, `USD`], 
-				[`ZAR`, `USD`]]; 
+		let a = new Date(`${n.getFullYear()}-${n.getMonth() + 1}-${n.getDate()}`).valueOf();
+
+		let Coin = [
+			[`AUD`, `USD`],
+			[`BNB`, `USD`], 
+			[`BTC`, `USD`],
+			[`DOGE`, `USD`], 
+			[`ETH`, `USD`], 
+			[`EUR`, `USD`], 
+			[`GBP`, `USD`], 
+			[`USD`, `KES`], 
+			[`LTC`, `USD`], 
+			[`NOK`, `USD`], 
+			[`NZD`, `USD`], 
+			[`SEK`, `USD`], 
+			[`SOL`, `USD`],  
+			[`USD`, `CAD`], 
+			[`USD`, `CHF`], 
+			[`USD`, `JPY`], 
+			[`USDC`, `USD`], 
+			[`USDT`,`USD`], 
+			[`XMR`, `USD`], 
+			[`XRP`, `USD`], 
+			[`USD`, `ZAR`]]; 
+
+		setInterval(() => {
 
 			let Spot = [];
 
@@ -596,42 +600,50 @@ class Tools {
 
 			Coin.forEach(C => {
 
-				pulls(`https://api.coinbase.com/v2/prices/${C[0]}-${C[1]}/spot`, (flaw, State, coat) => {
+				stat(`json/ts/${C[0]}${C[1]}_${a}.json`, (bug, Stat) => {
 
-					if (!flaw && State.statusCode === 200 && this.typen(coat) && this.typen(coat).data 
-						&& parseFloat(this.typen(coat).data.amount) > 0) {
-		
-						let cost = parseFloat(this.typen(coat).data.amount), ts = new Date().valueOf();
+					if (bug) {
 
-						//if (C[0] === `XMR`) cost = cost.toFixed(3)
+						writeFileSync(`json/ts/${C[0]}${C[1]}_${parseFloat(a) - 3600000*24}.json`, this.coats([]));
 
-						let Pair = {
-							allocate: 1,
-							ilk: `market`,
-							md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`),
-							mug: hold,
-							pair: [[C[0].toLowerCase(), C[1].toLowerCase()], [0, cost]],
-							side: `buy`,
-							ts: ts,
-							ts_z: ts
-						};
-
-						Spot.push(Pair);
-
-						let Book = this.typen(readFileSync(`json/book.json`, {encoding: `utf8`}));
-
-						if (typeof Book === `object`) Book.push(Pair);
-
-						writeFileSync(`json/book.json`, this.coats(Book));
-
-						if (Spot.length > 20) {
-
-							writeFileSync(`json/spot.json`, this.coats(Spot));
-
-							//Raw[0]([Spot]);
-						}
+						writeFileSync(`json/ts/${C[0]}${C[1]}_${a}.json`, this.coats([]));
 					}
-				});
+
+					pulls(`https://api.coinbase.com/v2/prices/${C[0]}-${C[1]}/spot`, (flaw, State, coat) => {
+
+						if (!flaw && State.statusCode === 200 && this.typen(coat) && this.typen(coat).data 
+							&& parseFloat(this.typen(coat).data.amount) > 0) {
+		
+							let cost = parseFloat(this.typen(coat).data.amount), ts = new Date().valueOf();
+
+							//if (C[0] === `XMR`) cost = cost.toFixed(3)
+
+							let Pair = {
+								allocate: 1,
+								ilk: `market`,
+								md: createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`),
+								mug: hold,
+								pair: [[C[0].toLowerCase(), C[1].toLowerCase()], [0, cost]],
+								side: `buy`,
+								ts: ts,
+								ts_z: ts
+							};
+
+							Spot.push(Pair);
+
+							let Book = this.typen(readFileSync(`json/book.json`, {encoding: `utf8`}));
+
+							if (typeof Book === `object`) Book.push(Pair);
+
+							writeFileSync(`json/book.json`, this.coats(Book));
+
+							if (Spot.length > 20) {
+
+								writeFileSync(`json/spot.json`, this.coats(Spot));				
+							}
+						}
+					});
+				});	
 			});
 		}, 6000);
 
@@ -643,37 +655,36 @@ class Tools {
 
 			if (typeof BK !== `object`) return;
 
-			/**
-
-			let SP = [];
-
 			BK.forEach(B => {
 
-				if (!Raw[0].book[B.md]) SP.push(B);
+				let TS = this.typen(readFileSync(`json/ts/${B.pair[0][0].toUpperCase()}${B.pair[0][1].toUpperCase()}_${a}.json`, {encoding: `utf8`}));
 
-				if (Raw[0].book[B.md] && )
+				if (typeof TS === `object`) {
+
+					TS.push(B);
+
+					writeFileSync(`json/ts/${B.pair[0][0].toUpperCase()}${B.pair[0][1].toUpperCase()}_${a}.json`, this.coats(TS));
+				}
 			});
 
-			**/
-
-			Raw[0]([BK]);		
+			//Raw[0]([BK]);		
 		}, 50000)
 	}
 
 	pairSpot (Arg) {
 
 		let Spot = [[
-									[[`usdt`, `usd`], 5],
-									[[`btc`, `usd`], 1], 
-									[[`eth`, `usd`], 2], 
-									[[`usdc`, `usd`], 5],  
-									[[`eur`, `usd`], 5],  
-									[[`sol`, `usd`], 2],
-									[[`usd`, `chf`], 5], 
-									[[`doge`, `usd`], 5], 
-									[[`xrp`, `usd`], 5],
-									[[`aud`, `usd`], 5], 
-									[[`gbp`, `usd`], 5], 
+			[[`usdt`, `usd`], 5],
+			[[`btc`, `usd`], 1], 
+			[[`eth`, `usd`], 2], 
+			[[`usdc`, `usd`], 5],  
+			[[`eur`, `usd`], 5],  
+			[[`sol`, `usd`], 2],
+			[[`usd`, `chf`], 5], 
+			[[`doge`, `usd`], 5], 
+			[[`xrp`, `usd`], 5],
+			[[`aud`, `usd`], 5], 
+			[[`gbp`, `usd`], 5], 
 			[[`usd`, `cad`], 5], 
 			[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
 
@@ -833,7 +844,7 @@ module.exports = {
 
 	Constants : {
 
-		plot: [`BTC-USD`]
+		plot: [`BTC-USD`, `USD-CHF`]
 	},
 	
 	Sql : new Sql([{

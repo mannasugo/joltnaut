@@ -1444,13 +1444,17 @@ class Route {
 
 									let n = new Date();
 
+									let a = new Date(`${n.getFullYear()}-${n.getMonth() + 1}-${n.getDate()}`).valueOf();
+
 									let z = new Date(`${n.getFullYear()}-${n.getMonth() + 1}-${n.getDate()} ${n.getHours() }:00`).valueOf();
 
 									let S = (Pulls.pair).toLowerCase().split(`-`);
 
 									let Kline = [];
 
-									for (let i = 0; i < 240; i++) {
+									let interval = (z - new Date(a - (3600000*240)))/3600000;
+
+									for (let i = 0; i < interval + 1; i++) {
 
 										let All = [];
 
@@ -1469,7 +1473,7 @@ class Route {
 
 										let HL = Tools.typen(Tools.coats(All)).sort((A, B) => {return B[0] - A[0]});
 										
-										Kline.push([z, (OC.length > 0)? [OC[0][0], OC[OC.length -1][0]]: [], (HL.length > 0)? [HL[0][0], HL[HL.length -1][0]]: []]) //OCHL
+										Kline.push([z - (3600000*i), (OC.length > 0)? [OC[0][0], OC[OC.length -1][0]]: [], (HL.length > 0)? [HL[0][0], HL[HL.length -1][0]]: []]) //OCHL
 									}
 
 									Arg[1].end(Tools.coats({
@@ -2044,6 +2048,8 @@ class Route {
 
 							if (Pulls.pull === `spot`) {
 
+								let a = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`).valueOf();
+
 								let Spot = [[
 									[[`usdt`, `usd`], 5],
 									[[`btc`, `usd`], 1], 
@@ -2061,26 +2067,16 @@ class Route {
 
 								Spot[0].forEach(S => {
 
-									let All = [];
-
-									Raw.book[0].forEach(B => {
-
-										if (((B.pair[0][0] === S[0][0] && B.pair[0][1] === S[0][1]) || (B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])) && B.ts_z > 0) {
-
-											(B.pair[0][0] === S[0][1] && B.pair[0][1] === S[0][0])? All.push([(1/B.pair[1][1]), B.ts_z]): All.push([B.pair[1][1], B.ts_z]);
-										}
-									});
-
 									let SPOT24 = [0, []];
 
-									All.sort((A, B) => {return A[1] - B[1]}).forEach(A => {
+									let TS = Tools.typen(readFileSync(`json/ts/${S[0][0].toUpperCase()}${S[0][1].toUpperCase()}_${parseFloat(a) - 3600000*24}.json`, {encoding: `utf8`}));
+			
+									TS.forEach(T => {
 
-										if (A[1] > (new Date().valueOf() - 3600000*24)) SPOT24[1].push(A);
+										if (T.ts_z > (new Date().valueOf() - 3600000*24) && T.ts_z < (new Date().valueOf() - 3600000*21)) SPOT24[1].push([T.pair[1][1], T.ts_z]);
 									});
 
-									All = All.sort((A, B) => {return B[1] - A[1]});
-
-									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1], SPOT24[1]]
+									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], 0, S[1], SPOT24[1]];
 								});
 
 								Arg[1].end(Tools.coats({
@@ -2603,6 +2599,8 @@ class Route {
 										}]);
 									}
 
+									/**
+
           							if (Bill.type === `fiatSpot` && TX.invoice.state === `COMPLETE` && !Raw.spot[1][Bill.md]) {
 
 										let Holding = [`btc`, `eth`, `ltc`, `usdt`, `xmr`, `xrp`, `aud`, `cad`, `eur`, `jpy`, `kes`, `nok`, `nzd`, `zar`, 
@@ -2651,6 +2649,8 @@ class Route {
           									}]);
 										}]);
 									}
+
+									**/
 
           							if (TX.invoice.state === `FAILED`) {
 

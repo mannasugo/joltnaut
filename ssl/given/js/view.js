@@ -3021,16 +3021,22 @@ let Models = {
 
 		let Plot = [[], []];
 
-		for (let i = 0; i < 30; i++) {
+		for (let i = 0; i < 24; i++) {
 					
-			Plot[0].push([`line`, {x1: i*171.5, y1: 1, x2: i*171.5, y2: 1001, stroke: `#353535`, [`stroke-width`]: .95}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
+			Plot[0].push([`line`, {x1: i*170.5 + 4, y1: 1, x2: i*170.5 + 4, y2: 1001, stroke: `#353535`, [`stroke-width`]: .95}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
 		}
 
 		Arg.kline.sort((A, B) => {return A[0] - B[0]}).forEach((K, i) => {
 
 			if (K[2].length > 0) {
 
-				Plot[1].push([`line`, {x1: i*7.5, y1: .15*Y + ((HL[0] - K[1][0])*.3*Y)/(HL[0] - HL[HL.length - 1]), x2: i*7.5, y2: .15*Y + ((HL[0] - K[1][1])*.3*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
+				Plot[1].push([`line`, {x1: i*7.125 + .05, y1: .15*Y + ((HL[0] - K[2][0])*.5*Y)/(HL[0] - HL[HL.length - 1]), x2: i*7.125 + .05, y2: .15*Y + ((HL[0] - K[2][1])*.5*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
+
+                let OC = Tools.typen(Tools.coats(K[1]));
+
+                OC.sort((A, B) => {return B - A});
+				
+				Plot[1].push([`rect`, {id: `${new Date(K[0])}`, x: (i*7.125) - 2, y: .15*Y + ((HL[0] - OC[0])*.5*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.5*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
 			}
 		});
 
@@ -3045,8 +3051,8 @@ let Models = {
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, ``]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${18}px`, width: `${18}px`}}]]]]]]],
-					[`section`, {style: {transform: `translateX(${-550}px)`, width: `${100}%`}}, 
-						[[`svg`, {height: `${1000}px`, width: `${30*172}px`}, 
+					[`section`, {style: {transform: `translateX(${-640}px)`, width: `${100}%`}}, 
+						[[`svg`, {height: `${1000}px`, width: `${24*172}px`}, 
 							[ 
 								[`g`, {}, Plot[0]],
 								[`g`, {}, Plot[1]]]]]], 
@@ -3578,7 +3584,7 @@ let Models = {
 									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Spot[0][0]}`], 
 									[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `/${Spot[0][1]}`]]]]], 
 					[`div`, {style: {width: `${22.5}%`}}, 
-						[[`span`, {id: `COST`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `${Spot[1].toFixed(Spot[2])}`]]], 
+						[[`span`, {id: `COST`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
 						[[`span`, {id: `MOD`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {width: `${15}%`}}, 

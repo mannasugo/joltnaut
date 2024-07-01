@@ -28,6 +28,29 @@ class Route {
 
 		if (State.length === 4 && State[3] === ``) { 
 
+				document.title = `Market Prices & Volume`;
+
+				let Puts = Tools.pull([
+					`/json/web`, {
+						mug: (Clients.mug) ? Clients.mug: false,
+						pull: `spot`
+					}]);
+
+				Puts.onload = () => {
+
+					let Web = Tools.typen(Puts.response);
+
+					View.DOM([`div`, [Models.spot(Web)]]);
+
+					document.querySelector(`body`).style.background = `#000`;
+
+					document.querySelector(`#app`).style.height = `unset`;
+
+					Events.spot(Web);
+				}
+
+			/**
+
 			let Puts = Tools.pull([
 				`/json/web`, {
 					mug: (Clients.mug) ? Clients.mug: false,
@@ -44,6 +67,8 @@ class Route {
 
 				View.DOM([`div`, [Models.app(Web)]]);
 			}
+
+			**/
 		}
 
     	else if (this.State[3] === `360`) {
@@ -800,7 +825,7 @@ class Route {
 
     		if (!State[4] && !Tools.slim[State[4]]) {
 
-				document.title = `Spot Prices & Market Volume`;
+				document.title = `Market Prices & Volume`;
 
 				let Puts = Tools.pull([
 					`/json/web`, {
@@ -840,6 +865,8 @@ class Route {
 						View.DOM([`div`, [Models.plot(Web)]]);
 
 						document.querySelector(`body`).style.overflowY = `hidden`;
+
+						document.querySelector(`body`).style.overflowX = `hidden`;
 
 						document.querySelector(`body`).style.background = `#000`;
 
