@@ -14,6 +14,8 @@ const APK_VER = 202307201417;
 
 const hold = new Date(`1996-01-20`).valueOf();
 
+const DAY = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`).valueOf();
+
 class Route {
 
 	Call (Arg) {
@@ -1442,6 +1444,8 @@ class Route {
 
 								if (Constants.plot.indexOf(Pulls.pair) > -1) {
 
+									/**
+
 									let n = new Date();
 
 									let a = new Date(`${n.getFullYear()}-${n.getMonth() + 1}-${n.getDate()}`).valueOf();
@@ -1474,6 +1478,32 @@ class Route {
 										let HL = Tools.typen(Tools.coats(All)).sort((A, B) => {return B[0] - A[0]});
 										
 										Kline.push([z - (3600000*i), (OC.length > 0)? [OC[0][0], OC[OC.length -1][0]]: [], (HL.length > 0)? [HL[0][0], HL[HL.length -1][0]]: []]) //OCHL
+									}
+
+									**/
+
+									let S = (Pulls.pair).toLowerCase().split(`-`);
+
+									let TS = Tools.typen(readFileSync(`json/ts/${S[0]}${S[1]}_${DAY}.json`, {encoding: `utf8`}));
+
+									let MS = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours() }:${new Date().getMinutes()}`).valueOf();
+
+									let Kline = [];
+
+									for (let M = 0; M < 140; M++) {
+
+										let Secs = [];
+										
+										TS.forEach(T => {
+
+											if (T.ts_z > MS - 60000*M && T.ts_z < (MS - 60000*M) + 60000) Secs.push([T.pair[1][1], T.ts_z])
+										});
+
+										let OC = Tools.typen(Tools.coats(Secs)).sort((A, B) => {return A[1] - B[1]});
+
+										let HL = Tools.typen(Tools.coats(Secs)).sort((A, B) => {return B[0] - A[0]});
+										
+										Kline.push([MS - 60000*M, (OC.length > 0)? [OC[0][0], OC[OC.length -1][0]]: [], (HL.length > 0)? [HL[0][0], HL[HL.length -1][0]]: []]) //OCHL
 									}
 
 									Arg[1].end(Tools.coats({

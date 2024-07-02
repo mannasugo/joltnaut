@@ -709,7 +709,7 @@ class Tools {
 
 			All = All.sort((A, B) => {return B[1] - A[1]});
 
-			Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1], SPOT24[1]]
+			Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], (All[0])? All[0][0]: 0, S[1], SPOT24[1], (All[0])? All[0][1]: new Date().valueOf()]
 		});
 
 		return Spot[1];

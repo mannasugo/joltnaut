@@ -3019,7 +3019,7 @@ let Models = {
     
   		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
 
-		let Plot = [[], []];
+		let Plot = [[], [], []];
 
 		for (let i = 0; i < 24; i++) {
 					
@@ -3030,15 +3030,17 @@ let Models = {
 
 			if (K[2].length > 0) {
 
-				Plot[1].push([`line`, {x1: i*7.125 + .05, y1: .15*Y + ((HL[0] - K[2][0])*.5*Y)/(HL[0] - HL[HL.length - 1]), x2: i*7.125 + .05, y2: .15*Y + ((HL[0] - K[2][1])*.5*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
+				Plot[1].push([`line`, {id: `g${K[0]}`, x1: i*7.125 + .05, y1: .15*Y + ((HL[0] - K[2][0])*.35*Y)/(HL[0] - HL[HL.length - 1]), x2: i*7.125 + .05, y2: .15*Y + ((HL[0] - K[2][1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
 
                 let OC = Tools.typen(Tools.coats(K[1]));
 
                 OC.sort((A, B) => {return B - A});
 				
-				Plot[1].push([`rect`, {id: `${new Date(K[0])}`, x: (i*7.125) - 2, y: .15*Y + ((HL[0] - OC[0])*.5*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.5*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
+				Plot[1].push([`rect`, {id: `g${K[0]}`, x: (i*7.125) - 2, y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
 			}
 		});
+
+		Plot[2] = [`text`, {id: `last`, x: 24, y: ``}, ``];
 
 		return [
 			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
@@ -3051,11 +3053,16 @@ let Models = {
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, ``]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${18}px`, width: `${18}px`}}]]]]]]],
-					[`section`, {style: {transform: `translateX(${-640}px)`, width: `${100}%`}}, 
-						[[`svg`, {height: `${1000}px`, width: `${24*172}px`}, 
-							[ 
-								[`g`, {}, Plot[0]],
-								[`g`, {}, Plot[1]]]]]], 
+					[`section`, {class: `_gxM`, style: {width: `${100}%`}}, 
+						[
+							[`div`, {style: {width: `${80}%`}}, 
+								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${-450}px)`}}, 
+									[ 
+										//[`g`, {}, Plot[0]],
+										[`g`, {id: `XYKline`}, Plot[1]], [`g`, {id: `live`}]]]]], 
+							[`div`, {style: {width: `${20}%`}}, 
+								[[`svg`, {style: {background: `#000`, [`border-left`]: `${1}px solid #353535`, height: `${100}%`, width: `${100}%`}}, 
+									[[`g`, {}, [Plot[2]]]]]]]]], 
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${6}px ${24}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
 						[]]]];	
 	},

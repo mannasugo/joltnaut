@@ -574,6 +574,80 @@ class Events {
 		}]);
 	}
 
+	plot (Arg) {
+
+		Arg[0].kline.sort((A, B) => {return B[0] - A[0]})
+
+		let Open = [Arg[0].kline[0][0], (Arg[0].kline[0][1][0]), 454]; //840
+
+		let HL = [];
+
+		Arg[0].kline.forEach(K => {
+
+			if (K[2].length > 0) {HL.push(K[2][0]); HL.push(K[2][1])}
+		});
+    
+  		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
+
+  		if (document.querySelector(`rect#g${Open[0]}`)) {
+
+		io().on(`spot`, Spot => {
+
+			let SPOT = Spot[Arg[1].toLowerCase().replace(`-`, `_`)];
+
+			HL.push(SPOT[1]);
+
+			HL.sort((A, B) => {return B - A});
+
+			let OC = [Open[1], SPOT[1]];
+
+            OC.sort((A, B) => {return B - A});
+
+            document.querySelector(`rect#g${Open[0]}`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
+
+			document.querySelector(`rect#g${Open[0]}`).setAttribute(`height`, ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]));
+
+			if (SPOT[4] > Open[0] + 60000) {
+
+				Open = [Open[0] + 60000, SPOT[1], Open[2] + 14];
+
+				let RECT = document.querySelectorAll(`rect`).length
+
+				let G = document.createElementNS(`http://www.w3.org/2000/svg`, `g`);
+
+				document.querySelector(`#kline`).appendChild(G);
+
+				G.setAttribute(`id`, `g${Open[0]}`);
+
+				View.pop(); console.log(OC)
+
+				View.DOM([`g#g${Open[0]}`, 
+					[[`rect`, {id: `g${Open[0]}`, x: (35 + (RECT + 1)*7.125) - 2, y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}]]]);
+
+
+
+				/**
+
+				document.querySelector(`#kline`).appendChild(Rect);
+
+				Rect.setAttribute(`id`, `g${Open[0]}`);
+
+				Rect.setAttribute(`x`, ((RECT + 1)*7.125) - 2); 
+
+				Rect.setAttribute(`y`, .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1])); 
+
+				Rect.setAttribute(`width`, 3.5);
+				**/
+
+				let Kline = document.querySelector(`#kline`);
+
+				Kline.style.transform = `translateX(-${Open[2]}px)`;
+			}
+
+			document.querySelector(`#last`).innerHTML = SPOT[1].toFixed(SPOT[2]);
+		});}
+	}
+
 	pollB4 (Arg) {
 
 		document.querySelectorAll(`#pollB4`).forEach(Allow => {
