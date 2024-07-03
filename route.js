@@ -2100,14 +2100,14 @@ class Route {
 									let SPOT24 = [0, []];
 
 									let TS = Tools.typen(readFileSync(`json/ts/${S[0][0].toUpperCase()}${S[0][1].toUpperCase()}_${parseFloat(a) - 3600000*24}.json`, {encoding: `utf8`}));
-			
+			console.log(TS)
 									TS.forEach(T => {
 
 										if (T.ts_z > (new Date().valueOf() - 3600000*24) && T.ts_z < (new Date().valueOf() - 3600000*21)) SPOT24[1].push([T.pair[1][1], T.ts_z]);
 									});
 
 									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], 0, S[1], SPOT24[1]];
-								});console.log(Spot[1])
+								});
 
 								Arg[1].end(Tools.coats({
 									mug: Pulls.mug, spot: Spot[1]}));
