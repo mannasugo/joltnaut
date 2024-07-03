@@ -591,6 +591,10 @@ class Events {
 
   		if (document.querySelector(`rect#g${Open[0]}`)) {
 
+  			let RECT = document.querySelectorAll(`rect`);
+
+  			let X = RECT[RECT.length - 1].getAttribute(`x`);
+
 		io().on(`spot`, Spot => {
 
 			let SPOT = Spot[Arg[1].toLowerCase().replace(`-`, `_`)];
@@ -611,20 +615,18 @@ class Events {
 
 				Open = [Open[0] + 60000, SPOT[1], Open[2] + 14];
 
-				let RECT = document.querySelectorAll(`rect`).length
-
 				let G = document.createElementNS(`http://www.w3.org/2000/svg`, `g`);
 
 				document.querySelector(`#kline`).appendChild(G);
 
 				G.setAttribute(`id`, `g${Open[0]}`);
 
-				View.pop(); console.log(OC)
+				X = parseFloat(X) + 6;
+
+				View.pop();
 
 				View.DOM([`g#g${Open[0]}`, 
-					[[`rect`, {id: `g${Open[0]}`, x: (35 + (RECT + 1)*7.125) - 2, y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}]]]);
-
-
+					[[`rect`, {id: `g${Open[0]}`, x: X , y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}]]]);
 
 				/**
 
@@ -637,6 +639,7 @@ class Events {
 				Rect.setAttribute(`y`, .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1])); 
 
 				Rect.setAttribute(`width`, 3.5);
+
 				**/
 
 				let Kline = document.querySelector(`#kline`);

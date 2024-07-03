@@ -604,8 +604,6 @@ class Tools {
 
 					if (bug) {
 
-						writeFileSync(`json/ts/${C[0]}${C[1]}_${parseFloat(a) - 3600000*24}.json`, this.coats([]));
-
 						writeFileSync(`json/ts/${C[0]}${C[1]}_${a}.json`, this.coats([]));
 					}
 
@@ -615,8 +613,6 @@ class Tools {
 							&& parseFloat(this.typen(coat).data.amount) > 0) {
 		
 							let cost = parseFloat(this.typen(coat).data.amount), ts = new Date().valueOf();
-
-							//if (C[0] === `XMR`) cost = cost.toFixed(3)
 
 							let Pair = {
 								allocate: 1,
