@@ -1482,7 +1482,7 @@ class Route {
 
 									**/
 
-									let S = (Pulls.pair).toLowerCase().split(`-`);
+									let S = (Pulls.pair).split(`-`);
 
 									let TS = Tools.typen(readFileSync(`json/ts/${S[0]}${S[1]}_${DAY}.json`, {encoding: `utf8`}));
 
@@ -2107,7 +2107,7 @@ class Route {
 									});
 
 									Spot[1][`${S[0][0]}_${S[0][1]}`] = [S[0], 0, S[1], SPOT24[1]];
-								});
+								});console.log(Spot[1])
 
 								Arg[1].end(Tools.coats({
 									mug: Pulls.mug, spot: Spot[1]}));
