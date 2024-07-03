@@ -872,7 +872,7 @@ class Route {
 
 						//document.querySelector(`#app`).style.height = `unset`;
 
-						Events.plot([Web, Web.pair])
+						Events.plot([Web, Web.pair]);
 					}
 				}	
     		}

@@ -576,28 +576,43 @@ class Events {
 
 	plot (Arg) {
 
-		Arg[0].kline.sort((A, B) => {return B[0] - A[0]})
-
-		let Open = [Arg[0].kline[0][0], (Arg[0].kline[0][1][0]), 454]; //840
+		let Viable = []; 
 
 		let HL = [];
 
 		Arg[0].kline.forEach(K => {
 
-			if (K[2].length > 0) {HL.push(K[2][0]); HL.push(K[2][1])}
+			if (K[2].length > 0) {
+
+				HL.push(K[2][0]); 
+
+				HL.push(K[2][1]);
+
+				Viable.push(K);
+			}
 		});
     
   		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
 
-  		if (document.querySelector(`rect#g${Open[0]}`)) {
+		Viable.sort((A, B) => {return B[0] - A[0]});
+    
+  		let CX = parseFloat(document.querySelector(`body`).clientWidth);
 
-  			let RECT = document.querySelectorAll(`rect`);
+		let Open = [Viable[0][0], (Viable[0][1][0]), (CX > 540)? 20: 620]; //840
 
-  			let X = RECT[RECT.length - 1].getAttribute(`x`);
+  		//if (document.querySelector(`rect#g${Open[0]}`)) {
+
+  		let RECT = document.querySelectorAll(`rect`);
+
+  		let X = RECT[RECT.length - 1].getAttribute(`x`);
 
 		io().on(`spot`, Spot => {
 
 			let SPOT = Spot[Arg[1].toLowerCase().replace(`-`, `_`)];
+
+			document.querySelector(`#last`).innerHTML = SPOT[1];
+
+			document.querySelector(`#last`).setAttribute(`y`, .15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]))
 
 			HL.push(SPOT[1]);
 
@@ -613,7 +628,7 @@ class Events {
 
 			if (SPOT[4] > Open[0] + 60000) {
 
-				Open = [Open[0] + 60000, SPOT[1], Open[2] + 14];
+				Open = [Open[0] + 60000, SPOT[1], Open[2] + 4];
 
 				let G = document.createElementNS(`http://www.w3.org/2000/svg`, `g`);
 
@@ -640,7 +655,7 @@ class Events {
 
 				Rect.setAttribute(`width`, 3.5);
 
-				**/
+				**/ 
 
 				let Kline = document.querySelector(`#kline`);
 
@@ -648,7 +663,7 @@ class Events {
 			}
 
 			document.querySelector(`#last`).innerHTML = SPOT[1].toFixed(SPOT[2]);
-		});}
+		});//}
 	}
 
 	pollB4 (Arg) {

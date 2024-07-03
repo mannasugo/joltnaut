@@ -590,7 +590,7 @@ class Tools {
 			[`USDT`,`USD`], 
 			[`XMR`, `USD`], 
 			[`XRP`, `USD`], 
-			[`USD`, `ZAR`]]; 
+			[`USD`, `ZAR`]];
 
 		setInterval(() => {
 
@@ -602,10 +602,9 @@ class Tools {
 
 				stat(`json/ts/${C[0]}${C[1]}_${a}.json`, (bug, Stat) => {
 
-					if (bug) {
+					//writeFileSync(`json/ts/${C[0]}${C[1]}_${a - 3600000*24}.json`, this.coats([]));
 
-						writeFileSync(`json/ts/${C[0]}${C[1]}_${a}.json`, this.coats([]));
-					}
+					if (bug) writeFileSync(`json/ts/${C[0]}${C[1]}_${a}.json`, this.coats([]));
 
 					pulls(`https://api.coinbase.com/v2/prices/${C[0]}-${C[1]}/spot`, (flaw, State, coat) => {
 
@@ -840,7 +839,9 @@ module.exports = {
 
 	Constants : {
 
-		plot: [`BTC-USD`, `USD-CHF`]
+		plot: [
+		`AUD-USD`, `BTC-USD`, `DOGE-USD`, `ETH-USD`, `EUR-USD`, `GBP-USD`, `SOL-USD`, `USD-CAD`, `USD-CHF`, `USD-JPY`, `USD-KES`, `USD-ZAR`, `USDC-USD`, 
+		`USDT-USD`, `XRP-USD`]
 	},
 	
 	Sql : new Sql([{

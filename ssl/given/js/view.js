@@ -3018,6 +3018,8 @@ let Models = {
 		HL.sort((A, B) => {return B - A});
     
   		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
+    
+  		let X = parseFloat(document.querySelector(`body`).clientWidth);
 
 		let Plot = [[], [], []];
 
@@ -3040,7 +3042,7 @@ let Models = {
 			}
 		});
 
-		Plot[2] = [`text`, {id: `last`, x: 24, y: ``}, ``];
+		Plot[2] = [`text`, {id: `last`, x: 24, y: 0, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
 
 		return [
 			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
@@ -3052,11 +3054,11 @@ let Models = {
 								[`div`, {class: `_eYG`, style: {[`border-left`]: `${1}px solid #353535`, height: `${100}%`,}}, 
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, ``]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
-									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${18}px`, width: `${18}px`}}]]]]]]],
+									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${16}px`, width: `${16}px`}}]]]]]]],
 					[`section`, {class: `_gxM`, style: {width: `${100}%`}}, 
 						[
 							[`div`, {style: {width: `${80}%`}}, 
-								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${-450}px)`}}, 
+								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -620}px)`}}, 
 									[ 
 										//[`g`, {}, Plot[0]],
 										[`g`, {id: `XYKline`}, Plot[1]], [`g`, {id: `live`}]]]]], 
