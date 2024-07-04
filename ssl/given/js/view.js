@@ -3047,18 +3047,23 @@ let Models = {
 		return [
 			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
 				[
-					[`div`, {style: {background: `#07073c`, [`border-bottom`]: `${1}px solid #353535`, height: `${40}px`, padding: `${0}px ${12}px`, width: `${100}%`, [`z-index`]: 11}}, 
+					[`div`, {style: {background: `#07073c`, [`border-bottom`]: `${1}px solid #353535`, height: `${40}px`, padding: `${0}px ${12}px`, width: `${100}%`}}, 
 						[[`div`, {class: `_gxM _geQ`}, 
 							[
 								[`span`, {class: `v202312301635`, style: {height: `${26}px`, width: `${26}px`}}], 
-								[`div`, {class: `_eYG`, style: {[`border-left`]: `${1}px solid #353535`, height: `${100}%`,}}, 
+								[`div`, {class: `_eYG`, style: {[`border-left`]: `${1}px solid #353535`, height: `${100}%`}}, 
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, ``]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${16}px`, width: `${16}px`}}]]]]]]],
+					[`div`, {style: {[`border-bottom`]: `${1}px solid #353535`, padding: `${0}px ${12}px`, width: `${100}%`}}, 
+						[[`div`, {class: `_gxM _geQ`, style: {[`font-size`]: `${11}px`}}, 
+							[
+								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, padding: `${6}px ${12}px ${6}px 0`}}, `Spot ${Arg.pair}`],
+								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-size`]: `${11}px`, padding: `${6}px ${12}px`}}, `${1}M`]]]]],
 					[`section`, {class: `_gxM`, style: {width: `${100}%`}}, 
 						[
 							[`div`, {style: {width: `${80}%`}}, 
-								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -620}px)`}}, 
+								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
 									[ 
 										//[`g`, {}, Plot[0]],
 										[`g`, {id: `XYKline`}, Plot[1]], [`g`, {id: `live`}]]]]], 

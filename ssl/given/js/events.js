@@ -598,7 +598,7 @@ class Events {
     
   		let CX = parseFloat(document.querySelector(`body`).clientWidth);
 
-		let Open = [Viable[0][0], (Viable[0][1][0]), (CX > 540)? 20: 620]; //840
+		let Open = [Viable[0][0], (Viable[0][1][0]), (CX > 540)? 20: 670]; //840
 
   		//if (document.querySelector(`rect#g${Open[0]}`)) {
 
