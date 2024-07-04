@@ -3066,10 +3066,12 @@ let Models = {
 								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
 									[ 
 										//[`g`, {}, Plot[0]],
-										[`g`, {id: `XYKline`}, Plot[1]], [`g`, {id: `live`}]]]]], 
+										[`g`, {id: `XYKline`}, Plot[1]], [`g`, {}, [[`path`, {id: `bullseye`, stroke: `#6a6a6a`, d: ``}]]]]]]], 
 							[`div`, {style: {width: `${20}%`}}, 
 								[[`svg`, {style: {background: `#000`, [`border-left`]: `${1}px solid #353535`, height: `${100}%`, width: `${100}%`}}, 
 									[[`g`, {}, [Plot[2]]]]]]]]], 
+					[`div`, {style: {background: `#000000c9`, top: `${77}px`, height: `${30}px`, padding: `${6}px ${12}px`, position: `absolute`, width: `${80}%`, [`z-index`]: 11}}, 
+						[[`span`, {id: `ohlc`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, ``]]], 
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${6}px ${24}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
 						[]]]];	
 	},

@@ -574,7 +574,7 @@ class Events {
 		}]);
 	}
 
-	plot (Arg) {
+	plot (Arg) {/*
 
 		let Viable = []; 
 
@@ -594,25 +594,21 @@ class Events {
     
   		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
 
-		Viable.sort((A, B) => {return B[0] - A[0]});
+		Viable.sort((A, B) => {return B[0] - A[0]});*/
     
-  		let CX = parseFloat(document.querySelector(`body`).clientWidth);
+  		let CX = parseFloat(document.querySelector(`body`).clientWidth);/*
 
 		let Open = [Viable[0][0], (Viable[0][1][0]), (CX > 540)? 20: 670]; //840
 
-  		//if (document.querySelector(`rect#g${Open[0]}`)) {
-
   		let RECT = document.querySelectorAll(`rect`);
 
-  		let X = RECT[RECT.length - 1].getAttribute(`x`);
+  		let X = RECT[RECT.length - 1].getAttribute(`x`);*/
+
+  		let Kline = document.querySelector(`#kline`);/*
 
 		io().on(`spot`, Spot => {
 
 			let SPOT = Spot[Arg[1].toLowerCase().replace(`-`, `_`)];
-
-			document.querySelector(`#last`).innerHTML = SPOT[1];
-
-			document.querySelector(`#last`).setAttribute(`y`, .15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]))
 
 			HL.push(SPOT[1]);
 
@@ -621,6 +617,12 @@ class Events {
 			let OC = [Open[1], SPOT[1]];
 
             OC.sort((A, B) => {return B - A});
+
+			document.querySelector(`#last`).innerHTML = SPOT[1];
+
+			document.querySelector(`#last`).setAttribute(`y`, .15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]))
+
+            document.querySelector(`#ohlc`).innerHTML = `${new Date().toString().substr(4, 17)} O${Open[1].toFixed(SPOT[2])} H${HL[0].toFixed(SPOT[2])}	L${HL[HL.length - 1].toFixed(SPOT[2])} C${SPOT[1].toFixed(SPOT[2])} ${((SPOT[1] - Open[1])/Open[1]*100).toFixed(2)}%`
 
             document.querySelector(`rect#g${Open[0]}`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
 
@@ -636,34 +638,25 @@ class Events {
 
 				G.setAttribute(`id`, `g${Open[0]}`);
 
-				X = parseFloat(X) + 6;
+				X = parseFloat(X) + 8;
 
 				View.pop();
 
 				View.DOM([`g#g${Open[0]}`, 
 					[[`rect`, {id: `g${Open[0]}`, x: X , y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}]]]);
 
-				/**
-
-				document.querySelector(`#kline`).appendChild(Rect);
-
-				Rect.setAttribute(`id`, `g${Open[0]}`);
-
-				Rect.setAttribute(`x`, ((RECT + 1)*7.125) - 2); 
-
-				Rect.setAttribute(`y`, .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1])); 
-
-				Rect.setAttribute(`width`, 3.5);
-
-				**/ 
-
-				let Kline = document.querySelector(`#kline`);
-
 				Kline.style.transform = `translateX(-${Open[2]}px)`;
 			}
 
 			document.querySelector(`#last`).innerHTML = SPOT[1].toFixed(SPOT[2]);
-		});//}
+		});*/
+
+		this.listen([document.querySelector(`#kline`), `mousemove`, S => {//console.log(S) Open[2]
+
+			let Xl = (CX > 540)? 20: 670;
+
+			document.querySelector(`#bullseye`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${4000} ${S.layerY + .5} M${(S.layerX + Xl) + .5} ${0} ${(S.layerX + Xl) + .5} ${1000}`)
+		}]);
 	}
 
 	pollB4 (Arg) {
