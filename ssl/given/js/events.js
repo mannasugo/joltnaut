@@ -574,7 +574,7 @@ class Events {
 		}]);
 	}
 
-	plot (Arg) {/*
+	plot (Arg) {
 
 		let Viable = []; 
 
@@ -594,17 +594,17 @@ class Events {
     
   		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
 
-		Viable.sort((A, B) => {return B[0] - A[0]});*/
+		Viable.sort((A, B) => {return B[0] - A[0]});
     
-  		let CX = parseFloat(document.querySelector(`body`).clientWidth);/*
+  		let CX = parseFloat(document.querySelector(`body`).clientWidth);
 
 		let Open = [Viable[0][0], (Viable[0][1][0]), (CX > 540)? 20: 670]; //840
 
   		let RECT = document.querySelectorAll(`rect`);
 
-  		let X = RECT[RECT.length - 1].getAttribute(`x`);*/
+  		let X = RECT[RECT.length - 1].getAttribute(`x`);
 
-  		let Kline = document.querySelector(`#kline`);/*
+  		let Kline = document.querySelector(`#kline`);
 
 		io().on(`spot`, Spot => {
 
@@ -649,13 +649,11 @@ class Events {
 			}
 
 			document.querySelector(`#last`).innerHTML = SPOT[1].toFixed(SPOT[2]);
-		});*/
+		});
 
-		this.listen([document.querySelector(`#kline`), `mousemove`, S => {//console.log(S) Open[2]
+		this.listen([document.querySelector(`#kline`), `mousemove`, S => {
 
-			let Xl = (CX > 540)? 20: 670;
-
-			document.querySelector(`#bullseye`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${4000} ${S.layerY + .5} M${(S.layerX + Xl) + .5} ${0} ${(S.layerX + Xl) + .5} ${1000}`)
+			document.querySelector(`#bullseye`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${4000} ${S.layerY + .5} M${(S.layerX + Open[2]) + .5} ${0} ${(S.layerX + Open[2]) + .5} ${1000}`)
 		}]);
 	}
 
