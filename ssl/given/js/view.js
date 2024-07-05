@@ -3025,7 +3025,7 @@ let Models = {
 
 		for (let i = 0; i < 24; i++) {
 					
-			Plot[0].push([`line`, {x1: i*170.5 + 4, y1: 1, x2: i*170.5 + 4, y2: 1001, stroke: `#353535`, [`stroke-width`]: .95}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
+			Plot[0].push([`line`, {x1: i*170 + 4.5, y1: 1.5, x2: i*170 + 4.5, y2: 1000, stroke: `#353535`, [`stroke-width`]: 1}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
 		}
 
 		Arg.kline.sort((A, B) => {return A[0] - B[0]}).forEach((K, i) => {
@@ -3042,7 +3042,7 @@ let Models = {
 			}
 		});
 
-		Plot[2] = [`text`, {id: `last`, x: 24, y: 0, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
+		Plot[2] = [`text`, {id: `last`, x: 20, y: 0, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
 
 		return [
 			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
@@ -3058,18 +3058,32 @@ let Models = {
 					[`div`, {style: {[`border-bottom`]: `${1}px solid #353535`, padding: `${0}px ${12}px`, width: `${100}%`}}, 
 						[[`div`, {class: `_gxM _geQ`, style: {[`font-size`]: `${11}px`}}, 
 							[
-								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, padding: `${6}px ${12}px ${6}px 0`}}, `Spot ${Arg.pair}`],
-								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-size`]: `${11}px`, padding: `${6}px ${12}px`}}, `${1}M`]]]]],
+								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, padding: `${6}px ${12}px ${6}px 0`}}, `SPOT ${Arg.pair}`],
+								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-size`]: `${10}px`, [`letter-spacing`]: 0, padding: `${6}px ${12}px`}}, `${1}M`]]]]],
 					[`section`, {class: `_gxM`, style: {width: `${100}%`}}, 
 						[
 							[`div`, {style: {width: `${80}%`}}, 
 								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
 									[ 
-										//[`g`, {}, Plot[0]],
-										[`g`, {id: `XYKline`}, Plot[1]], [`g`, {}, [[`path`, {id: `bullseye`, stroke: `#6a6a6a`, d: ``}]]]]]]], 
+										[`g`, {}, Plot[0]],
+										[`g`, {id: `XYKline`}, Plot[1]], 
+										[`g`, {}, 
+											[
+												[`path`, {id: `bullseye`, stroke: `#6a6a6a`, d: ``}], 
+												[`path`, {id: `spotline`, [`stroke-dasharray`]: 2, d: ``}]]]]]]], 
 							[`div`, {style: {width: `${20}%`}}, 
 								[[`svg`, {style: {background: `#000`, [`border-left`]: `${1}px solid #353535`, height: `${100}%`, width: `${100}%`}}, 
-									[[`g`, {}, [Plot[2]]]]]]]]], 
+									[
+										[`g`, {id: `spotY`}, 
+											[
+												[`rect`, {id: `a`, x: 0, height: 20, width: 80}],
+												[`path`, {id: `c`, stroke: `#fff`, d: ``}],
+												Plot[2]]], 
+										[`g`, {id: `floatY`, style: {display: `none`}}, 
+											[
+												[`rect`, {id: `a`, x: 0, height: 20, width: 80, fill: `#ffffff3b`}],
+												[`path`, {id: `c`, stroke: `#fff`, d: ``}],
+												[`text`, {fill: `#fff`, x: 20, y: ``, [`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}, ``]]]]]]]]], 
 					[`div`, {style: {background: `#000000c9`, top: `${77}px`, height: `${30}px`, padding: `${6}px ${12}px`, position: `absolute`, width: `${80}%`, [`z-index`]: 11}}, 
 						[[`span`, {id: `ohlc`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, ``]]], 
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${6}px ${24}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 

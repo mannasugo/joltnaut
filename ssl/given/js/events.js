@@ -606,6 +606,8 @@ class Events {
 
   		let Kline = document.querySelector(`#kline`);
 
+  		let floatFix = 0;
+
 		io().on(`spot`, Spot => {
 
 			let SPOT = Spot[Arg[1].toLowerCase().replace(`-`, `_`)];
@@ -618,9 +620,15 @@ class Events {
 
             OC.sort((A, B) => {return B - A});
 
+            floatFix = SPOT[2]
+
+            document.querySelector(`#spotline`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
+
+			document.querySelector(`#spotline`).setAttribute(`d`, `M${parseFloat(X)} ${.15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + .5} ${4000} ${.15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + .5}`)
+
 			document.querySelector(`#last`).innerHTML = SPOT[1];
 
-			document.querySelector(`#last`).setAttribute(`y`, .15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]))
+			document.querySelector(`#last`).setAttribute(`y`, .15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + 4)
 
             document.querySelector(`#ohlc`).innerHTML = `${new Date().toString().substr(4, 17)} O${Open[1].toFixed(SPOT[2])} H${HL[0].toFixed(SPOT[2])}	L${HL[HL.length - 1].toFixed(SPOT[2])} C${SPOT[1].toFixed(SPOT[2])} ${((SPOT[1] - Open[1])/Open[1]*100).toFixed(2)}%`
 
@@ -630,7 +638,7 @@ class Events {
 
 			if (SPOT[4] > Open[0] + 60000) {
 
-				Open = [Open[0] + 60000, SPOT[1], Open[2] + 4];
+				Open = [Open[0] + 60000, SPOT[1], Open[2] + 10];
 
 				let G = document.createElementNS(`http://www.w3.org/2000/svg`, `g`);
 
@@ -648,12 +656,32 @@ class Events {
 				Kline.style.transform = `translateX(-${Open[2]}px)`;
 			}
 
+            document.querySelector(`#spotline`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
+
+			document.querySelector(`#spotline`).setAttribute(`d`, `M${parseFloat(X)} ${.15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + .5} ${4000} ${.15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + .5}`);
+
 			document.querySelector(`#last`).innerHTML = SPOT[1].toFixed(SPOT[2]);
+
+            document.querySelector(`#spotY #a`).setAttribute(`y`, .15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) - 10);
+
+            document.querySelector(`#spotY #a`).setAttribute(`fill`, (Open[1] > SPOT[1])? `#ff000078`: `#05b5058c`);
+
+            document.querySelector(`#spotY #c`).setAttribute(`d`, `M${0} ${.15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + .5} ${6} ${.15*Y + ((HL[0] - SPOT[1])*.35*Y)/(HL[0] - HL[HL.length - 1]) + .5}`);
 		});
 
 		this.listen([document.querySelector(`#kline`), `mousemove`, S => {
 
 			document.querySelector(`#bullseye`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${4000} ${S.layerY + .5} M${(S.layerX + Open[2]) + .5} ${0} ${(S.layerX + Open[2]) + .5} ${1000}`)
+		
+			document.querySelector(`#floatY text`).setAttribute(`y`, S.layerY + 4);
+
+			document.querySelector(`#floatY text`).innerHTML =  (HL[0] - ((S.layerY/(.575*Y))*(HL[0] - HL[HL.length - 1]))).toFixed(floatFix);
+
+            document.querySelector(`#floatY #a`).setAttribute(`y`, S.layerY - 10);
+
+            document.querySelector(`#floatY #c`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${6} ${S.layerY + .5}`);
+			
+			document.querySelector(`#floatY`).style.display = `unset`
 		}]);
 	}
 
@@ -972,9 +1000,35 @@ class Events {
 
 				let SPOT = Spot[spot];
 
-				document.querySelector(`#${spot} #COST`).innerHTML = SPOT[1].toFixed(SPOT[2])
+				let S24 = [];
+
+				Arg.spot[spot][3].forEach(S => {
+
+					if (S[1] > (new Date().valueOf() - 3600000*24) - 3000 && S[1] < (new Date().valueOf() - 3600000*24) + 3000) S24.push(S);
+				});
+
+				document.querySelector(`#${spot} #COST`).innerHTML = SPOT[1].toFixed(SPOT[2]);
+
+				if (S24.length > 0) {
+
+					let cost = parseFloat(document.querySelector(`#${spot} #COST`).innerHTML);
+
+					let H24 = [`-`, `#000`, `-`, `#000`];
+
+					(S24[0][0] > cost)? H24[1] = `red`: H24[1] = `#02ff02`;
+
+					(S24[0][0] > cost)? H24[3] = `red`: H24[3] = `#02ff02`;
+
+					H24[0] = `${(((cost - S24[0][0])/cost)*100).toFixed(2)}%`
+
+					document.querySelector(`#${spot} #MOD`).innerHTML = H24[0];
+
+					document.querySelector(`#${spot} #MOD`).style.color = H24[1]
+				}
 			}
 		});
+
+		/**
 
 		setInterval(() => {
 
@@ -1007,6 +1061,8 @@ class Events {
 				}
 			}
 		}, 2000);
+
+		**/
 	}
 
 	STKPay (Arg) {
