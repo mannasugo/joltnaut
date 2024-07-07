@@ -3021,12 +3021,11 @@ let Models = {
     
   		let X = parseFloat(document.querySelector(`body`).clientWidth);
 
-		let Plot = [[], [], []];
+		let Plot = [[], [], [], []];
 
-		for (let i = 0; i < 24; i++) {
-					
-			Plot[0].push([`line`, {x1: i*170 + 4.5, y1: 1.5, x2: i*170 + 4.5, y2: 1000, stroke: `#353535`, [`stroke-width`]: 1}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
-		}
+		let Day = [new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} ${new Date().getHours()}:00`).valueOf()];
+
+		let Place = [0];
 
 		Arg.kline.sort((A, B) => {return A[0] - B[0]}).forEach((K, i) => {
 
@@ -3040,7 +3039,18 @@ let Models = {
 				
 				Plot[1].push([`rect`, {id: `g${K[0]}`, x: (i*7.125) - 2, y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (K[1][0] > K[1][1])? `red`: `lime`, [`stroke-width`]: .95}]);
 			}
+
+			if (K[0] === Day[0]) Place[0] = i;
 		});
+
+		Place[0] = (Place[0] + 15*4);
+
+		for (let i = 0; i < 24; i++) {
+
+			Plot[3].push([`text`, {x: 7.12*(Place[0] - i*15) - 14, y: 17, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, `${new Date((Day[0] + 15*4*60000) - i*15*60000).toTimeString().substr(0, 5)}`])
+					
+			Plot[0].push([`line`, {x1: 7.12*(Place[0] - i*15) + 0.4, y1: 0, x2: 7.12*(Place[0] - i*15) + 0.4, y2: 1000, stroke: `#353535`, [`stroke-width`]: 1}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
+		}
 
 		Plot[2] = [`text`, {id: `last`, x: 20, y: 0, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
 
@@ -3086,6 +3096,9 @@ let Models = {
 												[`text`, {fill: `#fff`, x: 20, y: ``, [`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}, ``]]]]]]]]], 
 					[`div`, {style: {background: `#000000c9`, top: `${77}px`, height: `${30}px`, padding: `${6}px ${12}px`, position: `absolute`, width: `${80}%`, [`z-index`]: 11}}, 
 						[[`span`, {id: `ohlc`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, ``]]], 
+					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: `${30}px`, height: `${27}px`, overflow: `hidden`, position: `absolute`, width: `${80}%`}}, 
+						[[`svg`, {id: `time`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
+								[[`g`, {}, Plot[3]]]]]], 
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${6}px ${24}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
 						[]]]];	
 	},

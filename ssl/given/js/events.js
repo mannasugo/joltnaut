@@ -592,11 +592,11 @@ class Events {
 			}
 		});
     
-  		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
+  		let CX = parseFloat(document.querySelector(`body`).clientWidth);
 
 		Viable.sort((A, B) => {return B[0] - A[0]});
-    
-  		let CX = parseFloat(document.querySelector(`body`).clientWidth);
+
+		let AZ = Viable[0][2];
 
 		let Open = [Viable[0][0], (Viable[0][1][0]), (CX > 540)? 20: 670]; //840
 
@@ -605,6 +605,8 @@ class Events {
   		let X = RECT[RECT.length - 1].getAttribute(`x`);
 
   		let Kline = document.querySelector(`#kline`);
+    
+  		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
 
   		let floatFix = 0;
 
@@ -620,6 +622,10 @@ class Events {
 
             OC.sort((A, B) => {return B - A});
 
+			AZ.push(SPOT[1]);
+
+			AZ.sort((A, B) => {return B - A});
+
             floatFix = SPOT[2]
 
             document.querySelector(`#spotline`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
@@ -634,11 +640,21 @@ class Events {
 
             document.querySelector(`rect#g${Open[0]}`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
 
+            document.querySelector(`rect#g${Open[0]}`).setAttribute(`y`, .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]));
+
 			document.querySelector(`rect#g${Open[0]}`).setAttribute(`height`, ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]));
+
+			document.querySelector(`line#g${Open[0]}`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
+
+            document.querySelector(`line#g${Open[0]}`).setAttribute(`y1`, .15*Y + ((HL[0] - AZ[0])*.35*Y)/(HL[0] - HL[HL.length - 1]));
+
+            document.querySelector(`line#g${Open[0]}`).setAttribute(`y2`, .15*Y + ((HL[0] - AZ[AZ.length - 1])*.35*Y)/(HL[0] - HL[HL.length - 1]));
 
 			if (SPOT[4] > Open[0] + 60000) {
 
 				Open = [Open[0] + 60000, SPOT[1], Open[2] + 10];
+
+				AZ = [SPOT[1], SPOT[1]];
 
 				let G = document.createElementNS(`http://www.w3.org/2000/svg`, `g`);
 
@@ -651,9 +667,13 @@ class Events {
 				View.pop();
 
 				View.DOM([`g#g${Open[0]}`, 
-					[[`rect`, {id: `g${Open[0]}`, x: X , y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}]]]);
+					[	
+						[`line`, {id: `g${Open[0]}`, x1: X + 1.5, y1: .15*Y + ((HL[0] - AZ[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), x2: X + 1.5, y2: .15*Y + ((HL[0] - AZ[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}],
+						[`rect`, {id: `g${Open[0]}`, x: X , y: .15*Y + ((HL[0] - OC[0])*.35*Y)/(HL[0] - HL[HL.length - 1]), width: 3.5, height: ((OC[0] - OC[1])*.35*Y)/(HL[0] - HL[HL.length - 1]), stroke: (Open[1] > SPOT[1])? `red`: `lime`, [`stroke-width`]: .95}]]]);
 
 				Kline.style.transform = `translateX(-${Open[2]}px)`;
+
+				document.querySelector(`#time`).style.transform = `translateX(-${Open[2]}px)`;
 			}
 
             document.querySelector(`#spotline`).setAttribute(`stroke`, (Open[1] > SPOT[1])? `red`: `lime`);
@@ -671,11 +691,15 @@ class Events {
 
 		this.listen([document.querySelector(`#kline`), `mousemove`, S => {
 
-			document.querySelector(`#bullseye`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${4000} ${S.layerY + .5} M${(S.layerX + Open[2]) + .5} ${0} ${(S.layerX + Open[2]) + .5} ${1000}`)
+			let Pan = [(CX > 540)? 20: 670]; Pan[0] -= 24
+
+			let Delta = [(HL[0] + (.15*Y*(HL[0] - HL[HL.length - 1]))/(.35*Y)) - S.layerY*(HL[0] - HL[HL.length - 1])/(.35*Y)];
+
+			document.querySelector(`#bullseye`).setAttribute(`d`, `M${0} ${S.layerY + .5} ${4000} ${S.layerY + .5} M${S.layerX + Pan[0] + .5} ${0} ${S.layerX + Pan[0] + .5} ${1000}`)
 		
 			document.querySelector(`#floatY text`).setAttribute(`y`, S.layerY + 4);
 
-			document.querySelector(`#floatY text`).innerHTML =  (HL[0] - ((S.layerY/(.575*Y))*(HL[0] - HL[HL.length - 1]))).toFixed(floatFix);
+			document.querySelector(`#floatY text`).innerHTML = Delta[0].toFixed(floatFix);
 
             document.querySelector(`#floatY #a`).setAttribute(`y`, S.layerY - 10);
 
