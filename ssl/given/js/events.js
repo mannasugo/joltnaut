@@ -635,6 +635,22 @@ class Events {
 
 	plot (Arg) {
 
+		this.listen([document.querySelector(`#chart`), `click`, S => {
+
+			document.querySelectorAll(`#collapsible`).forEach(DIV => {
+
+				DIV.style.display = `flex`;
+			});
+		}]);
+
+		this.listen([document.querySelector(`#form`), `click`, S => {
+
+			document.querySelectorAll(`#collapsible`).forEach(DIV => {
+
+				DIV.style.display = `none`;
+			});
+		}]);
+
 		this.listen([document.querySelector(`#liquid`), `click`, S => {
 
 			Clients.incoming = this.getSource(S).getAttribute(`for`);

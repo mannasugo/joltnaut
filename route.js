@@ -1607,7 +1607,7 @@ class Route {
 
 									let Kline = [];
 
-									for (let M = 0; M < 560; M++) { //140
+									for (let M = 0; M < 140; M++) { //140
 
 										let Secs = [];
 										
