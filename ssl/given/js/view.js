@@ -1478,6 +1478,58 @@ let Models = {
 					B4[0]]]]
 	},
 
+	incomingAZ: function () {
+
+		let Slot = {
+
+			KES: [[`div`, {class: `_geQ _gxM`}, 
+				[
+					[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${12}px ${0} ${0}`, }}, `Deposit With`],
+					[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 300, margin: `${12}px ${0} ${0} ${16}px`, [`text-decoration`]: `underline`}}, `M-PESA SAFARICOM`]]],
+				[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+					[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+						[
+							[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`}}],
+							[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+								[[`span`, {style: {color: `#515151`, [`font-family`]: `geometria`, [`font-weight`]: 300, [`font-size`]: `${13}px`}}, `+254`]]], 
+														[`div`, {class: `_gZz`}, 
+															[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
+																[ 
+																	[`div`, {class: `_gxM _gZz _geQ`}, 
+																		[[`input`, {id: `callSlot`, placeholder: `712345678`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+									[`span`, {style: {color: `#000`, [`font-size`]: `${12}px`, [`font-weight`]: 600, margin: `${24}px ${0} ${0}`, }}, `Amount to Spend`],
+									[`div`, {style: {[`margin-top`]: `${18}px`}}, 
+										[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+											[
+												[`div`, {style: {[`line-height`]: `${32}px`, width: `${75}%`}}, 
+													[ 
+														[`div`, {class: `_gxM _gZz _geQ`}, 
+															[[`input`, {id: `floatSlot`, placeholder: `0.00`, style: {background: `transparent`, [`border-style`]: `none`, color: `#000`, [`font-family`]: `geometria`, [`font-size`]: `${13}px`, [`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, width: `${100}%`}}]]]]], 
+														[`div`, {class: `_gZz`}, 
+															[
+												[`img`, {src: `/ssl/given/svg/flags/ke.svg`, style: {[`max-width`]: `${18}px`,}}],
+												[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
+													[[`span`, {style: {color: `#000`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, `KES`]]]]]]]]],
+									[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${24}px`}}, 
+										[ 
+											[`div`, {}, 
+												[
+													[`span`, {style: {color: `#515151`, [`font-weight`]: 600, [`font-size`]: `${10}px`}}, `APPROX. AMOUNT`],
+													[`span`, {id: `swap`, style: {color: `#000`, [`font-family`]: `geometria`, [`font-weight`]: 600, [`font-size`]: `${12}px`}}, ``]]],
+											[`div`, {class: `_eYG`}, []],
+												[`div`, {class: `_gZz`, style: {flex: 0}}, 
+													[[`a`, {class: `_gxM _geQ`, href: `javascript:;`, id: `fiatSlot`, style: {background: `blue`, color: `#fff`, display: `flex`, [`font-size`]: `${12}px`, [`font-weight`]: 600, padding: `${4}px ${12}px`, [`white-space`]: `nowrap`}}, 
+														[[`span`, {}, `Deposit ${Clients.incoming}`]]]]]]]]
+		};
+
+		return [
+			`main`, {id: ``, class: `_tY0`, style: {[`font-family`]: `litera`}}, 
+				[[`div`, {style: {[`max-width`]: `${480}px`, width: `${100}%`, margin: `${36}px auto ${0}`, [`justify-content`]: `center`}}, 
+						[
+							[`div`, {style: {padding: `${48}px ${24}px ${12}px`}}, 
+								[[`div`, {}, Slot[Clients.incoming]]]]]]]];
+	},
+
 	inlet: function () {
 
 		return [
@@ -3006,7 +3058,7 @@ let Models = {
 									[`section`, {style: {[`margin-top`]: `${12}px`}}, Allows[0]]]]]]]]]];
 	},
 
-	plot: (Arg) => {
+	plot: function (Arg) {
 
 		let HL = [];
 
@@ -3049,7 +3101,7 @@ let Models = {
 
 			Plot[3].push([`text`, {x: 7.12*(Place[0] - i*15) - 14, y: 17, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, `${new Date((Day[0] + 15*4*60000) - i*15*60000).toTimeString().substr(0, 5)}`])
 					
-			Plot[0].push([`line`, {x1: 7.12*(Place[0] - i*15) + 0.4, y1: 0, x2: 7.12*(Place[0] - i*15) + 0.4, y2: 1000, stroke: `#353535`, [`stroke-width`]: 1}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
+			Plot[0].push([`line`, {x1: 7.12*(Place[0] - i*15) + 0.4, y1: 0, x2: 7.12*(Place[0] - i*15) + 0.4, y2: 1000, stroke: `#1e1e1e`, [`stroke-dasharray`]: 0, [`stroke-width`]: 1}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
 		}
 
 		Plot[2] = [`text`, {id: `last`, x: 20, y: 0, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
@@ -3065,12 +3117,12 @@ let Models = {
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, ``]]], 
 								[`div`, {class: `_gZz`, style: {[`font-size`]: `${12}px`, [`font-weight`]: 600}}, 
 									[[`a`, {class: `v202204261406`, href: (!Clients.mug)? `/signin`: `javascript:;`, style: {height: `${16}px`, width: `${16}px`}}]]]]]]],
-					[`div`, {style: {[`border-bottom`]: `${1}px solid #353535`, padding: `${0}px ${12}px`, width: `${100}%`}}, 
+					[`div`, {style: {display: `none`, [`border-bottom`]: `${1}px solid #353535`, padding: `${0}px ${12}px`, width: `${100}%`}}, 
 						[[`div`, {class: `_gxM _geQ`, style: {[`font-size`]: `${11}px`}}, 
 							[
 								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, padding: `${6}px ${12}px ${6}px 0`}}, `SPOT ${Arg.pair}`],
 								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-size`]: `${10}px`, [`letter-spacing`]: 0, padding: `${6}px ${12}px`}}, `${1}M`]]]]],
-					[`section`, {class: `_gxM`, style: {width: `${100}%`}}, 
+					[`section`, {class: `_gxM`, style: {display: `none`, width: `${100}%`}}, 
 						[
 							[`div`, {style: {width: `${80}%`}}, 
 								[[`svg`, {id: `kline`, height: `${1000}px`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
@@ -3086,7 +3138,7 @@ let Models = {
 									[
 										[`g`, {id: `spotY`}, 
 											[
-												[`rect`, {id: `a`, x: 0, height: 20, width: 80}],
+												[`rect`, {id: `a`, x: 0, height: 20, width: 80}], 
 												[`path`, {id: `c`, stroke: `#fff`, d: ``}],
 												Plot[2]]], 
 										[`g`, {id: `floatY`, style: {display: `none`}}, 
@@ -3094,13 +3146,104 @@ let Models = {
 												[`rect`, {id: `a`, x: 0, height: 20, width: 80, fill: `#ffffff3b`}],
 												[`path`, {id: `c`, stroke: `#fff`, d: ``}],
 												[`text`, {fill: `#fff`, x: 20, y: ``, [`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}, ``]]]]]]]]], 
-					[`div`, {style: {background: `#000000c9`, top: `${77}px`, height: `${30}px`, padding: `${6}px ${12}px`, position: `absolute`, width: `${80}%`, [`z-index`]: 11}}, 
+					this.plotform([Arg.pair.split(`-`)]),
+					[`div`, {style: {display: `none`, background: `#000000c9`, top: `${77}px`, height: `${30}px`, padding: `${6}px ${12}px`, position: `absolute`, width: `${80}%`, [`z-index`]: 11}}, 
 						[[`span`, {id: `ohlc`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, ``]]], 
-					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: `${30}px`, height: `${27}px`, overflow: `hidden`, position: `absolute`, width: `${80}%`}}, 
+					[`div`, {style: {display: `none`, background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: `${30}px`, height: `${27}px`, overflow: `hidden`, position: `absolute`, width: `${80}%`}}, 
 						[[`svg`, {id: `time`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
 								[[`g`, {}, Plot[3]]]]]], 
-					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${6}px ${24}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
-						[]]]];	
+					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${0}px ${12}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
+						[[`div`, {class: `_gxM _geQ`}, 
+							[
+								[`a`, {class: `v202312231716`, href: `javascript:;`, style: {height: `${15}px`, width: `${15}px`}}], 
+								[`div`, {style: {[`margin-left`]: `${8}px`}}, 
+									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, `order form`]]],
+								[`a`, {class: `v202312231641`, href: `javascript:;`, style: {height: `${15}px`, [`margin-left`]: `${24}px`, width: `${15}px`}}], 
+								[`div`, {style: {[`margin-left`]: `${8}px`}}, 
+									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, `charts`]]]]]]]]];	
+	},
+
+	plotform: function (Arg) {
+
+		return [`section`, {style: {height: `${100}%`}}, 
+			[
+				[`div`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-size`]: `${12}px`, height: `inherit`, wdth: `${30}%`}}, 
+					[
+						[`div`, {style: {[`border-bottom`]: `${1}px solid #353535`, padding: `${0}px ${12}px`, width: `${100}%`}}, 
+							[[`div`, {class: `_gxM _geQ`, style: {[`font-size`]: `${12}px`}}, 
+								[[`span`, {style: {padding: `${6}px ${12}px ${6}px 0`}}, `Trading`]]]]], 
+						[`div`, {style: {padding: `${24}px ${12}px`}}, 
+							[
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
+									[
+										[`span`, {style: {width: `${30}%`}}, `Action`],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[
+													[`a`, {href: `javascript:;`, style: {background: `#242471`, color: `#fff`, [`margin-right`]: `${1.5}px`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, width: `${50}%`}}, `Buy`],
+													[`a`, {href: `javascript:;`, style: {background: `#0b0b48`, color: `#fff`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, [`margin-left`]: `${1.5}px`, width: `${50}%`}}, `Sell`]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
+									[
+										[`span`, {style: {width: `${30}%`}}, `Type`],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[[`a`, {href: `javascript:;`, style: {background: `#242471`, color: `#fff`, [`padding`]: `${2}px ${12}px`, width: `${100}%`}}, `Market`]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${22}px`}}, 
+									[
+										[`span`, {style: {width: `${30}%`}}, `Funds`],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[[`div`, {class: `_gxM _geQ`, style: {background: `#ffffff1f`, [`padding`]: `${2}px ${12}px`, width: `${100}%`}}, 
+													[
+														[`div`, {class: `_eYG`}],
+														[`div`, {class: `_gZz`, style: {[`font-family`]: `din`}}, 
+															[
+																[`span`, {style: {[`font-size`]: `${13}px`, [`letter-spacing`]: 0,[`padding-right`]: `${12}px`}}, `0.00`],
+																[`span`, {style: {[`border-left`]: `${1}px solid #353535`, [`padding-left`]: `${12}px`}}, Arg[0][1]]]]]]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
+									[
+										[`span`, {style: {width: `${30}%`}}, `Quantity`],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[[`div`, {class: `_gxM _geQ`, style: {background: `#0b0b48a3`, [`padding`]: `${2}px ${12}px`, width: `${100}%`}}, 
+													[
+														[`div`, {class: `_eYG`}],
+														[`div`, {class: `_gZz`, style: {[`font-family`]: `din`}}, 
+															[
+																[`input`, {id: `quantity`, style: {background: `transparent`, border: `none`, color: `#fff`, [`font-family`]: `din`, [`font-size`]: `${13}px`, [`letter-spacing`]: 0, outline: `none`, [`padding-right`]: `${12}px`, [`text-align`]: `right`}}],
+																[`span`, {style: {[`border-left`]: `${1}px solid #353535`, [`padding-left`]: `${12}px`}}, Arg[0][0]]]]]]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
+									[
+										[`span`, {style: {width: `${30}%`}}, `Price`],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[[`div`, {class: `_gxM _geQ`, style: {background: `#ffffff1f`, [`padding`]: `${2}px ${12}px`, width: `${100}%`}}, 
+													[
+														[`div`, {class: `_eYG`}],
+														[`div`, {class: `_gZz`, style: {[`font-family`]: `din`}}, 
+															[
+																[`span`, {id: `marketCost`, style: {[`font-size`]: `${13}px`, [`letter-spacing`]: 0, [`padding-right`]: `${12}px`}}, ``],
+																[`span`, {style: {[`border-left`]: `${1}px solid #353535`, [`padding-left`]: `${12}px`}}, Arg[0][1]]]]]]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${22}px`}}, 
+									[
+										[`span`, {style: {width: `${30}%`}}, `Total`],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[[`div`, {class: `_gxM _geQ`, style: {background: `#0b0b48a3`, [`padding`]: `${2}px ${12}px`, width: `${100}%`}}, 
+													[
+														[`div`, {class: `_eYG`}],
+														[`div`, {class: `_gZz`, style: {[`font-family`]: `din`}}, 
+															[
+																[`input`, {id: `total`, style: {background: `transparent`, border: `none`, color: `#fff`, [`font-family`]: `din`, [`font-size`]: `${13}px`, [`letter-spacing`]: 0, outline: `none`, [`padding-right`]: `${12}px`, [`text-align`]: `right`}}],
+																[`span`, {style: {[`border-left`]: `${1}px solid #353535`, [`padding-left`]: `${12}px`}}, Arg[0][1]]]]]]]]]]]],
+								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
+									[
+										[`div`, {style: {width: `${30}%`}}, 
+											[[`a`, {id: `liquid`, for: Arg[0][1], href: `javascript:;`, style: {background: `#00ff001a`, border: `1px solid lime`, color: `#fff`, overflow: `hidden`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`, width: `${75}%`}}, `Deposit ${Arg[0][1]}`]]],
+										[`div`, {style: {width: `${70}%`}}, 
+											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
+												[[`a`, {id: `buy`, for: Arg[0][1], href: `javascript:;`, style: {background: `#00ff001a`, border: `1px solid lime`, color: `#fff`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, width: `${100}%`}}, `Review & Buy`]]]]]]]]]]]]]
+														
 	},
 
 	pnl: function (Arg) {

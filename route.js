@@ -923,6 +923,60 @@ class Route {
 								}
 							}
 
+          					if (Pulls.pull === `buy`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Constants.plot.indexOf(Pulls.pair) > -1) {
+
+									let S = (Pulls.pair).split(`-`);
+
+									let TS = Tools.typen(readFileSync(`json/ts/${S[0]}${S[1]}_${DAY}.json`, {encoding: `utf8`}));
+
+									if (Pulls.float > 0 && TS.length > 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										TS.sort((A, B) => {return B.ts_z - A.ts_z})
+
+										let Row = [{
+											md: md, 
+											symbol: S[0].toLowerCase(),
+											till: {
+												[hold]: 0,
+												[Pulls.mug]: [0, (Pulls.float/TS[0].pair[1][1])]},
+											ts: ts,
+											tx: false,
+											type: `trade`}, {
+											md: md, 
+											symbol: S[1].toLowerCase(),
+											till: {
+												[hold]: 0,
+												[Pulls.mug]: [0, -(Pulls.float)]},
+											ts: ts,
+											tx: false,
+											type: `trade`}];
+
+										let Holding = Tools.holding([Raw, Pulls.mug]);
+
+										if (Holding[Row[1].symbol] > Pulls.float) {
+
+											Sql.putlist([`spot`, Row, (Q) => {
+
+          										Sql.puts([`book`, {
+          											ilk: `market`,
+          											md: md,
+          											mug: Pulls.mug,
+          											pair: [[Row[0].symbol, Row[1].symbol], [(Pulls.float/TS[0].pair[1][1]), TS[0].pair[1][1]]], 
+          											side: `buy`,
+          											ts: ts,
+          											ts_z: ts}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
+											}]);
+										}
+									}
+								}
+							}
+
 							if (Pulls.pull === `c2s`) {
 
 								let Vaults = [];
@@ -1152,6 +1206,69 @@ class Route {
           														mug: Pulls.mug,
           														ts: ts,
           														type: `fiatSpot`, pair: [Slot.coin, `usd`]}, (Bill) => {
+
+																Arg[1].end(Tools.coats({mug: Pulls.mug}));
+															}]);
+														}
+          											}
+        										});
+										});
+
+										Get.write(Tools.coats({
+											amount: parseFloat(Slot.float),
+											api_ref: md,
+											email: Raw.mugs[1][Pulls.mug].mail,
+											phone_number: `254` + Slot.call}));
+
+										Get.end();
+									}
+								}
+							}
+
+							if (Pulls.pull === `incoming`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									let Slot = Pulls.slot;
+
+									if (Slot.float > 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										let Get = HTTPS.request({
+        									hostname: `payment.intasend.com`,
+        									port: 443,
+        									path: `/api/v1/payment/mpesa-stk-push/`,
+        									method: `POST`,
+       										headers: {
+       											Authorization: `Bearer ISSecretKey_live_c3481e0a-b1c5-4529-b761-bcee74225b6c`,
+       											[`Content-Type`]: `application/json`,
+       											INTASEND_PUBLIC_API_KEY: `ISPubKey_live_be13c375-b61d-4995-8c50-4268c604c335`}}, Got => {
+
+												let got = ``;
+
+												Got.on(`data`, (buffer) => {got += buffer;});
+        										
+        										Got.on('end', () => {
+
+          											if (got) {
+
+          												let TX = Tools.typen(got);
+
+          												if (TX.id) {
+
+          													Sql.puts([`invoice`, {
+          														complete: false,
+          														float: null,
+          														id: `254` + Slot.call, 
+          														invoice: TX.invoice.invoice_id, 
+          														local: Slot.float,
+          														md: md,
+          														mug: Pulls.mug,
+          														ts: ts,
+          														type: `spot`}, (Bill) => {
 
 																Arg[1].end(Tools.coats({mug: Pulls.mug}));
 															}]);
@@ -1490,7 +1607,7 @@ class Route {
 
 									let Kline = [];
 
-									for (let M = 0; M < 140; M++) {
+									for (let M = 0; M < 560; M++) { //140
 
 										let Secs = [];
 										
@@ -2086,7 +2203,8 @@ class Route {
 									[[`eth`, `usd`], 2], 
 									[[`usdc`, `usd`], 5],  
 									[[`eur`, `usd`], 5],  
-									[[`sol`, `usd`], 2],
+									[[`sol`, `usd`], 2], 
+									[[`bnb`, `usd`], 3],
 									[[`usd`, `chf`], 5], 
 									[[`doge`, `usd`], 5], 
 									[[`xrp`, `usd`], 5],
@@ -2681,6 +2799,26 @@ class Route {
 									}
 
 									**/
+
+          							if (Bill.type === `spot` && TX.invoice.state === `COMPLETE` && !Raw.spot[1][Bill.md]) {
+
+										Sql.puts([`spot`, {
+											md: Bill.md, 
+											symbol: `kes`,
+											till: {
+												[hold]: 0,
+												[Bill.mug]: [0, Bill.local]},
+											ts: Bill.ts,
+											tx: false,
+											type: `deposit`}, (Q) => {
+
+                							let Old = Tools.typen(Tools.coats(Bill));
+
+                							Bill.complete = true;
+
+											Sql.places([`invoice`, Bill, Old, (Q) => {}]);
+										}]);
+									}
 
           							if (TX.invoice.state === `FAILED`) {
 

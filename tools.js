@@ -674,7 +674,8 @@ class Tools {
 			[[`eth`, `usd`], 2], 
 			[[`usdc`, `usd`], 5],  
 			[[`eur`, `usd`], 5],  
-			[[`sol`, `usd`], 2],
+			[[`sol`, `usd`], 2], 
+			[[`bnb`, `usd`], 3],
 			[[`usd`, `chf`], 5], 
 			[[`doge`, `usd`], 5], 
 			[[`xrp`, `usd`], 5],
@@ -840,7 +841,7 @@ module.exports = {
 	Constants : {
 
 		plot: [
-		`AUD-USD`, `BTC-USD`, `DOGE-USD`, `ETH-USD`, `EUR-USD`, `GBP-USD`, `SOL-USD`, `USD-CAD`, `USD-CHF`, `USD-JPY`, `USD-KES`, `USD-ZAR`, `USDC-USD`, 
+		`AUD-USD`, `BNB-USD`, `BTC-USD`, `DOGE-USD`, `ETH-USD`, `EUR-USD`, `GBP-USD`, `SOL-USD`, `USD-CAD`, `USD-CHF`, `USD-JPY`, `USD-KES`, `USD-ZAR`, `USDC-USD`, 
 		`USDT-USD`, `XRP-USD`]
 	},
 	

@@ -244,6 +244,65 @@ class Events {
 		}]);
 	}
 
+	incomingAZ (Web) {
+
+		if (!Clients.incoming || Clients.incomingAZ !== `KES`) window.location = `/`
+
+		this.listen([document.querySelector(`#callSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			if (!parseInt(Slot.value)) Slot.value = 0;
+
+			if (Slot.value.length > 9) Slot.value = Slot.value.substr(0, 8);
+
+			Slot.value = parseInt(Slot.value);
+		}]);
+
+		this.listen([document.querySelector(`#floatSlot`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			//document.querySelector(`#swap`).innerHTML = (parseFloat(Slot.value)*Web.USD[`kes`]).toFixed(2) + ` USD`
+		}]);
+
+		this.listen([document.querySelector(`#walletSlot`), `click`, S => {
+
+			let Values = 
+				[(!Tools.slim(document.querySelector(`#callSlot`).value))? false: Tools.slim(document.querySelector(`#callSlot`).value),
+				(!Tools.slim(document.querySelector(`#floatSlot`).value))? false: Tools.slim(document.querySelector(`#floatSlot`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number` || Values[1] === false || typeof parseFloat(Values[1]) !== `number`) return;
+
+			if (parseFloat(Values[1]) <= 0 || Values[0].toString().length !== 9) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					slot : {float: parseFloat(Values[1]), call: parseFloat(Values[0])}, 
+					pull: `incoming`}]);
+
+			Values = [];
+
+			View.pop();
+
+			View.DOM([`div`, [Models.splash]]);
+
+			Puts.onload = () => {
+
+				let Web = JSON.parse(Puts.response);
+
+				if (Web) window.location = `/`;
+			}
+		}]);
+	}
+
 	initWallet () {
 
 		this.listen([document.querySelector(`#initWallet`), `click`, S => {
@@ -576,6 +635,13 @@ class Events {
 
 	plot (Arg) {
 
+		this.listen([document.querySelector(`#liquid`), `click`, S => {
+
+			Clients.incoming = this.getSource(S).getAttribute(`for`);
+
+			window.location = `/vault/incoming`;
+		}]);
+
 		let Viable = []; 
 
 		let HL = [];
@@ -609,6 +675,50 @@ class Events {
   		let Y = parseFloat(document.querySelector(`body`).clientHeight - 70);
 
   		let floatFix = 0;
+
+		this.listen([document.querySelector(`#quantity`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			if (parseFloat(document.querySelector(`#marketCost`).innerHTML) > 0) document.querySelector(`#total`).value = (Slot.value*parseFloat(document.querySelector(`#marketCost`).innerHTML))
+		}]);
+
+		this.listen([document.querySelector(`#total`), `keyup`, S => {
+
+			let Slot = this.getSource(S);
+
+			let a = Slot.value[Slot.value.length - 1];
+
+			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
+
+			if (parseFloat(document.querySelector(`#marketCost`).innerHTML) > 0) document.querySelector(`#quantity`).value = (Slot.value/parseFloat(document.querySelector(`#marketCost`).innerHTML))
+		}]);
+
+		this.listen([document.querySelector(`#buy`), `click`, S => {
+
+			if (!Clients.mug) window.location = `/signin`
+
+			let Values = [(!Tools.slim(document.querySelector(`#total`).value))? false: Tools.slim(document.querySelector(`#total`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					float: parseFloat(Values[0]), 
+					pair: Arg[0].pair, 
+					pull: `buy`}]);
+
+			Values = [];
+		}]);
 
 		io().on(`spot`, Spot => {
 
@@ -649,6 +759,8 @@ class Events {
             document.querySelector(`line#g${Open[0]}`).setAttribute(`y1`, .15*Y + ((HL[0] - AZ[0])*.35*Y)/(HL[0] - HL[HL.length - 1]));
 
             document.querySelector(`line#g${Open[0]}`).setAttribute(`y2`, .15*Y + ((HL[0] - AZ[AZ.length - 1])*.35*Y)/(HL[0] - HL[HL.length - 1]));
+
+			document.querySelector(`#marketCost`).innerHTML = SPOT[1].toFixed(SPOT[2]);
 
 			if (SPOT[4] > Open[0] + 60000) {
 

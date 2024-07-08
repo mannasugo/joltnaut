@@ -162,6 +162,7 @@ let Clients = sessionStorage;
 const Constants = {
 
 	coins: [
+		[`bnb`, `BNB`, `binance coin`],
 		[`btc`, `BTC`, `bitcoin`],
 		[`eth`, `ETH`, `ethereum`],
 		[`ltc`, `LTC`, `litecoin`],
@@ -208,6 +209,7 @@ const Constants = {
 		cad: `flags/ca`,
 		chf: `flags/ch`,
 		btc: `tokens/btc`,
+		bnb: `tokens/bnb`,
 		doge: `tokens/doge`,
 		eth: `tokens/eth`,
 		eur: `flags/eu`,

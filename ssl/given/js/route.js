@@ -1259,6 +1259,23 @@ class Route {
 				Events.mugin();
 			}
     	}
+
+    	else if (this.State[3] === `vault`) {
+
+    		if (!Clients.mug) window.location = `/signin`;
+
+    		if (Clients.mug) {
+
+    			if (State[4] && State[4] === `incoming` && !State[5] && !Tools.slim[State[5]]) {
+
+					document.title = `Deposit ${Clients.incoming} | Spot Funding`;
+					
+					View.DOM([`div`, [Models.incomingAZ()]]);
+
+					Events.incomingAZ();
+				}
+			}
+    	}
   	}
 }
 
