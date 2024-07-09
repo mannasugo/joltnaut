@@ -272,7 +272,7 @@ class Events {
 			//document.querySelector(`#swap`).innerHTML = (parseFloat(Slot.value)*Web.USD[`kes`]).toFixed(2) + ` USD`
 		}]);
 
-		this.listen([document.querySelector(`#walletSlot`), `click`, S => {
+		this.listen([document.querySelector(`#fiatSlot`), `click`, S => {
 
 			let Values = 
 				[(!Tools.slim(document.querySelector(`#callSlot`).value))? false: Tools.slim(document.querySelector(`#callSlot`).value),
