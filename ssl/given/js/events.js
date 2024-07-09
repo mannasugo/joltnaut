@@ -246,7 +246,7 @@ class Events {
 
 	incomingAZ (Web) {
 
-		if (!Clients.incoming || Clients.incomingAZ !== `KES`) window.location = `/`
+		if (!Clients.incoming || Clients.incoming !== `KES`) window.location = `/`
 
 		this.listen([document.querySelector(`#callSlot`), `keyup`, S => {
 
