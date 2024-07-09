@@ -782,23 +782,26 @@ class Events {
 			Values = [];
 		}]);
 
-		this.listen([document.querySelector(`#sell`), `click`, S => {
+		if (document.querySelector(`#sell`)) {
 
-			if (!Clients.mug) window.location = `/signin`
+			this.listen([document.querySelector(`#sell`), `click`, S => {
 
-			let Values = [(!Tools.slim(document.querySelector(`#quantity`).value))? false: Tools.slim(document.querySelector(`#quantity`).value)];
+				if (!Clients.mug) window.location = `/signin`
 
-			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+				let Values = [(!Tools.slim(document.querySelector(`#quantity`).value))? false: Tools.slim(document.querySelector(`#quantity`).value)];
 
-			let Puts = Tools.pull([
-				`/json/web/`, { 
-					mug: Clients.mug, 
-					float: parseFloat(Values[0]), 
-					pair: Arg[0].pair, 
-					pull: `sell`}]);
+				if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
 
-			Values = [];
-		}]);
+				let Puts = Tools.pull([
+					`/json/web/`, { 
+						mug: Clients.mug, 
+						float: parseFloat(Values[0]), 
+						pair: Arg[0].pair, 
+						pull: `sell`}]);
+
+				Values = [];
+			}]);
+		}
 
 		io().on(`spot`, Spot => {
 
