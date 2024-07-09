@@ -78,7 +78,7 @@ App.on(`error`, (err) => console.error(err));
 
 App.listen(8124);
 
-//pollPay();
+pollPay();
 
 Tools.spot([(Spot) => {/*Sql.putlist([`book`, Spot[0], (SQ) => {}]);*/}]);
 
