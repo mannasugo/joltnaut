@@ -268,8 +268,6 @@ class Events {
 			if (a === `.` && Slot.value.indexOf(`.`) !== Slot.value.length - 1) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
 
 			else if (!parseInt(a) && parseInt(a) !== 0 && a !== `.`) Slot.value = Slot.value.substr(0, Slot.value.length - 1);
-
-			//document.querySelector(`#swap`).innerHTML = (parseFloat(Slot.value)*Web.USD[`kes`]).toFixed(2) + ` USD`
 		}]);
 
 		this.listen([document.querySelector(`#fiatSlot`), `click`, S => {
@@ -635,6 +633,54 @@ class Events {
 
 	plot (Arg) {
 
+		document.querySelectorAll(`#action`).forEach(SPAN => {
+
+			this.listen([SPAN, `click`, S => {
+
+				let idSlot = this.getSource(S).getAttribute(`for`);
+
+				if (idSlot === `buy`) {
+
+					this.getSource(S).style.background = `#242471`;
+
+					document.querySelectorAll(`#action`)[1].style.background = `#0b0b48`;
+
+					document.querySelector(`#balance`).innerHTML = Arg[1].split(`-`)[1];
+
+					if (document.querySelector(`#sell`)) {
+
+						document.querySelector(`#sell`).style.border = `${1}px solid lime`;
+
+						document.querySelector(`#sell`).style.background = `#00ff001a`;
+
+						document.querySelector(`#sell`).innerHTML = `Review & Buy`;
+
+						document.querySelector(`#sell`).setAttribute(`id`, `buy`);
+					}
+				}
+
+				if (idSlot === `sell`) {
+
+					this.getSource(S).style.background = `#242471`;
+
+					document.querySelectorAll(`#action`)[0].style.background = `#0b0b48`;
+
+					document.querySelector(`#balance`).innerHTML = Arg[1].split(`-`)[0];
+
+					if (document.querySelector(`#buy`)) {
+
+						document.querySelector(`#buy`).style.border = `${1}px solid red`;
+
+						document.querySelector(`#buy`).style.background = `#ff00001a`;
+
+						document.querySelector(`#buy`).innerHTML = `Review & Sell`;
+
+						document.querySelector(`#buy`).setAttribute(`id`, `sell`);
+					}
+				}
+			}]);
+		});
+
 		this.listen([document.querySelector(`#chart`), `click`, S => {
 
 			document.querySelectorAll(`#collapsible`).forEach(DIV => {
@@ -732,6 +778,24 @@ class Events {
 					float: parseFloat(Values[0]), 
 					pair: Arg[0].pair, 
 					pull: `buy`}]);
+
+			Values = [];
+		}]);
+
+		this.listen([document.querySelector(`#sell`), `click`, S => {
+
+			if (!Clients.mug) window.location = `/signin`
+
+			let Values = [(!Tools.slim(document.querySelector(`#quantity`).value))? false: Tools.slim(document.querySelector(`#quantity`).value)];
+
+			if (Values[0] === false || typeof parseFloat(Values[0]) !== `number`) return;
+
+			let Puts = Tools.pull([
+				`/json/web/`, { 
+					mug: Clients.mug, 
+					float: parseFloat(Values[0]), 
+					pair: Arg[0].pair, 
+					pull: `sell`}]);
 
 			Values = [];
 		}]);

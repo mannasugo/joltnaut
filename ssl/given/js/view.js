@@ -3155,10 +3155,10 @@ let Models = {
 					[`div`, {style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: 0, height: `${30}px`, padding: `${0}px ${12}px`, position: `absolute`, width: `${100}%`, [`z-index`]: 11}}, 
 						[[`div`, {class: `_gxM _geQ`}, 
 							[
-								[`a`, {id: `form`, class: `v202312231716`, href: `javascript:;`, style: {height: `${15}px`, width: `${15}px`}}], 
+								[`a`, {id: `form`, class: `v202312231716`, href: `javascript:;`, style: {height: `${18}px`, width: `${18}px`}}], 
 								[`div`, {style: {[`margin-left`]: `${8}px`}}, 
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, `order form`]]],
-								[`a`, {id: `chart`, class: `v202312231641`, href: `javascript:;`, style: {height: `${15}px`, [`margin-left`]: `${24}px`, width: `${15}px`}}], 
+								[`a`, {id: `chart`, class: `v202312231641`, href: `javascript:;`, style: {height: `${18}px`, [`margin-left`]: `${24}px`, width: `${18}px`}}], 
 								[`div`, {style: {[`margin-left`]: `${8}px`}}, 
 									[[`span`, {style: {[`font-family`]: ``, [`font-size`]: `${12}px`, [`font-weight`]: 300}}, `charts`]]]]]]]]];	
 	},
@@ -3180,8 +3180,8 @@ let Models = {
 										[`div`, {style: {width: `${70}%`}}, 
 											[[`div`, {class: `_gxM _geQ`, style: {width: `${100}%`}}, 
 												[
-													[`a`, {href: `javascript:;`, style: {background: `#242471`, color: `#fff`, [`margin-right`]: `${1.5}px`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, width: `${50}%`}}, `Buy`],
-													[`a`, {href: `javascript:;`, style: {background: `#0b0b48`, color: `#fff`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, [`margin-left`]: `${1.5}px`, width: `${50}%`}}, `Sell`]]]]]]],
+													[`a`, {id: `action`, for: `buy`, href: `javascript:;`, style: {background: `#242471`, color: `#fff`, [`margin-right`]: `${1.5}px`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, width: `${50}%`}}, `Buy`],
+													[`a`, {id: `action`, for: `sell`, href: `javascript:;`, style: {background: `#0b0b48`, color: `#fff`, [`padding`]: `${2}px ${12}px`, [`text-align`]: `center`, [`margin-left`]: `${1.5}px`, width: `${50}%`}}, `Sell`]]]]]]],
 								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
 									[
 										[`span`, {style: {width: `${30}%`}}, `Type`],
@@ -3199,7 +3199,7 @@ let Models = {
 														[`div`, {class: `_gZz`, style: {[`font-family`]: `din`}}, 
 															[
 																[`span`, {style: {[`font-size`]: `${13}px`, [`letter-spacing`]: 0,[`padding-right`]: `${12}px`}}, `0.00`],
-																[`span`, {style: {[`border-left`]: `${1}px solid #353535`, [`padding-left`]: `${12}px`}}, Arg[0][1]]]]]]]]]]]],
+																[`span`, {id: `balance`, style: {[`border-left`]: `${1}px solid #353535`, [`padding-left`]: `${12}px`}}, Arg[0][1]]]]]]]]]]]],
 								[`div`, {class: `_gxM _geQ`, style: {[`margin-bottom`]: `${8}px`}}, 
 									[
 										[`span`, {style: {width: `${30}%`}}, `Quantity`],

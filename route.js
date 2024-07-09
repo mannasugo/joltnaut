@@ -2193,6 +2193,60 @@ class Route {
 								}			
 							}
 
+          					if (Pulls.pull === `sell`) {
+
+								if (Raw.mugs[1][Pulls.mug] && Constants.plot.indexOf(Pulls.pair) > -1) {
+
+									let S = (Pulls.pair).split(`-`);
+
+									let TS = Tools.typen(readFileSync(`json/ts/${S[0]}${S[1]}_${DAY}.json`, {encoding: `utf8`}));
+
+									if (Pulls.float > 0 && TS.length > 0) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										TS.sort((A, B) => {return B.ts_z - A.ts_z})
+
+										let Row = [{
+											md: md, 
+											symbol: S[1].toLowerCase(),
+											till: {
+												[hold]: 0,
+												[Pulls.mug]: [0, (Pulls.float*TS[0].pair[1][1])]},
+											ts: ts,
+											tx: false,
+											type: `trade`}, {
+											md: md, 
+											symbol: S[0].toLowerCase(),
+											till: {
+												[hold]: 0,
+												[Pulls.mug]: [0, -(Pulls.float)]},
+											ts: ts,
+											tx: false,
+											type: `trade`}];
+
+										let Holding = Tools.holding([Raw, Pulls.mug]);
+
+										if (Holding[Row[0].symbol] > Pulls.float) {
+
+											Sql.putlist([`spot`, Row, (Q) => {
+
+          										Sql.puts([`book`, {
+          											ilk: `market`,
+          											md: md,
+          											mug: Pulls.mug,
+          											pair: [[Row[0].symbol, Row[1].symbol], [(Pulls.float), TS[0].pair[1][1]]], 
+          											side: `sell`,
+          											ts: ts,
+          											ts_z: ts}, (Raw) => {Arg[1].end(Tools.coats({mug: Pulls.mug}));}]);
+											}]);
+										}
+									}
+								}
+							}
+
 							if (Pulls.pull === `spot`) {
 
 								let a = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate() - 1}`).valueOf();
