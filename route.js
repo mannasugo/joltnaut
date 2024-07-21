@@ -2253,9 +2253,8 @@ class Route {
 
 								let Spot = [[
 									[[`usdt`, `usd`], 5],
-									[[`btc`, `usd`], 1], 
-									[[`eth`, `usd`], 2], 
-									[[`usdc`, `usd`], 5],  
+									[[`btc`, `usd`], 2], 
+									[[`eth`, `usd`], 2],  
 									[[`eur`, `usd`], 5],  
 									[[`sol`, `usd`], 2], 
 									[[`bnb`, `usd`], 3],
@@ -2265,7 +2264,12 @@ class Route {
 									[[`aud`, `usd`], 5], 
 									[[`gbp`, `usd`], 5], 
 									[[`usd`, `cad`], 5], 
-									[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
+									[[`nzd`, `usd`], 5], 
+									[[`usd`, `jpy`], 4], 
+									[[`usd`, `nok`], 5], 
+									[[`usd`, `sek`], 5], 
+									[[`ltc`, `usd`], 2], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5], 
+									[[`usdc`, `usd`], 5]], {}];
 
 								Spot[0].forEach(S => {
 

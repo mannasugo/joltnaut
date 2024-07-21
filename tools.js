@@ -578,14 +578,14 @@ class Tools {
 			[`EUR`, `USD`], 
 			[`GBP`, `USD`], 
 			[`USD`, `KES`], 
-			[`LTC`, `USD`], 
-			[`NOK`, `USD`], 
+			[`LTC`, `USD`],  
 			[`NZD`, `USD`], 
-			[`SEK`, `USD`], 
 			[`SOL`, `USD`],  
 			[`USD`, `CAD`], 
 			[`USD`, `CHF`], 
 			[`USD`, `JPY`], 
+			[`USD`, `NOK`], 
+			[`USD`, `SEK`], 
 			[`USDC`, `USD`], 
 			[`USDT`,`USD`], 
 			[`XMR`, `USD`], 
@@ -676,7 +676,7 @@ class Tools {
 
 		let Spot = [[
 			[[`usdt`, `usd`], 5],
-			[[`btc`, `usd`], 1], 
+			[[`btc`, `usd`], 2], 
 			[[`eth`, `usd`], 2], 
 			[[`usdc`, `usd`], 5],  
 			[[`eur`, `usd`], 5],  
@@ -688,7 +688,10 @@ class Tools {
 			[[`aud`, `usd`], 5], 
 			[[`gbp`, `usd`], 5], 
 			[[`usd`, `cad`], 5], 
-			[[`usd`, `jpy`], 4], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
+			[[`usd`, `jpy`], 4], 
+									[[`usd`, `nok`], 5], 
+									[[`usd`, `sek`], 5],[[`nzd`, `usd`], 5], 
+									[[`ltc`, `usd`], 2], [[`usd`, `kes`], 4], [[`usd`, `zar`], 5]], {}];
 
 		Spot[0].forEach(S => {
 
@@ -847,8 +850,8 @@ module.exports = {
 	Constants : {
 
 		plot: [
-		`AUD-USD`, `BNB-USD`, `BTC-USD`, `DOGE-USD`, `ETH-USD`, `EUR-USD`, `GBP-USD`, `SOL-USD`, `USD-CAD`, `USD-CHF`, `USD-JPY`, `USD-KES`, `USD-ZAR`, `USDC-USD`, 
-		`USDT-USD`, `XRP-USD`]
+		`AUD-USD`, `BNB-USD`, `BTC-USD`, `DOGE-USD`, `ETH-USD`, `EUR-USD`, `GBP-USD`, `LTC-USD`, `NZD-USD`, `SOL-USD`, `USD-CAD`, `USD-CHF`, `USD-JPY`, `USD-KES`,
+		`USD-NOK`, `USD-SEK`, `USD-ZAR`, `USDC-USD`, `USDT-USD`, `XRP-USD`]
 	},
 	
 	Sql : new Sql([{

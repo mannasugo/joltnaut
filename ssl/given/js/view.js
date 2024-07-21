@@ -3099,12 +3099,12 @@ let Models = {
 
 		for (let i = 0; i < 24; i++) {
 
-			Plot[3].push([`text`, {x: 7.12*(Place[0] - i*15) - 14, y: 17, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, `${new Date((Day[0] + 15*4*60000) - i*15*60000).toTimeString().substr(0, 5)}`])
+			Plot[3].push([`text`, {x: 7.12*(Place[0] - i*15) - 14, y: 17, fill: `#fff`, style: {[`font-family`]: `intext`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, `${new Date((Day[0] + 15*4*60000) - i*15*60000).toTimeString().substr(0, 5)}`])
 					
 			Plot[0].push([`line`, {x1: 7.12*(Place[0] - i*15) + 0.4, y1: 0, x2: 7.12*(Place[0] - i*15) + 0.4, y2: 1000, stroke: `#1e1e1e`, [`stroke-dasharray`]: 0, [`stroke-width`]: 1}])//([`path`, {stroke: `#353535`, [`stroke-width`]: `${1}`, fill: `none`, d: `M${i*170} 0 ${i*170} 1000`}]);
 		}
 
-		Plot[2] = [`text`, {id: `last`, x: 20, y: 0, fill: `#fff`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
+		Plot[2] = [`text`, {id: `last`, x: 20, y: 0, fill: `#fff`, style: {[`font-family`]: `intext`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}];
 
 		return [
 			`main`, {id: `spot`, class: `_tY0`, style: {background: `#000`, color: `#fff`, [`font-family`]: `litera`, height: `${100}%`}}, 
@@ -3121,7 +3121,7 @@ let Models = {
 						[[`div`, {class: `_gxM _geQ`, style: {[`font-size`]: `${11}px`}}, 
 							[
 								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, padding: `${6}px ${12}px ${6}px 0`}}, `SPOT ${Arg.pair}`],
-								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-size`]: `${10}px`, [`letter-spacing`]: 0, padding: `${6}px ${12}px`}}, `${1}M`]]]]],
+								[`span`, {style: {[`border-right`]: `${1}px solid #353535`, [`font-family`]: `intext`, [`font-size`]: `${10}px`, [`letter-spacing`]: 0, padding: `${6}px ${12}px`}}, `${1}m`]]]]],
 					[`section`, {id: `collapsible`, class: `_gxM`, style: {width: `${100}%`}}, 
 						[
 							[`div`, {style: {width: `${80}%`}}, 
@@ -3145,10 +3145,10 @@ let Models = {
 											[
 												[`rect`, {id: `a`, x: 0, height: 20, width: 80, fill: `#ffffff3b`}],
 												[`path`, {id: `c`, stroke: `#fff`, d: ``}],
-												[`text`, {fill: `#fff`, x: 20, y: ``, [`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}, ``]]]]]]]]], 
+												[`text`, {fill: `#fff`, x: 20, y: ``, [`font-family`]: `intext`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}, ``]]]]]]]]], 
 					this.plotform([Arg.pair.split(`-`)]),
 					[`div`, {id: `collapsible`, style: {background: `#000000c9`, top: `${77}px`, height: `${30}px`, padding: `${6}px ${12}px`, position: `absolute`, width: `${80}%`, [`z-index`]: 11}}, 
-						[[`span`, {id: `ohlc`, style: {[`font-family`]: `din`, [`font-size`]: `${11}px`, [`letter-spacing`]: 0}}, ``]]], 
+						[[`span`, {id: `ohlc`, style: {[`font-family`]: `intext`, [`font-size`]: `${12}px`, [`letter-spacing`]: 0}}, ``]]], 
 					[`div`, {id: `collapsible`, style: {background: `#000`, [`border-top`]: `${1}px solid #6a6a6a`, bottom: `${30}px`, height: `${27}px`, overflow: `hidden`, position: `absolute`, width: `${80}%`}}, 
 						[[`svg`, {id: `time`, width: `${24*172}px`, style: {transform: `translateX(${(X > 540)? -20: -670}px)`}}, 
 								[[`g`, {}, Plot[3]]]]]], 
@@ -3769,11 +3769,11 @@ let Models = {
 									[`span`, {style: {[`font-size`]: `${12}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `${Spot[0][0]}`], 
 									[`span`, {style: {color: `#8e8e8e`, [`font-size`]: `${10}px`, [`font-weight`]: 300, overflow: `hidden`, [`text-overflow`]: `ellipsis`, [`text-transform`]: `uppercase`}}, `/${Spot[0][1]}`]]]]], 
 					[`div`, {style: {width: `${22.5}%`}}, 
-						[[`span`, {id: `COST`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `-`]]], 
+						[[`span`, {id: `COST`, style: {[`font-family`]: `intext`, [`font-size`]: `${11.7064}px`,[`font-weight`]: 300, [`letter-spacing`]: `${0}px`, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
-						[[`span`, {id: `MOD`, style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+						[[`span`, {id: `MOD`, style: {[`font-family`]: `intext`, [`font-size`]: `${11.7064}px`, [`font-weight`]: 300, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {width: `${15}%`}}, 
-						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: 0, [`text-align`]: `right`}}, `-`]]], 
+						[[`span`, {style: {[`font-family`]: `geometria`, [`font-size`]: `${11}px`,[`font-weight`]: 600, [`letter-spacing`]: `${.75}px`, [`text-align`]: `right`}}, `-`]]], 
 					[`div`, {style: {[`align-items`]: `end`, width: `${17.5}%`}}, 
 						[[`a`, {for: ``, id: ``, href: `/spot/${Spot[0][0].toUpperCase()}-${Spot[0][1].toUpperCase()}`, style: {background: `blue`, color: `#fff`, [`font-size`]: `${12}px`, [`font-weight`]: 300, padding: `${4}px ${8}px`, [`white-space`]: `nowrap`}}, `trade`]]]]])
 		}
