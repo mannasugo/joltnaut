@@ -592,6 +592,14 @@ class Tools {
 			[`XRP`, `USD`], 
 			[`USD`, `ZAR`]];
 
+		Coin.forEach(C => {
+
+			stat(`json/ts/${C[0]}${C[1]}_${a - 3600000*24}.json`, (bug, Stat) => {
+
+				if (bug) writeFileSync(`json/ts/${C[0]}${C[1]}_${a - 3600000*24}.json`, this.coats([]));
+			});
+		});
+
 		setInterval(() => {
 
 			let Spot = [];
@@ -601,8 +609,6 @@ class Tools {
 			Coin.forEach(C => {
 
 				stat(`json/ts/${C[0]}${C[1]}_${a}.json`, (bug, Stat) => {
-
-					//writeFileSync(`json/ts/${C[0]}${C[1]}_${a - 3600000*24}.json`, this.coats([]));
 
 					if (bug) writeFileSync(`json/ts/${C[0]}${C[1]}_${a}.json`, this.coats([]));
 
